@@ -1,0 +1,38 @@
+/**
+ * LA.IO Brand Colors — CSS Custom Properties
+ * Source of truth: LA_IO_COLORS_RGB.ase
+ * Use these variables in any web context.
+ *
+ * Usage:
+ *   color: var(--laio-easy-green);
+ *   background: var(--laio-drk-blue);
+ *   border-color: var(--laio-electric-magenta);
+ */
+
+:root {
+  /* Magenta family */
+  --laio-drk-purple:        #101948;
+  --laio-easy-magenta:      #E385FE;
+  --laio-electric-magenta:  #F629CB;
+
+  /* Green family */
+  --laio-drk-green:         #172708;
+  --laio-easy-green:        #C8ED5D;
+  --laio-electric-green:    #96F90B;
+
+  /* Blue family */
+  --laio-drk-blue:          #01233C;
+  --laio-easy-blue:         #63DCDE;
+  --laio-electric-blue:     #00B9FE;
+
+  /* Orange family */
+  --laio-drk-orange:        #302511;
+  --laio-easy-orange:       #F1DC43;
+  --laio-electric-orange:   #F5C124;
+
+  /* Gray / Neutral */
+  --laio-drk-gray:          #231F20;
+  --laio-gray:              #929497;
+  --laio-easy-gray:         #E3E6E7;
+  --laio-white:             #FFFFFF;
+}

@@ -1,0 +1,30 @@
+{
+  "laio": {
+    "magenta": {
+      "dark":     { "value": "#101948", "rgb": [16, 25, 72],    "name": "LA.IO DRK PRPL" },
+      "easy":     { "value": "#E385FE", "rgb": [227, 133, 254], "name": "LA.IO EASY MAGENTA" },
+      "electric": { "value": "#F629CB", "rgb": [246, 41, 203],  "name": "LA.IO ELECTRIC MAGENTA" }
+    },
+    "green": {
+      "dark":     { "value": "#172708", "rgb": [23, 39, 8],     "name": "LA.IO DRK GRN" },
+      "easy":     { "value": "#C8ED5D", "rgb": [200, 237, 93],  "name": "LA.IO EASY GRN" },
+      "electric": { "value": "#96F90B", "rgb": [150, 249, 11],  "name": "LA.IO ELECTRIC GRN" }
+    },
+    "blue": {
+      "dark":     { "value": "#01233C", "rgb": [1, 35, 60],     "name": "LA.IO DRK BLUE" },
+      "easy":     { "value": "#63DCDE", "rgb": [99, 220, 222],  "name": "LA.IO EASY BLUE" },
+      "electric": { "value": "#00B9FE", "rgb": [0, 185, 254],   "name": "LA.IO ELECTRIC BLUE" }
+    },
+    "orange": {
+      "dark":     { "value": "#302511", "rgb": [48, 37, 17],    "name": "LA.IO DRK ORNG" },
+      "easy":     { "value": "#F1DC43", "rgb": [241, 220, 67],  "name": "LA.IO EASY ORANGE" },
+      "electric": { "value": "#F5C124", "rgb": [245, 193, 36],  "name": "LA.IO ELECTRIC ORANGE" }
+    },
+    "gray": {
+      "dark":     { "value": "#231F20", "rgb": [35, 31, 32],    "name": "LA.IO DRK GRAY" },
+      "mid":      { "value": "#929497", "rgb": [146, 148, 151], "name": "LA.IO GRAY" },
+      "light":    { "value": "#E3E6E7", "rgb": [227, 230, 231], "name": "LA.IO EASY GRAY" },
+      "white":    { "value": "#FFFFFF", "rgb": [255, 255, 255], "name": "White" }
+    }
+  }
+}
