@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "https://*.la.io"
+          "value": "*"
         },
         {
           "key": "Cache-Control",
