@@ -463,18 +463,43 @@ DESIGN: angular (radius 0 to 2px), committed dark or light, spare with generous 
 
         <!-- DESIGN -->
         <div class="panel" data-tab="design" role="tabpanel">
-          <p class="for">For <b>visual work</b>: mockups, HTML artifacts, decks, social assets. Design is not a separate install. It rides on whichever surface above you already set up, fed by the same components and hosted assets.</p>
+          <p class="for">For <b>Claude Design</b> (prototypes, slide decks, visuals). Claude Design has its own Design System feature. You build an <b>LA.IO Design System</b> once, then pick it from the <i>Design System</i> dropdown on any new project and everything comes out on brand. Each person makes their own copy; the prompt below makes it identical every time.</p>
           <ol class="steps">
-            <li><div class="st">Work where the skill lives</div><div class="sd">Use Cowork or Code for full artifacts, or a Claude Project for quick ones. The brand is already loaded there.</div></li>
-            <li><div class="st">Point at the component library</div><div class="sd">Ask Claude to use <code class="inline">COMPONENTS.md</code> for ready blocks (hero, nav, stat card, list) and <code class="inline">assets.la.io</code> for logos, motifs, and fonts.</div></li>
-            <li><div class="st">Name one color family</div><div class="sd">Always specify the family up front. It drives the whole composition.</div>
-              <div class="code">
-                <button class="copy">Copy</button>
-<pre>Design an LA.IO event landing page in the Magenta family. Use the laio-brand components and the hosted logo. Dark treatment, one strong headline, plus-sign bullets.</pre>
+            <li><div class="st">Get the setup and the logo</div><div class="sd">Download the setup notes, and the logo to attach as a reference.</div>
+              <div class="dl-row">
+                <a class="dl" href="claude-design-setup.md" download><span class="ico">&darr;</span> Design System setup</a>
+                <a class="dl ghost" href="https://assets.la.io/logos/LAIO-COMPLETE.svg" download><span class="ico">&darr;</span> LA.IO logo (SVG)</a>
               </div>
             </li>
+            <li><div class="st">Create a new Design System from this prompt</div><div class="sd">In Claude Design, start a new Design System from a prompt plus references (the same flow as your other systems). Paste the prompt below, and attach the LA.IO logo, a motif or two from <code class="inline">assets.la.io/motifs/</code>, and optionally a screenshot of this page as a "brand in action" reference.</div>
+              <div class="code">
+                <button class="copy">Copy</button>
+<pre>Create a design system called "LA.IO Design System" for LA.IO (Louisiana Innovation Office), the operating brand for Louisiana's innovation ecosystem. It should feel technical, precise, confident, and aspirational. Use the attached LA.IO logo and references.
+
+COLOR. Five color families, each with a dark ground, an "easy" accent, and an "electric" accent. Any single artifact uses ONE family: the dark stop as background, easy or electric as accents and structural elements. Never mix families in one piece. Body text is white on dark backgrounds, or the dark brand color on light, never an accent color. Default to the Magenta family for tech, AI, and digital work unless told otherwise.
+  Magenta: #101948 / #E385FE / #F629CB
+  Green:   #172708 / #C8ED5D / #96F90B
+  Blue:    #01233C / #63DCDE / #00B9FE
+  Orange:  #302511 / #F1DC43 / #F5C124
+  Gray:    #231F20 / #E3E6E7 / #929497
+Light neutral background option: #E3E6E7.
+
+TYPOGRAPHY. Two typefaces, strictly separated.
+  Aktiv Grotesk for headlines, body, and UI. Headlines use Light (300) or Bold (700) only, never a middle weight. Body is Regular (400). Load via Adobe Fonts ("aktiv-grotesk") or self-hosted woff2 at https://assets.la.io/fonts/.
+  JetBrains Mono for eyebrows, labels, tags, and metadata only. Always all caps, letter-spacing about 0.1em, in a brand accent color. Never for body copy.
+
+LOGO AND MOTIFS. Use the real LA.IO assets, never recreate the logo. The logo is a monospace wordmark bracketed by chevrons: < LA.IO >. Files are single-fill near-black (#231F20); recolor by overriding the fill. Logo: https://assets.la.io/logos/LAIO-COMPLETE.svg. Motifs (brackets, chevrons, plus, diamond, X): https://assets.la.io/motifs/. Use brackets and chevrons as framing devices and supergraphics: scale freely, crop intentionally, never scatter as decoration. Never frame the logo itself with additional brackets.
+
+LAYOUT AND COMPONENTS. Angular and restrained. Border-radius 0 to 2px (small tags up to 3px). No gradients, no drop shadows. Commit to dark or light backgrounds, never mid-range. Generous whitespace; every element has structural purpose. Buttons are flat with a 2px radius. Use "+" as the list bullet, never a dot, hyphen, or asterisk.
+
+VOICE for any generated copy. Matter-of-fact confidence, short declarative sentences, state the case then stop. Never use "resilience", "Silicon Bayou", "innovative solutions", "cutting-edge", "disruptive", em dashes, "it's not X, it's Y", or Louisiana cliches (jazz, Mardi Gras, Bourbon Street, crawfish). The three pillars, when listed, always in order: + Capital / + Coaching / + Connections.
+
+Name the design system exactly: LA.IO Design System</pre>
+              </div>
+            </li>
+            <li><div class="st">Name it, then select it</div><div class="sd">Name it exactly <code class="inline">LA.IO Design System</code>. On any New Project (Prototype, Slide deck, and so on) choose it from the <i>Design System</i> dropdown.</div></li>
           </ol>
-          <div class="ready"><span class="plus">+</span><p><b>Ready when:</b> generated designs use one family, Aktiv Grotesk, plus-sign bullets, angular geometry, and the real LA.IO logo, not a recreation.</p></div>
+          <div class="ready"><span class="plus">+</span><p><b>Ready when:</b> a project on the LA.IO Design System produces one-family, angular, Aktiv Grotesk layouts with the real LA.IO logo and plus-sign bullets.</p></div>
         </div>
       </div>
     </div>

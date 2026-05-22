@@ -14,6 +14,7 @@ LAIO-Claude-Kit/
 ├── README.md                    ← this file
 ├── CLAUDE.md                    ← drop into a Claude Code project root
 ├── claude-ai-project-setup.md   ← setup for a claude.ai Project
+├── claude-design-setup.md       ← build an LA.IO Design System in Claude Design
 ├── laio-brand.zip               ← the skill, zipped for download (offered in START-HERE.html)
 └── laio-brand/                  ← THE SKILL (source of truth)
     ├── SKILL.md                 ← entrypoint; auto-triggers in Cowork & Code
@@ -29,7 +30,7 @@ LAIO-Claude-Kit/
 + **Claude Code** — put `laio-brand/` in `~/.claude/skills/` (global) or `.claude/skills/` (one project), and drop `CLAUDE.md` into the project root.
 + **Cowork** — put `laio-brand/` in `~/.claude/skills/` (same folder as Claude Code; no in-app upload). It triggers automatically on LA.IO work.
 + **Claude (claude.ai)** — make a Project, paste the instructions from `claude-ai-project-setup.md`, upload `BRAND.md` + `COMPONENTS.md` as knowledge.
-+ **Design** — covered on whichever surface you design in, fed by the same components and hosted assets.
++ **Claude Design** — build an **LA.IO Design System** (from the prompt + references in `claude-design-setup.md`), then pick it from the Design System dropdown on any project. Account-bound, so each designer creates their own copy.
 
 ## Hosted assets
 
