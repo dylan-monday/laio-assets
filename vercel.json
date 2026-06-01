@@ -25,6 +25,23 @@
           "value": "public, max-age=0, must-revalidate"
         }
       ]
+    },
+    {
+      "source": "/illustrator/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
     }
+  ],
+  "rewrites": [
+    { "source": "/illustrator",        "destination": "https://laio-illustrator.vercel.app" },
+    { "source": "/illustrator/:path*", "destination": "https://laio-illustrator.vercel.app/:path*" }
   ]
 }
