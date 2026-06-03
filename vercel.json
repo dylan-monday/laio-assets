@@ -53,8 +53,10 @@
       ]
     }
   ],
+  "redirects": [
+    { "source": "/illustrator", "destination": "/illustrator/", "permanent": true }
+  ],
   "rewrites": [
-    { "source": "/illustrator",        "destination": "https://laio-illustrator.vercel.app" },
     { "source": "/illustrator/",       "destination": "https://laio-illustrator.vercel.app" },
     { "source": "/illustrator/:path*", "destination": "https://laio-illustrator.vercel.app/:path*" }
   ]
