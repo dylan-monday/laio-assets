@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>assets.la.io</title>
+<meta name="description" content="Brand assets, tools, and documentation for LA.IO and the Louisiana Innovation ecosystem.">
+<style>@font-face{font-family:'Aktiv Grotesk';src:url('/fonts/AktivGrotesk_Lt.woff2') format('woff2');font-weight:300;font-display:swap}
+@font-face{font-family:'Aktiv Grotesk';src:url('/fonts/AktivGrotesk_Rg.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Aktiv Grotesk';src:url('/fonts/AktivGrotesk_Bd.woff2') format('woff2');font-weight:700;font-display:swap}
+
+:root{
+  --dark:#01233C; --easy:#63DCDE; --electric:#00B9FE;
+  --rule:rgba(99,220,222,.22); --rule-soft:rgba(99,220,222,.12);
+  --body:rgba(255,255,255,.72);
+}
+*,*::before,*::after{box-sizing:border-box;border-radius:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--dark);color:#fff;
+  font-family:'Aktiv Grotesk',Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit}
+.mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;letter-spacing:.1em;font-weight:400}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+@media(max-width:640px){.wrap{padding:0 20px}}
+
+body{min-height:100vh;display:flex;flex-direction:column}
+.wrap{width:100%;max-width:880px;flex:1;display:flex;flex-direction:column;
+  justify-content:center;padding-top:56px;padding-bottom:40px}
+.eyebrow{font-size:12px;color:var(--electric);margin:0 0 30px;letter-spacing:.16em;font-weight:700}
+.lede{margin:0 0 52px;max-width:44ch;font-size:clamp(17px,2.1vw,21px);
+  line-height:1.45;color:var(--body);font-weight:300}
+.rows{border-top:1px solid var(--rule-soft)}
+.row{display:grid;grid-template-columns:22px minmax(0,1fr) auto;
+  grid-template-areas:"p n a" ". d d";
+  gap:2px 4px;align-items:baseline;
+  padding:20px 0;border-bottom:1px solid var(--rule-soft);
+  text-decoration:none;transition:.16s}
+.row:hover{background:rgba(0,185,254,.06);padding-left:10px;padding-right:10px;
+  box-shadow:-10px 0 0 rgba(0,185,254,.06),10px 0 0 rgba(0,185,254,.06)}
+.plus{grid-area:p;color:var(--electric);font-weight:400;font-size:17px;line-height:1.2}
+.rname{grid-area:n;font-size:clamp(18px,2.4vw,23px);font-weight:400;letter-spacing:-.01em}
+.rpath{grid-area:a;font-size:10.5px;color:var(--easy);white-space:nowrap;padding-left:24px}
+.row.ext .rpath{color:var(--electric)}
+.arw{padding-left:5px}
+.rdesc{grid-area:d;font-size:14.5px;line-height:1.45;color:var(--body);max-width:46ch;margin-top:5px}
+.row:hover .rname{color:var(--electric)}
+@media(max-width:640px){
+  .row{grid-template-columns:20px minmax(0,1fr);grid-template-areas:"p n" ". a" ". d"}
+  .rpath{padding-left:0;margin-top:5px}
+  .lede{margin-bottom:36px}
+}
+.foot{margin-top:44px;font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.1em}
+.foot a{color:var(--easy);text-decoration:none}
+.foot a:hover{color:var(--electric)}
+</style></head>
+<body><div class="wrap">
+<p class="eyebrow mono">ASSETS.LA.IO</p>
+<p class="lede">Brand assets, tools, and documentation for LA.IO and the Louisiana Innovation ecosystem.</p>
+<nav class="rows"><a class="row" href="/illustrator">
+  <span class="plus">+</span>
+  <span class="rname">Illustration Machine</span>
+  <span class="rpath mono">/illustrator</span>
+  <span class="rdesc">Generates original illustration and background graphics in the LA.IO system.</span>
+</a><a class="row ext" href="https://badgebuilder.la.io" target="_blank" rel="noopener">
+  <span class="plus">+</span>
+  <span class="rname">Badge Builder</span>
+  <span class="rpath mono">badgebuilder.la.io<span class="arw">↗</span></span>
+  <span class="rdesc">Builds embeddable, trackable LA.IO badges for partner sites.</span>
+</a><a class="row" href="/claude">
+  <span class="plus">+</span>
+  <span class="rname">Claude Design System</span>
+  <span class="rpath mono">/claude</span>
+  <span class="rdesc">Instructions for building LA.IO work in Claude.</span>
+</a><a class="row" href="/labs">
+  <span class="plus">+</span>
+  <span class="rname">Louisiana Innovation Labs</span>
+  <span class="rpath mono">/labs</span>
+  <span class="rdesc">Identity assets for the Labs sub-brand.</span>
+</a></nav>
+<p class="foot mono">QUESTIONS: <a href="mailto:team@louisiana.io">TEAM@LOUISIANA.IO</a></p>
+</div></body></html>

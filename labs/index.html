@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Louisiana Innovation Labs — Identity Assets</title>
+<meta name="description" content="Logo files and color values for the Louisiana Innovation Labs identity.">
+<link rel="icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Aktiv Grotesk';src:url('/fonts/AktivGrotesk_Lt.woff2') format('woff2');font-weight:300;font-display:swap}
+@font-face{font-family:'Aktiv Grotesk';src:url('/fonts/AktivGrotesk_Rg.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Aktiv Grotesk';src:url('/fonts/AktivGrotesk_Bd.woff2') format('woff2');font-weight:700;font-display:swap}
+
+:root{
+  --dark:#01233C; --easy:#63DCDE; --electric:#00B9FE;
+  --rule:rgba(99,220,222,.22); --rule-soft:rgba(99,220,222,.12);
+  --body:rgba(255,255,255,.72);
+}
+*,*::before,*::after{box-sizing:border-box;border-radius:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--dark);color:#fff;
+  font-family:'Aktiv Grotesk',Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit}
+.mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;letter-spacing:.1em;font-weight:400}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+@media(max-width:640px){.wrap{padding:0 20px}}
+
+header{padding:88px 0 0}
+.eyebrow{font-size:11.5px;color:var(--electric);margin:0 0 28px}
+.eyebrow a{text-decoration:none;opacity:.75} .eyebrow a:hover{opacity:1}
+h1{font-weight:300;font-size:clamp(34px,5.2vw,58px);line-height:1.04;margin:0;letter-spacing:-.02em}
+h1 b{font-weight:700;display:block}
+.lede{margin:24px 0 0;max-width:46ch;font-size:17px;line-height:1.5;color:var(--body)}
+.topdl{margin:40px 0 0;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.zip{display:inline-block;background:var(--electric);color:var(--dark);padding:13px 22px;
+  font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.1em;font-weight:700;
+  text-transform:uppercase;text-decoration:none;transition:background .15s}
+.zip:hover{background:var(--easy)}
+.zipnote{font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.08em}
+hr.rule{border:0;border-top:1px solid var(--rule);margin:72px 0 0}
+
+.lock{padding:56px 0 0}
+.lhead{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+  border-bottom:1px solid var(--rule-soft);padding-bottom:16px;margin-bottom:28px}
+h2{font-size:13px;color:var(--electric);margin:0;font-weight:700}
+.lnote{font-size:14px;color:var(--body)}
+.ldim{margin-left:auto;font-size:10.5px;color:rgba(255,255,255,.32)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:860px){.cards{grid-template-columns:1fr}}
+.card{border:1px solid var(--rule-soft)}
+.stage{height:190px;display:flex;align-items:center;justify-content:center;padding:30px}
+.stage.light{background:#fff}
+.stage.dark{background:var(--dark);border-bottom:1px solid var(--rule-soft);
+  background-image:linear-gradient(rgba(255,255,255,.03),rgba(255,255,255,.03))}
+.vlabel{font-size:10px;color:var(--easy);padding:14px 14px 0}
+.dl{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 14px 14px}
+.btn{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;
+  border:1px solid var(--rule);color:#fff;padding:7px 11px;text-decoration:none;transition:.15s}
+.btn:hover{background:var(--electric);border-color:var(--electric);color:var(--dark)}
+.pngs{display:flex;align-items:center;gap:0;border:1px solid var(--rule)}
+.pl{font-size:10.5px;padding:7px 9px;color:rgba(255,255,255,.45);border-right:1px solid var(--rule-soft)}
+.px{font-family:'JetBrains Mono',monospace;font-size:10.5px;padding:7px 8px;text-decoration:none;
+  color:var(--easy);border-right:1px solid var(--rule-soft);transition:.15s}
+.px:last-child{border-right:0}
+.px:hover{background:var(--electric);color:var(--dark)}
+.path{display:flex;width:100%;align-items:center;justify-content:space-between;gap:10px;
+  background:transparent;border:0;border-top:1px solid var(--rule-soft);
+  padding:11px 14px;cursor:pointer;font-size:9.5px;color:rgba(255,255,255,.38);
+  text-align:left;transition:.15s;font-family:'JetBrains Mono',monospace;
+  text-transform:none;letter-spacing:.03em}
+.path:hover{color:#fff;background:rgba(0,185,254,.07)}
+.pt{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ci{color:var(--electric);letter-spacing:.1em;flex-shrink:0}
+.path.copied .ci::after{content:'✓ COPIED'}
+.path.copied .ci{font-size:0}
+.path.copied .ci::after{font-size:9.5px}
+
+.block{padding:80px 0 0}
+h3{font-size:13px;color:var(--electric);margin:0 0 8px;font-weight:700;
+  font-family:'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
+.bnote{font-size:14px;color:var(--body);margin:0 0 28px;max-width:52ch;line-height:1.5}
+
+.csbox{background:#fff;padding:44px;display:flex;justify-content:center}
+.csfig{position:relative;width:100%;max-width:620px}
+.csfig .art{position:absolute;display:block}
+.csbound{position:absolute;border:1px dashed rgba(0,185,254,.8)}
+.csunit{position:absolute;background:rgba(0,185,254,.13);
+  display:flex;align-items:center;justify-content:center}
+.csul{font-family:'JetBrains Mono',monospace;font-size:9px;color:#01233C;
+  letter-spacing:.08em;white-space:nowrap}
+
+.mins{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:760px){.mins{grid-template-columns:1fr}}
+.min{background:#fff;padding:32px;display:flex;flex-direction:column;
+  align-items:flex-start;gap:26px;min-height:200px}
+.minart{flex:1;display:flex;align-items:center}
+.minlabel{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.09em;
+  color:#01233C;text-transform:uppercase}
+.minlabel b{color:#00A0DC}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+@media(max-width:760px){.cmp{grid-template-columns:1fr}}
+.cmpc{background:#fff;padding:36px;text-align:center}
+.cmpc .cl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.09em;
+  margin-top:22px;text-transform:uppercase}
+.bad{color:rgba(1,35,60,.42)} .good{color:#01233C}
+.cl b{font-weight:400}
+
+.sws{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:760px){.sws{grid-template-columns:1fr}}
+.sw{border:1px solid var(--rule-soft)}
+.chip{height:96px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.swname{font-size:15px;padding:16px 16px 2px}
+.vals{padding:0 8px 8px}
+.val{display:flex;width:100%;gap:12px;align-items:center;background:transparent;border:0;
+  border-top:1px solid var(--rule-soft);padding:9px 8px;cursor:pointer;
+  font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;
+  color:rgba(255,255,255,.62);transition:.15s;text-align:left}
+.val:hover{color:#fff;background:rgba(0,185,254,.07)}
+.val b{color:var(--electric);font-weight:400;width:42px;flex-shrink:0}
+.val.copied span::after{content:'  ✓';color:var(--electric)}
+
+footer{margin-top:96px;border-top:1px solid var(--rule);padding:32px 0 72px;
+  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.fnote{font-size:12.5px;color:var(--body);max-width:44ch;line-height:1.5}
+.fmeta{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;
+  color:rgba(255,255,255,.34);text-align:right}
+.fmeta a{color:var(--easy);text-decoration:none}
+</style></head>
+<body>
+<div class="wrap">
+<header>
+  <p class="eyebrow mono"><a href="/">ASSETS.LA.IO</a> / LABS</p>
+  <h1>Louisiana Innovation<b>Labs</b></h1>
+  <p class="lede">Identity assets for the Labs sub-brand. Seven lockups, each in color, white, and black. SVG and EPS are vector and scale to any size. PNG is transparent.</p>
+  <div class="topdl">
+    <a class="zip" href="/logos/labs/LILabs-Logos.zip" download>+ Download everything</a>
+    <span class="zipnote mono">ZIP · 3.9 MB · 126 FILES</span>
+  </div>
+</header>
+<hr class="rule">
+
+<section class="lock" id="primary">
+  <div class="lhead">
+    <h2 class="mono">Primary</h2>
+    <span class="lnote">Full lockup. Outlined panels.</span>
+    <span class="ldim mono">400 × 164</span>
+  </div>
+  <div class="cards"><div class="card">
+  <div class="stage light"><img src="/logos/labs/svg/LILabs-Primary-Color.svg" alt="LILabs-Primary-Color" style="width:300px;max-width:100%"></div>
+  <div class="vlabel mono">Color</div>
+  <div class="dl">
+    <a class="btn" href="/logos/labs/svg/LILabs-Primary-Color.svg" download>SVG</a>
+    <a class="btn" href="/logos/labs/eps/LILabs-Primary-Color.eps" download>EPS</a>
+    <span class="pngs"><span class="pl mono">PNG</span><a class="px" href="/logos/labs/png/LILabs-Primary-Color@1x.png" download>1×</a><a class="px" href="/logos/labs/png/LILabs-Primary-Color@2x.png" download>2×</a><a class="px" href="/logos/labs/png/LILabs-Primary-Color@3x.png" download>3×</a><a class="px" href="/logos/labs/png/LILabs-Primary-Color@3000.png" download>3000</a></span>
+  </div>
+  <button class="path mono" data-copy="https://assets.la.io/logos/labs/svg/LILabs-Primary-Color.svg" title="Copy SVG URL">
+    <span class="pt">/logos/labs/svg/LILabs-Primary-Color.svg</span><span class="ci">COPY</span>
+  </button>
+</div><div class="card">
+  <div class="stage dark"><img src="/logos/labs/svg/LILabs-Primary-White.svg" alt="LILabs-Primary-White" style="width:300px;max-width:100%"></div>
+  <div class="vlabel mono">White</div>
+  <div class="dl">
+    <a class="btn" href="/logos/labs/svg/LILabs-Primary-White.svg" download>SVG</a>
+    <a class="btn" href="/logos/labs/eps/LILabs-Primary-White.eps" download>EPS</a>
+    <span class="pngs"><span class="pl mono">PNG</span><a class="px" href="/logos/labs/png/LILabs-Primary-White@1x.png" download>1×</a><a class="px" href="/logos/labs/png/LILabs-Primary-White@2x.png" download>2×</a><a class="px" href="/logos/labs/png/LILabs-Primary-White@3x.png" download>3×</a><a class="px" href="/logos/labs/png/LILabs-Primary-White@3000.png" download>3000</a></span>
+  </div>
+  <button class="path mono" data-copy="https://assets.la.io/logos/labs/svg/LILabs-Primary-White.svg" title="Copy SVG URL">
+    <span class="pt">/logos/labs/svg/LILabs-Primary-White.svg</span><span class="ci">COPY</span>
+  </button>
+</div><div class="card">
+  <div class="stage light"><img src="/logos/labs/svg/LILabs-Primary-Black.svg" alt="LILabs-Primary-Black" style="width:300px;max-width:100%"></div>
+  <div class="vlabel mono">Black</div>
+  <div class="dl">
+    <a class="btn" href="/logos/labs/svg/LILabs-Primary-Black.svg" download>SVG</a>
+    <a class="btn" href="/logos/labs/eps/LILabs-Primary-Black.eps" download>EPS</a>
+    <span class="pngs"><span class="pl mono">PNG</span><a class="px" href="/logos/labs/png/LILabs-Primary-Black@1x.png" download>1×</a><a class="px" href="/logos/labs/png/LILabs-Primary-Black@2x.png" download>2×</a><a class="px" href="/logos/labs/png/LILabs-Primary-Black@3x.png" download>3×</a><a class="px" href="/logos/labs/png/LILabs-Primary-Black@3000.png" download>3000</a></span>
+  </div>
+  <button class="path mono" data-copy="https://assets.la.io/logos/labs/svg/LILabs-Primary-Black.svg" title="Copy SVG URL">
+    <span class="pt">/logos/labs/svg/LILabs-Primary-Black.svg</span><span class="ci">COPY</span>
+  </button>
+</div></div>
+</section><section class="lock" id="primary-reverse">
+  <div class="lhead">
+    <h2 class="mono">Primary Reverse</h2>
+    <span class="lnote">Full lockup. Filled panels.</span>
+    <span class="ldim mono">398 × 163</span>
+  </div>
+  <div class="cards"><div class="card">
+  <div class="stage light"><img src="/logos/labs/svg/LILabs-Primary-Reverse-Color.svg" alt="LILabs-Primary-Reverse-Color" style="width:300px;max-width:100%"></div>
+  <div class="vlabel mono">Color</div>
+  <div class="dl">
+    <a class="btn" href="/logos/labs/svg/LILabs-Primary-Reverse-Color.svg" download>SVG</a>
+    <a class="btn" href="/logos/labs/eps/LILabs-Primary-Reverse-Color.eps" download>EPS</a>
+    <span class="pngs"><span class="pl mono">PNG</span><a class="px" href="/logos/labs/png/LILabs-Primary-Reverse-Color@1x.png" download>1×</a><a class="px" href="/logos/labs/png/LILabs-Primary-Reverse-Color@2x.png" download>2×</a><a class="px" href="/logos/labs/png/LILabs-Primary-Reverse-Color@3x.png" download>3×</a><a class="px" href="/logos/labs/png/LILabs-Primary-Reverse-Color@3000.png" download>3000</a></span>
+  </div>
+  <button class="path mono" data-copy="https://assets.la.io/logos/labs/svg/LILabs-Primary-Reverse-Color.svg" title="Copy SVG URL">
+    <span class="pt">/logos/labs/svg/LILabs-Primary-Reverse-Color.svg</span><span class="ci">COPY</span>
+  </button>
+</div><div class="card">
+  <div class="stage dark"><img src="/logos/labs/svg/LILabs-Primary-Reverse-White.svg" alt="LILabs-Primary-Reverse-White" style="width:300px;max-width:100%"></div>
+  <div class="vlabel mono">White</div>
+  <div class="dl">
+    <a class="btn" href="/logos/labs/svg/LILabs-Primary-Reverse-White.svg" download>SVG</a>
+    <a class="btn" href="/logos/labs/eps/LILabs-Primary-Reverse-White.eps" download>EPS</a>
+    <span class="pngs"><span class="pl mono">PNG</span><a class="px" href="/logos/labs/png/LILabs-Primary-Reverse-White@1x.png" download>1×</a><a class="px" href="/logos/labs/png/LILabs-Primary-Reverse-White@2x.png" download>2×</a><a class="px" href="/logos/labs/png/LILabs-Primary-Reverse-White@3x.png" download>3×</a><a class="px" href="/logos/labs/png/LILabs-Primary-Reverse-White@3000.png" download>3000</a></span>
+  </div>
+  <button class="path mono" data-copy="https://assets.la.io/logos/labs/svg/LILabs-Primary-Reverse-White.svg" title="Copy SVG URL">
+    <span class="pt">/logos/labs/svg/LILabs-Primary-Reverse-White.svg</span><span class="ci">COPY</span>
+  </button>
+</div><div class="card">
+  <div class="stage light"><img src="/logos/labs/svg/LILabs-Primary-Reverse-Black.svg" alt="LILabs-Primary-Reverse-Black" style="width:300px;max-width:100%"></div>
+  <div class="vlabel mono">Black</div>
+  <div class="dl">
+    <a class="btn" href="/logos/labs/svg/LILabs-Primary-Reverse-Black.svg" download>SVG</a>
+    <a class="btn" href="/logos/labs/eps/LILabs-Primary-Reverse-Black.eps" download>EPS</a>
+    <span class="pngs"><span class="pl mono">PNG</span><a class="px" href="/logos/labs/png/LILabs-Primary-Reverse-Black@1x.png" download>1×</a><a class="px" href="/logos/labs/png/LILabs-Primary-Reverse-Black@2x.png" download>2×</a><a class="px" href="/logos/labs/png/LILabs-Primary-Reverse-Black@3x.png" download>3×</a><a class="px" href="/logos/labs/png/LILabs-Primary-Reverse-Black@3000.png" download>3000</a></span>
+  </div>
+  <button class="path mono" data-copy="https://assets.la.io/logos/labs/svg/LILabs-Primary-Reverse-Black.svg" title="Copy SVG URL">
+    <span class="pt">/logos/labs/svg/LILabs-Primary-Reverse-Black.svg</span><span class="ci">COPY</span>
+  </button>
+</div></div>
+</section><section class="lock" id="stacked">
+  <div class="lhead">
+    <h2 class="mono">Stacked</h2>
+    <span class="lnote">Condensed lockup. Outlined panels.</span>
+    <span class="ldim mono">264 × 134</span>
+  </div>
+  <div class="cards"><div class="card">
+  <div class="stage light"><img src="/logos/labs/svg/LILabs-Stacked-Color.svg" alt="LILabs-Stacked-Color" style="width:264.38px;max-width:100%"></div>
+  <div class="vlabel mono">Color</div>
+  <div class="dl">
+    <a class="btn" href="/logos/labs/svg/LILabs-Stacked-Color.svg" download>SVG</a>
+    <a class="btn" href="/logos/labs/eps/LILabs-Stacked-Color.eps" download>EPS</a>
+    <span class="pngs"><span class="pl mono">PNG</span><a class="px" href="/logos/labs/png/LILabs-Stacked-Color@1x.png" download>1×</a><a class="px" href="/logos/labs/png/LILabs-Stacked-Color@2x.png" download>2×</a><a class="px" href="/logos/labs/png/LILabs-Stacked-Color@3x.png" download>3×</a><a class="px" href="/logos/labs/png/LILabs-Stacked-Color@3000.png" download>3000</a></span>
+  </div>
+  <button class="path mono" data-copy="https://assets.la.io/logos/labs/svg/LILabs-Stacked-Color.svg" title="Copy SVG URL">
+    <span class="pt">/logos/labs/svg/LILabs-Stacked-Color.svg</span><span class="ci">COPY</span>
+  </button>
+</div><div class="card">
+  <div class="stage dark"><img src="/logos/labs/svg/LILabs-Stacked-White.svg" alt="LILabs-Stacked-White" style="width:264.38px;max-width:100%"></div>
+  <div class="vlabel mono">White</div>
+  <div class="dl">
+    <a class="btn" href="/logos/labs/svg/LILabs-Stacked-White.svg" download>SVG</a>
+    <a class="btn" href="/logos/labs/eps/LILabs-Stacked-White.eps" download>EPS</a>
+    <span class="pngs"><span class="pl mono">PNG</span><a class="px" href="/logos/labs/png/LILabs-Stacked-White@1x.png" download>1×</a><a class="px" href="/logos/labs/png/LILabs-Stacked-White@2x.png" download>2×</a><a class="px" href="/logos/labs/png/LILabs-Stacked-White@3x.png" download>3×</a><a class="px" href="/logos/labs/png/LILabs-Stacked-White@3000.png" download>3000</a></span>
+  </div>
+  <button class="path mono" data-copy="https://assets.la.io/logos/labs/svg/LILabs-Stacked-White.svg" title="Copy SVG URL">
+    <span class="pt">/logos/labs/svg/LILabs-Stacked-White.svg</span><span class="ci">COPY</span>
+  </button>
+</div><div class="card">
+  <div class="stage light"><img src="/logos/labs/svg/LILabs-Stacked-Black.svg" alt="LILabs-Stacked-Black" style="width:264.38px;max-width:100%"></div>
+  <div class="vlabel mono">Black</div>
+  <div class="dl">
+    <a class="btn" href="/logos/labs/svg/LILabs-Stacked-Black.svg" download>SVG</a>
+    <a class="btn" href="/logos/labs/eps/LILabs-Stacked-Black.eps" download>EPS</a>
+    <span class="pngs"><span class="pl mono">PNG</span><a class="px" href="/logos/labs/png/LILabs-Stacked-Black@1x.png" download>1×</a><a class="px" href="/logos/labs/png/LILabs-Stacked-Black@2x.png" download>2×</a><a class="px" href="/logos/labs/png/LILabs-Stacked-Black@3x.png" download>3×</a><a class="px" href="/logos/labs/png/LILabs-Stacked-Black@3000.png" download>3000</a></span>
+  </div>
+  <button class="path mono" data-copy="https://assets.la.io/logos/labs/svg/LILabs-Stacked-Black.svg" title="Copy SVG URL">
+    <span class="pt">/logos/labs/svg/LILabs-Stacked-Black.svg</span><span class="ci">COPY</span>
+  </button>
+</div></div>
+</section><section class="lock" id="stacked-reverse">
+  <div class="lhead">
+    <h2 class="mono">Stacked Reverse</h2>
+    <span class="lnote">Condensed lockup. Filled panels.</span>
+    <span class="ldim mono">263 × 133</span>
+  </div>
+  <div class="cards"><div class="card">
+  <div class="stage light"><img src="/logos/labs/svg/LILabs-Stacked-Reverse-Color.svg" alt="LILabs-Stacked-Reverse-Color" style="width:263.43px;max-width:100%"></div>
+  <div class="vlabel mono">Color</div>
+  <div class="dl">
+    <a class="btn" href="/logos/labs/svg/LILabs-Stacked-Reverse-Color.svg" download>SVG</a>
+    <a class="btn" href="/logos/labs/eps/LILabs-Stacked-Reverse-Color.eps" download>EPS</a>
+    <span class="pngs"><span class="pl mono">PNG</span><a class="px" href="/logos/labs/png/LILabs-Stacked-Reverse-Color@1x.png" download>1×</a><a class="px" href="/logos/labs/png/LILabs-Stacked-Reverse-Color@2x.png" download>2×</a><a class="px" href="/logos/labs/png/LILabs-Stacked-Reverse-Color@3x.png" download>3×</a><a class="px" href="/logos/labs/png/LILabs-Stacked-Reverse-Color@3000.png" download>3000</a></span>
+  </div>
+  <button class="path mono" data-copy="https://assets.la.io/logos/labs/svg/LILabs-Stacked-Reverse-Color.svg" title="Copy SVG URL">
+    <span class="pt">/logos/labs/svg/LILabs-Stacked-Reverse-Color.svg</span><span class="ci">COPY</span>
+  </button>
+</div><div class="card">
+  <div class="stage dark"><img src="/logos/labs/svg/LILabs-Stacked-Reverse-White.svg" alt="LILabs-Stacked-Reverse-White" style="width:263.43px;max-width:100%"></div>
+  <div class="vlabel mono">White</div>
+  <div class="dl">
+    <a class="btn" href="/logos/labs/svg/LILabs-Stacked-Reverse-White.svg" download>SVG</a>
+    <a class="btn" href="/logos/labs/eps/LILabs-Stacked-Reverse-White.eps" download>EPS</a>
+    <span class="pngs"><span class="pl mono">PNG</span><a class="px" href="/logos/labs/png/LILabs-Stacked-Reverse-White@1x.png" download>1×</a><a class="px" href="/logos/labs/png/LILabs-Stacked-Reverse-White@2x.png" download>2×</a><a class="px" href="/logos/labs/png/LILabs-Stacked-Reverse-White@3x.png" download>3×</a><a class="px" href="/logos/labs/png/LILabs-Stacked-Reverse-White@3000.png" download>3000</a></span>
+  </div>
+  <button class="path mono" data-copy="https://assets.la.io/logos/labs/svg/LILabs-Stacked-Reverse-White.svg" title="Copy SVG URL">
+    <span class="pt">/logos/labs/svg/LILabs-Stacked-Reverse-White.svg</span><span class="ci">COPY</span>
+  </button>
+</div><div class="card">
+  <div class="stage light"><img src="/logos/labs/svg/LILabs-Stacked-Reverse-Black.svg" alt="LILabs-Stacked-Reverse-Black" style="width:263.43px;max-width:100%"></div>
+  <div class="vlabel mono">Black</div>
+  <div class="dl">
+    <a class="btn" href="/logos/labs/svg/LILabs-Stacked-Reverse-Black.svg" download>SVG</a>
+    <a class="btn" href="/logos/labs/eps/LILabs-Stacked-Reverse-Black.eps" download>EPS</a>
+    <span class="pngs"><span class="pl mono">PNG</span><a class="px" href="/logos/labs/png/LILabs-Stacked-Reverse-Black@1x.png" download>1×</a><a class="px" href="/logos/labs/png/LILabs-Stacked-Reverse-Black@2x.png" download>2×</a><a class="px" href="/logos/labs/png/LILabs-Stacked-Reverse-Black@3x.png" download>3×</a><a class="px" href="/logos/labs/png/LILabs-Stacked-Reverse-Black@3000.png" download>3000</a></span>
+  </div>
+  <button class="path mono" data-copy="https://assets.la.io/logos/labs/svg/LILabs-Stacked-Reverse-Black.svg" title="Copy SVG URL">
+    <span class="pt">/logos/labs/svg/LILabs-Stacked-Reverse-Black.svg</span><span class="ci">COPY</span>
+  </button>
+</div></div>
+</section><section class="lock" id="labs">
+  <div class="lhead">
+    <h2 class="mono">LABS</h2>
+    <span class="lnote">Panels alone.</span>
+    <span class="ldim mono">264 × 68</span>
+  </div>
+  <div class="cards"><div class="card">
+  <div class="stage light"><img src="/logos/labs/svg/LILabs-LABS-Color.svg" alt="LILabs-LABS-Color" style="width:264.38px;max-width:100%"></div>
+  <div class="vlabel mono">Color</div>
+  <div class="dl">
+    <a class="btn" href="/logos/labs/svg/LILabs-LABS-Color.svg" download>SVG</a>
+    <a class="btn" href="/logos/labs/eps/LILabs-LABS-Color.eps" download>EPS</a>
+    <span class="pngs"><span class="pl mono">PNG</span><a class="px" href="/logos/labs/png/LILabs-LABS-Color@1x.png" download>1×</a><a class="px" href="/logos/labs/png/LILabs-LABS-Color@2x.png" download>2×</a><a class="px" href="/logos/labs/png/LILabs-LABS-Color@3x.png" download>3×</a><a class="px" href="/logos/labs/png/LILabs-LABS-Color@3000.png" download>3000</a></span>
+  </div>
+  <button class="path mono" data-copy="https://assets.la.io/logos/labs/svg/LILabs-LABS-Color.svg" title="Copy SVG URL">
+    <span class="pt">/logos/labs/svg/LILabs-LABS-Color.svg</span><span class="ci">COPY</span>
+  </button>
+</div><div class="card">
+  <div class="stage dark"><img src="/logos/labs/svg/LILabs-LABS-White.svg" alt="LILabs-LABS-White" style="width:264.38px;max-width:100%"></div>
+  <div class="vlabel mono">White</div>
+  <div class="dl">
+    <a class="btn" href="/logos/labs/svg/LILabs-LABS-White.svg" download>SVG</a>
+    <a class="btn" href="/logos/labs/eps/LILabs-LABS-White.eps" download>EPS</a>
+    <span class="pngs"><span class="pl mono">PNG</span><a class="px" href="/logos/labs/png/LILabs-LABS-White@1x.png" download>1×</a><a class="px" href="/logos/labs/png/LILabs-LABS-White@2x.png" download>2×</a><a class="px" href="/logos/labs/png/LILabs-LABS-White@3x.png" download>3×</a><a class="px" href="/logos/labs/png/LILabs-LABS-White@3000.png" download>3000</a></span>
+  </div>
+  <button class="path mono" data-copy="https://assets.la.io/logos/labs/svg/LILabs-LABS-White.svg" title="Copy SVG URL">
+    <span class="pt">/logos/labs/svg/LILabs-LABS-White.svg</span><span class="ci">COPY</span>
+  </button>
+</div><div class="card">
+  <div class="stage light"><img src="/logos/labs/svg/LILabs-LABS-Black.svg" alt="LILabs-LABS-Black" style="width:264.38px;max-width:100%"></div>
+  <div class="vlabel mono">Black</div>
+  <div class="dl">
+    <a class="btn" href="/logos/labs/svg/LILabs-LABS-Black.svg" download>SVG</a>
+    <a class="btn" href="/logos/labs/eps/LILabs-LABS-Black.eps" download>EPS</a>
+    <span class="pngs"><span class="pl mono">PNG</span><a class="px" href="/logos/labs/png/LILabs-LABS-Black@1x.png" download>1×</a><a class="px" href="/logos/labs/png/LILabs-LABS-Black@2x.png" download>2×</a><a class="px" href="/logos/labs/png/LILabs-LABS-Black@3x.png" download>3×</a><a class="px" href="/logos/labs/png/LILabs-LABS-Black@3000.png" download>3000</a></span>
+  </div>
+  <button class="path mono" data-copy="https://assets.la.io/logos/labs/svg/LILabs-LABS-Black.svg" title="Copy SVG URL">
+    <span class="pt">/logos/labs/svg/LILabs-LABS-Black.svg</span><span class="ci">COPY</span>
+  </button>
+</div></div>
+</section><section class="lock" id="icon">
+  <div class="lhead">
+    <h2 class="mono">Icon</h2>
+    <span class="lnote">Single panel. Outlined.</span>
+    <span class="ldim mono">72 × 68</span>
+  </div>
+  <div class="cards"><div class="card">
+  <div class="stage light"><img src="/logos/labs/svg/LILabs-Icon-Color.svg" alt="LILabs-Icon-Color" style="width:72.5px;max-width:100%"></div>
+  <div class="vlabel mono">Color</div>
+  <div class="dl">
+    <a class="btn" href="/logos/labs/svg/LILabs-Icon-Color.svg" download>SVG</a>
+    <a class="btn" href="/logos/labs/eps/LILabs-Icon-Color.eps" download>EPS</a>
+    <span class="pngs"><span class="pl mono">PNG</span><a class="px" href="/logos/labs/png/LILabs-Icon-Color@1x.png" download>1×</a><a class="px" href="/logos/labs/png/LILabs-Icon-Color@2x.png" download>2×</a><a class="px" href="/logos/labs/png/LILabs-Icon-Color@3x.png" download>3×</a><a class="px" href="/logos/labs/png/LILabs-Icon-Color@3000.png" download>3000</a></span>
+  </div>
+  <button class="path mono" data-copy="https://assets.la.io/logos/labs/svg/LILabs-Icon-Color.svg" title="Copy SVG URL">
+    <span class="pt">/logos/labs/svg/LILabs-Icon-Color.svg</span><span class="ci">COPY</span>
+  </button>
+</div><div class="card">
+  <div class="stage dark"><img src="/logos/labs/svg/LILabs-Icon-White.svg" alt="LILabs-Icon-White" style="width:72.5px;max-width:100%"></div>
+  <div class="vlabel mono">White</div>
+  <div class="dl">
+    <a class="btn" href="/logos/labs/svg/LILabs-Icon-White.svg" download>SVG</a>
+    <a class="btn" href="/logos/labs/eps/LILabs-Icon-White.eps" download>EPS</a>
+    <span class="pngs"><span class="pl mono">PNG</span><a class="px" href="/logos/labs/png/LILabs-Icon-White@1x.png" download>1×</a><a class="px" href="/logos/labs/png/LILabs-Icon-White@2x.png" download>2×</a><a class="px" href="/logos/labs/png/LILabs-Icon-White@3x.png" download>3×</a><a class="px" href="/logos/labs/png/LILabs-Icon-White@3000.png" download>3000</a></span>
+  </div>
+  <button class="path mono" data-copy="https://assets.la.io/logos/labs/svg/LILabs-Icon-White.svg" title="Copy SVG URL">
+    <span class="pt">/logos/labs/svg/LILabs-Icon-White.svg</span><span class="ci">COPY</span>
+  </button>
+</div><div class="card">
+  <div class="stage light"><img src="/logos/labs/svg/LILabs-Icon-Black.svg" alt="LILabs-Icon-Black" style="width:72.5px;max-width:100%"></div>
+  <div class="vlabel mono">Black</div>
+  <div class="dl">
+    <a class="btn" href="/logos/labs/svg/LILabs-Icon-Black.svg" download>SVG</a>
+    <a class="btn" href="/logos/labs/eps/LILabs-Icon-Black.eps" download>EPS</a>
+    <span class="pngs"><span class="pl mono">PNG</span><a class="px" href="/logos/labs/png/LILabs-Icon-Black@1x.png" download>1×</a><a class="px" href="/logos/labs/png/LILabs-Icon-Black@2x.png" download>2×</a><a class="px" href="/logos/labs/png/LILabs-Icon-Black@3x.png" download>3×</a><a class="px" href="/logos/labs/png/LILabs-Icon-Black@3000.png" download>3000</a></span>
+  </div>
+  <button class="path mono" data-copy="https://assets.la.io/logos/labs/svg/LILabs-Icon-Black.svg" title="Copy SVG URL">
+    <span class="pt">/logos/labs/svg/LILabs-Icon-Black.svg</span><span class="ci">COPY</span>
+  </button>
+</div></div>
+</section><section class="lock" id="icon-reverse">
+  <div class="lhead">
+    <h2 class="mono">Icon Reverse</h2>
+    <span class="lnote">Single panel. Filled.</span>
+    <span class="ldim mono">70 × 67</span>
+  </div>
+  <div class="cards"><div class="card">
+  <div class="stage light"><img src="/logos/labs/svg/LILabs-Icon-Reverse-Color.svg" alt="LILabs-Icon-Reverse-Color" style="width:70.31px;max-width:100%"></div>
+  <div class="vlabel mono">Color</div>
+  <div class="dl">
+    <a class="btn" href="/logos/labs/svg/LILabs-Icon-Reverse-Color.svg" download>SVG</a>
+    <a class="btn" href="/logos/labs/eps/LILabs-Icon-Reverse-Color.eps" download>EPS</a>
+    <span class="pngs"><span class="pl mono">PNG</span><a class="px" href="/logos/labs/png/LILabs-Icon-Reverse-Color@1x.png" download>1×</a><a class="px" href="/logos/labs/png/LILabs-Icon-Reverse-Color@2x.png" download>2×</a><a class="px" href="/logos/labs/png/LILabs-Icon-Reverse-Color@3x.png" download>3×</a><a class="px" href="/logos/labs/png/LILabs-Icon-Reverse-Color@3000.png" download>3000</a></span>
+  </div>
+  <button class="path mono" data-copy="https://assets.la.io/logos/labs/svg/LILabs-Icon-Reverse-Color.svg" title="Copy SVG URL">
+    <span class="pt">/logos/labs/svg/LILabs-Icon-Reverse-Color.svg</span><span class="ci">COPY</span>
+  </button>
+</div><div class="card">
+  <div class="stage dark"><img src="/logos/labs/svg/LILabs-Icon-Reverse-White.svg" alt="LILabs-Icon-Reverse-White" style="width:70.31px;max-width:100%"></div>
+  <div class="vlabel mono">White</div>
+  <div class="dl">
+    <a class="btn" href="/logos/labs/svg/LILabs-Icon-Reverse-White.svg" download>SVG</a>
+    <a class="btn" href="/logos/labs/eps/LILabs-Icon-Reverse-White.eps" download>EPS</a>
+    <span class="pngs"><span class="pl mono">PNG</span><a class="px" href="/logos/labs/png/LILabs-Icon-Reverse-White@1x.png" download>1×</a><a class="px" href="/logos/labs/png/LILabs-Icon-Reverse-White@2x.png" download>2×</a><a class="px" href="/logos/labs/png/LILabs-Icon-Reverse-White@3x.png" download>3×</a><a class="px" href="/logos/labs/png/LILabs-Icon-Reverse-White@3000.png" download>3000</a></span>
+  </div>
+  <button class="path mono" data-copy="https://assets.la.io/logos/labs/svg/LILabs-Icon-Reverse-White.svg" title="Copy SVG URL">
+    <span class="pt">/logos/labs/svg/LILabs-Icon-Reverse-White.svg</span><span class="ci">COPY</span>
+  </button>
+</div><div class="card">
+  <div class="stage light"><img src="/logos/labs/svg/LILabs-Icon-Reverse-Black.svg" alt="LILabs-Icon-Reverse-Black" style="width:70.31px;max-width:100%"></div>
+  <div class="vlabel mono">Black</div>
+  <div class="dl">
+    <a class="btn" href="/logos/labs/svg/LILabs-Icon-Reverse-Black.svg" download>SVG</a>
+    <a class="btn" href="/logos/labs/eps/LILabs-Icon-Reverse-Black.eps" download>EPS</a>
+    <span class="pngs"><span class="pl mono">PNG</span><a class="px" href="/logos/labs/png/LILabs-Icon-Reverse-Black@1x.png" download>1×</a><a class="px" href="/logos/labs/png/LILabs-Icon-Reverse-Black@2x.png" download>2×</a><a class="px" href="/logos/labs/png/LILabs-Icon-Reverse-Black@3x.png" download>3×</a><a class="px" href="/logos/labs/png/LILabs-Icon-Reverse-Black@3000.png" download>3000</a></span>
+  </div>
+  <button class="path mono" data-copy="https://assets.la.io/logos/labs/svg/LILabs-Icon-Reverse-Black.svg" title="Copy SVG URL">
+    <span class="pt">/logos/labs/svg/LILabs-Icon-Reverse-Black.svg</span><span class="ci">COPY</span>
+  </button>
+</div></div>
+</section>
+
+<section class="block">
+  <h3>Clear space</h3>
+  <p class="bnote">One LABS panel on all sides.</p>
+  <div class="csbox">
+    <div class="csfig" style="aspect-ratio:530.31/294.40999999999997">
+      <div class="csunit" style="left:0;top:0;width:12.313552450453509%;height:22.17995312659217%"><span class="csul">1 PANEL</span></div>
+      <div class="csbound" style="left:12.313552450453509%;top:22.17995312659217%;width:75.37289509909299%;height:55.64009374681568%"></div>
+      <img class="art" src="/logos/labs/svg/LILabs-Primary-Color.svg" alt="Clear space"
+           style="left:12.313552450453509%;top:22.17995312659217%;width:75.37289509909299%;height:55.64009374681568%">
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <h3>Minimum size</h3>
+  <p class="bnote">Shown actual size.</p>
+  <div class="mins">
+    <div class="min">
+      <div class="minart"><img src="/logos/labs/svg/LILabs-Primary-Color.svg" alt="Primary at 120px" style="width:120px"></div>
+      <span class="minlabel">Primary and Stacked · <b>120px / 1.25in wide</b></span>
+    </div>
+    <div class="min">
+      <div class="minart"><img src="/logos/labs/svg/LILabs-Icon-Color.svg" alt="Icon at 40px" style="width:40px"></div>
+      <span class="minlabel">Icon · <b>40px / 0.5in wide</b></span>
+    </div>
+  </div>
+  <div class="cmp">
+    <div class="cmpc">
+      <img src="/logos/labs/svg/LILabs-Stacked-Color.svg" alt="Outlined at 90px" style="width:90px">
+      <div class="cl bad">&#10005; &nbsp;Outlined below 100px</div>
+    </div>
+    <div class="cmpc">
+      <img src="/logos/labs/svg/LILabs-Stacked-Reverse-Color.svg" alt="Filled at 90px" style="width:90px">
+      <div class="cl good">+ &nbsp;Filled below 100px</div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <h3>Color</h3>
+  <p class="bnote">Click any value to copy.</p>
+  <div class="sws"><div class="sw">
+ <div class="chip" style="background:#00B9FE"></div>
+ <div class="swname">Electric Blue</div>
+ <div class="vals">
+  <button class="val mono" data-copy="#00B9FE"><b>HEX</b><span>#00B9FE</span></button>
+  <button class="val mono" data-copy="rgb(0, 185, 254)"><b>RGB</b><span>0 / 185 / 254</span></button>
+  <button class="val mono" data-copy="C64 M10 Y0 K0"><b>CMYK</b><span>64 / 10 / 0 / 0</span></button>
+ </div></div><div class="sw">
+ <div class="chip" style="background:#01233C"></div>
+ <div class="swname">Dark Blue</div>
+ <div class="vals">
+  <button class="val mono" data-copy="#01233C"><b>HEX</b><span>#01233C</span></button>
+  <button class="val mono" data-copy="rgb(1, 35, 60)"><b>RGB</b><span>1 / 35 / 60</span></button>
+  <button class="val mono" data-copy="C98 M81 Y47 K54"><b>CMYK</b><span>98 / 81 / 47 / 54</span></button>
+ </div></div><div class="sw">
+ <div class="chip" style="background:#231F20"></div>
+ <div class="swname">Black</div>
+ <div class="vals">
+  <button class="val mono" data-copy="#231F20"><b>HEX</b><span>#231F20</span></button>
+  <button class="val mono" data-copy="rgb(35, 31, 32)"><b>RGB</b><span>35 / 31 / 32</span></button>
+  <button class="val mono" data-copy="C70 M67 Y64 K74"><b>CMYK</b><span>70 / 67 / 64 / 74</span></button>
+ </div></div></div>
+</section>
+
+<footer>
+  <p class="fnote">Logotype is custom artwork. Not a typeface. Do not recreate.</p>
+  <p class="fmeta">LAST UPDATED AUGUST 24, 2026<br><a href="mailto:team@louisiana.io">TEAM@LOUISIANA.IO</a></p>
+</footer>
+</div>
+<script>
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-copy]'); if(!b) return;
+  navigator.clipboard.writeText(b.dataset.copy).then(function(){
+    b.classList.add('copied');
+    setTimeout(function(){b.classList.remove('copied')},1400);
+  });
+});
+</script>
+</body></html>
