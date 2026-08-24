@@ -1,0 +1,149 @@
+[
+ {
+  "type": "Primary",
+  "variant": "Color",
+  "name": "LILabs-Primary-Color",
+  "w": 399.71,
+  "h": 163.81
+ },
+ {
+  "type": "Primary",
+  "variant": "White",
+  "name": "LILabs-Primary-White",
+  "w": 399.71,
+  "h": 163.81
+ },
+ {
+  "type": "Primary",
+  "variant": "Black",
+  "name": "LILabs-Primary-Black",
+  "w": 399.71,
+  "h": 163.81
+ },
+ {
+  "type": "Primary-Reverse",
+  "variant": "Color",
+  "name": "LILabs-Primary-Reverse-Color",
+  "w": 398.21,
+  "h": 162.66
+ },
+ {
+  "type": "Primary-Reverse",
+  "variant": "White",
+  "name": "LILabs-Primary-Reverse-White",
+  "w": 398.21,
+  "h": 162.66
+ },
+ {
+  "type": "Primary-Reverse",
+  "variant": "Black",
+  "name": "LILabs-Primary-Reverse-Black",
+  "w": 398.21,
+  "h": 162.66
+ },
+ {
+  "type": "Stacked",
+  "variant": "Color",
+  "name": "LILabs-Stacked-Color",
+  "w": 264.38,
+  "h": 134.31
+ },
+ {
+  "type": "Stacked",
+  "variant": "White",
+  "name": "LILabs-Stacked-White",
+  "w": 264.38,
+  "h": 134.31
+ },
+ {
+  "type": "Stacked",
+  "variant": "Black",
+  "name": "LILabs-Stacked-Black",
+  "w": 264.38,
+  "h": 134.31
+ },
+ {
+  "type": "Stacked-Reverse",
+  "variant": "Color",
+  "name": "LILabs-Stacked-Reverse-Color",
+  "w": 263.43,
+  "h": 133.46
+ },
+ {
+  "type": "Stacked-Reverse",
+  "variant": "White",
+  "name": "LILabs-Stacked-Reverse-White",
+  "w": 263.43,
+  "h": 133.46
+ },
+ {
+  "type": "Stacked-Reverse",
+  "variant": "Black",
+  "name": "LILabs-Stacked-Reverse-Black",
+  "w": 263.43,
+  "h": 133.46
+ },
+ {
+  "type": "LABS",
+  "variant": "Color",
+  "name": "LILabs-LABS-Color",
+  "w": 264.38,
+  "h": 67.81
+ },
+ {
+  "type": "LABS",
+  "variant": "White",
+  "name": "LILabs-LABS-White",
+  "w": 264.38,
+  "h": 67.81
+ },
+ {
+  "type": "LABS",
+  "variant": "Black",
+  "name": "LILabs-LABS-Black",
+  "w": 264.38,
+  "h": 67.81
+ },
+ {
+  "type": "Icon",
+  "variant": "Color",
+  "name": "LILabs-Icon-Color",
+  "w": 72.5,
+  "h": 67.81
+ },
+ {
+  "type": "Icon",
+  "variant": "White",
+  "name": "LILabs-Icon-White",
+  "w": 72.5,
+  "h": 67.81
+ },
+ {
+  "type": "Icon",
+  "variant": "Black",
+  "name": "LILabs-Icon-Black",
+  "w": 72.5,
+  "h": 67.81
+ },
+ {
+  "type": "Icon-Reverse",
+  "variant": "Color",
+  "name": "LILabs-Icon-Reverse-Color",
+  "w": 70.31,
+  "h": 66.81
+ },
+ {
+  "type": "Icon-Reverse",
+  "variant": "White",
+  "name": "LILabs-Icon-Reverse-White",
+  "w": 70.31,
+  "h": 66.81
+ },
+ {
+  "type": "Icon-Reverse",
+  "variant": "Black",
+  "name": "LILabs-Icon-Reverse-Black",
+  "w": 70.31,
+  "h": 66.81
+ }
+]
