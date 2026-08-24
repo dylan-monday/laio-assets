@@ -1,0 +1,23 @@
+@font-face{font-family:'Aktiv Grotesk';src:url('/fonts/AktivGrotesk_Lt.woff2') format('woff2');font-weight:300;font-display:swap}
+@font-face{font-family:'Aktiv Grotesk';src:url('/fonts/AktivGrotesk_Rg.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Aktiv Grotesk';src:url('/fonts/AktivGrotesk_Bd.woff2') format('woff2');font-weight:700;font-display:swap}
+
+:root{
+  --dark:#01233C; --easy:#63DCDE; --electric:#00B9FE;
+  --rule:rgba(99,220,222,.22); --rule-soft:rgba(99,220,222,.12);
+  --body:rgba(255,255,255,.72);
+}
+*,*::before,*::after{box-sizing:border-box;border-radius:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--dark);color:#fff;
+  font-family:'Aktiv Grotesk',Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit}
+.mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;letter-spacing:.1em;font-weight:400}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+@media(max-width:640px){.wrap{padding:0 20px}}
+.brand{display:block;width:212px;max-width:56vw;height:auto;color:#fff;margin:0 0 34px}
+@media(max-width:640px){.brand{width:176px;margin-bottom:26px}}
