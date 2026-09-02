@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>Brand Assets for AI — assets.la.io</title>
+<meta name="description" content="The LA.IO brand system as URLs an AI can fetch. Instructions, fonts, colors, logos, and motifs.">
+<style>@font-face{font-family:'Aktiv Grotesk';src:url('/fonts/AktivGrotesk_Lt.woff2') format('woff2');font-weight:300;font-display:swap}
+@font-face{font-family:'Aktiv Grotesk';src:url('/fonts/AktivGrotesk_Rg.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Aktiv Grotesk';src:url('/fonts/AktivGrotesk_Bd.woff2') format('woff2');font-weight:700;font-display:swap}
+
+:root{
+  --dark:#01233C; --easy:#63DCDE; --electric:#00B9FE;
+  --rule:rgba(99,220,222,.22); --rule-soft:rgba(99,220,222,.12);
+  --body:rgba(255,255,255,.72);
+}
+*,*::before,*::after{box-sizing:border-box;border-radius:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--dark);color:#fff;
+  font-family:'Aktiv Grotesk',Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit}
+.mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  text-transform:uppercase;letter-spacing:.1em;font-weight:400}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+@media(max-width:640px){.wrap{padding:0 20px}}
+.brand{display:block;width:212px;max-width:56vw;height:auto;color:#fff;margin:0 0 34px}
+@media(max-width:640px){.brand{width:176px;margin-bottom:26px}}
+
+header{padding:80px 0 0}
+.eyebrow{font-size:11.5px;color:var(--electric);margin:0 0 26px;letter-spacing:.16em;font-weight:700}
+h1{font-weight:300;font-size:clamp(34px,5.2vw,58px);line-height:1.04;margin:0;letter-spacing:-.02em}
+h1 b{font-weight:700;display:block}
+.lede{margin:24px 0 0;max-width:52ch;font-size:17px;line-height:1.5;color:var(--body)}
+
+.step{padding:66px 0 0}
+.shead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+  border-bottom:1px solid var(--rule-soft);padding-bottom:14px;margin-bottom:26px}
+.snum{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;
+  color:rgba(255,255,255,.34)}
+h2{font-size:13px;color:var(--electric);margin:0;font-weight:700;
+  font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em}
+.snote{font-size:14.5px;color:var(--body);margin-left:auto;max-width:40ch}
+@media(max-width:760px){.snote{margin-left:0;flex-basis:100%}}
+
+.prompt{border:1px solid var(--electric);background:rgba(0,185,254,.06)}
+.plabel{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;
+  color:var(--easy);padding:15px 20px 0;text-transform:uppercase}
+.ptext{padding:11px 20px 20px;font-size:clamp(15px,2vw,19px);line-height:1.45;
+  font-family:'JetBrains Mono',monospace;color:#fff;word-break:break-word;letter-spacing:0}
+.pbtn{display:block;width:100%;text-align:left;background:var(--electric);color:var(--dark);
+  border:0;padding:14px 20px;cursor:pointer;font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:.12em;font-weight:700;text-transform:uppercase;transition:.15s}
+.pbtn:hover{background:var(--easy)}
+
+.ways{margin:26px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:860px){.ways{grid-template-columns:1fr}}
+.way{border:1px solid var(--rule-soft);padding:20px}
+.wlabel{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;
+  color:var(--easy);text-transform:uppercase;margin-bottom:10px}
+.way p{margin:0;font-size:14.5px;line-height:1.5;color:var(--body)}
+.way a{color:var(--electric);text-decoration:none;border-bottom:1px solid rgba(0,185,254,.35)}
+.way a:hover{border-bottom-color:var(--electric)}
+
+.urow{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:4px 6px;
+  align-items:center;padding:15px 0;border-bottom:1px solid var(--rule-soft)}
+.urow:first-child{border-top:1px solid var(--rule-soft)}
+.uplus{color:var(--electric);font-size:16px;line-height:1}
+.uname{font-size:16px;font-weight:400}
+.uw{font-size:10px;color:rgba(255,255,255,.36);padding-left:7px}
+.udesc{font-size:13.5px;color:var(--body);margin-top:3px;line-height:1.45}
+.ubody{min-width:0}
+.ucopy{display:flex;align-items:center;gap:12px;justify-content:space-between;
+  background:transparent;border:1px solid var(--rule);color:rgba(255,255,255,.55);
+  padding:9px 12px;cursor:pointer;font-family:'JetBrains Mono',monospace;
+  font-size:9.5px;letter-spacing:.04em;text-transform:none;transition:.15s;white-space:nowrap}
+.ucopy:hover{color:var(--dark);background:var(--electric);border-color:var(--electric)}
+.uci{letter-spacing:.1em;color:var(--easy);font-weight:700}
+.ucopy:hover .uci{color:var(--dark)}
+.ucopy.done{background:var(--easy);border-color:var(--easy);color:var(--dark)}
+.ucopy.done .uci{color:var(--dark)}
+@media(max-width:760px){
+  .urow{grid-template-columns:20px minmax(0,1fr);grid-template-areas:"p b" ". c"}
+  .uplus{grid-area:p} .ubody{grid-area:b} .ucopy{grid-area:c;margin-top:9px;width:100%}
+}
+
+.acards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:860px){.acards{grid-template-columns:1fr}}
+.acard{border:1px solid var(--rule-soft)}
+.astage{background:#fff;height:150px;display:flex;align-items:center;justify-content:center;padding:26px}
+.astage img{max-width:100%;max-height:100%}
+.aname{font-size:15px;padding:15px 15px 0}
+.adesc{font-size:13px;color:var(--body);padding:5px 15px 13px;line-height:1.45}
+.acard .ucopy{width:100%;border:0;border-top:1px solid var(--rule-soft)}
+
+.mcards{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+@media(max-width:980px){.mcards{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.mcards{grid-template-columns:repeat(2,1fr)}}
+.mcard{border:1px solid var(--rule-soft)}
+.mstage{background:#fff;height:96px;display:flex;align-items:center;justify-content:center;padding:24px}
+.mstage img{max-width:100%;max-height:100%}
+.mname{font-size:13px;padding:11px 12px 9px}
+.mcard .ucopy{width:100%;border:0;border-top:1px solid var(--rule-soft);font-size:9px;padding:8px 10px}
+
+.tip{margin:24px 0 0;padding:16px 18px;border-left:2px solid var(--easy);
+  background:rgba(99,220,222,.05);font-size:14px;line-height:1.55;color:var(--body)}
+.tip b{color:#fff;font-weight:400}
+.tip code{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--easy)}
+footer{margin:96px 0 0;padding:26px 0 60px;border-top:1px solid var(--rule-soft);
+  font-size:11px;color:rgba(255,255,255,.34);letter-spacing:.1em;
+  display:flex;gap:18px;flex-wrap:wrap}
+footer a{color:var(--easy);text-decoration:none}
+footer a:hover{color:var(--electric)}
+</style></head>
+<body><div class="wrap">
+
+<header>
+<svg class="brand" role="img" aria-label="LA.IO Louisiana Innovation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 274.65 67.88">
+  <defs>
+    <style>
+      .laio-c1 {
+        fill: currentColor;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <g>
+        <path class="laio-c1" d="M60.22,49.17v5.16h3.33v1.61h-5.16v-6.77h1.83Z"/>
+        <path class="laio-c1" d="M69,56.07c-1.74,0-3.04-1.43-3.04-3.51s1.3-3.51,3.04-3.51,3.04,1.43,3.04,3.51-1.3,3.51-3.04,3.51ZM69,50.65c-.73,0-1.19.75-1.19,1.9s.46,1.9,1.19,1.9,1.19-.75,1.19-1.9-.46-1.9-1.19-1.9Z"/>
+        <path class="laio-c1" d="M74.39,53.21v-4.04h1.82v3.74c0,1.03.17,1.62,1,1.62s1-.59,1-1.62v-3.74h1.83v4.04c0,1.98-1.19,2.86-2.83,2.86s-2.82-.88-2.82-2.86Z"/>
+        <path class="laio-c1" d="M82.83,55.94v-1.58h1.69v-3.61h-1.69v-1.58h5.2v1.58h-1.69v3.61h1.69v1.58h-5.2Z"/>
+        <path class="laio-c1" d="M91.65,53.6c.49.67,1.23,1,2.01,1,.66,0,1.04-.2,1.04-.58s-.32-.44-.61-.5l-1.39-.31c-1.01-.23-1.77-.77-1.77-1.96,0-1.32,1.02-2.2,2.59-2.2,1.2,0,2.1.49,2.74,1.25l-1.1,1.14c-.35-.52-.81-.91-1.64-.91-.51,0-.88.23-.88.57,0,.31.25.41.52.47l1.34.31c1.34.31,1.93.93,1.93,2.04,0,1.41-1.25,2.16-2.77,2.16-1.34,0-2.3-.43-3.03-1.18l1.02-1.29Z"/>
+        <path class="laio-c1" d="M99.26,55.94v-1.58h1.69v-3.61h-1.69v-1.58h5.2v1.58h-1.69v3.61h1.69v1.58h-5.2Z"/>
+        <path class="laio-c1" d="M111.03,54.63h-2.01l-.37,1.31h-1.77l2.07-6.77h2.24l2.07,6.77h-1.87l-.37-1.31ZM109.41,53.26h1.25l-.6-2.15h-.04l-.6,2.15Z"/>
+        <path class="laio-c1" d="M119.44,53.12v-3.96h1.65v6.77h-1.71l-2.27-4.63v4.63h-1.66v-6.77h2.17l1.81,3.96Z"/>
+        <path class="laio-c1" d="M127.45,54.63h-2.01l-.37,1.31h-1.77l2.07-6.77h2.24l2.07,6.77h-1.87l-.37-1.31ZM125.83,53.26h1.25l-.6-2.15h-.04l-.6,2.15Z"/>
+        <path class="laio-c1" d="M137.49,55.94v-.81h1.91v-5.16h-1.91v-.81h4.76v.81h-1.9v5.16h1.9v.81h-4.76Z"/>
+        <path class="laio-c1" d="M149.74,54.41v-5.24h.87v6.77h-.83l-3.35-5.59v5.59h-.87v-6.77h1.1l3.08,5.24Z"/>
+        <path class="laio-c1" d="M157.96,54.41v-5.24h.87v6.77h-.83l-3.35-5.59v5.59h-.87v-6.77h1.1l3.08,5.24Z"/>
+        <path class="laio-c1" d="M164.51,56.07c-1.63,0-2.82-1.43-2.82-3.51s1.18-3.51,2.82-3.51,2.82,1.43,2.82,3.51-1.18,3.51-2.82,3.51ZM164.51,49.86c-1.12,0-1.85,1.04-1.85,2.7s.73,2.7,1.85,2.7,1.85-1.04,1.85-2.7-.73-2.7-1.85-2.7Z"/>
+        <path class="laio-c1" d="M172.17,55.94l-2.27-6.77h1.01l1.83,5.66h.04l1.81-5.66h.97l-2.27,6.77h-1.12Z"/>
+        <path class="laio-c1" d="M182.14,53.96h-2.47l-.63,1.98h-.92l2.26-6.77h1.14l2.26,6.77h-.98l-.64-1.98ZM179.92,53.21h1.99l-.98-3.01h-.04l-.97,3.01Z"/>
+        <path class="laio-c1" d="M188.67,55.94v-5.95h-2.4v-.82h5.76v.82h-2.43v5.95h-.93Z"/>
+        <path class="laio-c1" d="M194.98,55.94v-.81h1.91v-5.16h-1.91v-.81h4.76v.81h-1.9v5.16h1.9v.81h-4.76Z"/>
+        <path class="laio-c1" d="M205.58,56.07c-1.63,0-2.82-1.43-2.82-3.51s1.18-3.51,2.82-3.51,2.82,1.43,2.82,3.51-1.18,3.51-2.82,3.51ZM205.58,49.86c-1.12,0-1.85,1.04-1.85,2.7s.73,2.7,1.85,2.7,1.85-1.04,1.85-2.7-.73-2.7-1.85-2.7Z"/>
+        <path class="laio-c1" d="M215.45,54.41v-5.24h.87v6.77h-.83l-3.35-5.59v5.59h-.87v-6.77h1.1l3.08,5.24Z"/>
+      </g>
+      <path class="laio-c1" d="M131.74,32.01h8.52v8.52h-8.52v-8.52Z"/>
+      <g>
+        <path class="laio-c1" d="M65.87,12.58v21.29h13.75v6.65h-21.29V12.58h7.54Z"/>
+        <path class="laio-c1" d="M106.06,35.11h-8.29l-1.51,5.41h-7.32l8.56-27.94h9.22l8.56,27.94h-7.72l-1.51-5.41ZM99.36,29.48h5.14l-2.48-8.87h-.18l-2.48,8.87Z"/>
+        <path class="laio-c1" d="M159.15,40.53v-6.52h6.96v-14.9h-6.96v-6.52h21.47v6.52h-6.96v14.9h6.96v6.52h-21.47Z"/>
+        <path class="laio-c1" d="M203.77,41.06c-7.19,0-12.55-5.9-12.55-14.5s5.37-14.5,12.55-14.5,12.55,5.9,12.55,14.5-5.37,14.5-12.55,14.5ZM203.77,18.7c-3.02,0-4.92,3.11-4.92,7.85s1.91,7.85,4.92,7.85,4.92-3.11,4.92-7.85-1.91-7.85-4.92-7.85Z"/>
+      </g>
+      <polygon class="laio-c1" points="14.73 33.94 41.3 60.51 33.94 67.88 0 33.94 33.94 0 41.3 7.36 14.73 33.94"/>
+      <polygon class="laio-c1" points="259.93 33.94 233.35 7.36 240.72 0 274.65 33.94 240.72 67.88 233.35 60.51 259.93 33.94"/>
+    </g>
+  </g>
+</svg>
+<p class="eyebrow mono">Brand Assets for AI</p>
+<h1>Point your AI<b>at these URLs.</b></h1>
+<p class="lede">Every core LA.IO asset lives at a permanent, public URL. Any AI, tool, or
+site that can fetch a URL can pull the real fonts, colors, logos, and rules. No downloads,
+no attachments, no stale copies.</p>
+</header>
+
+<section class="step">
+  <div class="shead"><span class="snum">01</span><h2>Start here</h2>
+  <span class="snote">Works in Claude, ChatGPT, Lovable, Cursor, or anything else that can read a link.</span></div>
+  <div class="prompt">
+    <div class="plabel">Paste this into your AI</div>
+    <div class="ptext">Fetch https://assets.la.io/claude/CLAUDE.md and follow it as the brand system for this project.</div>
+    <button class="pbtn" data-copy="Fetch https://assets.la.io/claude/CLAUDE.md and follow it as the brand system for this project.">Copy the instruction</button>
+  </div>
+  <div class="tip"><b>That one file carries the whole system.</b> Voice rules, banned
+  language, the five color families, type rules, and every asset URL on this page. One
+  fetch and the AI is on brand.</div>
+</section>
+
+<section class="step">
+  <div class="shead"><span class="snum">02</span><h2>Three ways to use it</h2></div>
+  <div class="ways">
+    <div class="way">
+      <div class="wlabel">Any AI chat</div>
+      <p>Paste the line above. The AI fetches the file and works to the brand from there.</p>
+    </div>
+    <div class="way">
+      <div class="wlabel">Claude project or Claude Code</div>
+      <p>Install the packaged skill instead. Setup steps are at
+      <a href="/claude">assets.la.io/claude</a>.</p>
+    </div>
+    <div class="way">
+      <div class="wlabel">Lovable, Framer, a web build</div>
+      <p>Use the raw URLs below directly in code. Every file is served with open CORS,
+      so it loads on any domain.</p>
+    </div>
+  </div>
+</section>
+
+<section class="step">
+  <div class="shead"><span class="snum">03</span><h2>Instructions and docs</h2>
+  <span class="snote">Markdown, fetchable, always current.</span></div>
+  <div class="urow">
+  <span class="uplus">+</span>
+  <div class="ubody">
+    <div class="uname">Drop-in instructions</div>
+    <div class="udesc">Voice, banned language, color, type, and asset URLs. The one file to hand an AI.</div>
+  </div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/claude/CLAUDE.md"><span class="upath">/claude/CLAUDE.md</span><span class="uci">COPY</span></button>
+</div><div class="urow">
+  <span class="uplus">+</span>
+  <div class="ubody">
+    <div class="uname">Full brand system</div>
+    <div class="udesc">The long form. Load when the work needs depth.</div>
+  </div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/claude/laio-brand/BRAND.md"><span class="upath">/claude/laio-brand/BRAND.md</span><span class="uci">COPY</span></button>
+</div><div class="urow">
+  <span class="uplus">+</span>
+  <div class="ubody">
+    <div class="uname">Component code</div>
+    <div class="udesc">Buttons, cards, eyebrows, and layout patterns as code.</div>
+  </div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/claude/laio-brand/COMPONENTS.md"><span class="upath">/claude/laio-brand/COMPONENTS.md</span><span class="uci">COPY</span></button>
+</div><div class="urow">
+  <span class="uplus">+</span>
+  <div class="ubody">
+    <div class="uname">Packaged skill</div>
+    <div class="udesc">The whole kit as a Claude skill. Unzip into .claude/skills/.</div>
+  </div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/claude/laio-brand.zip"><span class="upath">/claude/laio-brand.zip</span><span class="uci">COPY</span></button>
+</div><div class="urow">
+  <span class="uplus">+</span>
+  <div class="ubody">
+    <div class="uname">Machine-readable index</div>
+    <div class="udesc">A plain list of everything above. Point a crawler or an agent at this.</div>
+  </div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/llms.txt"><span class="upath">/llms.txt</span><span class="uci">COPY</span></button>
+</div>
+</section>
+
+<section class="step">
+  <div class="shead"><span class="snum">04</span><h2>Type</h2>
+  <span class="snote">Aktiv Grotesk, self-hosted. JetBrains Mono comes from Google Fonts.</span></div>
+  <div class="urow">
+  <span class="uplus">+</span>
+  <div class="ubody">
+    <div class="uname">Thin <span class="uw mono">100</span></div>
+    <div class="udesc">woff2. Self-hosted, open CORS.</div>
+  </div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/fonts/AktivGrotesk_Th.woff2"><span class="upath">/fonts/AktivGrotesk_Th.woff2</span><span class="uci">COPY</span></button>
+</div><div class="urow">
+  <span class="uplus">+</span>
+  <div class="ubody">
+    <div class="uname">Thin Italic <span class="uw mono">100</span></div>
+    <div class="udesc">woff2. Self-hosted, open CORS.</div>
+  </div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/fonts/AktivGrotesk_ThIt.woff2"><span class="upath">/fonts/AktivGrotesk_ThIt.woff2</span><span class="uci">COPY</span></button>
+</div><div class="urow">
+  <span class="uplus">+</span>
+  <div class="ubody">
+    <div class="uname">Light <span class="uw mono">300</span></div>
+    <div class="udesc">woff2. Self-hosted, open CORS.</div>
+  </div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/fonts/AktivGrotesk_Lt.woff2"><span class="upath">/fonts/AktivGrotesk_Lt.woff2</span><span class="uci">COPY</span></button>
+</div><div class="urow">
+  <span class="uplus">+</span>
+  <div class="ubody">
+    <div class="uname">Light Italic <span class="uw mono">300</span></div>
+    <div class="udesc">woff2. Self-hosted, open CORS.</div>
+  </div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/fonts/AktivGrotesk_LtIt.woff2"><span class="upath">/fonts/AktivGrotesk_LtIt.woff2</span><span class="uci">COPY</span></button>
+</div><div class="urow">
+  <span class="uplus">+</span>
+  <div class="ubody">
+    <div class="uname">Regular <span class="uw mono">400</span></div>
+    <div class="udesc">woff2. Self-hosted, open CORS.</div>
+  </div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/fonts/AktivGrotesk_Rg.woff2"><span class="upath">/fonts/AktivGrotesk_Rg.woff2</span><span class="uci">COPY</span></button>
+</div><div class="urow">
+  <span class="uplus">+</span>
+  <div class="ubody">
+    <div class="uname">Italic <span class="uw mono">400</span></div>
+    <div class="udesc">woff2. Self-hosted, open CORS.</div>
+  </div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/fonts/AktivGrotesk_It.woff2"><span class="upath">/fonts/AktivGrotesk_It.woff2</span><span class="uci">COPY</span></button>
+</div><div class="urow">
+  <span class="uplus">+</span>
+  <div class="ubody">
+    <div class="uname">Semibold <span class="uw mono">600</span></div>
+    <div class="udesc">woff2. Self-hosted, open CORS.</div>
+  </div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/fonts/AktivGrotesk_SBd.woff2"><span class="upath">/fonts/AktivGrotesk_SBd.woff2</span><span class="uci">COPY</span></button>
+</div><div class="urow">
+  <span class="uplus">+</span>
+  <div class="ubody">
+    <div class="uname">Bold <span class="uw mono">700</span></div>
+    <div class="udesc">woff2. Self-hosted, open CORS.</div>
+  </div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/fonts/AktivGrotesk_Bd.woff2"><span class="upath">/fonts/AktivGrotesk_Bd.woff2</span><span class="uci">COPY</span></button>
+</div><div class="urow">
+  <span class="uplus">+</span>
+  <div class="ubody">
+    <div class="uname">Bold Italic <span class="uw mono">700</span></div>
+    <div class="udesc">woff2. Self-hosted, open CORS.</div>
+  </div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/fonts/AktivGrotesk_BdIt.woff2"><span class="upath">/fonts/AktivGrotesk_BdIt.woff2</span><span class="uci">COPY</span></button>
+</div>
+  <div class="tip"><b>Headlines use Light (300) or Bold (700).</b> Regular (400) for body.
+  Never 500 or 600 as a headline weight.</div>
+</section>
+
+<section class="step">
+  <div class="shead"><span class="snum">05</span><h2>Color</h2>
+  <span class="snote">Five families. One family per project. Do not mix them.</span></div>
+  <div class="urow">
+  <span class="uplus">+</span>
+  <div class="ubody">
+    <div class="uname">laio-tokens.json</div>
+    <div class="udesc">All five color families as JSON. Hex, RGB, and the brand name for each.</div>
+  </div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/colors/laio-tokens.json"><span class="upath">/colors/laio-tokens.json</span><span class="uci">COPY</span></button>
+</div><div class="urow">
+  <span class="uplus">+</span>
+  <div class="ubody">
+    <div class="uname">laio-colors.css</div>
+    <div class="udesc">The same values as CSS custom properties. Link it or paste it.</div>
+  </div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/colors/laio-colors.css"><span class="upath">/colors/laio-colors.css</span><span class="uci">COPY</span></button>
+</div>
+</section>
+
+<section class="step">
+  <div class="shead"><span class="snum">06</span><h2>Logos</h2></div>
+  <div class="acards"><div class="acard">
+  <div class="astage"><img src="/logos/LAIO-COMPLETE.svg" alt="Complete lockup" loading="lazy"></div>
+  <div class="aname">Complete lockup</div>
+  <div class="adesc">Primary mark. Use this unless there is a reason not to.</div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/logos/LAIO-COMPLETE.svg"><span class="upath">/logos/LAIO-COMPLETE.svg</span><span class="uci">COPY</span></button>
+</div><div class="acard">
+  <div class="astage"><img src="/logos/LAIO-BASE.svg" alt="Base mark" loading="lazy"></div>
+  <div class="aname">Base mark</div>
+  <div class="adesc">The LA.IO mark alone.</div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/logos/LAIO-BASE.svg"><span class="upath">/logos/LAIO-BASE.svg</span><span class="uci">COPY</span></button>
+</div><div class="acard">
+  <div class="astage"><img src="/logos/LAIO-HORZ.svg" alt="Horizontal lockup" loading="lazy"></div>
+  <div class="aname">Horizontal lockup</div>
+  <div class="adesc">For wide spaces and headers.</div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/logos/LAIO-HORZ.svg"><span class="upath">/logos/LAIO-HORZ.svg</span><span class="uci">COPY</span></button>
+</div><div class="acard">
+  <div class="astage"><img src="/logos/LOUISIANA-INNOVATION-A.svg" alt="Louisiana Innovation A" loading="lazy"></div>
+  <div class="aname">Louisiana Innovation A</div>
+  <div class="adesc">Full name lockup, stacked.</div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/logos/LOUISIANA-INNOVATION-A.svg"><span class="upath">/logos/LOUISIANA-INNOVATION-A.svg</span><span class="uci">COPY</span></button>
+</div><div class="acard">
+  <div class="astage"><img src="/logos/LOUISIANA-INNOVATION-B.svg" alt="Louisiana Innovation B" loading="lazy"></div>
+  <div class="aname">Louisiana Innovation B</div>
+  <div class="adesc">Full name lockup, condensed.</div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/logos/LOUISIANA-INNOVATION-B.svg"><span class="upath">/logos/LOUISIANA-INNOVATION-B.svg</span><span class="uci">COPY</span></button>
+</div><div class="acard">
+  <div class="astage"><img src="/logos/DIVISION-LINE.svg" alt="Division line" loading="lazy"></div>
+  <div class="aname">Division line</div>
+  <div class="adesc">The LED division line. Sits under the mark.</div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/logos/DIVISION-LINE.svg"><span class="upath">/logos/DIVISION-LINE.svg</span><span class="uci">COPY</span></button>
+</div></div>
+  <div class="tip"><b>Every file ships black (#231F20) on transparent.</b> Recolor with
+  CSS <code>fill</code> or inline the SVG and set <code>fill:currentColor</code>. Do not
+  edit the artwork.</div>
+</section>
+
+<section class="step">
+  <div class="shead"><span class="snum">07</span><h2>Motifs</h2>
+  <span class="snote">Structural graphics. Same black artwork, recolor to the active family.</span></div>
+  <div class="mcards"><div class="mcard">
+  <div class="mstage"><img src="/motifs/LAIO-PLUS.svg" alt="Plus" loading="lazy"></div>
+  <div class="mname">Plus</div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/motifs/LAIO-PLUS.svg"><span class="upath">/motifs/LAIO-PLUS.svg</span><span class="uci">COPY</span></button>
+</div><div class="mcard">
+  <div class="mstage"><img src="/motifs/LAIO-X.svg" alt="X" loading="lazy"></div>
+  <div class="mname">X</div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/motifs/LAIO-X.svg"><span class="upath">/motifs/LAIO-X.svg</span><span class="uci">COPY</span></button>
+</div><div class="mcard">
+  <div class="mstage"><img src="/motifs/LAIO-DIAMOND.svg" alt="Diamond" loading="lazy"></div>
+  <div class="mname">Diamond</div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/motifs/LAIO-DIAMOND.svg"><span class="upath">/motifs/LAIO-DIAMOND.svg</span><span class="uci">COPY</span></button>
+</div><div class="mcard">
+  <div class="mstage"><img src="/motifs/LAIO-DIAMOND-EMPTY.svg" alt="Diamond outline" loading="lazy"></div>
+  <div class="mname">Diamond outline</div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/motifs/LAIO-DIAMOND-EMPTY.svg"><span class="upath">/motifs/LAIO-DIAMOND-EMPTY.svg</span><span class="uci">COPY</span></button>
+</div><div class="mcard">
+  <div class="mstage"><img src="/motifs/LAIO-LEFT-BRACKET.svg" alt="Left bracket" loading="lazy"></div>
+  <div class="mname">Left bracket</div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/motifs/LAIO-LEFT-BRACKET.svg"><span class="upath">/motifs/LAIO-LEFT-BRACKET.svg</span><span class="uci">COPY</span></button>
+</div><div class="mcard">
+  <div class="mstage"><img src="/motifs/LAIO-RIGHT-BRACKET.svg" alt="Right bracket" loading="lazy"></div>
+  <div class="mname">Right bracket</div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/motifs/LAIO-RIGHT-BRACKET.svg"><span class="upath">/motifs/LAIO-RIGHT-BRACKET.svg</span><span class="uci">COPY</span></button>
+</div><div class="mcard">
+  <div class="mstage"><img src="/motifs/LAIO-UP-BRACKET.svg" alt="Up bracket" loading="lazy"></div>
+  <div class="mname">Up bracket</div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/motifs/LAIO-UP-BRACKET.svg"><span class="upath">/motifs/LAIO-UP-BRACKET.svg</span><span class="uci">COPY</span></button>
+</div><div class="mcard">
+  <div class="mstage"><img src="/motifs/LAIO-DOWN-BRACKET.svg" alt="Down bracket" loading="lazy"></div>
+  <div class="mname">Down bracket</div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/motifs/LAIO-DOWN-BRACKET.svg"><span class="upath">/motifs/LAIO-DOWN-BRACKET.svg</span><span class="uci">COPY</span></button>
+</div><div class="mcard">
+  <div class="mstage"><img src="/motifs/LAIO-BRACKET-CORNER-1.svg" alt="Corner 1" loading="lazy"></div>
+  <div class="mname">Corner 1</div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/motifs/LAIO-BRACKET-CORNER-1.svg"><span class="upath">/motifs/LAIO-BRACKET-CORNER-1.svg</span><span class="uci">COPY</span></button>
+</div><div class="mcard">
+  <div class="mstage"><img src="/motifs/LAIO-BRACKET-CORNER-2.svg" alt="Corner 2" loading="lazy"></div>
+  <div class="mname">Corner 2</div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/motifs/LAIO-BRACKET-CORNER-2.svg"><span class="upath">/motifs/LAIO-BRACKET-CORNER-2.svg</span><span class="uci">COPY</span></button>
+</div></div>
+</section>
+
+<footer>
+  <span class="mono">assets.la.io</span>
+  <a class="mono" href="/">All tools</a>
+  <a class="mono" href="/llms.txt">llms.txt</a>
+  <a class="mono" href="/claude">Claude kit</a>
+</footer>
+
+</div>
+<script>
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-copy]'); if(!b) return;
+  navigator.clipboard.writeText(b.getAttribute('data-copy'));
+  var t=b.querySelector('.uci'), o;
+  if(t){o=t.textContent;t.textContent='COPIED';b.classList.add('done');
+    setTimeout(function(){t.textContent=o;b.classList.remove('done')},1200);}
+  else {o=b.textContent;b.textContent='Copied';
+    setTimeout(function(){b.textContent=o},1200);}
+});
+</script>
+</body></html>

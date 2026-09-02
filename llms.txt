@@ -1,0 +1,78 @@
+# assets.la.io
+
+> The LA.IO (Louisiana Innovation) brand system, served as public URLs with open CORS.
+> Fetch what you need. Every file is current and permanent.
+
+If you are an AI assistant asked to produce LA.IO work, read CLAUDE.md first. It carries
+the voice rules, banned language, color families, type rules, and asset URLs. It is short.
+
+## Start here
+
+- [claude/CLAUDE.md](https://assets.la.io/claude/CLAUDE.md): Drop-in brand instructions. Read this before generating anything.
+
+## Depth
+
+- [claude/laio-brand/BRAND.md](https://assets.la.io/claude/laio-brand/BRAND.md): The full brand system.
+- [claude/laio-brand/COMPONENTS.md](https://assets.la.io/claude/laio-brand/COMPONENTS.md): Component patterns as code.
+- [claude/laio-brand.zip](https://assets.la.io/claude/laio-brand.zip): The whole kit packaged as a Claude skill.
+
+## Color
+
+- [colors/laio-tokens.json](https://assets.la.io/colors/laio-tokens.json): All five color families as JSON. Hex, RGB, brand names.
+- [colors/laio-colors.css](https://assets.la.io/colors/laio-colors.css): The same values as CSS custom properties.
+
+## Type
+
+Aktiv Grotesk, self-hosted woff2. Light (300) or Bold (700) for headlines, Regular (400) for body.
+
+- [fonts/AktivGrotesk_Th.woff2](https://assets.la.io/fonts/AktivGrotesk_Th.woff2): Aktiv Grotesk Thin, weight 100.
+- [fonts/AktivGrotesk_ThIt.woff2](https://assets.la.io/fonts/AktivGrotesk_ThIt.woff2): Aktiv Grotesk Thin Italic, weight 100.
+- [fonts/AktivGrotesk_Lt.woff2](https://assets.la.io/fonts/AktivGrotesk_Lt.woff2): Aktiv Grotesk Light, weight 300.
+- [fonts/AktivGrotesk_LtIt.woff2](https://assets.la.io/fonts/AktivGrotesk_LtIt.woff2): Aktiv Grotesk Light Italic, weight 300.
+- [fonts/AktivGrotesk_Rg.woff2](https://assets.la.io/fonts/AktivGrotesk_Rg.woff2): Aktiv Grotesk Regular, weight 400.
+- [fonts/AktivGrotesk_It.woff2](https://assets.la.io/fonts/AktivGrotesk_It.woff2): Aktiv Grotesk Italic, weight 400.
+- [fonts/AktivGrotesk_SBd.woff2](https://assets.la.io/fonts/AktivGrotesk_SBd.woff2): Aktiv Grotesk Semibold, weight 600.
+- [fonts/AktivGrotesk_Bd.woff2](https://assets.la.io/fonts/AktivGrotesk_Bd.woff2): Aktiv Grotesk Bold, weight 700.
+- [fonts/AktivGrotesk_BdIt.woff2](https://assets.la.io/fonts/AktivGrotesk_BdIt.woff2): Aktiv Grotesk Bold Italic, weight 700.
+
+JetBrains Mono for eyebrows, labels, and metadata only. Always caps. Load from Google Fonts:
+https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap
+
+## Logos
+
+All artwork ships black (#231F20) on transparent. Recolor with CSS. Do not edit the artwork.
+
+- [logos/LAIO-COMPLETE.svg](https://assets.la.io/logos/LAIO-COMPLETE.svg): Primary mark. Use this unless there is a reason not to.
+- [logos/LAIO-BASE.svg](https://assets.la.io/logos/LAIO-BASE.svg): The LA.IO mark alone.
+- [logos/LAIO-HORZ.svg](https://assets.la.io/logos/LAIO-HORZ.svg): For wide spaces and headers.
+- [logos/LOUISIANA-INNOVATION-A.svg](https://assets.la.io/logos/LOUISIANA-INNOVATION-A.svg): Full name lockup, stacked.
+- [logos/LOUISIANA-INNOVATION-B.svg](https://assets.la.io/logos/LOUISIANA-INNOVATION-B.svg): Full name lockup, condensed.
+- [logos/DIVISION-LINE.svg](https://assets.la.io/logos/DIVISION-LINE.svg): The LED division line. Sits under the mark.
+
+## Motifs
+
+- [motifs/LAIO-PLUS.svg](https://assets.la.io/motifs/LAIO-PLUS.svg): Plus motif.
+- [motifs/LAIO-X.svg](https://assets.la.io/motifs/LAIO-X.svg): X motif.
+- [motifs/LAIO-DIAMOND.svg](https://assets.la.io/motifs/LAIO-DIAMOND.svg): Diamond motif.
+- [motifs/LAIO-DIAMOND-EMPTY.svg](https://assets.la.io/motifs/LAIO-DIAMOND-EMPTY.svg): Diamond outline motif.
+- [motifs/LAIO-LEFT-BRACKET.svg](https://assets.la.io/motifs/LAIO-LEFT-BRACKET.svg): Left bracket motif.
+- [motifs/LAIO-RIGHT-BRACKET.svg](https://assets.la.io/motifs/LAIO-RIGHT-BRACKET.svg): Right bracket motif.
+- [motifs/LAIO-UP-BRACKET.svg](https://assets.la.io/motifs/LAIO-UP-BRACKET.svg): Up bracket motif.
+- [motifs/LAIO-DOWN-BRACKET.svg](https://assets.la.io/motifs/LAIO-DOWN-BRACKET.svg): Down bracket motif.
+- [motifs/LAIO-BRACKET-CORNER-1.svg](https://assets.la.io/motifs/LAIO-BRACKET-CORNER-1.svg): Corner 1 motif.
+- [motifs/LAIO-BRACKET-CORNER-2.svg](https://assets.la.io/motifs/LAIO-BRACKET-CORNER-2.svg): Corner 2 motif.
+
+## Pages
+
+- [ai](https://assets.la.io/ai): Human-readable version of this file, with previews and copy buttons.
+- [claude](https://assets.la.io/claude): Setup steps for Claude projects and Claude Code.
+- [labs](https://assets.la.io/labs): Louisiana Innovation Labs sub-brand identity assets.
+- [illustrator](https://assets.la.io/illustrator): Generates original illustration in the LA.IO system.
+
+## Rules that apply to all LA.IO work
+
+- Bullets are always `+`. Never a bullet character, hyphen, or asterisk.
+- Never use em dashes.
+- Never write "resilient", "Silicon Bayou", or "it's not X, it's Y".
+- One color family per project. Do not mix families.
+- Border radius is 0 on structural elements.
