@@ -17,6 +17,132 @@ BASE="/logos/labs"
 ABS="https://assets.la.io/logos/labs"
 PANEL=65.3  # LABS panel box width in source units
 
+WEAVE_CSS = '''
+#weave{position:fixed;inset:0;z-index:0;pointer-events:none;display:block;
+  -webkit-mask-image:radial-gradient(120% 95% at 50% 50%,rgba(0,0,0,.40) 0%,rgba(0,0,0,.72) 46%,#000 100%);
+  mask-image:radial-gradient(120% 95% at 50% 50%,rgba(0,0,0,.40) 0%,rgba(0,0,0,.72) 46%,#000 100%)}
+.wrap{position:relative;z-index:1}
+'''
+
+# Faithful port of RENDERERS["weave.rope"] from the Illustration Machine's
+# engine.js. Same formulas, same constants, drawn to canvas instead of SVG so a
+# full-bleed field of a few hundred ellipses stays cheap. Colors are the Blue
+# family resolved dark / electric, matching resolveColors().
+WEAVE_JS = '''
+(function () {
+  const c = document.getElementById('weave');
+  if (!c) return;
+  const x = c.getContext('2d');
+
+  const PRIMARY = [0, 185, 254];    // Electric Blue, the ink in dark mode
+  const GHOST_A = [99, 220, 222];   // Easy Blue
+  const GHOST_B = [0, 185, 254];
+  const MASTER  = 0.15;             // this is a backdrop, not the artwork
+
+  // engine.js model space
+  const BAND = 880, CX0 = 500, CY0 = 500;
+  const MAXROWS = 4;
+
+  let W = 0, H = 0, DPR = 1, raf = 0, running = false, last = 0;
+
+  // detail, rhythm, complexity and twist each drift on their own oscillator,
+  // random period between roughly two and six minutes, random phase.
+  const osc = [];
+  for (let i = 0; i < 5; i++) {
+    osc.push({ p: 0.000017 + Math.random() * 0.000035, ph: Math.random() * Math.PI * 2 });
+  }
+  const drift = (i, t, lo, hi) =>
+    lo + ((Math.sin(t * osc[i].p + osc[i].ph) + 1) / 2) * (hi - lo);
+
+  const mix = (a, b, t) => [0,1,2].map(i => Math.round(a[i] + (b[i]-a[i]) * t));
+  const rgba = (col, a) => 'rgba(' + col[0] + ',' + col[1] + ',' + col[2] + ',' + a + ')';
+
+  function resize() {
+    DPR = Math.min(window.devicePixelRatio || 1, 1.75);
+    W = window.innerWidth; H = window.innerHeight;
+    c.width = W * DPR; c.height = H * DPR;
+    c.style.width = W + 'px'; c.style.height = H + 'px';
+    x.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+
+  function draw(t) {
+    x.setTransform(DPR, 0, 0, DPR, 0, 0);
+    x.clearRect(0, 0, W, H);
+
+    // the knobs, four of them breathing on independent cycles
+    const detail     = drift(0, t, 0.10, 0.72);
+    const rhythm     = drift(1, t, 0.06, 0.85);
+    const complexity = drift(2, t, 0.25, 1.00);
+    const sizeT      = drift(3, t, 0.42, 0.78);
+    const baseRot    = (t * 0.0000135) % Math.PI;   // one slow revolution
+
+    // engine.js formulas, unchanged
+    const countF  = 20 + detail * 130;
+    const phase   = (1 + rhythm * 29) * Math.PI / 180;
+    const rowsF   = 1 + complexity * (MAXROWS - 1);
+    const stroke  = 0.4 + 0.30 * 2.0;
+    const ew = 160 + sizeT * 590;
+    const eh = 105 + sizeT * 395;
+    const rowH   = eh * 2 * 0.18;
+    const rowOff = phase * 0.5;
+    const pitchM = countF > 1 ? BAND / (countF - 1) : BAND;
+
+    // The model composes a finite band inside a 1000 box. A full-bleed backdrop
+    // needs the rope to keep going, so we hold the model's pitch and extend the
+    // index range until it clears both edges. Everything else is the model.
+    const S = Math.max(H / 820, W / 2400);
+    const pitch = pitchM * S, rw = ew * S, rh = eh * S, rowPx = rowH * S;
+    const span = Math.ceil((W / 2 + rw) / pitch) + 1;
+    const rows = Math.ceil(rowsF);
+    const cyMid = H / 2 - ((rowsF - 1) * rowPx) / 2;
+
+    x.lineWidth = stroke * S;
+
+    for (let r = 0; r < rows; r++) {
+      const rowOn = Math.min(1, rowsF - r);          // rows fade, never appear
+      if (rowOn <= 0.004) continue;
+      const cy = cyMid + r * rowPx;
+      const centerRow = (rowsF > 1 && r === Math.floor(rows / 2));
+      for (let i = -span; i <= span; i++) {
+        const cx = W / 2 + i * pitch;
+        const rot = baseRot + i * phase + r * rowOff;
+        // edge is measured off the viewport, so the rope thins toward the sides
+        // instead of stopping in a bright pile-up at the band's end cap
+        const edge = Math.min(1, Math.abs(cx - W / 2) / (W * 0.62));
+        const useGhost = !(centerRow && edge <= 0.45);
+        let col, a;
+        if (useGhost) { col = mix(GHOST_A, GHOST_B, 1 - edge); a = 0.18 + 0.42 * (1 - edge); }
+        else          { col = PRIMARY;                          a = 0.85; }
+        a *= MASTER * rowOn * (1 - edge * 0.72);
+        if (a < 0.002) continue;
+        x.strokeStyle = rgba(col, a.toFixed(4));
+        x.beginPath();
+        x.ellipse(cx, cy, rw, rh, rot, 0, Math.PI * 2);
+        x.stroke();
+      }
+    }
+  }
+
+  // 30fps is plenty for something this slow, and halves the cost
+  const loop = (now) => {
+    raf = requestAnimationFrame(loop);
+    if (now - last < 33) return;
+    last = now;
+    draw(now);
+  };
+  const start = () => { if (!running) { running = true; raf = requestAnimationFrame(loop); } };
+  const stop  = () => { running = false; cancelAnimationFrame(raf); };
+
+  resize();
+  window.addEventListener('resize', () => { resize(); if (!running) draw(performance.now()); });
+  document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+
+  if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) start();
+  else draw(performance.now() + Math.random() * 200000);   // one still frame, random state
+})();
+'''
+
+
 LOCKUPS=[
  ("Primary","Primary","Full lockup. Outlined panels."),
  ("Primary-Reverse","Primary Reverse","Full lockup. Filled panels."),
@@ -301,7 +427,7 @@ for name,href,ext,desc in ENTRIES:
   <span class="rdesc">{desc}</span>
 </a>'''
 
-ROOT_CSS=f'''{CSS}
+ROOT_CSS=f'''{CSS}{WEAVE_CSS}
 body{{min-height:100vh;display:flex;flex-direction:column}}
 .wrap{{width:100%;max-width:880px;flex:1;display:flex;flex-direction:column;
   justify-content:center;padding-top:56px;padding-bottom:40px}}
@@ -335,11 +461,15 @@ index=f'''<!doctype html>
 <title>assets.la.io</title>
 <meta name="description" content="Brand assets, tools, and documentation for LA.IO and the Louisiana Innovation ecosystem.">
 <style>{ROOT_CSS}</style></head>
-<body><div class="wrap">
+<body>
+<canvas id="weave" aria-hidden="true"></canvas>
+<div class="wrap">
 {LOGO}
 <p class="lede">Brand assets, tools, and documentation for LA.IO and the Louisiana Innovation ecosystem.</p>
 <nav class="rows">{rows}</nav>
-</div></body></html>'''
+</div>
+<script>{WEAVE_JS}</script>
+</body></html>'''
 open(os.path.join(REPO,'index.html'),'w').write(index)
 
 nf=f'''<!doctype html>
@@ -364,97 +494,6 @@ h1 a:hover{{border-bottom-color:var(--electric)}}
 </div></body></html>'''
 open(os.path.join(REPO,'404.html'),'w').write(nf)
 print('index + 404 written')
-
-WEAVE_CSS = '''
-#weave{position:fixed;inset:0;z-index:0;pointer-events:none;display:block;
-  -webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.85) 18%,rgba(0,0,0,.42) 42%,
-    rgba(0,0,0,.42) 74%,rgba(0,0,0,.9) 100%);
-  mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.85) 18%,rgba(0,0,0,.42) 42%,
-    rgba(0,0,0,.42) 74%,rgba(0,0,0,.9) 100%)}
-.wrap{position:relative;z-index:1}
-'''
-
-WEAVE_JS = '''
-// ----- Weave / Rope: overlapping ovals, the engraving that protects banknotes.
-// Full-bleed backdrop. Detail, rhythm, layers and twist each drift on their own
-// slow cycle, so the pattern is never twice the same and never announces itself.
-(function () {
-  const c = document.getElementById('weave');
-  if (!c) return;
-  const x = c.getContext('2d', { alpha: true });
-  const ELEC = [0, 185, 254], EASY = [99, 220, 222];
-  const MAXL = 7, CURVES = 20, SEG = 96;
-  let W = 0, H = 0, DPR = 1, raf = 0, running = false;
-
-  // four independent oscillators, random period and phase, 2 to 6 minutes each
-  const osc = [];
-  for (let i = 0; i < 4; i++) {
-    osc.push({ p: 0.000018 + Math.random() * 0.000034, ph: Math.random() * Math.PI * 2 });
-  }
-  const drift = (i, t, lo, hi) => {
-    const o = osc[i];
-    return lo + ((Math.sin(t * o.p + o.ph) + 1) / 2) * (hi - lo);
-  };
-
-  function resize() {
-    DPR = Math.min(window.devicePixelRatio || 1, 1.75);
-    W = window.innerWidth; H = window.innerHeight;
-    c.width = W * DPR; c.height = H * DPR;
-    c.style.width = W + 'px'; c.style.height = H + 'px';
-    x.setTransform(DPR, 0, 0, DPR, 0, 0);
-  }
-
-  function draw(t) {
-    x.clearRect(0, 0, W, H);
-    const detail = drift(0, t, 0.00, 0.42);
-    const rhythm = drift(1, t, 0.00, 2.40);
-    const layers = drift(2, t, 2.30, MAXL);
-    const twist  = drift(3, t, -0.55, 0.55);
-
-    const cx = W / 2, cy = H / 2;
-    const R = Math.hypot(W, H) * 0.42;   // oversized, so every oval runs off the edges
-    x.lineJoin = 'round';
-
-    for (let L = 0; L < MAXL; L++) {
-      const on = Math.min(1, Math.max(0, layers - L));   // layers fade in and out, never pop
-      if (on <= 0.004) continue;
-      const a = R * (0.66 + L * 0.105);
-      const b = R * (0.14 + L * 0.040);
-      const spin = t * 0.000034 * (L % 2 ? -1 : 1) * (1 + L * 0.13);
-      const col = (L % 3 === 0) ? EASY : ELEC;
-      x.lineWidth = 0.65 + L * 0.055;
-      for (let i = 0; i < CURVES; i++) {
-        const th = (i / CURVES) * Math.PI + spin + twist * L * 0.38;
-        const co = Math.cos(th), si = Math.sin(th);
-        x.beginPath();
-        for (let s = 0; s <= SEG; s++) {
-          const u = (s / SEG) * Math.PI * 2;
-          const m = 1
-            + detail * Math.sin(u * (5 + L) + t * 0.00009 + i)
-            + 0.15 * Math.sin(u * rhythm * 3 + th * 2);
-          const ex = a * Math.cos(u) * m, ey = b * Math.sin(u) * m;
-          const px = cx + ex * co - ey * si, py = cy + ex * si + ey * co;
-          s ? x.lineTo(px, py) : x.moveTo(px, py);
-        }
-        const alpha = Math.max(on * (0.098 - L * 0.0080), 0.013);
-        x.strokeStyle = 'rgba(' + col[0] + ',' + col[1] + ',' + col[2] + ',' + alpha + ')';
-        x.stroke();
-      }
-    }
-  }
-
-  const loop = () => { draw(performance.now()); raf = requestAnimationFrame(loop); };
-  const start = () => { if (!running) { running = true; loop(); } };
-  const stop = () => { running = false; cancelAnimationFrame(raf); };
-
-  resize();
-  window.addEventListener('resize', () => { resize(); if (!running) draw(performance.now()); });
-  document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
-
-  if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) start();
-  else draw(performance.now() + Math.random() * 100000);   // one still frame, random state
-})();
-'''
 
 # ---------- /ai — brand assets for AI ----------
 PROMPT = ("Fetch https://assets.la.io/claude/CLAUDE.md and follow it as the "
@@ -540,7 +579,7 @@ motifrows = "".join(f'''<div class="mcard">
 
 docrows = "".join(urlrow(p, n, d) for p, n, d in DOCS)
 
-AI_CSS = CSS + WEAVE_CSS + '''
+AI_CSS = CSS + '''
 header{padding:80px 0 0}
 .eyebrow{font-size:11.5px;color:var(--electric);margin:0 0 26px;letter-spacing:.16em;font-weight:700}
 h1{font-weight:300;font-size:clamp(34px,5.2vw,58px);line-height:1.04;margin:0;letter-spacing:-.02em}
@@ -632,9 +671,7 @@ ai = f'''<!doctype html>
 <title>Brand Assets for AI — assets.la.io</title>
 <meta name="description" content="The LA.IO brand system as URLs an AI can fetch. Instructions, fonts, colors, logos, and motifs.">
 <style>{AI_CSS}</style></head>
-<body>
-<canvas id="weave" aria-hidden="true"></canvas>
-<div class="wrap">
+<body><div class="wrap">
 
 <header>
 {LOGO}
@@ -721,7 +758,6 @@ no attachments, no stale copies.</p>
 
 </div>
 <script>
-{WEAVE_JS}
 document.addEventListener('click',function(e){{
   var b=e.target.closest('[data-copy]'); if(!b) return;
   navigator.clipboard.writeText(b.getAttribute('data-copy'));

@@ -101,6 +101,33 @@ that the header is already there.
 
 ---
 
+## The homepage backdrop
+
+`index.html` runs a full-bleed canvas of the **Weave / Rope** illustration model,
+ported from `RENDERERS["weave.rope"]` in the Illustration Machine's `engine.js`
+(repo `dylan-monday/laio-illustrator`). The formulas and constants are copied
+verbatim: count, phase, rows, rotation, ellipse dimensions, the 0.45 edge
+threshold and the `0.18 + 0.42 * (1 - edge)` ghost alpha.
+
+Two deliberate departures, both forced by the difference between a finite
+composition and a backdrop:
+
++ **The band extends past the viewport.** The model lays `count` ellipses across
+  a fixed 880-unit band. Rendered full screen that band's end caps land inside
+  the frame as a bright pile-up. We keep the model's pitch and extend the index
+  range until it clears both edges.
++ **`edge` is measured off the viewport, not the band.** So the rope thins toward
+  the sides instead of stopping.
+
+Detail, rhythm, complexity and scale each drift on their own oscillator with a
+random period between two and six minutes. Rows fade by fractional opacity so
+nothing pops. Runs at 30fps, pauses on tab blur, honors `prefers-reduced-motion`
+with a single still frame.
+
+If the model changes upstream, re-port it. Do not let the two drift silently.
+
+---
+
 ## Regenerating the pages
 
 `index.html`, `404.html`, `labs/index.html`, `ai/index.html`, `llms.txt`, and
