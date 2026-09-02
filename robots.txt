@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Machine-readable index of the LA.IO brand system
+# https://assets.la.io/llms.txt

@@ -282,6 +282,7 @@ HEAD='''<meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">'''
 
 ENTRIES=[
+ ("Brand Assets for AI","/ai",False,"The core brand system as fetchable URLs. Fonts, color, logos, motifs, and drop-in instructions for any AI or build tool."),
  ("Illustration Machine","/illustrator",False,"Generates original illustration and background graphics in the LA.IO system."),
  ("Badge Builder","https://badgebuilder.la.io",True,"Builds embeddable, trackable LA.IO badges for partner sites."),
  ("Claude Design System","/claude",False,"Instructions for building LA.IO work in Claude."),
@@ -327,6 +328,9 @@ body{{min-height:100vh;display:flex;flex-direction:column}}
   .rpath{{padding-left:0;margin-top:5px}}
   .lede{{margin-bottom:36px}}
 }}
+.rootfoot{{margin:30px 0 0;font-size:10.5px;color:rgba(255,255,255,.36);letter-spacing:.09em}}
+.rootfoot a{{color:var(--easy);text-decoration:none;border-bottom:1px solid rgba(99,220,222,.3)}}
+.rootfoot a:hover{{color:var(--electric);border-bottom-color:var(--electric)}}
 '''
 
 index=f'''<!doctype html>
@@ -338,6 +342,8 @@ index=f'''<!doctype html>
 {LOGO}
 <p class="lede">Brand assets, tools, and documentation for LA.IO and the Louisiana Innovation ecosystem.</p>
 <nav class="rows">{rows}</nav>
+<p class="rootfoot mono">Machine-readable index for AI:
+<a href="/llms.txt">assets.la.io/llms.txt</a></p>
 </div></body></html>'''
 open(os.path.join(REPO,'index.html'),'w').write(index)
 
@@ -363,3 +369,356 @@ h1 a:hover{{border-bottom-color:var(--electric)}}
 </div></body></html>'''
 open(os.path.join(REPO,'404.html'),'w').write(nf)
 print('index + 404 written')
+
+# ---------- /ai — brand assets for AI ----------
+PROMPT = ("Fetch https://assets.la.io/claude/CLAUDE.md and follow it as the "
+          "brand system for this project.")
+
+FONTS = [
+    ("AktivGrotesk_Th.woff2",   "Thin",         "100"),
+    ("AktivGrotesk_ThIt.woff2", "Thin Italic",  "100"),
+    ("AktivGrotesk_Lt.woff2",   "Light",        "300"),
+    ("AktivGrotesk_LtIt.woff2", "Light Italic", "300"),
+    ("AktivGrotesk_Rg.woff2",   "Regular",      "400"),
+    ("AktivGrotesk_It.woff2",   "Italic",       "400"),
+    ("AktivGrotesk_SBd.woff2",  "Semibold",     "600"),
+    ("AktivGrotesk_Bd.woff2",   "Bold",         "700"),
+    ("AktivGrotesk_BdIt.woff2", "Bold Italic",  "700"),
+]
+
+DATA = [
+    ("colors/laio-tokens.json", "All five color families as JSON. Hex, RGB, and the brand name for each."),
+    ("colors/laio-colors.css",  "The same values as CSS custom properties. Link it or paste it."),
+]
+
+LOGOS = [
+    ("LAIO-COMPLETE.svg",           "Complete lockup",        "Primary mark. Use this unless there is a reason not to."),
+    ("LAIO-BASE.svg",               "Base mark",              "The LA.IO mark alone."),
+    ("LAIO-HORZ.svg",               "Horizontal lockup",      "For wide spaces and headers."),
+    ("LOUISIANA-INNOVATION-A.svg",  "Louisiana Innovation A", "Full name lockup, stacked."),
+    ("LOUISIANA-INNOVATION-B.svg",  "Louisiana Innovation B", "Full name lockup, condensed."),
+    ("DIVISION-LINE.svg",           "Division line",          "The LED division line. Sits under the mark."),
+]
+
+MOTIFS = [
+    ("LAIO-PLUS.svg",             "Plus"),
+    ("LAIO-X.svg",                "X"),
+    ("LAIO-DIAMOND.svg",          "Diamond"),
+    ("LAIO-DIAMOND-EMPTY.svg",    "Diamond outline"),
+    ("LAIO-LEFT-BRACKET.svg",     "Left bracket"),
+    ("LAIO-RIGHT-BRACKET.svg",    "Right bracket"),
+    ("LAIO-UP-BRACKET.svg",       "Up bracket"),
+    ("LAIO-DOWN-BRACKET.svg",     "Down bracket"),
+    ("LAIO-BRACKET-CORNER-1.svg", "Corner 1"),
+    ("LAIO-BRACKET-CORNER-2.svg", "Corner 2"),
+]
+
+DOCS = [
+    ("claude/CLAUDE.md",                 "Drop-in instructions",  "Voice, banned language, color, type, and asset URLs. The one file to hand an AI."),
+    ("claude/laio-brand/BRAND.md",       "Full brand system",     "The long form. Load when the work needs depth."),
+    ("claude/laio-brand/COMPONENTS.md",  "Component code",        "Buttons, cards, eyebrows, and layout patterns as code."),
+    ("claude/laio-brand.zip",            "Packaged skill",        "The whole kit as a Claude skill. Unzip into .claude/skills/."),
+    ("llms.txt",                         "Machine-readable index","A plain list of everything above. Point a crawler or an agent at this."),
+]
+
+def urlrow(path, name, desc):
+    url = "https://assets.la.io/" + path
+    return f'''<div class="urow">
+  <span class="uplus">+</span>
+  <div class="ubody">
+    <div class="uname">{name}</div>
+    <div class="udesc">{desc}</div>
+  </div>
+  <button class="ucopy mono" data-copy="{url}"><span class="upath">/{path}</span><span class="uci">COPY</span></button>
+</div>'''
+
+fontrows = "".join(
+    urlrow("fonts/" + f, f"{label} <span class=\"uw mono\">{w}</span>",
+           "woff2. Self-hosted, open CORS.")
+    for f, label, w in FONTS)
+
+datarows = "".join(urlrow(p, p.split("/")[-1], d) for p, d in DATA)
+
+logorows = "".join(f'''<div class="acard">
+  <div class="astage"><img src="/logos/{f}" alt="{name}" loading="lazy"></div>
+  <div class="aname">{name}</div>
+  <div class="adesc">{desc}</div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/logos/{f}"><span class="upath">/logos/{f}</span><span class="uci">COPY</span></button>
+</div>''' for f, name, desc in LOGOS)
+
+motifrows = "".join(f'''<div class="mcard">
+  <div class="mstage"><img src="/motifs/{f}" alt="{name}" loading="lazy"></div>
+  <div class="mname">{name}</div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/motifs/{f}"><span class="upath">/motifs/{f}</span><span class="uci">COPY</span></button>
+</div>''' for f, name in MOTIFS)
+
+docrows = "".join(urlrow(p, n, d) for p, n, d in DOCS)
+
+AI_CSS = CSS + '''
+header{padding:80px 0 0}
+.eyebrow{font-size:11.5px;color:var(--electric);margin:0 0 26px;letter-spacing:.16em;font-weight:700}
+h1{font-weight:300;font-size:clamp(34px,5.2vw,58px);line-height:1.04;margin:0;letter-spacing:-.02em}
+h1 b{font-weight:700;display:block}
+.lede{margin:24px 0 0;max-width:52ch;font-size:17px;line-height:1.5;color:var(--body)}
+
+.step{padding:66px 0 0}
+.shead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+  border-bottom:1px solid var(--rule-soft);padding-bottom:14px;margin-bottom:26px}
+.snum{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;
+  color:rgba(255,255,255,.34)}
+h2{font-size:13px;color:var(--electric);margin:0;font-weight:700;
+  font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em}
+.snote{font-size:14.5px;color:var(--body);margin-left:auto;max-width:40ch}
+@media(max-width:760px){.snote{margin-left:0;flex-basis:100%}}
+
+.prompt{border:1px solid var(--electric);background:rgba(0,185,254,.06)}
+.plabel{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;
+  color:var(--easy);padding:15px 20px 0;text-transform:uppercase}
+.ptext{padding:11px 20px 20px;font-size:clamp(15px,2vw,19px);line-height:1.45;
+  font-family:'JetBrains Mono',monospace;color:#fff;word-break:break-word;letter-spacing:0}
+.pbtn{display:block;width:100%;text-align:left;background:var(--electric);color:var(--dark);
+  border:0;padding:14px 20px;cursor:pointer;font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:.12em;font-weight:700;text-transform:uppercase;transition:.15s}
+.pbtn:hover{background:var(--easy)}
+
+.ways{margin:26px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:860px){.ways{grid-template-columns:1fr}}
+.way{border:1px solid var(--rule-soft);padding:20px}
+.wlabel{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;
+  color:var(--easy);text-transform:uppercase;margin-bottom:10px}
+.way p{margin:0;font-size:14.5px;line-height:1.5;color:var(--body)}
+.way a{color:var(--electric);text-decoration:none;border-bottom:1px solid rgba(0,185,254,.35)}
+.way a:hover{border-bottom-color:var(--electric)}
+
+.urow{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:4px 6px;
+  align-items:center;padding:15px 0;border-bottom:1px solid var(--rule-soft)}
+.urow:first-child{border-top:1px solid var(--rule-soft)}
+.uplus{color:var(--electric);font-size:16px;line-height:1}
+.uname{font-size:16px;font-weight:400}
+.uw{font-size:10px;color:rgba(255,255,255,.36);padding-left:7px}
+.udesc{font-size:13.5px;color:var(--body);margin-top:3px;line-height:1.45}
+.ubody{min-width:0}
+.ucopy{display:flex;align-items:center;gap:12px;justify-content:space-between;
+  background:transparent;border:1px solid var(--rule);color:rgba(255,255,255,.55);
+  padding:9px 12px;cursor:pointer;font-family:'JetBrains Mono',monospace;
+  font-size:9.5px;letter-spacing:.04em;text-transform:none;transition:.15s;white-space:nowrap}
+.ucopy:hover{color:var(--dark);background:var(--electric);border-color:var(--electric)}
+.uci{letter-spacing:.1em;color:var(--easy);font-weight:700}
+.ucopy:hover .uci{color:var(--dark)}
+.ucopy.done{background:var(--easy);border-color:var(--easy);color:var(--dark)}
+.ucopy.done .uci{color:var(--dark)}
+@media(max-width:760px){
+  .urow{grid-template-columns:20px minmax(0,1fr);grid-template-areas:"p b" ". c"}
+  .uplus{grid-area:p} .ubody{grid-area:b} .ucopy{grid-area:c;margin-top:9px;width:100%}
+}
+
+.acards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:860px){.acards{grid-template-columns:1fr}}
+.acard{border:1px solid var(--rule-soft)}
+.astage{background:#fff;height:150px;display:flex;align-items:center;justify-content:center;padding:26px}
+.astage img{max-width:100%;max-height:100%}
+.aname{font-size:15px;padding:15px 15px 0}
+.adesc{font-size:13px;color:var(--body);padding:5px 15px 13px;line-height:1.45}
+.acard .ucopy{width:100%;border:0;border-top:1px solid var(--rule-soft)}
+
+.mcards{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+@media(max-width:980px){.mcards{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.mcards{grid-template-columns:repeat(2,1fr)}}
+.mcard{border:1px solid var(--rule-soft)}
+.mstage{background:#fff;height:96px;display:flex;align-items:center;justify-content:center;padding:24px}
+.mstage img{max-width:100%;max-height:100%}
+.mname{font-size:13px;padding:11px 12px 9px}
+.mcard .ucopy{width:100%;border:0;border-top:1px solid var(--rule-soft);font-size:9px;padding:8px 10px}
+
+.tip{margin:24px 0 0;padding:16px 18px;border-left:2px solid var(--easy);
+  background:rgba(99,220,222,.05);font-size:14px;line-height:1.55;color:var(--body)}
+.tip b{color:#fff;font-weight:400}
+.tip code{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--easy)}
+footer{margin:96px 0 0;padding:26px 0 60px;border-top:1px solid var(--rule-soft);
+  font-size:11px;color:rgba(255,255,255,.34);letter-spacing:.1em;
+  display:flex;gap:18px;flex-wrap:wrap}
+footer a{color:var(--easy);text-decoration:none}
+footer a:hover{color:var(--electric)}
+'''
+
+ai = f'''<!doctype html>
+<html lang="en"><head>{HEAD}
+<title>Brand Assets for AI — assets.la.io</title>
+<meta name="description" content="The LA.IO brand system as URLs an AI can fetch. Instructions, fonts, colors, logos, and motifs.">
+<style>{AI_CSS}</style></head>
+<body><div class="wrap">
+
+<header>
+{LOGO}
+<p class="eyebrow mono">Brand Assets for AI</p>
+<h1>Point your AI<b>at these URLs.</b></h1>
+<p class="lede">Every core LA.IO asset lives at a permanent, public URL. Any AI, tool, or
+site that can fetch a URL can pull the real fonts, colors, logos, and rules. No downloads,
+no attachments, no stale copies.</p>
+</header>
+
+<section class="step">
+  <div class="shead"><span class="snum">01</span><h2>Start here</h2>
+  <span class="snote">Works in Claude, ChatGPT, Lovable, Cursor, or anything else that can read a link.</span></div>
+  <div class="prompt">
+    <div class="plabel">Paste this into your AI</div>
+    <div class="ptext">{PROMPT}</div>
+    <button class="pbtn" data-copy="{PROMPT}">Copy the instruction</button>
+  </div>
+  <div class="tip"><b>That one file carries the whole system.</b> Voice rules, banned
+  language, the five color families, type rules, and every asset URL on this page. One
+  fetch and the AI is on brand.</div>
+</section>
+
+<section class="step">
+  <div class="shead"><span class="snum">02</span><h2>Three ways to use it</h2></div>
+  <div class="ways">
+    <div class="way">
+      <div class="wlabel">Any AI chat</div>
+      <p>Paste the line above. The AI fetches the file and works to the brand from there.</p>
+    </div>
+    <div class="way">
+      <div class="wlabel">Claude project or Claude Code</div>
+      <p>Install the packaged skill instead. Setup steps are at
+      <a href="/claude">assets.la.io/claude</a>.</p>
+    </div>
+    <div class="way">
+      <div class="wlabel">Lovable, Framer, a web build</div>
+      <p>Use the raw URLs below directly in code. Every file is served with open CORS,
+      so it loads on any domain.</p>
+    </div>
+  </div>
+</section>
+
+<section class="step">
+  <div class="shead"><span class="snum">03</span><h2>Instructions and docs</h2>
+  <span class="snote">Markdown, fetchable, always current.</span></div>
+  {docrows}
+</section>
+
+<section class="step">
+  <div class="shead"><span class="snum">04</span><h2>Type</h2>
+  <span class="snote">Aktiv Grotesk, self-hosted. JetBrains Mono comes from Google Fonts.</span></div>
+  {fontrows}
+  <div class="tip"><b>Headlines use Light (300) or Bold (700).</b> Regular (400) for body.
+  Never 500 or 600 as a headline weight.</div>
+</section>
+
+<section class="step">
+  <div class="shead"><span class="snum">05</span><h2>Color</h2>
+  <span class="snote">Five families. One family per project. Do not mix them.</span></div>
+  {datarows}
+</section>
+
+<section class="step">
+  <div class="shead"><span class="snum">06</span><h2>Logos</h2></div>
+  <div class="acards">{logorows}</div>
+  <div class="tip"><b>Every file ships black (#231F20) on transparent.</b> Recolor with
+  CSS <code>fill</code> or inline the SVG and set <code>fill:currentColor</code>. Do not
+  edit the artwork.</div>
+</section>
+
+<section class="step">
+  <div class="shead"><span class="snum">07</span><h2>Motifs</h2>
+  <span class="snote">Structural graphics. Same black artwork, recolor to the active family.</span></div>
+  <div class="mcards">{motifrows}</div>
+</section>
+
+<footer>
+  <span class="mono">assets.la.io</span>
+  <a class="mono" href="/">All tools</a>
+  <a class="mono" href="/llms.txt">llms.txt</a>
+  <a class="mono" href="/claude">Claude kit</a>
+</footer>
+
+</div>
+<script>
+document.addEventListener('click',function(e){{
+  var b=e.target.closest('[data-copy]'); if(!b) return;
+  navigator.clipboard.writeText(b.getAttribute('data-copy'));
+  var t=b.querySelector('.uci'), o;
+  if(t){{o=t.textContent;t.textContent='COPIED';b.classList.add('done');
+    setTimeout(function(){{t.textContent=o;b.classList.remove('done')}},1200);}}
+  else {{o=b.textContent;b.textContent='Copied';
+    setTimeout(function(){{b.textContent=o}},1200);}}
+}});
+</script>
+</body></html>'''
+
+os.makedirs(os.path.join(REPO, 'ai'), exist_ok=True)
+open(os.path.join(REPO, 'ai', 'index.html'), 'w').write(ai)
+
+# ---------- llms.txt ----------
+def _t(path, note):
+    return f"- [{path}](https://assets.la.io/{path}): {note}"
+
+llms = "\n".join([
+"# assets.la.io",
+"",
+"> The LA.IO (Louisiana Innovation) brand system, served as public URLs with open CORS.",
+"> Fetch what you need. Every file is current and permanent.",
+"",
+"If you are an AI assistant asked to produce LA.IO work, read CLAUDE.md first. It carries",
+"the voice rules, banned language, color families, type rules, and asset URLs. It is short.",
+"",
+"## Start here",
+"",
+_t("claude/CLAUDE.md", "Drop-in brand instructions. Read this before generating anything."),
+"",
+"## Depth",
+"",
+_t("claude/laio-brand/BRAND.md", "The full brand system."),
+_t("claude/laio-brand/COMPONENTS.md", "Component patterns as code."),
+_t("claude/laio-brand.zip", "The whole kit packaged as a Claude skill."),
+"",
+"## Color",
+"",
+_t("colors/laio-tokens.json", "All five color families as JSON. Hex, RGB, brand names."),
+_t("colors/laio-colors.css", "The same values as CSS custom properties."),
+"",
+"## Type",
+"",
+"Aktiv Grotesk, self-hosted woff2. Light (300) or Bold (700) for headlines, Regular (400) for body.",
+""] + [
+_t("fonts/" + f, f"Aktiv Grotesk {label}, weight {w}.") for f, label, w in FONTS
+] + [
+"",
+"JetBrains Mono for eyebrows, labels, and metadata only. Always caps. Load from Google Fonts:",
+"https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap",
+"",
+"## Logos",
+"",
+"All artwork ships black (#231F20) on transparent. Recolor with CSS. Do not edit the artwork.",
+""] + [
+_t("logos/" + f, desc) for f, name, desc in LOGOS
+] + [
+"",
+"## Motifs",
+"",
+] + [
+_t("motifs/" + f, name + " motif.") for f, name in MOTIFS
+] + [
+"",
+"## Pages",
+"",
+_t("ai", "Human-readable version of this file, with previews and copy buttons."),
+_t("claude", "Setup steps for Claude projects and Claude Code."),
+_t("labs", "Louisiana Innovation Labs sub-brand identity assets."),
+_t("illustrator", "Generates original illustration in the LA.IO system."),
+"",
+"## Rules that apply to all LA.IO work",
+"",
+"- Bullets are always `+`. Never a bullet character, hyphen, or asterisk.",
+"- Never use em dashes.",
+"- Never write \"resilient\", \"Silicon Bayou\", or \"it's not X, it's Y\".",
+"- One color family per project. Do not mix families.",
+"- Border radius is 0 on structural elements.",
+""])
+
+open(os.path.join(REPO, 'llms.txt'), 'w').write(llms)
+open(os.path.join(REPO, 'robots.txt'), 'w').write(
+    "User-agent: *\nAllow: /\n\n"
+    "# Machine-readable index of the LA.IO brand system\n"
+    "# https://assets.la.io/llms.txt\n")
+
+print('ai + llms.txt + robots.txt written')
