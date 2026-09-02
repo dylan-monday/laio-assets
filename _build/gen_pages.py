@@ -328,9 +328,6 @@ body{{min-height:100vh;display:flex;flex-direction:column}}
   .rpath{{padding-left:0;margin-top:5px}}
   .lede{{margin-bottom:36px}}
 }}
-.rootfoot{{margin:30px 0 0;font-size:10.5px;color:rgba(255,255,255,.36);letter-spacing:.09em}}
-.rootfoot a{{color:var(--easy);text-decoration:none;border-bottom:1px solid rgba(99,220,222,.3)}}
-.rootfoot a:hover{{color:var(--electric);border-bottom-color:var(--electric)}}
 '''
 
 index=f'''<!doctype html>
@@ -342,8 +339,6 @@ index=f'''<!doctype html>
 {LOGO}
 <p class="lede">Brand assets, tools, and documentation for LA.IO and the Louisiana Innovation ecosystem.</p>
 <nav class="rows">{rows}</nav>
-<p class="rootfoot mono">Machine-readable index for AI:
-<a href="/llms.txt">assets.la.io/llms.txt</a></p>
 </div></body></html>'''
 open(os.path.join(REPO,'index.html'),'w').write(index)
 
