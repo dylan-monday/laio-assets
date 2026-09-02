@@ -119,10 +119,18 @@ composition and a backdrop:
 + **`edge` is measured off the viewport, not the band.** So the rope thins toward
   the sides instead of stopping.
 
-Detail, rhythm, complexity and scale each drift on their own oscillator with a
-random period between two and six minutes. Rows fade by fractional opacity so
-nothing pops. Runs at 30fps, pauses on tab blur, honors `prefers-reduced-motion`
-with a single still frame.
+Detail, rhythm, complexity and scale each ride two sines at unrelated rates, so
+they wander rather than loop. Periods land between roughly 20 and 80 seconds:
+fast enough that the pattern visibly rebuilds itself during a visit, slow enough
+that nothing reads as animating. Rows fade by fractional opacity so nothing pops.
+
+Stroke alpha is scaled inversely to `detail` (`1.46 - detail * 0.62`). A sparse
+field of 40 ellipses and a dense one of 145 then read at the same weight, so what
+changes is the pattern and not the brightness. Without this the page appears to
+dim and brighten, which is the one thing a backdrop must not do.
+
+Runs at 30fps, pauses on tab blur, honors `prefers-reduced-motion` with a single
+still frame at a random point in the cycle.
 
 If the model changes upstream, re-port it. Do not let the two drift silently.
 

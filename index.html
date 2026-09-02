@@ -145,7 +145,7 @@ body{min-height:100vh;display:flex;flex-direction:column}
   const PRIMARY = [0, 185, 254];    // Electric Blue, the ink in dark mode
   const GHOST_A = [99, 220, 222];   // Easy Blue
   const GHOST_B = [0, 185, 254];
-  const MASTER  = 0.15;             // this is a backdrop, not the artwork
+  const MASTER  = 0.16;             // this is a backdrop, not the artwork
 
   // engine.js model space
   const BAND = 880, CX0 = 500, CY0 = 500;
@@ -153,14 +153,22 @@ body{min-height:100vh;display:flex;flex-direction:column}
 
   let W = 0, H = 0, DPR = 1, raf = 0, running = false, last = 0;
 
-  // detail, rhythm, complexity and twist each drift on their own oscillator,
-  // random period between roughly two and six minutes, random phase.
+  // Each knob rides two sines at unrelated rates, so it wanders instead of
+  // looping. Periods land between roughly 20 and 80 seconds: fast enough that
+  // the pattern visibly rebuilds itself while you are on the page, slow enough
+  // that nothing ever looks like it is animating.
   const osc = [];
   for (let i = 0; i < 5; i++) {
-    osc.push({ p: 0.000017 + Math.random() * 0.000035, ph: Math.random() * Math.PI * 2 });
+    osc.push({
+      p1: 0.000079 + Math.random() * 0.00023, ph1: Math.random() * Math.PI * 2,
+      p2: 0.000048 + Math.random() * 0.00011, ph2: Math.random() * Math.PI * 2
+    });
   }
-  const drift = (i, t, lo, hi) =>
-    lo + ((Math.sin(t * osc[i].p + osc[i].ph) + 1) / 2) * (hi - lo);
+  const drift = (i, t, lo, hi) => {
+    const o = osc[i];
+    const s = Math.sin(t * o.p1 + o.ph1) * 0.62 + Math.sin(t * o.p2 + o.ph2) * 0.38;
+    return lo + ((s + 1) / 2) * (hi - lo);
+  };
 
   const mix = (a, b, t) => [0,1,2].map(i => Math.round(a[i] + (b[i]-a[i]) * t));
   const rgba = (col, a) => 'rgba(' + col[0] + ',' + col[1] + ',' + col[2] + ',' + a + ')';
@@ -178,10 +186,10 @@ body{min-height:100vh;display:flex;flex-direction:column}
     x.clearRect(0, 0, W, H);
 
     // the knobs, four of them breathing on independent cycles
-    const detail     = drift(0, t, 0.10, 0.72);
-    const rhythm     = drift(1, t, 0.06, 0.85);
-    const complexity = drift(2, t, 0.25, 1.00);
-    const sizeT      = drift(3, t, 0.42, 0.78);
+    const detail     = drift(0, t, 0.26, 0.96);
+    const rhythm     = drift(1, t, 0.05, 1.00);
+    const complexity = drift(2, t, 0.28, 1.00);
+    const sizeT      = drift(3, t, 0.32, 0.86);
     const baseRot    = (t * 0.0000135) % Math.PI;   // one slow revolution
 
     // engine.js formulas, unchanged
@@ -200,11 +208,12 @@ body{min-height:100vh;display:flex;flex-direction:column}
     // index range until it clears both edges. Everything else is the model.
     const S = Math.max(H / 820, W / 2400);
     const pitch = pitchM * S, rw = ew * S, rh = eh * S, rowPx = rowH * S;
-    const span = Math.ceil((W / 2 + rw) / pitch) + 1;
+    const span = Math.max(3, Math.min(80, Math.ceil((W / 2 + rw * 0.40) / pitch)));
     const rows = Math.ceil(rowsF);
     const cyMid = H / 2 - ((rowsF - 1) * rowPx) / 2;
 
-    x.lineWidth = stroke * S;
+    const master = MASTER * (1.46 - detail * 0.62);   // hold perceived density flat
+    x.lineWidth = stroke * S * (1 - detail * 0.22);
 
     for (let r = 0; r < rows; r++) {
       const rowOn = Math.min(1, rowsF - r);          // rows fade, never appear
@@ -221,7 +230,7 @@ body{min-height:100vh;display:flex;flex-direction:column}
         let col, a;
         if (useGhost) { col = mix(GHOST_A, GHOST_B, 1 - edge); a = 0.18 + 0.42 * (1 - edge); }
         else          { col = PRIMARY;                          a = 0.85; }
-        a *= MASTER * rowOn * (1 - edge * 0.72);
+        a *= master * rowOn * (1 - edge * 0.72);
         if (a < 0.002) continue;
         x.strokeStyle = rgba(col, a.toFixed(4));
         x.beginPath();
