@@ -17,6 +17,9 @@ This file covers how the repo and the deployment actually work.
 
 ```
 /                      index.html      directory of tools and kits
+/ai                    ai/             the core brand system as fetchable URLs
+/llms.txt                              machine-readable index of the above
+/robots.txt                            points crawlers at llms.txt
 /labs                  labs/           Louisiana Innovation Labs identity kit
 /claude                claude/         brand kit for setting up LA.IO in Claude
 /illustrator           (not in repo)   rewritten to the laio-illustrator project
@@ -69,8 +72,9 @@ Two consequences that have bitten this repo already:
   this reason. The same gap still exists for `/claude`.
 + **HTML must not inherit the immutable cache.** Any page a human reads needs
   `max-age=0, must-revalidate`, or edits never reach returning visitors.
-  Rules exist for `/`, `/labs`, `/labs/`, `/index.html`, `/404.html`,
-  `/labs/index.html`.
+  Rules exist for `/`, `/ai`, `/ai/`, `/ai/index.html`, `/labs`, `/labs/`,
+  `/index.html`, `/404.html`, `/labs/index.html`, `/llms.txt`, `/robots.txt`,
+  and bare `/claude`.
 
 Do not add `cleanUrls` or `trailingSlash`. Both conflict with the existing
 `/illustrator` → `/illustrator/` redirect.
@@ -95,8 +99,13 @@ that the header is already there.
 
 ## Regenerating the pages
 
-`index.html`, `404.html`, and `labs/index.html` are **generated**. Edit the
-scripts, not the HTML, or your change is lost the next time anyone runs them.
+`index.html`, `404.html`, `labs/index.html`, `ai/index.html`, `llms.txt`, and
+`robots.txt` are **generated**. Edit the scripts, not the files, or your change
+is lost the next time anyone runs them.
+
+Adding a new asset means editing the `FONTS`, `LOGOS`, `MOTIFS`, `DATA`, or
+`DOCS` lists near the bottom of `gen_pages.py`. Both `/ai` and `llms.txt` read
+from the same lists, so they cannot drift apart.
 
 ```
 python3 _build/gen_pages.py
