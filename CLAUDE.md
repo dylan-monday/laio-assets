@@ -79,12 +79,16 @@ Two consequences that have bitten this repo already:
 Do not add `cleanUrls` or `trailingSlash`. Both conflict with the existing
 `/illustrator` → `/illustrator/` redirect.
 
-### Known issue
+### Caching
 
-404 responses match only the catch-all, so a mistyped URL is cached as a 404 for
-a year. The fix is to scope the immutable rule to the asset directories
-(`/fonts`, `/logos`, `/motifs`, `/colors`) and let `/(.*)` revalidate. Not done
-yet.
+The catch-all `/(.*)` revalidates. `immutable, max-age=31536000` is scoped to
+`/fonts`, `/logos`, `/motifs`, and `/colors`, whose filenames are stable.
+
+This matters more than it looks. Before the fix, 404 responses inherited the
+immutable catch-all, so anyone who requested a path *before* it existed had that
+404 cached in their browser for a year. It happened in practice with `/llms.txt`.
+Any new page added to this repo would have hit the same trap. Do not put the
+immutable rule back on the catch-all.
 
 ---
 
