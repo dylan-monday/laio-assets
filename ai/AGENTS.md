@@ -30,6 +30,13 @@ font-family stack: `'Aktiv Grotesk', 'Roboto', system-ui, sans-serif`
 
 ## Logo & motifs
 Use hosted SVGs, never recreate. `https://assets.la.io/logos/` and `/motifs/`. Single-fill near-black; override `fill` for color. React: `assets/LaioLogo.jsx`.
++ Motifs, all `LAIO-*.svg`: `LEFT-BRACKET`, `RIGHT-BRACKET`, `UP-BRACKET`, `DOWN-BRACKET`, `BRACKET-CORNER-1`, `BRACKET-CORNER-2`, `CORNER-L`, `PLUS`, `X`, `DIAMOND`, `DIAMOND-EMPTY`, `SQUARE`, `SQUARE-EMPTY`, `FIELD-DIAGONAL`, `HATCH`, `WIRE-NODE`.
++ LED logo (`LED-WHITE.svg`, `LED-BLACK.svg`, `LED-SMALL-WHITE.svg`, `LED-SMALL-BLACK.svg`): Louisiana Economic Development, the parent agency. White on dark grounds by default. Black on light grounds, recolored to the family dark. Never the full-color or gold versions. Under or beside the LA.IO mark, never above it.
+
+## Range
+Six layout moves: the Split, the Diamond, the Frame, the Wire, the Grid, the Big Mark.
+Shape grammar: every shape comes from the logo's bracket, at 0, 45, or 90 degrees. No curves, no circles, no rounded corners. Two shapes per composition.
+Before any layout beyond a plain page, read `RANGE.md` in the laio-brand skill, also at `https://assets.la.io/ai/laio-brand/RANGE.md`. One reference per move in `references/`.
 
 ## Design
 Angular (radius 0–2px). Committed dark or light, never mid-range. Spare, with generous whitespace. Every element has structural purpose.

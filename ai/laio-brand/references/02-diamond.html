@@ -1,0 +1,103 @@
+<!doctype html>
+<!--
+  LA.IO RANGE REFERENCE 02: THE DIAMOND
+  A bracket-derived container for a group of content.
+
+  + Rule: diamonds touch at points and never overlap.
+  + Rule: where two large diamonds meet, a small easy-color diamond may hold
+    the logo.
+  + Don't: rotate off 45, or set a diamond on a diamond of the same value.
+
+  Family: Magenta. Dark #101948, easy #E385FE, electric #F629CB, on white.
+  Shape count: one (the diamond, used three times). The logo and type do not count.
+
+  This file is a reference. Read the structure, then build your own.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LA.IO Range 02: The Diamond</title>
+<!-- Aktiv Grotesk and JetBrains Mono, embedded. Renders offline. -->
+<link rel="stylesheet" href="../assets/fonts/laio-fonts-inline.css">
+<style>
+  :root {
+    --dark: #101948;
+    --easy: #E385FE;
+    --electric: #F629CB;
+    --white: #FFFFFF;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--white); }
+  .canvas {
+    position: relative; width: 1600px; height: 900px; overflow: hidden;
+    background: var(--white); color: var(--white);
+    font-family: 'Aktiv Grotesk', 'Roboto', system-ui, sans-serif;
+  }
+  svg { display: block; }
+  .mono {
+    font-family: 'JetBrains Mono', monospace; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+  }
+
+  /* Two large diamonds, each the full canvas height, touching at one point
+     on the center line. Cropped at the left and right edges on purpose. */
+  .diamonds { position: absolute; inset: 0; }
+  .diamonds .large { fill: var(--dark); }
+  .diamonds .small { fill: var(--easy); }
+
+  /* The logo sits in the small diamond, in the dark color. Never framed. */
+  .logo { position: absolute; left: 715px; top: 429.5px; width: 170px; color: var(--dark); }
+
+  .group { position: absolute; }
+  .group .eyebrow { margin: 0 0 24px; font-size: 16px; color: var(--easy); }
+  .left  { left: 196px; top: 300px; }
+  .right { left: 1004px; top: 340px; }
+
+  .left ul { list-style: none; margin: 0; padding: 0; }
+  .left li { font-weight: 300; font-size: 46px; line-height: 1.32; }
+  .left li span { color: var(--easy); font-weight: 400; margin-right: 16px; }
+
+  .right h2 {
+    margin: 0; font-weight: 300; font-size: 58px; line-height: 1.08; letter-spacing: -0.015em;
+  }
+  .right h2 .accent { color: var(--easy); }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <svg class="diamonds" viewBox="0 0 1600 900" aria-hidden="true">
+    <polygon class="large" points="350 0 800 450 350 900 -100 450"/>
+    <polygon class="large" points="1250 0 1700 450 1250 900 800 450"/>
+    <polygon class="small" points="800 320 930 450 800 580 670 450"/>
+  </svg>
+
+  <svg class="logo" viewBox="0 0 280.17 67.88" role="img" aria-label="LA.IO">
+    <g fill="currentColor">
+      <path d="M66.14,19.91v22.03h14.23v6.89h-22.03v-28.92h7.8Z"/>
+      <path d="M107.72,43.23h-8.58l-1.56,5.6h-7.57l8.86-28.92h9.55l8.86,28.92h-7.99l-1.56-5.6ZM100.79,37.4h5.32l-2.57-9.18h-.18l-2.57,9.18Z"/>
+      <path d="M134.3,40.02h8.81v8.81h-8.81v-8.81Z"/>
+      <path d="M162.67,48.83v-6.75h7.21v-15.42h-7.21v-6.75h22.22v6.75h-7.21v15.42h7.21v6.75h-22.22Z"/>
+      <path d="M208.85,49.38c-7.44,0-12.99-6.11-12.99-15.01s5.55-15.01,12.99-15.01,12.99,6.1,12.99,15.01-5.55,15.01-12.99,15.01ZM208.85,26.25c-3.12,0-5.1,3.21-5.1,8.12s1.97,8.12,5.1,8.12,5.09-3.21,5.09-8.12-1.97-8.12-5.09-8.12Z"/>
+      <polygon points="14.73 33.94 41.3 60.51 33.94 67.88 0 33.94 33.94 0 41.3 7.36 14.73 33.94"/>
+      <polygon points="265.45 33.94 238.87 7.36 246.24 0 280.17 33.94 246.24 67.88 238.87 60.51 265.45 33.94"/>
+    </g>
+  </svg>
+
+  <div class="group left">
+    <p class="eyebrow mono">The pillars</p>
+    <ul>
+      <li><span>+</span>Capital</li>
+      <li><span>+</span>Coaching</li>
+      <li><span>+</span>Connections</li>
+    </ul>
+  </div>
+
+  <div class="group right">
+    <p class="eyebrow mono">The signal</p>
+    <h2>Local Frequency.<br>Global <span class="accent">Signal.</span></h2>
+  </div>
+
+</div>
+</body>
+</html>

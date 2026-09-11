@@ -23,6 +23,16 @@ the voice rules, banned language, color families, type rules, and asset URLs. It
 - [ai/lovable/LOVABLE_STARTER_PROMPT.md](https://assets.la.io/ai/lovable/LOVABLE_STARTER_PROMPT.md): Lovable starter prompt. The first message that builds the LA.IO starter template.
 - [ai/lovable/LOVABLE_STARTER_TEMPLATE_SPEC.md](https://assets.la.io/ai/lovable/LOVABLE_STARTER_TEMPLATE_SPEC.md): Lovable starter template spec. What the starter template contains and how it is wired.
 
+## Depth
+
+- [ai/laio-brand/RANGE.md](https://assets.la.io/ai/laio-brand/RANGE.md): Range. The shape grammar, six layout moves, their exceptions, and the guardrails. Read before any layout beyond a plain page.
+- [ai/laio-brand/references/01-split.html](https://assets.la.io/ai/laio-brand/references/01-split.html): The Split reference, 1600x900. Read the HTML for structure. The rendered PNG is at references/01-split.png.
+- [ai/laio-brand/references/02-diamond.html](https://assets.la.io/ai/laio-brand/references/02-diamond.html): The Diamond reference, 1600x900. Read the HTML for structure. The rendered PNG is at references/02-diamond.png.
+- [ai/laio-brand/references/03-frame.html](https://assets.la.io/ai/laio-brand/references/03-frame.html): The Frame reference, 1600x900. Read the HTML for structure. The rendered PNG is at references/03-frame.png.
+- [ai/laio-brand/references/04-wire.html](https://assets.la.io/ai/laio-brand/references/04-wire.html): The Wire reference, 1600x900. Read the HTML for structure. The rendered PNG is at references/04-wire.png.
+- [ai/laio-brand/references/05-grid.html](https://assets.la.io/ai/laio-brand/references/05-grid.html): The Grid reference, 1600x900. Read the HTML for structure. The rendered PNG is at references/05-grid.png.
+- [ai/laio-brand/references/06-big-mark.html](https://assets.la.io/ai/laio-brand/references/06-big-mark.html): The Big Mark reference, 1600x900. Read the HTML for structure. The rendered PNG is at references/06-big-mark.png.
+
 ## Color
 
 - [colors/laio-tokens.json](https://assets.la.io/colors/laio-tokens.json): All five color families as JSON. Hex, RGB, brand names.
@@ -64,6 +74,12 @@ All artwork ships black (#231F20) on transparent. Recolor with CSS. Do not edit 
 - [logos/LOUISIANA-INNOVATION-A.svg](https://assets.la.io/logos/LOUISIANA-INNOVATION-A.svg): Full name lockup, stacked.
 - [logos/LOUISIANA-INNOVATION-B.svg](https://assets.la.io/logos/LOUISIANA-INNOVATION-B.svg): Full name lockup, condensed.
 - [logos/DIVISION-LINE.svg](https://assets.la.io/logos/DIVISION-LINE.svg): The LED division line. Sits under the mark.
+- [logos/LED-WHITE.svg](https://assets.la.io/logos/LED-WHITE.svg): Louisiana Economic Development. The default, on dark grounds.
+- [logos/LED-BLACK.svg](https://assets.la.io/logos/LED-BLACK.svg): On light grounds. Recolor to the family dark.
+- [logos/LED-SMALL-WHITE.svg](https://assets.la.io/logos/LED-SMALL-WHITE.svg): The compact LED lockup, on dark grounds.
+- [logos/LED-SMALL-BLACK.svg](https://assets.la.io/logos/LED-SMALL-BLACK.svg): The compact LED lockup, on light grounds.
+
+LED logo: Louisiana Economic Development, the parent agency. White on dark grounds is the default. Black on light grounds, recolored to the family dark. Never the full-color or gold versions. Sits under or beside the LA.IO mark, never above it.
 
 ## Motifs
 
@@ -77,6 +93,12 @@ All artwork ships black (#231F20) on transparent. Recolor with CSS. Do not edit 
 - [motifs/LAIO-DOWN-BRACKET.svg](https://assets.la.io/motifs/LAIO-DOWN-BRACKET.svg): Down bracket motif.
 - [motifs/LAIO-BRACKET-CORNER-1.svg](https://assets.la.io/motifs/LAIO-BRACKET-CORNER-1.svg): Corner 1 motif.
 - [motifs/LAIO-BRACKET-CORNER-2.svg](https://assets.la.io/motifs/LAIO-BRACKET-CORNER-2.svg): Corner 2 motif.
+- [motifs/LAIO-CORNER-L.svg](https://assets.la.io/motifs/LAIO-CORNER-L.svg): L-corner motif.
+- [motifs/LAIO-SQUARE.svg](https://assets.la.io/motifs/LAIO-SQUARE.svg): Square motif.
+- [motifs/LAIO-SQUARE-EMPTY.svg](https://assets.la.io/motifs/LAIO-SQUARE-EMPTY.svg): Square outline motif.
+- [motifs/LAIO-FIELD-DIAGONAL.svg](https://assets.la.io/motifs/LAIO-FIELD-DIAGONAL.svg): Diagonal field motif.
+- [motifs/LAIO-HATCH.svg](https://assets.la.io/motifs/LAIO-HATCH.svg): Hatch tile motif.
+- [motifs/LAIO-WIRE-NODE.svg](https://assets.la.io/motifs/LAIO-WIRE-NODE.svg): Wire node motif.
 
 ## Pages
 

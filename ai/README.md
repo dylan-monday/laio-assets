@@ -29,6 +29,8 @@ ai/
 │   ├── SKILL.md                      entrypoint; auto-triggers in Cowork and Claude Code
 │   ├── BRAND.md                      full brand reference
 │   ├── COMPONENTS.md                 copy-paste component code (React + HTML/CSS)
+│   ├── RANGE.md                      six layout moves, the shape grammar, and guardrails
+│   ├── references/                   one 1600x900 HTML + PNG per move; PNGs from _build/build_refs.py
 │   └── assets/                       logos, motifs, color CSS + tokens, fonts/laio-fonts-inline.css, LaioLogo.jsx
 └── lovable/
     ├── LAIO_LOVABLE_GUIDE.md         how to start a Lovable project; its paste block feeds the Lovable tab
@@ -39,8 +41,8 @@ ai/
 
 ## How each tool uses it
 
-+ **Claude (claude.ai):** make a Project, paste the block from `claude-ai-project-setup.md` into custom instructions, and upload `BRAND.md`, `COMPONENTS.md`, and `laio-fonts-inline.css` as knowledge.
-+ **Claude Design:** build an LA.IO Design System from the prompt and references in `claude-design-setup.md`, then pick it from the Design System dropdown. Account-bound, so each designer makes their own copy.
++ **Claude (claude.ai):** make a Project, paste the block from `claude-ai-project-setup.md` into custom instructions, and upload `BRAND.md`, `COMPONENTS.md`, `RANGE.md`, and `laio-fonts-inline.css` as knowledge.
++ **Claude Design:** build an LA.IO Design System from the prompt and references in `claude-design-setup.md`, including the six Range PNGs, then pick it from the Design System dropdown. Account-bound, so each designer makes their own copy.
 + **Claude Code and Cowork:** put `laio-brand/` in `~/.claude/skills/` (or `.claude/skills/` in one project). For Claude Code, also drop `CLAUDE.md` into the project root.
 + **Lovable:** paste `lovable/LOVABLE_CUSTOM_INSTRUCTIONS.md` into Workspace Knowledge in your Lovable project settings once, build or duplicate the starter template, then follow `lovable/LAIO_LOVABLE_GUIDE.md`.
 + **Any other AI:** tell it to fetch `https://assets.la.io/ai/CLAUDE.md`. If it cannot fetch URLs, attach `CLAUDE.md` and `laio-fonts-inline.css` instead. Tools that read `AGENTS.md` by convention find the same file under that name.
@@ -59,6 +61,7 @@ From the repo root:
 
 ```
 python3 _build/build_fonts.py     # only when the fonts change
+python3 _build/build_refs.py      # only when a reference changes; renders references/*.png
 python3 _build/gen_pages.py       # writes ai/index.html, ai/AGENTS.md, llms.txt, robots.txt
 cd ai && rm laio-brand.zip && zip -r -X laio-brand.zip laio-brand -x '*.DS_Store'
 ```
