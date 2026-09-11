@@ -9,10 +9,37 @@ their output, and the output is what deploys.
 
 ```
 pip3 install cairosvg
+pip3 install fonttools brotli
 brew install ghostscript
 ```
 
 Ghostscript is only needed for the EPS step in `build_kit.py`.
+fonttools and brotli are only needed for `build_fonts.py`.
+
+---
+
+## Rebuilding the web font CSS
+
+```
+python3 _build/build_fonts.py
+```
+
+Aktiv Grotesk has to load without the Typekit kit, which is locked to la.io.
+This builds two stylesheets from the woff2s in `fonts/`:
+
++ `fonts/laio-fonts.css`: all nine cuts as `@font-face` pointing at
+  `https://assets.la.io/fonts/`. One `<link>` on any real site.
++ `fonts/laio-fonts-inline.css`: Light, Regular and Bold, subset to Latin and
+  embedded as base64. For sandboxes that block every external host (claude.ai
+  artifacts, Claude Design, Lovable previews, email builders). Paste it into a
+  `<style>` tag.
+
+It also writes the Latin subsets to `fonts/subset/` and a check page to
+`_build/font-test.html`. Serve the repo root over http to open it; the hosted
+column does not load from `file://`.
+
+The script prints each output's size and exits non-zero if the inline file
+passes 200,000 bytes. Safe to rerun.
 
 ---
 
