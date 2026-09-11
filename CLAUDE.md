@@ -207,10 +207,9 @@ inventory. It keeps the look of the hand-built Claude kit page it replaced.
   into place over a spinning field of orbital rings, the logo dissolves, and the
   rings stay on as the live header backdrop. An earlier version framed the white
   logo with extra magenta brackets. It was rejected as off-brand, because the
-  logo already contains its `< >`. The rings math came from the zero-dependency
-  canvas generator in the LA Startup Report project (`v2-geodesic.html`),
-  recolored to Magenta, set to a slow spin with each ring also turning at its own
-  random speed and direction, and tilted toward the cursor.
+  logo already contains its `< >`. The rings are a zero-dependency canvas model,
+  in Magenta, set to a slow spin with each ring also turning at its own random
+  speed and direction, and tilted toward the cursor.
 + **Reduced motion is fully respected.** With `prefers-reduced-motion: reduce`
   there is no intro, no spin, and no parallax: one static rings frame behind a
   fully visible page. All motion CSS sits behind
@@ -266,4 +265,6 @@ The repo is the only source. Nothing is synced in from the outer workspace.
 + Hosted logo SVGs are single-fill `#231f20`. To recolor one in a page, inline it
   and swap the fill for `currentColor`. See `_build/laio-complete.inline.svg`.
 + No em dashes.
-+ No contact addresses on public pages. `team@louisiana.io` is internal.
++ No contact addresses on public pages, and no internal addresses in any file.
+  This repo is served publicly, docs included. Only `_build/` is excluded, by
+  `.vercelignore`.

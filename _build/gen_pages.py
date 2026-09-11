@@ -793,7 +793,7 @@ TAB_CODE = f'''<p class="for">For <b>hands-on work and real builds</b>. Cowork u
 
 TAB_LOVABLE = f'''<p class="for">For <b>sites and apps built in Lovable</b>. The brand rules live at the workspace level, and a starter template carries the fonts, colors, logo component, and base components. Every new project starts from that template.</p>
 <ol class="steps">
-  <li><div class="st">Add the workspace instructions</div><div class="sd">Once per Lovable workspace. Paste the contents of <code class="inline">LOVABLE_CUSTOM_INSTRUCTIONS.md</code> into the workspace-wide instructions in Lovable's settings. Every project in the workspace then knows the voice, color, type, and design rules. Skip this if your workspace already has them.</div>
+  <li><div class="st">Add the workspace instructions</div><div class="sd">Once per Lovable workspace. Paste the contents of <code class="inline">LOVABLE_CUSTOM_INSTRUCTIONS.md</code> into Workspace Knowledge in your Lovable project settings. Every project in the workspace then knows the voice, color, type, and design rules. Skip this if your workspace already has them.</div>
 {dlrow(dl("/ai/lovable/LOVABLE_CUSTOM_INSTRUCTIONS.md", "Download workspace instructions"))}
   </li>
   <li><div class="st">Duplicate the LA.IO Starter Template</div><div class="sd">Find <i>LA.IO Starter Template</i> in your projects, open the three-dot menu, and duplicate it. Rename it for your project. Fonts, colors, the logo component, and base components are already wired in. No template in your workspace yet? Start a new project and paste <code class="inline">LOVABLE_STARTER_PROMPT.md</code> as the first message. The spec describes what the finished template contains.</div>

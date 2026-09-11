@@ -42,7 +42,7 @@ ai/
 + **Claude (claude.ai):** make a Project, paste the block from `claude-ai-project-setup.md` into custom instructions, and upload `BRAND.md`, `COMPONENTS.md`, and `laio-fonts-inline.css` as knowledge.
 + **Claude Design:** build an LA.IO Design System from the prompt and references in `claude-design-setup.md`, then pick it from the Design System dropdown. Account-bound, so each designer makes their own copy.
 + **Claude Code and Cowork:** put `laio-brand/` in `~/.claude/skills/` (or `.claude/skills/` in one project). For Claude Code, also drop `CLAUDE.md` into the project root.
-+ **Lovable:** paste `lovable/LOVABLE_CUSTOM_INSTRUCTIONS.md` into the workspace instructions once, build or duplicate the starter template, then follow `lovable/LAIO_LOVABLE_GUIDE.md`.
++ **Lovable:** paste `lovable/LOVABLE_CUSTOM_INSTRUCTIONS.md` into Workspace Knowledge in your Lovable project settings once, build or duplicate the starter template, then follow `lovable/LAIO_LOVABLE_GUIDE.md`.
 + **Any other AI:** tell it to fetch `https://assets.la.io/ai/CLAUDE.md`. If it cannot fetch URLs, attach `CLAUDE.md` and `laio-fonts-inline.css` instead. Tools that read `AGENTS.md` by convention find the same file under that name.
 
 ## Hosted assets
