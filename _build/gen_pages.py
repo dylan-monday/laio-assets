@@ -614,7 +614,7 @@ MOTIFS = [
 # The six layout moves in RANGE.md. Each has references/<key>.html and .png,
 # rendered by build_refs.py. Rules are the two from RANGE.md, shortened.
 RANGE = [
-    ("01-split",    "The Split",    "One diagonal per composition, at 45 degrees.",
+    ("01-split",    "The Split",    "One field per composition, edges at 45 degrees.",
                                     "The field carries the accent content. The other side stays quiet."),
     ("02-diamond",  "The Diamond",  "Diamonds touch at points and never overlap.",
                                     "Where two meet, a small easy-color diamond may hold the logo."),
