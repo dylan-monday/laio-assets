@@ -66,7 +66,7 @@ Scan all folders and compare what exists against what the spec calls for. Report
 - `AktivGrotesk-Bold.woff2` (weight 700)
 - TTF versions of the same (for InDesign/print use)
 
-Note: Web projects load Aktiv Grotesk via Adobe Fonts kit — `https://use.typekit.net/usf5bjl.css` — not from these files. The woff2 files in this directory are for self-hosted or offline contexts only. Adobe Fonts serves the family as `'aktiv-grotesk'` (lowercase, hyphenated).
+Note: Web projects load Aktiv Grotesk through `fonts/laio-fonts.css` (hosted, real sites) or `fonts/laio-fonts-inline.css` (embedded, for sandboxes), both built from these woff2 files. Family name is `'Aktiv Grotesk'` (title case).
 
 **Colors**:
 - `LA_IO_COLORS_RGB.ase` — exists, confirmed
@@ -183,7 +183,7 @@ Voice reminders:
 - [ ] `colors/laio-tokens.json` — needs to be generated
 
 ### Fonts
-- [ ] Aktiv Grotesk woff2 files — confirm present (web delivery handled via Adobe Fonts kit)
+- [ ] Aktiv Grotesk woff2 files — confirm present (web delivery via `fonts/laio-fonts.css` and `fonts/laio-fonts-inline.css`)
 
 ### Logos
 - [ ] All logo SVG variants — not yet added

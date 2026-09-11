@@ -58,7 +58,7 @@ One family per project. Don't mix.
 
 ## The two typefaces
 
-**Aktiv Grotesk** — headlines and body copy. Already loaded.
+**Aktiv Grotesk** — headlines and body copy. Already loaded in the starter template, from `https://assets.la.io/fonts/laio-fonts.css`. If the preview shows a different font, the preview cannot reach assets.la.io. Ask Lovable to paste the contents of `https://assets.la.io/fonts/laio-fonts-inline.css` into a `<style>` tag in `index.html`.
 + Headlines: Light or Bold. Nothing in between.
 + Body copy: white on dark backgrounds, or dark color on white
 
@@ -95,6 +95,7 @@ Tell Lovable specifically what's wrong:
 Common corrections:
 + "use `+` as the bullet, not `•`"
 + "the eyebrow label should be JetBrains Mono, all caps, in the accent color"
++ "the font is wrong: load Aktiv Grotesk from https://assets.la.io/fonts/laio-fonts.css, family 'Aktiv Grotesk'"
 + "remove the em dash, rewrite that sentence"
 + "stay in the Blue color family — remove the green"
 + "too much copy — cut it by half"

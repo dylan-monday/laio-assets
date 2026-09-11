@@ -48,28 +48,25 @@ Write with matter-of-fact confidence. Short sentences. Declarative statements. N
 ## Typography — two typefaces, strictly separated
 
 ### Aktiv Grotesk — body, headlines, UI
-Load via self-hosted woff2 files from assets.la.io:
+Family name `'Aktiv Grotesk'` (title case, never `'aktiv-grotesk'`). Headlines Light 300 or Bold 700, never a middle weight. Body Regular 400.
 
-```css
-@font-face {
-  font-family: 'Aktiv Grotesk';
-  src: url('https://assets.la.io/fonts/AktivGrotesk_Lt.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Aktiv Grotesk';
-  src: url('https://assets.la.io/fonts/AktivGrotesk_Rg.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Aktiv Grotesk';
-  src: url('https://assets.la.io/fonts/AktivGrotesk_Bd.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-}
-```
+Three ways to load it, in this order of preference:
+
++ **Embedded:** paste the contents of `laio-fonts-inline.css` into a `<style>` tag. Zero network requests. Use in claude.ai artifacts, Claude Design, Lovable previews, email, anything sandboxed. This is the default for AI-generated work.
++ **Hosted:** `<link rel="stylesheet" href="https://assets.la.io/fonts/laio-fonts.css">` for real sites and apps on any domain.
++ **Fallback:** Roboto from Google Fonts, only when neither of the above is possible. Say so in the handoff. Roboto is a stand-in, never the goal.
+
+font-family stack: `'Aktiv Grotesk', 'Roboto', system-ui, sans-serif`
+
+In a Lovable project:
+
++ **Deployed project:** add the hosted stylesheet to `index.html` `<head>`:
+  ```html
+  <link rel="stylesheet" href="https://assets.la.io/fonts/laio-fonts.css">
+  ```
++ **Preview:** if the Lovable preview cannot reach assets.la.io and shows a fallback font, also paste the full contents of `https://assets.la.io/fonts/laio-fonts-inline.css` into a `<style>` tag in `index.html` `<head>`. It embeds Light, Regular and Bold with zero network requests.
+
+Do not write `@font-face` rules for Aktiv Grotesk by hand. Both CSS files already declare every weight.
 
 Weight rules: Light (300) or Bold (700) for headlines. Regular (400) for body copy.
 Never use 500 or 600 as a headline weight.

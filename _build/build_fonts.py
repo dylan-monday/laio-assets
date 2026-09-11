@@ -3,7 +3,8 @@
 Writes, relative to the repo root:
   fonts/subset/AktivGrotesk_{Lt,Rg,Bd}.latin.woff2   Latin subsets of three cuts
   fonts/laio-fonts-inline.css                         those subsets as base64 data URIs
-  fonts/laio-fonts.css                                all nine full cuts, hosted URLs
+  claude/laio-brand/assets/fonts/laio-fonts-inline.css  the same file, shipped in the skill
+  fonts/laio-fonts.css                               all nine full cuts, hosted URLs
   _build/font-test.html                               side-by-side check of both CSS files
 
   pip3 install fonttools brotli
@@ -83,6 +84,11 @@ for stem in INLINE_CUTS:
 inline_css=INLINE_HEAD+"\n"+"\n".join(blocks)
 INLINE=os.path.join(FONTS,"laio-fonts-inline.css")
 write(INLINE,inline_css)
+# The Claude skill ships its own copy. AI sandboxes often cannot reach assets.la.io,
+# so the kit must carry the file rather than point at it. Rezip laio-brand.zip after.
+SKILL_INLINE=os.path.join(ROOT,"claude","laio-brand","assets","fonts","laio-fonts-inline.css")
+os.makedirs(os.path.dirname(SKILL_INLINE),exist_ok=True)
+write(SKILL_INLINE,inline_css)
 
 # ---- fonts/laio-fonts.css ----
 HOSTED_HEAD="""/* LA.IO Aktiv Grotesk, hosted.

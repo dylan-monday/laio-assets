@@ -244,8 +244,22 @@ no attachments, no stale copies.</p>
 
 <section class="step">
   <div class="shead"><span class="snum">04</span><h2>Type</h2>
-  <span class="snote">Aktiv Grotesk, self-hosted. JetBrains Mono comes from Google Fonts.</span></div>
+  <span class="snote">Embedded CSS for sandboxes, hosted CSS for real sites. JetBrains Mono comes from Google Fonts.</span></div>
   <div class="urow">
+  <span class="uplus">+</span>
+  <div class="ubody">
+    <div class="uname">Embedded <span class="uw mono">CSS</span></div>
+    <div class="udesc">Paste the contents into a &lt;style&gt; tag. Zero network requests. Use in claude.ai artifacts, Claude Design, Lovable previews, email, anything sandboxed. This is the default for AI-generated work.</div>
+  </div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/fonts/laio-fonts-inline.css"><span class="upath">/fonts/laio-fonts-inline.css</span><span class="uci">COPY</span></button>
+</div><div class="urow">
+  <span class="uplus">+</span>
+  <div class="ubody">
+    <div class="uname">Hosted <span class="uw mono">CSS</span></div>
+    <div class="udesc">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://assets.la.io/fonts/laio-fonts.css&quot;&gt; for real sites and apps on any domain.</div>
+  </div>
+  <button class="ucopy mono" data-copy="https://assets.la.io/fonts/laio-fonts.css"><span class="upath">/fonts/laio-fonts.css</span><span class="uci">COPY</span></button>
+</div><div class="urow">
   <span class="uplus">+</span>
   <div class="ubody">
     <div class="uname">Thin <span class="uw mono">100</span></div>
@@ -310,7 +324,9 @@ no attachments, no stale copies.</p>
   <button class="ucopy mono" data-copy="https://assets.la.io/fonts/AktivGrotesk_BdIt.woff2"><span class="upath">/fonts/AktivGrotesk_BdIt.woff2</span><span class="uci">COPY</span></button>
 </div>
   <div class="tip"><b>Headlines use Light (300) or Bold (700).</b> Regular (400) for body.
-  Never 500 or 600 as a headline weight.</div>
+  Never 500 or 600 as a headline weight. Family name is <code>'Aktiv Grotesk'</code>, never
+  <code>'aktiv-grotesk'</code>. Stack: <code>'Aktiv Grotesk', 'Roboto', system-ui, sans-serif</code>.
+  Roboto only when neither CSS file can load, and say so in the handoff.</div>
 </section>
 
 <section class="step">

@@ -7,6 +7,7 @@ Reads logos/labs/manifest.json (written by build_kit.py) for lockup
 dimensions, so run build_kit.py first if the master art changed.
 """
 import json, datetime, os
+from html import escape as html_escape
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
@@ -520,6 +521,17 @@ FONTS = [
     ("AktivGrotesk_BdIt.woff2", "Bold Italic",  "700"),
 ]
 
+# The two ways to load Aktiv Grotesk, in order of preference. Listed before the woff2s.
+FONT_CSS = [
+    ("laio-fonts-inline.css", "Embedded",
+     "Paste the contents into a <style> tag. Zero network requests. Use in claude.ai "
+     "artifacts, Claude Design, Lovable previews, email, anything sandboxed. This is "
+     "the default for AI-generated work."),
+    ("laio-fonts.css", "Hosted",
+     '<link rel="stylesheet" href="https://assets.la.io/fonts/laio-fonts.css"> for '
+     "real sites and apps on any domain."),
+]
+
 DATA = [
     ("colors/laio-tokens.json", "All five color families as JSON. Hex, RGB, and the brand name for each."),
     ("colors/laio-colors.css",  "The same values as CSS custom properties. Link it or paste it."),
@@ -567,6 +579,8 @@ def urlrow(path, name, desc):
 </div>'''
 
 fontrows = "".join(
+    urlrow("fonts/" + f, f"{name} <span class=\"uw mono\">CSS</span>", html_escape(desc))
+    for f, name, desc in FONT_CSS) + "".join(
     urlrow("fonts/" + f, f"{label} <span class=\"uw mono\">{w}</span>",
            "woff2. Self-hosted, open CORS.")
     for f, label, w in FONTS)
@@ -732,10 +746,12 @@ no attachments, no stale copies.</p>
 
 <section class="step">
   <div class="shead"><span class="snum">04</span><h2>Type</h2>
-  <span class="snote">Aktiv Grotesk, self-hosted. JetBrains Mono comes from Google Fonts.</span></div>
+  <span class="snote">Embedded CSS for sandboxes, hosted CSS for real sites. JetBrains Mono comes from Google Fonts.</span></div>
   {fontrows}
   <div class="tip"><b>Headlines use Light (300) or Bold (700).</b> Regular (400) for body.
-  Never 500 or 600 as a headline weight.</div>
+  Never 500 or 600 as a headline weight. Family name is <code>'Aktiv Grotesk'</code>, never
+  <code>'aktiv-grotesk'</code>. Stack: <code>'Aktiv Grotesk', 'Roboto', system-ui, sans-serif</code>.
+  Roboto only when neither CSS file can load, and say so in the handoff.</div>
 </section>
 
 <section class="step">
@@ -812,12 +828,21 @@ _t("colors/laio-colors.css", "The same values as CSS custom properties."),
 "",
 "## Type",
 "",
-"Aktiv Grotesk, self-hosted woff2. Light (300) or Bold (700) for headlines, Regular (400) for body.",
+"Aktiv Grotesk, family name 'Aktiv Grotesk' (title case, never 'aktiv-grotesk'). Headlines Light 300 or Bold 700, never a middle weight. Body Regular 400.",
+"Three ways to load it, in this order of preference:",
+""] + [
+_t("fonts/" + f, f"{name}. {desc}") for f, name, desc in FONT_CSS
+] + [
+"",
+"Fallback: Roboto from Google Fonts, only when neither of the above is possible. Say so in the handoff. Roboto is a stand-in, never the goal.",
+"font-family stack: 'Aktiv Grotesk', 'Roboto', system-ui, sans-serif",
+"",
+"The individual woff2 files behind laio-fonts.css:",
 ""] + [
 _t("fonts/" + f, f"Aktiv Grotesk {label}, weight {w}.") for f, label, w in FONTS
 ] + [
 "",
-"JetBrains Mono for eyebrows, labels, and metadata only. Always caps. Load from Google Fonts:",
+"JetBrains Mono for eyebrows, labels, tags, metadata only. All caps, letter-spacing 0.08 to 0.12em, weights 400/700, always a brand accent color. Google Fonts:",
 "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap",
 "",
 "## Logos",
