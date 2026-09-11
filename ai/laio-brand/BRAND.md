@@ -232,15 +232,25 @@ The square pixel/dot in the logo is the base measurement unit. Maintain 3x that 
 **Logo usage latitude:**
 The brand guidelines explicitly encourage exploration — the logo can be used large, cropped, bleeding off edges, as a supergraphic. The rule is: it must remain legible. Breaking compositional rules is on-brand when it's intentional and legible.
 
+**The LED logo:**
+Louisiana Economic Development, the parent agency. White on dark grounds is the default. Black on light grounds, recolored to the family dark. Never the full-color or gold versions. Sits under or beside the LA.IO mark, never above it. Files: `LED-WHITE.svg`, `LED-BLACK.svg`, `LED-SMALL-WHITE.svg`, `LED-SMALL-BLACK.svg`, in `assets/logos/` and at `https://assets.la.io/logos/`. It is the one outside logo the kit ships. Partner logos are covered in `RANGE.md`.
+
 ### Design elements library
-The bracket shapes from the logo decompose into a full visual vocabulary. Elements include:
-- `< >` — full bracket pair (contains/frames content)
-- `<` `>` — individual left/right marks (directional, indexing)
-- `v` `^` — downward/upward chevrons
-- `x` — cross/multiplication
-- `◆` — filled diamond
-- `◇` — outlined diamond
-- `⌐` `+` `¬` — corner marks and cross (registration/grid references)
+The bracket shapes from the logo decompose into a full visual vocabulary. Every element sits at 0, 45, or 90 degrees. Files are in `assets/motifs/` and at `https://assets.la.io/motifs/`.
+
++ `< >` full bracket pair: contains or frames content. `<` `>` alone: directional, indexing. (`LAIO-LEFT-BRACKET`, `LAIO-RIGHT-BRACKET`)
++ `v` `^` downward and upward chevrons (`LAIO-DOWN-BRACKET`, `LAIO-UP-BRACKET`)
++ `x` cross (`LAIO-X`)
++ `◆` `◇` filled and outlined diamond (`LAIO-DIAMOND`, `LAIO-DIAMOND-EMPTY`)
++ `■` `□` filled and outlined square, the diamond set back to 0 degrees (`LAIO-SQUARE`, `LAIO-SQUARE-EMPTY`)
++ `⌐` `¬` corner marks for frames and registration (`LAIO-BRACKET-CORNER-1`, `LAIO-BRACKET-CORNER-2`)
++ `L` the L-corner: a vertical bar with a foot. It holds the vertical LOUISIANA INNOVATION wordmark (`LAIO-CORNER-L`)
++ `+` plus (`LAIO-PLUS`)
++ Diagonal field: a right triangle with a 45-degree edge, sized for a 16:9 canvas at 100% width (`LAIO-FIELD-DIAGONAL`)
++ 45-degree hatch: one tile that repeats seamlessly (`LAIO-HATCH`)
++ Wire node: the open-square terminal for 1px connectors (`LAIO-WIRE-NODE`)
+
+`RANGE.md` shows how these combine into six layout moves, with a reference for each.
 
 **The `+` as the brand bullet:**
 The `+` is the canonical list marker for LA.IO. In body copy, use a literal `+` character. In designed layouts, the `+` can be constructed from bracket corner elements at any size. It replaces all standard bullets, dashes, and dots across all contexts — UI lists, copy, slide decks, printed materials.

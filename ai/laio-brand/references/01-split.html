@@ -1,0 +1,94 @@
+<!doctype html>
+<!--
+  LA.IO RANGE REFERENCE 01: THE SPLIT
+  One 45-degree field slices the canvas into two committed areas: dark against
+  white, or dark against photo.
+
+  + Rule: one diagonal per composition.
+  + Rule: the field carries the accent content (a number, a headline, or the
+    plus points). The other side stays quiet.
+  + Don't: two diagonals, or a diagonal at any angle other than 45.
+
+  Family: Blue. Dark #01233C, easy #63DCDE, electric #00B9FE, on white.
+  Shape count: one (the field). The logo and type do not count.
+
+  This file is a reference. Read the structure, then build your own.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LA.IO Range 01: The Split</title>
+<!-- Aktiv Grotesk and JetBrains Mono, embedded. Renders offline. -->
+<link rel="stylesheet" href="../assets/fonts/laio-fonts-inline.css">
+<style>
+  :root {
+    --dark: #01233C;
+    --easy: #63DCDE;
+    --electric: #00B9FE;
+    --white: #FFFFFF;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--white); }
+  .canvas {
+    position: relative; width: 1600px; height: 900px; overflow: hidden;
+    background: var(--white); color: var(--dark);
+    font-family: 'Aktiv Grotesk', 'Roboto', system-ui, sans-serif;
+  }
+  svg { display: block; }
+  .mono {
+    font-family: 'JetBrains Mono', monospace; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+  }
+
+  /* The field: LAIO-FIELD-DIAGONAL dropped at 100% width. Hypotenuse at 45. */
+  .field { position: absolute; inset: 0; color: var(--dark); }
+
+  /* Quiet side: one headline in Light, one accent word in Bold. No color. */
+  .headline {
+    position: absolute; left: 120px; top: 132px; width: 880px; margin: 0;
+    font-weight: 300; font-size: 84px; line-height: 1.06; letter-spacing: -0.02em;
+  }
+  .headline b { font-weight: 700; }
+  .logo { position: absolute; left: 120px; bottom: 104px; width: 168px; color: var(--dark); }
+
+  /* The field carries the accent content: the plus points. */
+  .points { position: absolute; right: 120px; bottom: 104px; width: 330px; color: var(--white); }
+  .points .eyebrow { margin: 0 0 26px; font-size: 16px; color: var(--easy); }
+  .points ul { list-style: none; margin: 0; padding: 0; }
+  .points li { font-weight: 300; font-size: 46px; line-height: 1.32; }
+  .points li span { color: var(--easy); font-weight: 400; margin-right: 16px; }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <svg class="field" viewBox="0 0 1600 900" aria-hidden="true">
+    <polygon points="700 900 1600 0 1600 900 700 900" fill="currentColor"/>
+  </svg>
+
+  <h1 class="headline">Louisiana has always built what the world needs <b>next.</b></h1>
+
+  <svg class="logo" viewBox="0 0 280.17 67.88" role="img" aria-label="LA.IO">
+    <g fill="currentColor">
+      <path d="M66.14,19.91v22.03h14.23v6.89h-22.03v-28.92h7.8Z"/>
+      <path d="M107.72,43.23h-8.58l-1.56,5.6h-7.57l8.86-28.92h9.55l8.86,28.92h-7.99l-1.56-5.6ZM100.79,37.4h5.32l-2.57-9.18h-.18l-2.57,9.18Z"/>
+      <path d="M134.3,40.02h8.81v8.81h-8.81v-8.81Z"/>
+      <path d="M162.67,48.83v-6.75h7.21v-15.42h-7.21v-6.75h22.22v6.75h-7.21v15.42h7.21v6.75h-22.22Z"/>
+      <path d="M208.85,49.38c-7.44,0-12.99-6.11-12.99-15.01s5.55-15.01,12.99-15.01,12.99,6.1,12.99,15.01-5.55,15.01-12.99,15.01ZM208.85,26.25c-3.12,0-5.1,3.21-5.1,8.12s1.97,8.12,5.1,8.12,5.09-3.21,5.09-8.12-1.97-8.12-5.09-8.12Z"/>
+      <polygon points="14.73 33.94 41.3 60.51 33.94 67.88 0 33.94 33.94 0 41.3 7.36 14.73 33.94"/>
+      <polygon points="265.45 33.94 238.87 7.36 246.24 0 280.17 33.94 246.24 67.88 238.87 60.51 265.45 33.94"/>
+    </g>
+  </svg>
+
+  <div class="points">
+    <p class="eyebrow mono">The pillars</p>
+    <ul>
+      <li><span>+</span>Capital</li>
+      <li><span>+</span>Coaching</li>
+      <li><span>+</span>Connections</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

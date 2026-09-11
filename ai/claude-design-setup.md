@@ -12,6 +12,7 @@ Design systems are account-bound, so each person who designs LA.IO work creates 
    + `LAIO-COMPLETE.svg` (the logo) from `https://assets.la.io/logos/`
    + `laio-fonts-inline.css` from `https://assets.la.io/fonts/laio-fonts-inline.css`. This is Aktiv Grotesk embedded in one file. Claude Design uses it for all Aktiv Grotesk rendering, since it cannot load the typeface from any URL.
    + One or two motifs from `https://assets.la.io/motifs/` (e.g. `LAIO-LEFT-BRACKET.svg`, `LAIO-PLUS.svg`)
+   + The six Range reference PNGs, `01-split.png` to `06-big-mark.png`, from `https://assets.la.io/ai/laio-brand/references/`. One example of each layout move.
    + Optional but recommended: a screenshot of `https://assets.la.io/ai/` as a "brand in action" reference
 4. Name it exactly: **LA.IO Design System**
 5. On any New Project, choose **LA.IO Design System** from the *Design System* dropdown.
@@ -40,6 +41,8 @@ TYPOGRAPHY. Two typefaces, strictly separated.
   JetBrains Mono for eyebrows, labels, tags, metadata only. All caps, letter-spacing 0.08 to 0.12em, weights 400/700, always a brand accent color. Google Fonts: https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap
 
 LOGO AND MOTIFS. Use the real LA.IO assets, never recreate the logo. The logo is a monospace wordmark bracketed by chevrons: < LA.IO >. Files are single-fill near-black (#231F20); recolor by overriding the fill. Logo: https://assets.la.io/logos/LAIO-COMPLETE.svg (also LAIO-BASE, LAIO-HORZ). Motifs (brackets, chevrons, plus, diamond, X): https://assets.la.io/motifs/. Use brackets and chevrons as framing devices and supergraphics: scale freely, crop intentionally, never scatter as decoration. Never frame the logo itself with additional brackets.
+
+LAYOUT MOVES. Beyond a plain page, build with six moves, one attached reference each: the Split (one 45-degree field divides the canvas), the Diamond (45-degree containers that touch at points), the Frame (two corner brackets around a headline), the Wire (1px connectors with open-square terminals), the Grid (four photos with the plus as the gutter), and the Big Mark (the logo at supergraphic scale, cropped past the edges). Every shape comes from the logo's bracket. Angles are 0, 45, and 90 only; nothing else rotates. No curves, no circles. Two shapes per composition, one diagonal, one family.
 
 LAYOUT AND COMPONENTS. Angular and restrained. Border-radius 0 to 2px (small tags up to 3px). No gradients, no drop shadows. Commit to dark or light backgrounds, never mid-range. Generous whitespace; every element has structural purpose. Buttons are flat with a 2px radius. Cards are dark background with an accent border, or light background with an accent border. Use "+" as the list bullet, never a dot, hyphen, or asterisk.
 

@@ -372,6 +372,28 @@
   .mname { flex: 1; font-size: 0.9rem; padding: 10px 12px; }
   .acard .ucopy, .mcard .ucopy { width: 100%; border: 0; border-top: 1px solid var(--hair-soft); border-radius: 0; }
   .mcard .ucopy { font-size: 0.6rem; padding: 8px 10px; gap: 8px; }
+  /* White artwork (the white LED files) needs a dark stage to read. */
+  .astage.dark { background: var(--bg); border-bottom: 1px solid var(--hair-soft); }
+
+  /* ---------- range cards: the six layout moves, same language as the logo cards ---------- */
+  .rcards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 32px; }
+  @media (max-width: 980px) { .rcards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 640px) { .rcards { grid-template-columns: minmax(0, 1fr); } }
+  .rcard { display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--hair-soft); background: var(--bg); }
+  .rcard img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-bottom: 1px solid var(--hair-soft); }
+  .rname { font-weight: 700; font-size: 1rem; color: var(--white); padding: 14px 16px 0; }
+  .rrules { flex: 1; list-style: none; margin: 0; padding: 6px 16px 14px; }
+  .rrules li { display: flex; gap: 10px; font-weight: 300; font-size: 0.88rem; line-height: 1.45; color: rgba(255,255,255,0.74); padding-top: 4px; }
+  .rrules .m { color: var(--easy); font-weight: 700; flex-shrink: 0; }
+  .rlinks { display: flex; border-top: 1px solid var(--hair-soft); }
+  .rlinks a {
+    flex: 1; font-family: var(--mono); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--easy); text-decoration: none; padding: 10px 16px;
+    transition: all 0.15s ease;
+  }
+  .rlinks a + a { border-left: 1px solid var(--hair-soft); }
+  .rlinks a:hover { background: var(--easy); color: var(--bg); }
+  #range .dl-row { margin-top: 20px; }
 
   /* ---------- tips under a group ---------- */
   .tip {
@@ -479,7 +501,7 @@
   <li><div class="st">Paste the custom instructions</div><div class="sd">Open the Project, click <i>Set custom instructions</i>, and paste the block below.</div>
 <div class="code">
 <button class="copy">Copy</button>
-<pre>You are producing work for LA.IO (Louisiana Innovation Office), the operating brand for Louisiana's innovation ecosystem. Apply the LA.IO brand to everything you write or design. The uploaded BRAND.md is authoritative; COMPONENTS.md has ready-to-use code; laio-fonts-inline.css embeds the Aktiv Grotesk typeface.
+<pre>You are producing work for LA.IO (Louisiana Innovation Office), the operating brand for Louisiana's innovation ecosystem. Apply the LA.IO brand to everything you write or design. The uploaded BRAND.md is authoritative; COMPONENTS.md has ready-to-use code; RANGE.md names the six layout moves and their limits; laio-fonts-inline.css embeds the Aktiv Grotesk typeface.
 
 Brand in one sentence: Louisiana doesn't sell itself. It states what's true, and the truth is enough.
 
@@ -499,13 +521,14 @@ In every HTML artifact, inline the full contents of laio-fonts-inline.css from p
 
 LOGO and MOTIFS: use the hosted SVGs at https://assets.la.io/logos/ and https://assets.la.io/motifs/. Never recreate the logo. Single-fill near-black; override fill for color.
 
-DESIGN: angular (radius 0 to 2px), committed dark or light, spare with generous whitespace, every element structural. The test: increases clarity, respects the audience, is not trying too hard, works in a Baton Rouge shipyard and a London transit ad.</pre>
+DESIGN: angular (radius 0 to 2px), committed dark or light, spare with generous whitespace, every element structural. For any layout beyond a plain page, follow RANGE.md: angles 0, 45, and 90 only, two shapes per composition. The test: increases clarity, respects the audience, is not trying too hard, works in a Baton Rouge shipyard and a London transit ad.</pre>
 </div>
   </li>
-  <li><div class="st">Add the brand knowledge</div><div class="sd">Download all three files below. In the Project, click <i>Add content</i> (project knowledge) and upload them. <code class="inline">laio-fonts-inline.css</code> carries the Aktiv Grotesk typeface, so artifacts render in the brand font.</div>
+  <li><div class="st">Add the brand knowledge</div><div class="sd">Download all four files below. In the Project, click <i>Add content</i> (project knowledge) and upload them. <code class="inline">laio-fonts-inline.css</code> carries the Aktiv Grotesk typeface, so artifacts render in the brand font. <code class="inline">RANGE.md</code> names the six layout moves.</div>
 <div class="dl-row">
 <a class="dl" href="/ai/laio-brand/BRAND.md" download="BRAND.md"><span class="ico">&darr;</span> Download BRAND.md</a>
 <a class="dl ghost" href="/ai/laio-brand/COMPONENTS.md" download="COMPONENTS.md"><span class="ico">&darr;</span> Download COMPONENTS.md</a>
+<a class="dl ghost" href="/ai/laio-brand/RANGE.md" download="RANGE.md"><span class="ico">&darr;</span> Download RANGE.md</a>
 <a class="dl ghost" href="/fonts/laio-fonts-inline.css" download="laio-fonts-inline.css"><span class="ico">&darr;</span> Download laio-fonts-inline.css</a>
 </div>
   </li>
@@ -517,14 +540,14 @@ DESIGN: angular (radius 0 to 2px), committed dark or light, spare with generous 
         <div class="panel" data-tab="design" role="tabpanel">
 <p class="for">For <b>Claude Design</b> (prototypes, slide decks, visuals). Claude Design has its own Design System feature. You build an <b>LA.IO Design System</b> once, then pick it from the <i>Design System</i> dropdown on any new project and everything comes out on brand. Each person makes their own copy; the prompt below makes it identical every time.</p>
 <ol class="steps">
-  <li><div class="st">Get the setup, the logo, and the font</div><div class="sd">Download the setup notes, plus the logo and the embedded font file to attach as references.</div>
+  <li><div class="st">Get the setup, the logo, and the font</div><div class="sd">Download the setup notes, plus the logo and the embedded font file to attach as references. Save the six reference PNGs from <a href="#range">Range</a> below as well.</div>
 <div class="dl-row">
 <a class="dl" href="/ai/claude-design-setup.md" download="claude-design-setup.md"><span class="ico">&darr;</span> Design System setup</a>
 <a class="dl ghost" href="/logos/LAIO-COMPLETE.svg" download="LAIO-COMPLETE.svg"><span class="ico">&darr;</span> LA.IO logo (SVG)</a>
 <a class="dl ghost" href="/fonts/laio-fonts-inline.css" download="laio-fonts-inline.css"><span class="ico">&darr;</span> Download laio-fonts-inline.css</a>
 </div>
   </li>
-  <li><div class="st">Create a new Design System from this prompt</div><div class="sd">In Claude Design, start a new Design System from a prompt plus references (the same flow as your other systems). Paste the prompt below, and attach the LA.IO logo, <code class="inline">laio-fonts-inline.css</code> (Claude Design uses it for all Aktiv Grotesk rendering), a motif or two from <code class="inline">assets.la.io/motifs/</code>, and optionally a screenshot of this page as a "brand in action" reference.</div>
+  <li><div class="st">Create a new Design System from this prompt</div><div class="sd">In Claude Design, start a new Design System from a prompt plus references (the same flow as your other systems). Paste the prompt below, and attach the LA.IO logo, <code class="inline">laio-fonts-inline.css</code> (Claude Design uses it for all Aktiv Grotesk rendering), a motif or two from <code class="inline">assets.la.io/motifs/</code>, the six Range PNGs (<code class="inline">01-split.png</code> to <code class="inline">06-big-mark.png</code>), and optionally a screenshot of this page as a "brand in action" reference.</div>
 <div class="code">
 <button class="copy">Copy</button>
 <pre>Create a design system called "LA.IO Design System" for LA.IO (Louisiana Innovation Office), the operating brand for Louisiana's innovation ecosystem. It should feel technical, precise, confident, and aspirational. Use the attached LA.IO logo, laio-fonts-inline.css, and references.
@@ -548,6 +571,8 @@ TYPOGRAPHY. Two typefaces, strictly separated.
   JetBrains Mono for eyebrows, labels, tags, metadata only. All caps, letter-spacing 0.08 to 0.12em, weights 400/700, always a brand accent color. Google Fonts: https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;display=swap
 
 LOGO AND MOTIFS. Use the real LA.IO assets, never recreate the logo. The logo is a monospace wordmark bracketed by chevrons: &lt; LA.IO &gt;. Files are single-fill near-black (#231F20); recolor by overriding the fill. Logo: https://assets.la.io/logos/LAIO-COMPLETE.svg (also LAIO-BASE, LAIO-HORZ). Motifs (brackets, chevrons, plus, diamond, X): https://assets.la.io/motifs/. Use brackets and chevrons as framing devices and supergraphics: scale freely, crop intentionally, never scatter as decoration. Never frame the logo itself with additional brackets.
+
+LAYOUT MOVES. Beyond a plain page, build with six moves, one attached reference each: the Split (one 45-degree field divides the canvas), the Diamond (45-degree containers that touch at points), the Frame (two corner brackets around a headline), the Wire (1px connectors with open-square terminals), the Grid (four photos with the plus as the gutter), and the Big Mark (the logo at supergraphic scale, cropped past the edges). Every shape comes from the logo's bracket. Angles are 0, 45, and 90 only; nothing else rotates. No curves, no circles. Two shapes per composition, one diagonal, one family.
 
 LAYOUT AND COMPONENTS. Angular and restrained. Border-radius 0 to 2px (small tags up to 3px). No gradients, no drop shadows. Commit to dark or light backgrounds, never mid-range. Generous whitespace; every element has structural purpose. Buttons are flat with a 2px radius. Cards are dark background with an accent border, or light background with an accent border. Use "+" as the list bullet, never a dot, hyphen, or asterisk.
 
@@ -703,6 +728,57 @@ Color family: [pick one: Magenta / Green / Blue / Orange / Gray]
     </div>
   </section>
 
+  <!-- ============ RANGE ============ -->
+  <section class="block" id="range">
+    <div class="wrap">
+      <span class="mono sec-eyebrow">Six moves</span>
+      <h2>Six ways to build with it.</h2>
+      <p class="lead">Six layout moves from shipped LA.IO work, each with a clean reference an AI can read and imitate. RANGE.md names them and sets their limits.</p>
+      <div class="dl-row">
+<a class="dl" href="/ai/laio-brand/RANGE.md" download="RANGE.md"><span class="ico">&darr;</span> Download RANGE.md</a>
+</div>
+      <div class="rcards">
+<div class="rcard">
+  <img src="/ai/laio-brand/references/01-split.png" alt="The Split reference" width="1600" height="900" loading="lazy">
+  <div class="rname">The Split</div>
+  <ul class="rrules"><li><span class="m">+</span><span>One diagonal per composition, at 45 degrees.</span></li><li><span class="m">+</span><span>The field carries the accent content. The other side stays quiet.</span></li></ul>
+  <div class="rlinks"><a href="/ai/laio-brand/references/01-split.html">HTML</a><a href="/ai/laio-brand/references/01-split.png">PNG</a></div>
+</div>
+<div class="rcard">
+  <img src="/ai/laio-brand/references/02-diamond.png" alt="The Diamond reference" width="1600" height="900" loading="lazy">
+  <div class="rname">The Diamond</div>
+  <ul class="rrules"><li><span class="m">+</span><span>Diamonds touch at points and never overlap.</span></li><li><span class="m">+</span><span>Where two meet, a small easy-color diamond may hold the logo.</span></li></ul>
+  <div class="rlinks"><a href="/ai/laio-brand/references/02-diamond.html">HTML</a><a href="/ai/laio-brand/references/02-diamond.png">PNG</a></div>
+</div>
+<div class="rcard">
+  <img src="/ai/laio-brand/references/03-frame.png" alt="The Frame reference" width="1600" height="900" loading="lazy">
+  <div class="rname">The Frame</div>
+  <ul class="rrules"><li><span class="m">+</span><span>Frames hold type only.</span></li><li><span class="m">+</span><span>Brackets sit outside the type, four strokes clear.</span></li></ul>
+  <div class="rlinks"><a href="/ai/laio-brand/references/03-frame.html">HTML</a><a href="/ai/laio-brand/references/03-frame.png">PNG</a></div>
+</div>
+<div class="rcard">
+  <img src="/ai/laio-brand/references/04-wire.png" alt="The Wire reference" width="1600" height="900" loading="lazy">
+  <div class="rname">The Wire</div>
+  <ul class="rrules"><li><span class="m">+</span><span>A 1px rule in the easy color, with open-square terminals.</span></li><li><span class="m">+</span><span>Lines run at 0 or 90 degrees only.</span></li></ul>
+  <div class="rlinks"><a href="/ai/laio-brand/references/04-wire.html">HTML</a><a href="/ai/laio-brand/references/04-wire.png">PNG</a></div>
+</div>
+<div class="rcard">
+  <img src="/ai/laio-brand/references/05-grid.png" alt="The Grid reference" width="1600" height="900" loading="lazy">
+  <div class="rname">The Grid</div>
+  <ul class="rrules"><li><span class="m">+</span><span>The plus sits at the exact center. Its arms are the gutters.</span></li><li><span class="m">+</span><span>Photos all duotoned in the family, or all untreated.</span></li></ul>
+  <div class="rlinks"><a href="/ai/laio-brand/references/05-grid.html">HTML</a><a href="/ai/laio-brand/references/05-grid.png">PNG</a></div>
+</div>
+<div class="rcard">
+  <img src="/ai/laio-brand/references/06-big-mark.png" alt="The Big Mark reference" width="1600" height="900" loading="lazy">
+  <div class="rname">The Big Mark</div>
+  <ul class="rrules"><li><span class="m">+</span><span>Legibility is the only limit.</span></li><li><span class="m">+</span><span>For a lockup, add an L-corner holding the vertical wordmark.</span></li></ul>
+  <div class="rlinks"><a href="/ai/laio-brand/references/06-big-mark.html">HTML</a><a href="/ai/laio-brand/references/06-big-mark.png">PNG</a></div>
+</div>
+      </div>
+      <div class="tip">Angles are 0, 45, and 90. Two shapes per composition. <b>That is the whole discipline.</b></div>
+    </div>
+  </section>
+
   <!-- ============ THE ASSETS ============ -->
   <section class="block" id="assets">
     <div class="wrap">
@@ -717,6 +793,7 @@ Color family: [pick one: Magenta / Green / Blue / Orange / Gray]
 <div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/AGENTS.md">AGENTS.md</a><div class="udesc">The same file, for Cursor and other agents that look for AGENTS.md.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/AGENTS.md"><span class="upath">/ai/AGENTS.md</span><span class="uci">Copy</span></button></div>
 <div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/laio-brand/BRAND.md">Full brand system</a><div class="udesc">The long form. Load when the work needs depth.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/laio-brand/BRAND.md"><span class="upath">/ai/laio-brand/BRAND.md</span><span class="uci">Copy</span></button></div>
 <div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/laio-brand/COMPONENTS.md">Component code</a><div class="udesc">Buttons, cards, eyebrows, and layout patterns as code.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/laio-brand/COMPONENTS.md"><span class="upath">/ai/laio-brand/COMPONENTS.md</span><span class="uci">Copy</span></button></div>
+<div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/laio-brand/RANGE.md">Range</a><div class="udesc">Six layout moves and their limits. Read before any layout beyond a plain page.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/laio-brand/RANGE.md"><span class="upath">/ai/laio-brand/RANGE.md</span><span class="uci">Copy</span></button></div>
 <div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/laio-brand.zip">Packaged skill</a><div class="udesc">The whole kit as a Claude skill. Unzip into ~/.claude/skills/.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/laio-brand.zip"><span class="upath">/ai/laio-brand.zip</span><span class="uci">Copy</span></button></div>
 <div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/claude-ai-project-setup.md">claude.ai Project setup</a><div class="udesc">Custom instructions and knowledge files for a Claude Project.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/claude-ai-project-setup.md"><span class="upath">/ai/claude-ai-project-setup.md</span><span class="uci">Copy</span></button></div>
 <div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/claude-design-setup.md">Claude Design setup</a><div class="udesc">The prompt and references that build the LA.IO Design System.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/claude-design-setup.md"><span class="upath">/ai/claude-design-setup.md</span><span class="uci">Copy</span></button></div>
@@ -793,8 +870,33 @@ Color family: [pick one: Magenta / Green / Blue / Orange / Gray]
   <div class="adesc">The LED division line. Sits under the mark.</div>
   <button class="ucopy" data-copy="https://assets.la.io/logos/DIVISION-LINE.svg"><span class="upath">/logos/DIVISION-LINE.svg</span><span class="uci">Copy</span></button>
 </div>
+<div class="acard">
+  <div class="astage dark"><img src="/logos/LED-WHITE.svg" alt="LED, white" loading="lazy"></div>
+  <a class="aname" href="/logos/LED-WHITE.svg">LED, white</a>
+  <div class="adesc">Louisiana Economic Development. The default, on dark grounds.</div>
+  <button class="ucopy" data-copy="https://assets.la.io/logos/LED-WHITE.svg"><span class="upath">/logos/LED-WHITE.svg</span><span class="uci">Copy</span></button>
+</div>
+<div class="acard">
+  <div class="astage"><img src="/logos/LED-BLACK.svg" alt="LED, black" loading="lazy"></div>
+  <a class="aname" href="/logos/LED-BLACK.svg">LED, black</a>
+  <div class="adesc">On light grounds. Recolor to the family dark.</div>
+  <button class="ucopy" data-copy="https://assets.la.io/logos/LED-BLACK.svg"><span class="upath">/logos/LED-BLACK.svg</span><span class="uci">Copy</span></button>
+</div>
+<div class="acard">
+  <div class="astage dark"><img src="/logos/LED-SMALL-WHITE.svg" alt="LED small, white" loading="lazy"></div>
+  <a class="aname" href="/logos/LED-SMALL-WHITE.svg">LED small, white</a>
+  <div class="adesc">The compact LED lockup, on dark grounds.</div>
+  <button class="ucopy" data-copy="https://assets.la.io/logos/LED-SMALL-WHITE.svg"><span class="upath">/logos/LED-SMALL-WHITE.svg</span><span class="uci">Copy</span></button>
+</div>
+<div class="acard">
+  <div class="astage"><img src="/logos/LED-SMALL-BLACK.svg" alt="LED small, black" loading="lazy"></div>
+  <a class="aname" href="/logos/LED-SMALL-BLACK.svg">LED small, black</a>
+  <div class="adesc">The compact LED lockup, on light grounds.</div>
+  <button class="ucopy" data-copy="https://assets.la.io/logos/LED-SMALL-BLACK.svg"><span class="upath">/logos/LED-SMALL-BLACK.svg</span><span class="uci">Copy</span></button>
+</div>
         </div>
-        <div class="tip"><b>Every file ships black (#231F20) on transparent.</b> Recolor with CSS <code>fill</code>, or inline the SVG and set <code>fill: currentColor</code>. Do not edit the artwork.</div>
+        <div class="tip"><b>Every file ships black (#231F20) on transparent, except the white LED files.</b> Recolor with CSS <code>fill</code>, or inline the SVG and set <code>fill: currentColor</code>. Do not edit the artwork.</div>
+        <div class="tip"><b>LED logo.</b> Louisiana Economic Development, the parent agency. White on dark grounds is the default. Black on light grounds, recolored to the family dark. Never the full-color or gold versions. Sits under or beside the LA.IO mark, never above it.</div>
       </div>
 
       <div class="agroup">
@@ -849,6 +951,36 @@ Color family: [pick one: Magenta / Green / Blue / Orange / Gray]
   <div class="mstage"><img src="/motifs/LAIO-BRACKET-CORNER-2.svg" alt="Corner 2" loading="lazy"></div>
   <div class="mname">Corner 2</div>
   <button class="ucopy" data-copy="https://assets.la.io/motifs/LAIO-BRACKET-CORNER-2.svg"><span class="upath">/motifs/LAIO-BRACKET-CORNER-2.svg</span><span class="uci">Copy</span></button>
+</div>
+<div class="mcard">
+  <div class="mstage"><img src="/motifs/LAIO-CORNER-L.svg" alt="L-corner" loading="lazy"></div>
+  <div class="mname">L-corner</div>
+  <button class="ucopy" data-copy="https://assets.la.io/motifs/LAIO-CORNER-L.svg"><span class="upath">/motifs/LAIO-CORNER-L.svg</span><span class="uci">Copy</span></button>
+</div>
+<div class="mcard">
+  <div class="mstage"><img src="/motifs/LAIO-SQUARE.svg" alt="Square" loading="lazy"></div>
+  <div class="mname">Square</div>
+  <button class="ucopy" data-copy="https://assets.la.io/motifs/LAIO-SQUARE.svg"><span class="upath">/motifs/LAIO-SQUARE.svg</span><span class="uci">Copy</span></button>
+</div>
+<div class="mcard">
+  <div class="mstage"><img src="/motifs/LAIO-SQUARE-EMPTY.svg" alt="Square outline" loading="lazy"></div>
+  <div class="mname">Square outline</div>
+  <button class="ucopy" data-copy="https://assets.la.io/motifs/LAIO-SQUARE-EMPTY.svg"><span class="upath">/motifs/LAIO-SQUARE-EMPTY.svg</span><span class="uci">Copy</span></button>
+</div>
+<div class="mcard">
+  <div class="mstage"><img src="/motifs/LAIO-FIELD-DIAGONAL.svg" alt="Diagonal field" loading="lazy"></div>
+  <div class="mname">Diagonal field</div>
+  <button class="ucopy" data-copy="https://assets.la.io/motifs/LAIO-FIELD-DIAGONAL.svg"><span class="upath">/motifs/LAIO-FIELD-DIAGONAL.svg</span><span class="uci">Copy</span></button>
+</div>
+<div class="mcard">
+  <div class="mstage"><img src="/motifs/LAIO-HATCH.svg" alt="Hatch tile" loading="lazy"></div>
+  <div class="mname">Hatch tile</div>
+  <button class="ucopy" data-copy="https://assets.la.io/motifs/LAIO-HATCH.svg"><span class="upath">/motifs/LAIO-HATCH.svg</span><span class="uci">Copy</span></button>
+</div>
+<div class="mcard">
+  <div class="mstage"><img src="/motifs/LAIO-WIRE-NODE.svg" alt="Wire node" loading="lazy"></div>
+  <div class="mname">Wire node</div>
+  <button class="ucopy" data-copy="https://assets.la.io/motifs/LAIO-WIRE-NODE.svg"><span class="upath">/motifs/LAIO-WIRE-NODE.svg</span><span class="uci">Copy</span></button>
 </div>
         </div>
       </div>

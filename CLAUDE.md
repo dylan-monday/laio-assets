@@ -155,8 +155,8 @@ If the model changes upstream, re-port it. Do not let the two drift silently.
 `llms.txt`, and `robots.txt` are **generated**. Edit the scripts and their
 sources, not the files, or your change is lost the next time anyone runs them.
 
-Adding a new asset means editing the `FONTS`, `LOGOS`, `MOTIFS`, `DATA`, or
-`DOCS` lists near the bottom of `gen_pages.py`. Both `/ai` and `llms.txt` read
+Adding a new asset means editing the `FONTS`, `LOGOS`, `MOTIFS`, `RANGE`,
+`DATA`, or `DOCS` lists near the bottom of `gen_pages.py`. Both `/ai` and `llms.txt` read
 from the same lists, so they cannot drift apart.
 
 ```
@@ -237,7 +237,8 @@ The repo is the only source. Nothing is synced in from the outer workspace.
 1. Branch from `main`.
 2. Edit the sources: `ai/*.md`, `ai/laio-brand/`, `ai/lovable/`,
    `_build/ai-page/`, or `_build/gen_pages.py`.
-3. If the fonts changed, run `python3 _build/build_fonts.py`.
+3. If the fonts changed, run `python3 _build/build_fonts.py`. If a reference
+   in `ai/laio-brand/references/` changed, run `python3 _build/build_refs.py`.
 4. Run `python3 _build/gen_pages.py`. A second run must produce no diff.
 5. If anything inside `ai/laio-brand/` changed, including through step 3,
    rezip the skill with the command above.

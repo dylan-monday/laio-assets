@@ -112,11 +112,12 @@ https://assets.la.io/logos/LAIO-HORZ.svg        ← horizontal
 https://assets.la.io/logos/LOUISIANA-INNOVATION-A.svg
 https://assets.la.io/logos/LOUISIANA-INNOVATION-B.svg
 https://assets.la.io/logos/DIVISION-LINE.svg
+https://assets.la.io/logos/LED-WHITE.svg        ← Louisiana Economic Development, rules in RANGE.md section 5
 ```
 
 For React, use `assets/LaioLogo.jsx` (inline SVG, `fill` + `width` props). Logo latitude is wide: large, cropped, bleeding off edges, supergraphic — as long as it stays legible.
 
-Motifs (brackets, chevrons, diamonds, plus, X, corners) at `https://assets.la.io/motifs/` and in `assets/motifs/`. Use as framing devices, section markers, and supergraphics. Scale freely, crop intentionally, never scatter as decoration. The `+` is the brand bullet and can be built from corner pieces at any scale.
+Motifs (brackets, chevrons, diamonds, squares, plus, X, corners, the diagonal field, the hatch, the wire node) at `https://assets.la.io/motifs/` and in `assets/motifs/`. Use as framing devices, section markers, and supergraphics. Scale freely, crop intentionally, never scatter as decoration. The `+` is the brand bullet and can be built from corner pieces at any scale.
 
 ---
 
@@ -133,8 +134,12 @@ Motifs (brackets, chevrons, diamonds, plus, X, corners) at `https://assets.la.io
 
 ## When to load more
 
-This file is enough for most copy and quick design calls. For deeper work, read the bundled references:
+This file is enough for most copy and quick design calls. For deeper work, read the bundled references.
 
-+ **`BRAND.md`** — full brand reference: thesis, audiences, photography direction, the badge system, complete color/voice/design detail.
-+ **`COMPONENTS.md`** — copy-paste component code (React + plain HTML/CSS): logo, button, eyebrow, `+`-list, hero, stat card, nav, footer, plus Tailwind config and font setup.
-+ **`assets/`** — local logo/motif SVGs, color CSS + tokens, `fonts/laio-fonts-inline.css` (embedded Aktiv Grotesk), and `LaioLogo.jsx` for offline or self-hosted contexts.
+For anything visual beyond a plain page, read RANGE.md first. It names the six layout moves and their limits. The references/ folder has one clean example of each.
+
++ **`BRAND.md`.** Full brand reference: thesis, audiences, photography direction, the badge system, complete color/voice/design detail.
++ **`COMPONENTS.md`.** Copy-paste component code (React + plain HTML/CSS): logo, button, eyebrow, `+`-list, hero, stat card, nav, footer, plus Tailwind config and font setup.
++ **`RANGE.md`.** The shape grammar, six layout moves (Split, Diamond, Frame, Wire, Grid, Big Mark), the stated exceptions, and the guardrails.
++ **`references/`.** One 1600x900 example per move. Read the `.html` for structure. The `.png` shows the result.
++ **`assets/`.** Local logo/motif SVGs, color CSS + tokens, `fonts/laio-fonts-inline.css` (embedded Aktiv Grotesk), and `LaioLogo.jsx` for offline or self-hosted contexts.

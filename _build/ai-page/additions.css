@@ -75,6 +75,28 @@
   .mname { flex: 1; font-size: 0.9rem; padding: 10px 12px; }
   .acard .ucopy, .mcard .ucopy { width: 100%; border: 0; border-top: 1px solid var(--hair-soft); border-radius: 0; }
   .mcard .ucopy { font-size: 0.6rem; padding: 8px 10px; gap: 8px; }
+  /* White artwork (the white LED files) needs a dark stage to read. */
+  .astage.dark { background: var(--bg); border-bottom: 1px solid var(--hair-soft); }
+
+  /* ---------- range cards: the six layout moves, same language as the logo cards ---------- */
+  .rcards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 32px; }
+  @media (max-width: 980px) { .rcards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 640px) { .rcards { grid-template-columns: minmax(0, 1fr); } }
+  .rcard { display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--hair-soft); background: var(--bg); }
+  .rcard img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-bottom: 1px solid var(--hair-soft); }
+  .rname { font-weight: 700; font-size: 1rem; color: var(--white); padding: 14px 16px 0; }
+  .rrules { flex: 1; list-style: none; margin: 0; padding: 6px 16px 14px; }
+  .rrules li { display: flex; gap: 10px; font-weight: 300; font-size: 0.88rem; line-height: 1.45; color: rgba(255,255,255,0.74); padding-top: 4px; }
+  .rrules .m { color: var(--easy); font-weight: 700; flex-shrink: 0; }
+  .rlinks { display: flex; border-top: 1px solid var(--hair-soft); }
+  .rlinks a {
+    flex: 1; font-family: var(--mono); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--easy); text-decoration: none; padding: 10px 16px;
+    transition: all 0.15s ease;
+  }
+  .rlinks a + a { border-left: 1px solid var(--hair-soft); }
+  .rlinks a:hover { background: var(--easy); color: var(--bg); }
+  #range .dl-row { margin-top: 20px; }
 
   /* ---------- tips under a group ---------- */
   .tip {

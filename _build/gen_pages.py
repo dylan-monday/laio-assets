@@ -581,7 +581,16 @@ LOGOS = [
     ("LOUISIANA-INNOVATION-A.svg",  "Louisiana Innovation A", "Full name lockup, stacked."),
     ("LOUISIANA-INNOVATION-B.svg",  "Louisiana Innovation B", "Full name lockup, condensed."),
     ("DIVISION-LINE.svg",           "Division line",          "The LED division line. Sits under the mark."),
+    ("LED-WHITE.svg",               "LED, white",             "Louisiana Economic Development. The default, on dark grounds."),
+    ("LED-BLACK.svg",               "LED, black",             "On light grounds. Recolor to the family dark."),
+    ("LED-SMALL-WHITE.svg",         "LED small, white",       "The compact LED lockup, on dark grounds."),
+    ("LED-SMALL-BLACK.svg",         "LED small, black",       "The compact LED lockup, on light grounds."),
 ]
+
+# The one outside logo the kit ships. Shown once under the logo cards, and in llms.txt.
+LED_NOTE = ("Louisiana Economic Development, the parent agency. White on dark grounds is "
+            "the default. Black on light grounds, recolored to the family dark. Never the "
+            "full-color or gold versions. Sits under or beside the LA.IO mark, never above it.")
 
 MOTIFS = [
     ("LAIO-PLUS.svg",             "Plus"),
@@ -594,6 +603,29 @@ MOTIFS = [
     ("LAIO-DOWN-BRACKET.svg",     "Down bracket"),
     ("LAIO-BRACKET-CORNER-1.svg", "Corner 1"),
     ("LAIO-BRACKET-CORNER-2.svg", "Corner 2"),
+    ("LAIO-CORNER-L.svg",         "L-corner"),
+    ("LAIO-SQUARE.svg",           "Square"),
+    ("LAIO-SQUARE-EMPTY.svg",     "Square outline"),
+    ("LAIO-FIELD-DIAGONAL.svg",   "Diagonal field"),
+    ("LAIO-HATCH.svg",            "Hatch tile"),
+    ("LAIO-WIRE-NODE.svg",        "Wire node"),
+]
+
+# The six layout moves in RANGE.md. Each has references/<key>.html and .png,
+# rendered by build_refs.py. Rules are the two from RANGE.md, shortened.
+RANGE = [
+    ("01-split",    "The Split",    "One diagonal per composition, at 45 degrees.",
+                                    "The field carries the accent content. The other side stays quiet."),
+    ("02-diamond",  "The Diamond",  "Diamonds touch at points and never overlap.",
+                                    "Where two meet, a small easy-color diamond may hold the logo."),
+    ("03-frame",    "The Frame",    "Frames hold type only.",
+                                    "Brackets sit outside the type, four strokes clear."),
+    ("04-wire",     "The Wire",     "A 1px rule in the easy color, with open-square terminals.",
+                                    "Lines run at 0 or 90 degrees only."),
+    ("05-grid",     "The Grid",     "The plus sits at the exact center. Its arms are the gutters.",
+                                    "Photos all duotoned in the family, or all untreated."),
+    ("06-big-mark", "The Big Mark", "Legibility is the only limit.",
+                                    "For a lockup, add an L-corner holding the vertical wordmark."),
 ]
 
 DOCS = [
@@ -601,6 +633,7 @@ DOCS = [
     ("ai/AGENTS.md",                              "AGENTS.md",                    "The same file, for Cursor and other agents that look for AGENTS.md."),
     ("ai/laio-brand/BRAND.md",                    "Full brand system",            "The long form. Load when the work needs depth."),
     ("ai/laio-brand/COMPONENTS.md",               "Component code",               "Buttons, cards, eyebrows, and layout patterns as code."),
+    ("ai/laio-brand/RANGE.md",                    "Range",                        "Six layout moves and their limits. Read before any layout beyond a plain page."),
     ("ai/laio-brand.zip",                         "Packaged skill",               "The whole kit as a Claude skill. Unzip into ~/.claude/skills/."),
     ("ai/claude-ai-project-setup.md",             "claude.ai Project setup",      "Custom instructions and knowledge files for a Claude Project."),
     ("ai/claude-design-setup.md",                 "Claude Design setup",          "The prompt and references that build the LA.IO Design System."),
@@ -643,7 +676,7 @@ fontrows = "".join(
 datarows = "".join(urlrow(p, p.split("/")[-1], d) for p, d in DATA)
 
 logocards = "".join(f'''<div class="acard">
-  <div class="astage"><img src="/logos/{f}" alt="{name}" loading="lazy"></div>
+  <div class="astage{' dark' if 'WHITE' in f else ''}"><img src="/logos/{f}" alt="{name}" loading="lazy"></div>
   <a class="aname" href="/logos/{f}">{name}</a>
   <div class="adesc">{desc}</div>
   <button class="ucopy" data-copy="https://assets.la.io/logos/{f}"><span class="upath">/logos/{f}</span><span class="uci">Copy</span></button>
@@ -656,6 +689,14 @@ motifcards = "".join(f'''<div class="mcard">
   <button class="ucopy" data-copy="https://assets.la.io/motifs/{f}"><span class="upath">/motifs/{f}</span><span class="uci">Copy</span></button>
 </div>
 ''' for f, name in MOTIFS)
+
+rangecards = "".join(f'''<div class="rcard">
+  <img src="/ai/laio-brand/references/{k}.png" alt="{name} reference" width="1600" height="900" loading="lazy">
+  <div class="rname">{name}</div>
+  <ul class="rrules"><li><span class="m">+</span><span>{r1}</span></li><li><span class="m">+</span><span>{r2}</span></li></ul>
+  <div class="rlinks"><a href="/ai/laio-brand/references/{k}.html">HTML</a><a href="/ai/laio-brand/references/{k}.png">PNG</a></div>
+</div>
+''' for k, name, r1, r2 in RANGE)
 
 # The LA.IO mark as the original page inlined it (hero and footer).
 MARK = '''<svg class="laio-mark" viewBox="0 0 280.17 67.88" role="img" aria-label="LA.IO">
@@ -748,8 +789,8 @@ TAB_CLAUDE = f'''<p class="for">For <b>copy, content, and brand questions</b> on
   <li><div class="st">Paste the custom instructions</div><div class="sd">Open the Project, click <i>Set custom instructions</i>, and paste the block below.</div>
 {code(fence("ai/claude-ai-project-setup.md"))}
   </li>
-  <li><div class="st">Add the brand knowledge</div><div class="sd">Download all three files below. In the Project, click <i>Add content</i> (project knowledge) and upload them. <code class="inline">laio-fonts-inline.css</code> carries the Aktiv Grotesk typeface, so artifacts render in the brand font.</div>
-{dlrow(dl("/ai/laio-brand/BRAND.md", "Download BRAND.md"), dl("/ai/laio-brand/COMPONENTS.md", "Download COMPONENTS.md", True), dl("/fonts/laio-fonts-inline.css", "Download laio-fonts-inline.css", True))}
+  <li><div class="st">Add the brand knowledge</div><div class="sd">Download all four files below. In the Project, click <i>Add content</i> (project knowledge) and upload them. <code class="inline">laio-fonts-inline.css</code> carries the Aktiv Grotesk typeface, so artifacts render in the brand font. <code class="inline">RANGE.md</code> names the six layout moves.</div>
+{dlrow(dl("/ai/laio-brand/BRAND.md", "Download BRAND.md"), dl("/ai/laio-brand/COMPONENTS.md", "Download COMPONENTS.md", True), dl("/ai/laio-brand/RANGE.md", "Download RANGE.md", True), dl("/fonts/laio-fonts-inline.css", "Download laio-fonts-inline.css", True))}
   </li>
   <li><div class="st">Start a chat</div><div class="sd">Every conversation inside the Project is now on brand.</div></li>
 </ol>
@@ -757,10 +798,10 @@ TAB_CLAUDE = f'''<p class="for">For <b>copy, content, and brand questions</b> on
 
 TAB_DESIGN = f'''<p class="for">For <b>Claude Design</b> (prototypes, slide decks, visuals). Claude Design has its own Design System feature. You build an <b>LA.IO Design System</b> once, then pick it from the <i>Design System</i> dropdown on any new project and everything comes out on brand. Each person makes their own copy; the prompt below makes it identical every time.</p>
 <ol class="steps">
-  <li><div class="st">Get the setup, the logo, and the font</div><div class="sd">Download the setup notes, plus the logo and the embedded font file to attach as references.</div>
+  <li><div class="st">Get the setup, the logo, and the font</div><div class="sd">Download the setup notes, plus the logo and the embedded font file to attach as references. Save the six reference PNGs from <a href="#range">Range</a> below as well.</div>
 {dlrow(dl("/ai/claude-design-setup.md", "Design System setup"), dl("/logos/LAIO-COMPLETE.svg", "LA.IO logo (SVG)", True), dl("/fonts/laio-fonts-inline.css", "Download laio-fonts-inline.css", True))}
   </li>
-  <li><div class="st">Create a new Design System from this prompt</div><div class="sd">In Claude Design, start a new Design System from a prompt plus references (the same flow as your other systems). Paste the prompt below, and attach the LA.IO logo, <code class="inline">laio-fonts-inline.css</code> (Claude Design uses it for all Aktiv Grotesk rendering), a motif or two from <code class="inline">assets.la.io/motifs/</code>, and optionally a screenshot of this page as a "brand in action" reference.</div>
+  <li><div class="st">Create a new Design System from this prompt</div><div class="sd">In Claude Design, start a new Design System from a prompt plus references (the same flow as your other systems). Paste the prompt below, and attach the LA.IO logo, <code class="inline">laio-fonts-inline.css</code> (Claude Design uses it for all Aktiv Grotesk rendering), a motif or two from <code class="inline">assets.la.io/motifs/</code>, the six Range PNGs (<code class="inline">01-split.png</code> to <code class="inline">06-big-mark.png</code>), and optionally a screenshot of this page as a "brand in action" reference.</div>
 {code(fence("ai/claude-design-setup.md"))}
   </li>
   <li><div class="st">Name it, then select it</div><div class="sd">Name it exactly <code class="inline">LA.IO Design System</code>. On any New Project (Prototype, Slide deck, and so on) choose it from the <i>Design System</i> dropdown.</div></li>
@@ -906,6 +947,21 @@ SUMMARY = '''
   </section>
 '''
 
+RANGE_SECTION = f'''
+  <!-- ============ RANGE ============ -->
+  <section class="block" id="range">
+    <div class="wrap">
+      <span class="mono sec-eyebrow">Six moves</span>
+      <h2>Six ways to build with it.</h2>
+      <p class="lead">Six layout moves from shipped LA.IO work, each with a clean reference an AI can read and imitate. RANGE.md names them and sets their limits.</p>
+      {dlrow(dl("/ai/laio-brand/RANGE.md", "Download RANGE.md"))}
+      <div class="rcards">
+{rangecards}      </div>
+      <div class="tip">Angles are 0, 45, and 90. Two shapes per composition. <b>That is the whole discipline.</b></div>
+    </div>
+  </section>
+'''
+
 ASSETS = f'''
   <!-- ============ THE ASSETS ============ -->
   <section class="block" id="assets">
@@ -937,7 +993,8 @@ ASSETS = f'''
         <div class="ahead"><h3 class="mono">Logos</h3></div>
         <div class="acards">
 {logocards}        </div>
-        <div class="tip"><b>Every file ships black (#231F20) on transparent.</b> Recolor with CSS <code>fill</code>, or inline the SVG and set <code>fill: currentColor</code>. Do not edit the artwork.</div>
+        <div class="tip"><b>Every file ships black (#231F20) on transparent, except the white LED files.</b> Recolor with CSS <code>fill</code>, or inline the SVG and set <code>fill: currentColor</code>. Do not edit the artwork.</div>
+        <div class="tip"><b>LED logo.</b> {LED_NOTE}</div>
       </div>
 
       <div class="agroup">
@@ -973,7 +1030,7 @@ FOOTER = f'''
 
 ai_page = (AI_HEAD
            + _read(PAGE, "page.css") + _read(PAGE, "additions.css")
-           + INTRO + HERO + START + SETUP + SUMMARY + ASSETS + FOOTER
+           + INTRO + HERO + START + SETUP + SUMMARY + RANGE_SECTION + ASSETS + FOOTER
            + _read(PAGE, "rings.js") + "\n" + _read(PAGE, "ui.js") + _read(PAGE, "inventory.js")
            + "</script>\n</body>\n</html>\n")
 
@@ -1002,7 +1059,14 @@ _t("ai/AGENTS.md", "The same file, for tools that look for AGENTS.md."),
 "",
 "## Docs",
 ""] + [
-_t(p, f"{n}. {d}") for p, n, d in DOCS if p not in ("ai/CLAUDE.md", "ai/AGENTS.md", "llms.txt")
+_t(p, f"{n}. {d}") for p, n, d in DOCS if p not in ("ai/CLAUDE.md", "ai/AGENTS.md", "ai/laio-brand/RANGE.md", "llms.txt")
+] + [
+"",
+"## Depth",
+"",
+_t("ai/laio-brand/RANGE.md", "Range. The shape grammar, six layout moves, their exceptions, and the guardrails. Read before any layout beyond a plain page."),
+] + [
+_t(f"ai/laio-brand/references/{k}.html", f"{name} reference, 1600x900. Read the HTML for structure. The rendered PNG is at references/{k}.png.") for k, name, _, _ in RANGE
 ] + [
 "",
 "## Color",
@@ -1035,6 +1099,8 @@ _t("fonts/" + f, f"Aktiv Grotesk {label}, weight {w}.") for f, label, w in FONTS
 ""] + [
 _t("logos/" + f, desc) for f, name, desc in LOGOS
 ] + [
+"",
+"LED logo: " + LED_NOTE,
 "",
 "## Motifs",
 "",
