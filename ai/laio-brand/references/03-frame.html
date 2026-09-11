@@ -9,9 +9,9 @@
     bracket's stroke width times four.
   + Don't: frame the logo, or close all four corners.
 
-  Family: Orange, on a light ground. Type in dark #302511 on white. Brackets
-  in electric #F5C124. Easy #F1DC43 is too light for anything on white, so it
-  does not appear.
+  Family: Orange, on a light ground. Type and brackets in dark #302511 on
+  white. Easy #F1DC43 and electric #F5C124 are too light to carry type or a
+  bracket on white, so neither appears.
   Shape count: one (the corner, used twice). The logo and type do not count.
 
   This file is a reference. Read the structure, then build your own.
@@ -25,13 +25,13 @@
 <style>
   :root {
     --dark: #302511;
-    --electric: #F5C124;
     --white: #FFFFFF;
 
-    /* The corner motifs are a 39.44 box with an 8.56 stroke. */
-    --corner: 120px;
-    --stroke: calc(var(--corner) * 8.56 / 39.44);   /* 26.04px */
-    --clear: calc(var(--stroke) * 4);                /* 104.16px */
+    /* The corner motifs are a 39.44 box with an 8.56 stroke. At 180px the
+       stroke is heavy enough to hold its own against a 104px headline. */
+    --corner: 180px;
+    --stroke: calc(var(--corner) * 8.56 / 39.44);   /* 39.07px */
+    --clear: calc(var(--stroke) * 4);                /* 156.27px */
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; background: var(--white); }
@@ -49,7 +49,7 @@
     position: absolute; left: 50%; top: 432px; transform: translate(-50%, -50%);
     padding: calc(var(--stroke) + var(--clear));
   }
-  .corner { position: absolute; width: var(--corner); height: var(--corner); color: var(--electric); }
+  .corner { position: absolute; width: var(--corner); height: var(--corner); color: var(--dark); }
   .corner.tl { top: 0; left: 0; }
   .corner.br { bottom: 0; right: 0; }
 

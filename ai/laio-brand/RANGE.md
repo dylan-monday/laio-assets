@@ -18,7 +18,7 @@ Every LA.IO shape comes from the logo's bracket, set at 45 or 90 degrees.
 + **Corner.** Half a square. The frame piece. `LAIO-BRACKET-CORNER-1`, `LAIO-BRACKET-CORNER-2`, `LAIO-CORNER-L`.
 + **Plus.** Two bracket strokes crossed at 90. `LAIO-PLUS`.
 + **X.** The plus at 45. `LAIO-X`.
-+ **Diagonal field.** One bracket edge carried to the canvas edge. `LAIO-FIELD-DIAGONAL`, drawn for a 16:9 canvas at 100% width.
++ **Diagonal field.** One bracket edge carried to the canvas edge. `LAIO-FIELD-DIAGONAL`, drawn for a 16:9 canvas at 100% width. Two 45-degree edges meeting at a point make a chevron field: the bracket itself at field scale. No file ships for it. Draw it as a polygon.
 + **45-degree hatch.** Bracket strokes repeated. `LAIO-HATCH`, one tile that repeats seamlessly.
 + **Wire node.** An open square one bracket stroke wide. `LAIO-WIRE-NODE`. Draw it at 8px and its line matches a 1px wire.
 
@@ -36,9 +36,10 @@ Each move has a reference in `references/`: an HTML file to read and a PNG of th
 
 One 45-degree field slices the canvas into two committed areas: dark against white, or dark against photo.
 
-+ One diagonal per composition.
++ One field per composition.
 + The field carries the accent content: a number, a headline, or the plus points. The other side stays quiet.
-+ **Don't:** two diagonals, or a diagonal at any angle other than 45.
++ **Variant, the chevron field.** The field may be a chevron: two 45-degree edges meeting at a point. That is the bracket itself at field scale. It is still one field.
++ **Don't:** a second field, or an edge at any angle other than 45.
 + **Reference:** `references/01-split.html`
 
 ### The Diamond
@@ -47,6 +48,7 @@ A bracket-derived container for a group of content.
 
 + Diamonds touch at points and never overlap.
 + Where two large diamonds meet, a small easy-color diamond may hold the logo.
++ **Variant, the half diamond.** A canvas edge may halve a diamond, leaving a triangle container. Overlapping diamonds stay banned.
 + **Don't:** rotate off 45, or set a diamond on a diamond of the same value.
 + **Reference:** `references/02-diamond.html`
 
@@ -92,6 +94,8 @@ The logo at supergraphic scale, cropped past the edges.
 
 + **Accent word.** One per headline, set in the accent color or in Bold. Never both. Never two words.
 + **Big numerals.** Bold, with a Regular caption beneath.
++ **Progression glyph.** A row of three chevrons (`>>>`, from `LAIO-RIGHT-BRACKET`) may sit between two values to show one leading to the other. Never an arrow with a shaft.
++ **Bar charts.** Bars in the family accent on the family dark, one series highlighted in electric, gridlines in the easy color at low opacity, axis labels in mono.
 + **Stat cards.** Easy-color fill, dark family type, a mono eyebrow with a short dark rule under it. This is the one place an accent fills an area with dark type on it, and the one place a mono label runs in the dark color. It lives inside a card only.
 + **Vertical wordmark.** LOUISIANA INNOVATION rotated 90 degrees, locked to an L-corner. Use the `LOUISIANA-INNOVATION-A` or `-B` file. Never set it in type.
 
@@ -112,7 +116,7 @@ Never a soft overlay. Never a gradient. The logo may run over a photo at Big Mar
 
 + **Partner logos.** Recolor into the family by default. Original colors only when the partner requires it. The kit ships no partner logos. Projects add their own.
 + **LED logo.** The one outside logo the kit ships: `LED-WHITE.svg`, `LED-BLACK.svg`, `LED-SMALL-WHITE.svg`, `LED-SMALL-BLACK.svg` in `assets/logos/`. Louisiana Economic Development, the parent agency. White on dark grounds is the default. Black on light grounds, recolored to the family dark. Never the full-color or gold versions. Sits under or beside the LA.IO mark, never above it.
-+ **Grain.** Allowed on a dark ground. Gradients are not.
++ **Grain.** Allowed on a flat dark ground. A radial glow or vignette is a gradient and stays banned.
 + **Hex tiles.** Allowed for cartograms only.
 + **Stat cards.** May invert, as described in section 3.
 
@@ -122,7 +126,7 @@ Never a soft overlay. Never a gradient. The logo may run over a photo at Big Mar
 
 + Two shapes per composition, maximum. The logo and the type do not count.
 + Accent color covers under a third of the canvas, except inside a stat card.
-+ One diagonal per composition.
++ One field per composition, straight or chevron.
 + Angles are 0, 45, and 90.
 + One family per composition.
 
