@@ -21,3 +21,10 @@ a{color:inherit}
 @media(max-width:640px){.wrap{padding:0 20px}}
 .brand{display:block;width:212px;max-width:56vw;height:auto;color:#fff;margin:0 0 34px}
 @media(max-width:640px){.brand{width:176px;margin-bottom:26px}}
+/* Monday + Partners signature. Karla 700, the + in Easy Blue, 0.22em tracking. */
+.mpsig{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.mpsig .made{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.mp-logo{font-family:'Karla',system-ui,sans-serif;font-weight:700;font-size:14px;letter-spacing:.22em;
+  white-space:nowrap;color:#fff}
+.mp-plus{font-weight:800;color:var(--easy)}

@@ -3,8 +3,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<title>404 — assets.la.io</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Karla:wght@700;800&display=swap" rel="stylesheet">
+<title>404 · assets.la.io</title>
 <meta name="robots" content="noindex">
 <style>@font-face{font-family:'Aktiv Grotesk';src:url('/fonts/AktivGrotesk_Lt.woff2') format('woff2');font-weight:300;font-display:swap}
 @font-face{font-family:'Aktiv Grotesk';src:url('/fonts/AktivGrotesk_Rg.woff2') format('woff2');font-weight:400;font-display:swap}
@@ -29,9 +29,18 @@ a{color:inherit}
 @media(max-width:640px){.wrap{padding:0 20px}}
 .brand{display:block;width:212px;max-width:56vw;height:auto;color:#fff;margin:0 0 34px}
 @media(max-width:640px){.brand{width:176px;margin-bottom:26px}}
+/* Monday + Partners signature. Karla 700, the + in Easy Blue, 0.22em tracking. */
+.mpsig{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.mpsig .made{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.mp-logo{font-family:'Karla',system-ui,sans-serif;font-weight:700;font-size:14px;letter-spacing:.22em;
+  white-space:nowrap;color:#fff}
+.mp-plus{font-weight:800;color:var(--easy)}
 
-body{min-height:100vh;display:flex;align-items:center}
-.wrap{width:100%;max-width:880px}
+body{min-height:100vh;display:flex;flex-direction:column}
+.wrap{width:100%;max-width:880px;flex:1;display:flex;flex-direction:column;justify-content:center}
+.foot{width:100%;max-width:880px;margin:0 auto;padding:0 32px 40px}
+@media(max-width:640px){.foot{padding:0 20px 32px}}
 .brand{width:168px;margin-bottom:30px}
 .eyebrow{font-size:12px;color:var(--electric);margin:0 0 30px;letter-spacing:.16em;font-weight:700}
 h1{font-weight:300;font-size:clamp(28px,4.4vw,46px);line-height:1.15;margin:0;
@@ -86,4 +95,6 @@ h1 a:hover{border-bottom-color:var(--electric)}
 </svg>
 <h1>Nothing here. Try <a href="/">assets.la.io</a>.</h1>
 <p class="code mono">404</p>
-</div></body></html>
+</div>
+<footer class="foot"><div class="mpsig"><span class="made">Maintained by</span><span class="mp-logo">MONDAY <span class="mp-plus">+</span> PARTNERS</span></div></footer>
+</body></html>

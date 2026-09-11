@@ -3,18 +3,25 @@
 > The LA.IO (Louisiana Innovation) brand system, served as public URLs with open CORS.
 > Fetch what you need. Every file is current and permanent.
 
-If you are an AI assistant asked to produce LA.IO work, read CLAUDE.md first. It carries
+If you are an AI assistant asked to produce LA.IO work, read ai/CLAUDE.md first. It carries
 the voice rules, banned language, color families, type rules, and asset URLs. It is short.
 
 ## Start here
 
-- [claude/CLAUDE.md](https://assets.la.io/claude/CLAUDE.md): Drop-in brand instructions. Read this before generating anything.
+- [ai/CLAUDE.md](https://assets.la.io/ai/CLAUDE.md): Brand instructions for any AI. Read this before generating anything.
+- [ai/AGENTS.md](https://assets.la.io/ai/AGENTS.md): The same file, for tools that look for AGENTS.md.
 
-## Depth
+## Docs
 
-- [claude/laio-brand/BRAND.md](https://assets.la.io/claude/laio-brand/BRAND.md): The full brand system.
-- [claude/laio-brand/COMPONENTS.md](https://assets.la.io/claude/laio-brand/COMPONENTS.md): Component patterns as code.
-- [claude/laio-brand.zip](https://assets.la.io/claude/laio-brand.zip): The whole kit packaged as a Claude skill.
+- [ai/laio-brand/BRAND.md](https://assets.la.io/ai/laio-brand/BRAND.md): Full brand system. The long form. Load when the work needs depth.
+- [ai/laio-brand/COMPONENTS.md](https://assets.la.io/ai/laio-brand/COMPONENTS.md): Component code. Buttons, cards, eyebrows, and layout patterns as code.
+- [ai/laio-brand.zip](https://assets.la.io/ai/laio-brand.zip): Packaged skill. The whole kit as a Claude skill. Unzip into ~/.claude/skills/.
+- [ai/claude-ai-project-setup.md](https://assets.la.io/ai/claude-ai-project-setup.md): claude.ai Project setup. Custom instructions and knowledge files for a Claude Project.
+- [ai/claude-design-setup.md](https://assets.la.io/ai/claude-design-setup.md): Claude Design setup. The prompt and references that build the LA.IO Design System.
+- [ai/lovable/LAIO_LOVABLE_GUIDE.md](https://assets.la.io/ai/lovable/LAIO_LOVABLE_GUIDE.md): Lovable guide. How to start an LA.IO project in Lovable.
+- [ai/lovable/LOVABLE_CUSTOM_INSTRUCTIONS.md](https://assets.la.io/ai/lovable/LOVABLE_CUSTOM_INSTRUCTIONS.md): Lovable workspace instructions. Brand rules for every project in a Lovable workspace.
+- [ai/lovable/LOVABLE_STARTER_PROMPT.md](https://assets.la.io/ai/lovable/LOVABLE_STARTER_PROMPT.md): Lovable starter prompt. The first message that builds the LA.IO starter template.
+- [ai/lovable/LOVABLE_STARTER_TEMPLATE_SPEC.md](https://assets.la.io/ai/lovable/LOVABLE_STARTER_TEMPLATE_SPEC.md): Lovable starter template spec. What the starter template contains and how it is wired.
 
 ## Color
 
@@ -73,8 +80,7 @@ All artwork ships black (#231F20) on transparent. Recolor with CSS. Do not edit 
 
 ## Pages
 
-- [ai](https://assets.la.io/ai): Human-readable version of this file, with previews and copy buttons.
-- [claude](https://assets.la.io/claude): Setup steps for Claude projects and Claude Code.
+- [ai](https://assets.la.io/ai): Brand Kit for AI. Setup for Claude, Claude Design, Claude Code, Cowork, Lovable, and any other AI, plus every asset with a copy button.
 - [labs](https://assets.la.io/labs): Louisiana Innovation Labs sub-brand identity assets.
 - [illustrator](https://assets.la.io/illustrator): Generates original illustration in the LA.IO system.
 

@@ -9,7 +9,7 @@ This document defines the starter template project. Fork this project at the sta
 ### File structure
 ```
 /
-├── LAIO_BRAND.md              ← attach to every project
+├── BRAND.md                   ← attach to every project (https://assets.la.io/ai/laio-brand/BRAND.md)
 ├── tailwind.config.js
 ├── src/
 │   ├── styles/
@@ -319,7 +319,7 @@ Use this as the first message in any new Lovable project:
 ```
 Initialize this project as an LA.IO brand project. Apply the following setup:
 
-1. Configure tailwind.config.js with the full LAIO color token set (see LAIO_BRAND.md)
+1. Configure tailwind.config.js with the full LAIO color token set (see BRAND.md, https://assets.la.io/ai/laio-brand/BRAND.md)
 2. Set up globals.css with Aktiv Grotesk font stack and Roboto fallback via Google Fonts
 3. Create src/lib/laio-colors.js with the full color constants and theme pairings
 4. Create skeleton components: LaioLogo.jsx, Button.jsx, Nav.jsx, Hero.jsx, Footer.jsx
@@ -329,7 +329,7 @@ This project is: [describe the project]
 Primary audience: [audience]
 Color family for this project: [family]
 
-Do not deviate from the brand system documented in LAIO_BRAND.md. Apply the voice rules to any generated copy.
+Do not deviate from the brand system documented in BRAND.md. Apply the voice rules to any generated copy.
 
 Voice reminders for this project:
 - Never use em dashes. Rewrite any sentence that requires one.

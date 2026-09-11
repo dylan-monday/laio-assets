@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-"""Regenerate index.html, 404.html and labs/index.html.
+"""Regenerate every generated file in the repo: index.html, 404.html,
+labs/index.html, ai/index.html, ai/AGENTS.md, llms.txt and robots.txt.
 
     python3 _build/gen_pages.py
 
 Reads logos/labs/manifest.json (written by build_kit.py) for lockup
 dimensions, so run build_kit.py first if the master art changed.
 """
-import json, datetime, os
+import json, datetime, os, re, shutil
 from html import escape as html_escape
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -17,6 +18,11 @@ M    = json.load(open(os.path.join(REPO, "logos", "labs", "manifest.json")))
 BASE="/logos/labs"
 ABS="https://assets.la.io/logos/labs"
 PANEL=65.3  # LABS panel box width in source units
+
+# Monday + Partners signature for the Blue pages (home, 404, Labs). Karla 700,
+# the + in Easy Blue, the same tracking as the brand page at /ai. No email here.
+MPSIG = ('<div class="mpsig"><span class="made">Maintained by</span>'
+         '<span class="mp-logo">MONDAY <span class="mp-plus">+</span> PARTNERS</span></div>')
 
 WEAVE_CSS = '''
 #weave{position:fixed;inset:0;z-index:0;pointer-events:none;display:block;
@@ -223,11 +229,11 @@ html=f'''<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Louisiana Innovation Labs — Identity Assets</title>
+<title>Louisiana Innovation Labs Identity Assets</title>
 <meta name="description" content="Logo files and color values for the Louisiana Innovation Labs identity.">
 <link rel="icon" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Karla:wght@700;800&display=swap" rel="stylesheet">
 <style>
 {CSS}
 header{{padding:88px 0 0}}
@@ -330,6 +336,9 @@ footer{{margin-top:96px;border-top:1px solid var(--rule);padding:32px 0 72px;
 .fmeta{{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;
   color:rgba(255,255,255,.34);text-align:right}}
 .fmeta a{{color:var(--easy);text-decoration:none}}
+.fright{{display:flex;flex-direction:column;align-items:flex-end;gap:14px}}
+.fright .fmeta{{margin:0}}
+@media(max-width:640px){{.fright{{align-items:flex-start}}}}
 </style></head>
 <body>
 <div class="wrap">
@@ -392,7 +401,10 @@ footer{{margin-top:96px;border-top:1px solid var(--rule);padding:32px 0 72px;
 
 <footer>
   <p class="fnote">Logotype is custom artwork. Not a typeface. Do not recreate.</p>
-  <p class="fmeta">LAST UPDATED {updated.upper()}</p>
+  <div class="fright">
+    <p class="fmeta">LAST UPDATED {updated.upper()}</p>
+    {MPSIG}
+  </div>
 </footer>
 </div>
 <script>
@@ -415,13 +427,12 @@ HEAD='''<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">'''
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Karla:wght@700;800&display=swap" rel="stylesheet">'''
 
 ENTRIES=[
- ("Brand Assets for AI","/ai",False,"The core brand system as fetchable URLs. Fonts, color, logos, motifs, and drop-in instructions for any AI or build tool."),
+ ("Brand Kit for AI","/ai",False,"The LA.IO brand system, set up for Claude, Lovable, and any other AI. Fonts, color, logos, motifs, instructions, and component code."),
  ("Illustration Machine","/illustrator",False,"Generates original illustration and background graphics in the LA.IO system."),
  ("Badge Builder","https://badgebuilder.la.io",True,"Builds embeddable, trackable LA.IO badges for partner sites."),
- ("Claude Design System","/claude",False,"Instructions for building LA.IO work in Claude."),
  ("Louisiana Innovation Labs","/labs",False,"Identity assets for the Labs sub-brand."),
 ]
 rows=""
@@ -459,6 +470,8 @@ body{{min-height:100vh;display:flex;flex-direction:column}}
 .arw{{padding-left:5px}}
 .rdesc{{grid-area:d;font-size:14.5px;line-height:1.45;color:var(--body);max-width:46ch;margin-top:5px}}
 .row:hover .rname{{color:var(--electric)}}
+.foot{{position:relative;z-index:1;width:100%;max-width:880px;margin:0 auto;padding:0 32px 40px}}
+@media(max-width:640px){{.foot{{padding:0 20px 32px}}}}
 @media(max-width:640px){{
   .row{{grid-template-columns:20px minmax(0,1fr);grid-template-areas:"p n" ". a" ". d"}}
   .rpath{{padding-left:0;margin-top:5px}}
@@ -478,17 +491,20 @@ index=f'''<!doctype html>
 <p class="lede">Brand assets, tools, and documentation for LA.IO and the Louisiana Innovation ecosystem.</p>
 <nav class="rows">{rows}</nav>
 </div>
+<footer class="foot">{MPSIG}</footer>
 <script>{WEAVE_JS}</script>
 </body></html>'''
 open(os.path.join(REPO,'index.html'),'w').write(index)
 
 nf=f'''<!doctype html>
 <html lang="en"><head>{HEAD}
-<title>404 — assets.la.io</title>
+<title>404 · assets.la.io</title>
 <meta name="robots" content="noindex">
 <style>{CSS}
-body{{min-height:100vh;display:flex;align-items:center}}
-.wrap{{width:100%;max-width:880px}}
+body{{min-height:100vh;display:flex;flex-direction:column}}
+.wrap{{width:100%;max-width:880px;flex:1;display:flex;flex-direction:column;justify-content:center}}
+.foot{{width:100%;max-width:880px;margin:0 auto;padding:0 32px 40px}}
+@media(max-width:640px){{.foot{{padding:0 20px 32px}}}}
 .brand{{width:168px;margin-bottom:30px}}
 .eyebrow{{font-size:12px;color:var(--electric);margin:0 0 30px;letter-spacing:.16em;font-weight:700}}
 h1{{font-weight:300;font-size:clamp(28px,4.4vw,46px);line-height:1.15;margin:0;
@@ -501,12 +517,33 @@ h1 a:hover{{border-bottom-color:var(--electric)}}
 {LOGO}
 <h1>Nothing here. Try <a href="/">assets.la.io</a>.</h1>
 <p class="code mono">404</p>
-</div></body></html>'''
+</div>
+<footer class="foot">{MPSIG}</footer>
+</body></html>'''
 open(os.path.join(REPO,'404.html'),'w').write(nf)
 print('index + 404 written')
 
-# ---------- /ai — brand assets for AI ----------
-PROMPT = ("Fetch https://assets.la.io/claude/CLAUDE.md and follow it as the "
+# ---------- /ai: Brand Kit for AI ----------
+# One page for every tool. It replaced both the old Blue /ai inventory and the
+# hand-built Claude kit page, and it keeps that page's look: its CSS
+# and its rings + intro JS were extracted to _build/ai-page/ and are inlined
+# here as they were. Paste blocks are read from the fenced blocks in the source
+# .md files at build time, so the page cannot drift from the files people
+# download. Never type paste text into this script.
+AI   = os.path.join(REPO, "ai")
+PAGE = os.path.join(HERE, "ai-page")
+
+def _read(*parts):
+    return open(os.path.join(*parts), encoding="utf-8").read()
+
+def fence(rel):
+    """The first fenced code block in a repo file, without the fences."""
+    m = re.search(r"```[^\n]*\n(.*?)\n```", _read(REPO, rel), re.S)
+    if not m:
+        raise SystemExit(f"gen_pages: no fenced block in {rel}")
+    return m.group(1)
+
+PROMPT = ("Fetch https://assets.la.io/ai/CLAUDE.md and follow it as the "
           "brand system for this project.")
 
 FONTS = [
@@ -560,243 +597,390 @@ MOTIFS = [
 ]
 
 DOCS = [
-    ("claude/CLAUDE.md",                 "Drop-in instructions",  "Voice, banned language, color, type, and asset URLs. The one file to hand an AI."),
-    ("claude/laio-brand/BRAND.md",       "Full brand system",     "The long form. Load when the work needs depth."),
-    ("claude/laio-brand/COMPONENTS.md",  "Component code",        "Buttons, cards, eyebrows, and layout patterns as code."),
-    ("claude/laio-brand.zip",            "Packaged skill",        "The whole kit as a Claude skill. Unzip into .claude/skills/."),
-    ("llms.txt",                         "Machine-readable index","A plain list of everything above. Point a crawler or an agent at this."),
+    ("ai/CLAUDE.md",                              "Brand instructions",           "Voice, banned language, color, type, and asset URLs. The one file to hand an AI."),
+    ("ai/AGENTS.md",                              "AGENTS.md",                    "The same file, for Cursor and other agents that look for AGENTS.md."),
+    ("ai/laio-brand/BRAND.md",                    "Full brand system",            "The long form. Load when the work needs depth."),
+    ("ai/laio-brand/COMPONENTS.md",               "Component code",               "Buttons, cards, eyebrows, and layout patterns as code."),
+    ("ai/laio-brand.zip",                         "Packaged skill",               "The whole kit as a Claude skill. Unzip into ~/.claude/skills/."),
+    ("ai/claude-ai-project-setup.md",             "claude.ai Project setup",      "Custom instructions and knowledge files for a Claude Project."),
+    ("ai/claude-design-setup.md",                 "Claude Design setup",          "The prompt and references that build the LA.IO Design System."),
+    ("ai/lovable/LAIO_LOVABLE_GUIDE.md",          "Lovable guide",                "How to start an LA.IO project in Lovable."),
+    ("ai/lovable/LOVABLE_CUSTOM_INSTRUCTIONS.md", "Lovable workspace instructions","Brand rules for every project in a Lovable workspace."),
+    ("ai/lovable/LOVABLE_STARTER_PROMPT.md",      "Lovable starter prompt",       "The first message that builds the LA.IO starter template."),
+    ("ai/lovable/LOVABLE_STARTER_TEMPLATE_SPEC.md","Lovable starter template spec","What the starter template contains and how it is wired."),
+    ("llms.txt",                                  "Machine-readable index",       "A plain list of everything on this page. Point a crawler or an agent at this."),
 ]
+
+# ---- markup helpers ----
+def code(text, wrap=False):
+    cls = "code code-wrap" if wrap else "code"
+    return (f'<div class="{cls}">\n<button class="copy">Copy</button>\n'
+            f'<pre>{html_escape(text, quote=False)}</pre>\n</div>')
+
+def dl(href, label, ghost=False):
+    cls = "dl ghost" if ghost else "dl"
+    name = href.rsplit("/", 1)[-1]
+    return (f'<a class="{cls}" href="{href}" download="{name}">'
+            f'<span class="ico">&darr;</span> {label}</a>')
+
+def dlrow(*links):
+    return '<div class="dl-row">\n' + "\n".join(links) + '\n</div>'
 
 def urlrow(path, name, desc):
     url = "https://assets.la.io/" + path
-    return f'''<div class="urow">
-  <span class="uplus">+</span>
-  <div class="ubody">
-    <div class="uname">{name}</div>
-    <div class="udesc">{desc}</div>
-  </div>
-  <button class="ucopy mono" data-copy="{url}"><span class="upath">/{path}</span><span class="uci">COPY</span></button>
-</div>'''
-
-fontrows = "".join(
-    urlrow("fonts/" + f, f"{name} <span class=\"uw mono\">CSS</span>", html_escape(desc))
-    for f, name, desc in FONT_CSS) + "".join(
-    urlrow("fonts/" + f, f"{label} <span class=\"uw mono\">{w}</span>",
-           "woff2. Self-hosted, open CORS.")
-    for f, label, w in FONTS)
-
-datarows = "".join(urlrow(p, p.split("/")[-1], d) for p, d in DATA)
-
-logorows = "".join(f'''<div class="acard">
-  <div class="astage"><img src="/logos/{f}" alt="{name}" loading="lazy"></div>
-  <div class="aname">{name}</div>
-  <div class="adesc">{desc}</div>
-  <button class="ucopy mono" data-copy="https://assets.la.io/logos/{f}"><span class="upath">/logos/{f}</span><span class="uci">COPY</span></button>
-</div>''' for f, name, desc in LOGOS)
-
-motifrows = "".join(f'''<div class="mcard">
-  <div class="mstage"><img src="/motifs/{f}" alt="{name}" loading="lazy"></div>
-  <div class="mname">{name}</div>
-  <button class="ucopy mono" data-copy="https://assets.la.io/motifs/{f}"><span class="upath">/motifs/{f}</span><span class="uci">COPY</span></button>
-</div>''' for f, name in MOTIFS)
+    return (f'<div class="urow"><span class="uplus">+</span>'
+            f'<div class="ubody"><a class="uname" href="/{path}">{name}</a>'
+            f'<div class="udesc">{desc}</div></div>'
+            f'<button class="ucopy" data-copy="{url}"><span class="upath">/{path}</span>'
+            f'<span class="uci">Copy</span></button></div>\n')
 
 docrows = "".join(urlrow(p, n, d) for p, n, d in DOCS)
+fontrows = "".join(
+    urlrow("fonts/" + f, f'{name} <span class="uw">CSS</span>', html_escape(desc))
+    for f, name, desc in FONT_CSS) + "".join(
+    urlrow("fonts/" + f, f'{label} <span class="uw">{w}</span>', "woff2. Self-hosted, open CORS.")
+    for f, label, w in FONTS)
+datarows = "".join(urlrow(p, p.split("/")[-1], d) for p, d in DATA)
 
-AI_CSS = CSS + '''
-header{padding:80px 0 0}
-.eyebrow{font-size:11.5px;color:var(--electric);margin:0 0 26px;letter-spacing:.16em;font-weight:700}
-h1{font-weight:300;font-size:clamp(34px,5.2vw,58px);line-height:1.04;margin:0;letter-spacing:-.02em}
-h1 b{font-weight:700;display:block}
-.lede{margin:24px 0 0;max-width:52ch;font-size:17px;line-height:1.5;color:var(--body)}
+logocards = "".join(f'''<div class="acard">
+  <div class="astage"><img src="/logos/{f}" alt="{name}" loading="lazy"></div>
+  <a class="aname" href="/logos/{f}">{name}</a>
+  <div class="adesc">{desc}</div>
+  <button class="ucopy" data-copy="https://assets.la.io/logos/{f}"><span class="upath">/logos/{f}</span><span class="uci">Copy</span></button>
+</div>
+''' for f, name, desc in LOGOS)
 
-.step{padding:66px 0 0}
-.shead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
-  border-bottom:1px solid var(--rule-soft);padding-bottom:14px;margin-bottom:26px}
-.snum{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;
-  color:rgba(255,255,255,.34)}
-h2{font-size:13px;color:var(--electric);margin:0;font-weight:700;
-  font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em}
-.snote{font-size:14.5px;color:var(--body);margin-left:auto;max-width:40ch}
-@media(max-width:760px){.snote{margin-left:0;flex-basis:100%}}
+motifcards = "".join(f'''<div class="mcard">
+  <div class="mstage"><img src="/motifs/{f}" alt="{name}" loading="lazy"></div>
+  <div class="mname">{name}</div>
+  <button class="ucopy" data-copy="https://assets.la.io/motifs/{f}"><span class="upath">/motifs/{f}</span><span class="uci">Copy</span></button>
+</div>
+''' for f, name in MOTIFS)
 
-.prompt{border:1px solid var(--electric);background:rgba(0,185,254,.06)}
-.plabel{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;
-  color:var(--easy);padding:15px 20px 0;text-transform:uppercase}
-.ptext{padding:11px 20px 20px;font-size:clamp(15px,2vw,19px);line-height:1.45;
-  font-family:'JetBrains Mono',monospace;color:#fff;word-break:break-word;letter-spacing:0}
-.pbtn{display:block;width:100%;text-align:left;background:var(--electric);color:var(--dark);
-  border:0;padding:14px 20px;cursor:pointer;font-family:'JetBrains Mono',monospace;
-  font-size:11px;letter-spacing:.12em;font-weight:700;text-transform:uppercase;transition:.15s}
-.pbtn:hover{background:var(--easy)}
+# The LA.IO mark as the original page inlined it (hero and footer).
+MARK = '''<svg class="laio-mark" viewBox="0 0 280.17 67.88" role="img" aria-label="LA.IO">
+        <path d="M66.14,19.91v22.03h14.23v6.89h-22.03v-28.92h7.8Z"/>
+        <path d="M107.72,43.23h-8.58l-1.56,5.6h-7.57l8.86-28.92h9.55l8.86,28.92h-7.99l-1.56-5.6ZM100.79,37.4h5.32l-2.57-9.18h-.18l-2.57,9.18Z"/>
+        <path d="M134.3,40.02h8.81v8.81h-8.81v-8.81Z"/>
+        <path d="M162.67,48.83v-6.75h7.21v-15.42h-7.21v-6.75h22.22v6.75h-7.21v15.42h7.21v6.75h-22.22Z"/>
+        <path d="M208.85,49.38c-7.44,0-12.99-6.11-12.99-15.01s5.55-15.01,12.99-15.01,12.99,6.1,12.99,15.01-5.55,15.01-12.99,15.01ZM208.85,26.25c-3.12,0-5.1,3.21-5.1,8.12s1.97,8.12,5.1,8.12,5.09-3.21,5.09-8.12-1.97-8.12-5.09-8.12Z"/>
+        <polygon points="14.73 33.94 41.3 60.51 33.94 67.88 0 33.94 33.94 0 41.3 7.36 14.73 33.94"/>
+        <polygon points="265.45 33.94 238.87 7.36 246.24 0 280.17 33.94 246.24 67.88 238.87 60.51 265.45 33.94"/>
+      </svg>'''
 
-.ways{margin:26px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-@media(max-width:860px){.ways{grid-template-columns:1fr}}
-.way{border:1px solid var(--rule-soft);padding:20px}
-.wlabel{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;
-  color:var(--easy);text-transform:uppercase;margin-bottom:10px}
-.way p{margin:0;font-size:14.5px;line-height:1.5;color:var(--body)}
-.way a{color:var(--electric);text-decoration:none;border-bottom:1px solid rgba(0,185,254,.35)}
-.way a:hover{border-bottom-color:var(--electric)}
-
-.urow{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:4px 6px;
-  align-items:center;padding:15px 0;border-bottom:1px solid var(--rule-soft)}
-.urow:first-child{border-top:1px solid var(--rule-soft)}
-.uplus{color:var(--electric);font-size:16px;line-height:1}
-.uname{font-size:16px;font-weight:400}
-.uw{font-size:10px;color:rgba(255,255,255,.36);padding-left:7px}
-.udesc{font-size:13.5px;color:var(--body);margin-top:3px;line-height:1.45}
-.ubody{min-width:0}
-.ucopy{display:flex;align-items:center;gap:12px;justify-content:space-between;
-  background:transparent;border:1px solid var(--rule);color:rgba(255,255,255,.55);
-  padding:9px 12px;cursor:pointer;font-family:'JetBrains Mono',monospace;
-  font-size:9.5px;letter-spacing:.04em;text-transform:none;transition:.15s;white-space:nowrap}
-.ucopy:hover{color:var(--dark);background:var(--electric);border-color:var(--electric)}
-.uci{letter-spacing:.1em;color:var(--easy);font-weight:700}
-.ucopy:hover .uci{color:var(--dark)}
-.ucopy.done{background:var(--easy);border-color:var(--easy);color:var(--dark)}
-.ucopy.done .uci{color:var(--dark)}
-@media(max-width:760px){
-  .urow{grid-template-columns:20px minmax(0,1fr);grid-template-areas:"p b" ". c"}
-  .uplus{grid-area:p} .ubody{grid-area:b} .ucopy{grid-area:c;margin-top:9px;width:100%}
-}
-
-.acards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-@media(max-width:860px){.acards{grid-template-columns:1fr}}
-.acard{border:1px solid var(--rule-soft)}
-.astage{background:#fff;height:150px;display:flex;align-items:center;justify-content:center;padding:26px}
-.astage img{max-width:100%;max-height:100%}
-.aname{font-size:15px;padding:15px 15px 0}
-.adesc{font-size:13px;color:var(--body);padding:5px 15px 13px;line-height:1.45}
-.acard .ucopy{width:100%;border:0;border-top:1px solid var(--rule-soft)}
-
-.mcards{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-@media(max-width:980px){.mcards{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:600px){.mcards{grid-template-columns:repeat(2,1fr)}}
-.mcard{border:1px solid var(--rule-soft)}
-.mstage{background:#fff;height:96px;display:flex;align-items:center;justify-content:center;padding:24px}
-.mstage img{max-width:100%;max-height:100%}
-.mname{font-size:13px;padding:11px 12px 9px}
-.mcard .ucopy{width:100%;border:0;border-top:1px solid var(--rule-soft);font-size:9px;padding:8px 10px}
-
-.tip{margin:24px 0 0;padding:16px 18px;border-left:2px solid var(--easy);
-  background:rgba(99,220,222,.05);font-size:14px;line-height:1.55;color:var(--body)}
-.tip b{color:#fff;font-weight:400}
-.tip code{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--easy)}
-footer{margin:96px 0 0;padding:26px 0 60px;border-top:1px solid var(--rule-soft);
-  font-size:11px;color:rgba(255,255,255,.34);letter-spacing:.1em;
-  display:flex;gap:18px;flex-wrap:wrap}
-footer a{color:var(--easy);text-decoration:none}
-footer a:hover{color:var(--electric)}
+# ---- page head ----
+AI_HEAD = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LA.IO Brand Kit for AI</title>
+<meta name="description" content="The LA.IO brand system, set up for Claude, Lovable, and any other AI. Voice, color, type, logos, motifs, and component code.">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Karla:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
 '''
 
-ai = f'''<!doctype html>
-<html lang="en"><head>{HEAD}
-<title>Brand Assets for AI — assets.la.io</title>
-<meta name="description" content="The LA.IO brand system as URLs an AI can fetch. Instructions, fonts, colors, logos, and motifs.">
-<style>{AI_CSS}</style></head>
-<body><div class="wrap">
+# ---- intro, top bar (as the original page had them) ----
+INTRO = '''</style>
+</head>
+<body>
 
-<header>
-{LOGO}
-<p class="eyebrow mono">Brand Assets for AI</p>
-<h1>Point your AI<b>at these URLs.</b></h1>
-<p class="lede">Every core LA.IO asset lives at a permanent, public URL. Any AI, tool, or
-site that can fetch a URL can pull the real fonts, colors, logos, and rules. No downloads,
-no attachments, no stale copies.</p>
-</header>
+  <!-- orbital-rings backdrop: intro centerpiece, then live header background -->
+  <canvas id="rings" aria-hidden="true"></canvas>
 
-<section class="step">
-  <div class="shead"><span class="snum">01</span><h2>Start here</h2>
-  <span class="snote">Works in Claude, ChatGPT, Lovable, Cursor, or anything else that can read a link.</span></div>
-  <div class="prompt">
-    <div class="plabel">Paste this into your AI</div>
-    <div class="ptext">{PROMPT}</div>
-    <button class="pbtn" data-copy="{PROMPT}">Copy the instruction</button>
+  <!-- ============ INTRO ============ -->
+  <div id="intro" aria-hidden="true"></div>
+  <div id="intro-logo" title="Skip (click)">
+    <svg class="il-logo" viewBox="0 0 280.17 67.88" role="img" aria-label="LA.IO">
+      <g class="il-letters">
+        <path d="M66.14,19.91v22.03h14.23v6.89h-22.03v-28.92h7.8Z"/>
+        <path d="M107.72,43.23h-8.58l-1.56,5.6h-7.57l8.86-28.92h9.55l8.86,28.92h-7.99l-1.56-5.6ZM100.79,37.4h5.32l-2.57-9.18h-.18l-2.57,9.18Z"/>
+        <path d="M134.3,40.02h8.81v8.81h-8.81v-8.81Z"/>
+        <path d="M162.67,48.83v-6.75h7.21v-15.42h-7.21v-6.75h22.22v6.75h-7.21v15.42h7.21v6.75h-22.22Z"/>
+        <path d="M208.85,49.38c-7.44,0-12.99-6.11-12.99-15.01s5.55-15.01,12.99-15.01,12.99,6.1,12.99,15.01-5.55,15.01-12.99,15.01ZM208.85,26.25c-3.12,0-5.1,3.21-5.1,8.12s1.97,8.12,5.1,8.12,5.09-3.21,5.09-8.12-1.97-8.12-5.09-8.12Z"/>
+      </g>
+      <g class="il-chev il-l"><polygon points="14.73 33.94 41.3 60.51 33.94 67.88 0 33.94 33.94 0 41.3 7.36 14.73 33.94"/></g>
+      <g class="il-chev il-r"><polygon points="265.45 33.94 238.87 7.36 246.24 0 280.17 33.94 246.24 67.88 238.87 60.51 265.45 33.94"/></g>
+    </svg>
+    <div class="il-tag mono">Louisiana Innovation</div>
   </div>
-  <div class="tip"><b>That one file carries the whole system.</b> Voice rules, banned
-  language, the five color families, type rules, and every asset URL on this page. One
-  fetch and the AI is on brand.</div>
-</section>
 
-<section class="step">
-  <div class="shead"><span class="snum">02</span><h2>Three ways to use it</h2></div>
-  <div class="ways">
-    <div class="way">
-      <div class="wlabel">Any AI chat</div>
-      <p>Paste the line above. The AI fetches the file and works to the brand from there.</p>
-    </div>
-    <div class="way">
-      <div class="wlabel">Claude project or Claude Code</div>
-      <p>Install the packaged skill instead. Setup steps are at
-      <a href="/claude">assets.la.io/claude</a>.</p>
-    </div>
-    <div class="way">
-      <div class="wlabel">Lovable, Framer, a web build</div>
-      <p>Use the raw URLs below directly in code. Every file is served with open CORS,
-      so it loads on any domain.</p>
+  <!-- ============ TOP BAR ============ -->
+  <div class="topbar">
+    <div class="wrap">
+      <a class="mp-logo" href="https://mondayandpartners.com">MONDAY <span class="plus">+</span> PARTNERS</a>
+      <span class="mono tag">LA.IO Brand Kit</span>
     </div>
   </div>
-</section>
+'''
 
-<section class="step">
-  <div class="shead"><span class="snum">03</span><h2>Instructions and docs</h2>
-  <span class="snote">Markdown, fetchable, always current.</span></div>
-  {docrows}
-</section>
+HERO = f'''
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="wrap">
+      {MARK}
+      <span class="mono eyebrow">One kit. Every tool.</span>
+      <h1>The LA.IO brand, ready for <span class="accent">any AI.</span></h1>
+      <p class="sub">Voice, color, type, logos, and component code in one kit. Set it up once in whichever tool you use, and every project starts on brand.</p>
+    </div>
+  </header>
+'''
 
-<section class="step">
-  <div class="shead"><span class="snum">04</span><h2>Type</h2>
-  <span class="snote">Embedded CSS for sandboxes, hosted CSS for real sites. JetBrains Mono comes from Google Fonts.</span></div>
-  {fontrows}
-  <div class="tip"><b>Headlines use Light (300) or Bold (700).</b> Regular (400) for body.
-  Never 500 or 600 as a headline weight. Family name is <code>'Aktiv Grotesk'</code>,
-  never <code>'aktiv-grotesk'</code>. Stack: <code>'Aktiv Grotesk', 'Roboto', system-ui, sans-serif</code>.
-  Roboto only when neither CSS file can load, and say so in the handoff.</div>
-</section>
+START = f'''
+  <!-- ============ START HERE ============ -->
+  <section class="block">
+    <div class="wrap">
+      <span class="mono sec-eyebrow">Start here</span>
+      <h2>Paste one line.</h2>
+      <p class="lead">Any AI that can read the web fetches the brand instructions from this URL and works to them from there.</p>
+      {code(PROMPT, wrap=True)}
+      <p class="note">If your AI cannot fetch URLs, download CLAUDE.md and laio-fonts-inline.css below and attach them instead.</p>
+      {dlrow(dl("/ai/CLAUDE.md", "Download CLAUDE.md"), dl("/fonts/laio-fonts-inline.css", "Download laio-fonts-inline.css", True))}
+    </div>
+  </section>
+'''
 
-<section class="step">
-  <div class="shead"><span class="snum">05</span><h2>Color</h2>
-  <span class="snote">Five families. One family per project. Do not mix them.</span></div>
-  {datarows}
-</section>
+# ---- the five tabs ----
+TAB_CLAUDE = f'''<p class="for">For <b>copy, content, and brand questions</b> on claude.ai. Best for writers and marketers. Set it up once, then every chat in the Project knows the brand.</p>
+<ol class="steps">
+  <li><div class="st">Create a Project</div><div class="sd">claude.ai &rarr; Projects &rarr; New Project. Name it <code class="inline">LA.IO</code>.</div></li>
+  <li><div class="st">Paste the custom instructions</div><div class="sd">Open the Project, click <i>Set custom instructions</i>, and paste the block below.</div>
+{code(fence("ai/claude-ai-project-setup.md"))}
+  </li>
+  <li><div class="st">Add the brand knowledge</div><div class="sd">Download all three files below. In the Project, click <i>Add content</i> (project knowledge) and upload them. <code class="inline">laio-fonts-inline.css</code> carries the Aktiv Grotesk typeface, so artifacts render in the brand font.</div>
+{dlrow(dl("/ai/laio-brand/BRAND.md", "Download BRAND.md"), dl("/ai/laio-brand/COMPONENTS.md", "Download COMPONENTS.md", True), dl("/fonts/laio-fonts-inline.css", "Download laio-fonts-inline.css", True))}
+  </li>
+  <li><div class="st">Start a chat</div><div class="sd">Every conversation inside the Project is now on brand.</div></li>
+</ol>
+<div class="ready"><span class="plus">+</span><p><b>Ready when:</b> a fresh chat in the Project answers "what bullet does LA.IO use?" with a plus sign, and writes copy with no em dashes.</p></div>'''
 
-<section class="step">
-  <div class="shead"><span class="snum">06</span><h2>Logos</h2></div>
-  <div class="acards">{logorows}</div>
-  <div class="tip"><b>Every file ships black (#231F20) on transparent.</b> Recolor with
-  CSS <code>fill</code> or inline the SVG and set <code>fill:currentColor</code>. Do not
-  edit the artwork.</div>
-</section>
+TAB_DESIGN = f'''<p class="for">For <b>Claude Design</b> (prototypes, slide decks, visuals). Claude Design has its own Design System feature. You build an <b>LA.IO Design System</b> once, then pick it from the <i>Design System</i> dropdown on any new project and everything comes out on brand. Each person makes their own copy; the prompt below makes it identical every time.</p>
+<ol class="steps">
+  <li><div class="st">Get the setup, the logo, and the font</div><div class="sd">Download the setup notes, plus the logo and the embedded font file to attach as references.</div>
+{dlrow(dl("/ai/claude-design-setup.md", "Design System setup"), dl("/logos/LAIO-COMPLETE.svg", "LA.IO logo (SVG)", True), dl("/fonts/laio-fonts-inline.css", "Download laio-fonts-inline.css", True))}
+  </li>
+  <li><div class="st">Create a new Design System from this prompt</div><div class="sd">In Claude Design, start a new Design System from a prompt plus references (the same flow as your other systems). Paste the prompt below, and attach the LA.IO logo, <code class="inline">laio-fonts-inline.css</code> (Claude Design uses it for all Aktiv Grotesk rendering), a motif or two from <code class="inline">assets.la.io/motifs/</code>, and optionally a screenshot of this page as a "brand in action" reference.</div>
+{code(fence("ai/claude-design-setup.md"))}
+  </li>
+  <li><div class="st">Name it, then select it</div><div class="sd">Name it exactly <code class="inline">LA.IO Design System</code>. On any New Project (Prototype, Slide deck, and so on) choose it from the <i>Design System</i> dropdown.</div></li>
+</ol>
+<div class="ready"><span class="plus">+</span><p><b>Ready when:</b> a project on the LA.IO Design System produces one-family, angular, Aktiv Grotesk layouts with the real LA.IO logo and plus-sign bullets.</p></div>'''
 
-<section class="step">
-  <div class="shead"><span class="snum">07</span><h2>Motifs</h2>
-  <span class="snote">Structural graphics. Same black artwork, recolor to the active family.</span></div>
-  <div class="mcards">{motifrows}</div>
-</section>
+TAB_CODE = f'''<p class="for">For <b>hands-on work and real builds</b>. Cowork uses the skill for multi-step brand work with no code. Claude Code uses the same skill plus a <code class="inline">CLAUDE.md</code> to build sites and apps. Both read one skills folder, so you set it up once. The steps use Finder, no Terminal required.</p>
+<ol class="steps">
+  <li><div class="st">Download the files</div><div class="sd">Double-click the <code class="inline">.zip</code> to unzip it into a folder named <code class="inline">laio-brand</code>. Building in Claude Code? Grab <code class="inline">CLAUDE.md</code> too.</div>
+{dlrow(dl("/ai/laio-brand.zip", "Download the skill (.zip)"), dl("/ai/CLAUDE.md", "Download CLAUDE.md", True))}
+  </li>
+  <li><div class="st">Open your skills folder</div><div class="sd">Open <b>Finder</b>. Press <span class="kbd">&#8984; &#8679; G</span> to open <i>Go to Folder</i>. Type the line below exactly and press Return.</div>
+    <div class="pathbox">~/.claude/skills</div>
+    <div class="sd" style="margin-top:12px">If a window opens, you are in the right place. If it says the folder cannot be found, type <code class="inline">~/.claude</code> instead, press Return, then right-click inside that window, choose <i>New Folder</i>, and name it exactly <code class="inline">skills</code>. Open the new <code class="inline">skills</code> folder.</div>
+  </li>
+  <li><div class="st">Drop the folder in</div><div class="sd">Drag the <code class="inline">laio-brand</code> folder into the <code class="inline">skills</code> folder. When you are done it lives here:</div>
+    <div class="pathbox">~/.claude/skills/laio-brand</div>
+    <div class="sd" style="margin-top:12px">This makes the skill available in every project, in Cowork and in Claude Code. Prefer it in one project only? Put it in a <code class="inline">.claude/skills</code> folder inside that project instead.</div>
+    <details class="alt"><summary>Comfortable with Terminal? Do it in one line</summary>
+{code("mkdir -p ~/.claude/skills && cp -R ~/Downloads/laio-brand ~/.claude/skills/")}
+    </details>
+  </li>
+  <li><div class="st">Claude Code: add the always-on rules</div><div class="sd">Put the downloaded <code class="inline">CLAUDE.md</code> in the top folder of your project (next to your other files). If you already have a <code class="inline">CLAUDE.md</code>, paste these contents at the top of it. Cowork users can skip this step.</div></li>
+  <li><div class="st">Restart and use it</div><div class="sd">Quit and reopen Cowork, or start a new Claude Code session. Then mention LA.IO and name the color family up front. The skill loads the voice, color, type, and component rules on its own, and Claude Code pulls <code class="inline">COMPONENTS.md</code> for ready-to-use code.</div>
+{code("Draft three event-page headline options for LA.IO. Use the laio-brand skill.", wrap=True)}
+  </li>
+</ol>
+<p class="note">Not on a Mac? The folder is the same idea (<code class="inline">.claude/skills</code> in your home folder). Email <a href="mailto:dylan@mondayandpartners.com">dylan@mondayandpartners.com</a> and we will walk you through it.</p>
+<div class="ready"><span class="plus">+</span><p><b>Ready when:</b> the request above returns matter-of-fact headlines with plus-sign bullets and no em dashes, and asking Claude Code to scaffold a hero returns angular markup in one color family, Aktiv Grotesk type, and the real LA.IO logo.</p></div>'''
 
-<footer>
-  <span class="mono">assets.la.io</span>
-  <a class="mono" href="/">All tools</a>
-  <a class="mono" href="/llms.txt">llms.txt</a>
-  <a class="mono" href="/claude">Claude kit</a>
-</footer>
+TAB_LOVABLE = f'''<p class="for">For <b>sites and apps built in Lovable</b>. The brand rules live at the workspace level, and a starter template carries the fonts, colors, logo component, and base components. Every new project starts from that template.</p>
+<ol class="steps">
+  <li><div class="st">Add the workspace instructions</div><div class="sd">Once per Lovable workspace. Paste the contents of <code class="inline">LOVABLE_CUSTOM_INSTRUCTIONS.md</code> into the workspace-wide instructions in Lovable's settings. Every project in the workspace then knows the voice, color, type, and design rules. Skip this if your workspace already has them.</div>
+{dlrow(dl("/ai/lovable/LOVABLE_CUSTOM_INSTRUCTIONS.md", "Download workspace instructions"))}
+  </li>
+  <li><div class="st">Duplicate the LA.IO Starter Template</div><div class="sd">Find <i>LA.IO Starter Template</i> in your projects, open the three-dot menu, and duplicate it. Rename it for your project. Fonts, colors, the logo component, and base components are already wired in. No template in your workspace yet? Start a new project and paste <code class="inline">LOVABLE_STARTER_PROMPT.md</code> as the first message. The spec describes what the finished template contains.</div>
+{dlrow(dl("/ai/lovable/LOVABLE_STARTER_PROMPT.md", "Download starter prompt", True), dl("/ai/lovable/LOVABLE_STARTER_TEMPLATE_SPEC.md", "Download template spec", True))}
+  </li>
+  <li><div class="st">Paste this at the top of your first prompt</div><div class="sd">Fill in the three blanks, then describe what you want to build.</div>
+{code(fence("ai/lovable/LAIO_LOVABLE_GUIDE.md"))}
+  </li>
+  <li><div class="st">Build normally</div><div class="sd">Prompt Lovable the way you always do. The brand system handles the rest. If the preview shows a font other than Aktiv Grotesk, the preview cannot reach assets.la.io: ask Lovable to paste the contents of <code class="inline">laio-fonts-inline.css</code> into a <code class="inline">&lt;style&gt;</code> tag in <code class="inline">index.html</code>.</div></li>
+</ol>
+<div class="ready"><span class="plus">+</span><p><b>Ready when:</b> a project duplicated from the template shows Aktiv Grotesk headlines, JetBrains Mono eyebrows in the accent color, one color family, square corners, and the real LA.IO logo.</p></div>'''
 
-</div>
+TAB_OTHER = f'''<p class="for">For <b>ChatGPT, Gemini, Cursor, and anything else</b>. If the tool can fetch a URL, one line sets it up. If it cannot, attach two files.</p>
+<ol class="steps">
+  <li><div class="st">Paste the brand instruction</div><div class="sd">Paste this at the start of a chat, or into the tool's custom instructions, project instructions, or rules so it applies every time.</div>
+{code(PROMPT, wrap=True)}
+  </li>
+  <li><div class="st">No web access? Attach the files</div><div class="sd">Download both files and attach them to the chat or to the tool's project knowledge. <code class="inline">laio-fonts-inline.css</code> lets any HTML the tool builds render in Aktiv Grotesk.</div>
+{dlrow(dl("/ai/CLAUDE.md", "Download CLAUDE.md"), dl("/fonts/laio-fonts-inline.css", "Download laio-fonts-inline.css", True))}
+  </li>
+  <li><div class="st">Coding agents: keep it in the repo</div><div class="sd">Put <code class="inline">CLAUDE.md</code> in the project root. Cursor and other agents that look for <code class="inline">AGENTS.md</code> can use that name instead. It is the same file.</div>
+{dlrow(dl("/ai/AGENTS.md", "Download AGENTS.md", True))}
+  </li>
+</ol>
+<div class="ready"><span class="plus">+</span><p><b>Ready when:</b> asked "what bullet does LA.IO use, and what are the three pillars?", the tool answers with a plus sign and + Capital, + Coaching, + Connections, in that order.</p></div>'''
+
+TABS = [
+    ("claude",  "Claude",               TAB_CLAUDE),
+    ("design",  "Claude Design",        TAB_DESIGN),
+    ("code",    "Claude Code + Cowork", TAB_CODE),
+    ("lovable", "Lovable",              TAB_LOVABLE),
+    ("other",   "Other AI",             TAB_OTHER),
+]
+tabbuttons, panels = [], []
+for i, (key, label, body) in enumerate(TABS):
+    sel = "true" if i == 0 else "false"
+    active = ' data-active="true"' if i == 0 else ""
+    tabbuttons.append(f'          <button class="tab" role="tab" aria-selected="{sel}" data-tab="{key}">{label}</button>')
+    panels.append(f'''
+        <!-- {label.upper()} -->
+        <div class="panel" data-tab="{key}"{active} role="tabpanel">
+{body}
+        </div>''')
+
+SETUP = f'''
+  <!-- ============ SETUP TABS ============ -->
+  <section class="block">
+    <div class="wrap">
+      <span class="mono sec-eyebrow">Get set up</span>
+      <h2>Pick your tool.</h2>
+      <p class="lead">Each takes a few minutes. Set up the ones you use. They all draw from the same kit.</p>
+
+      <div class="tabs">
+        <div class="tablist" role="tablist">
+{chr(10).join(tabbuttons)}
+        </div>
+{"".join(panels)}
+      </div>
+    </div>
+  </section>
+'''
+
+# ---- the brand in 30 seconds (unchanged from the original page) ----
+SUMMARY = '''
+  <!-- ============ BRAND IN 30 SECONDS ============ -->
+  <section class="block">
+    <div class="wrap">
+      <span class="mono sec-eyebrow">The brand in 30 seconds</span>
+      <h2>If you read nothing else.</h2>
+
+      <div class="families">
+        <div class="fam"><div class="swatches"><span style="background:#101948"></span><span style="background:#E385FE"></span><span style="background:#F629CB"></span></div><div class="meta"><div class="fname">Magenta</div></div></div>
+        <div class="fam"><div class="swatches"><span style="background:#172708"></span><span style="background:#C8ED5D"></span><span style="background:#96F90B"></span></div><div class="meta"><div class="fname">Green</div></div></div>
+        <div class="fam"><div class="swatches"><span style="background:#01233C"></span><span style="background:#63DCDE"></span><span style="background:#00B9FE"></span></div><div class="meta"><div class="fname">Blue</div></div></div>
+        <div class="fam"><div class="swatches"><span style="background:#302511"></span><span style="background:#F1DC43"></span><span style="background:#F5C124"></span></div><div class="meta"><div class="fname">Orange</div></div></div>
+        <div class="fam"><div class="swatches"><span style="background:#231F20"></span><span style="background:#E3E6E7"></span><span style="background:#929497"></span></div><div class="meta"><div class="fname">Gray</div></div></div>
+      </div>
+
+      <div class="voice">
+        <div class="col never">
+          <h4>Never write</h4>
+          <ul>
+            <li><span class="m">+</span><span>"resilience" or "Silicon Bayou"</span></li>
+            <li><span class="m">+</span><span>"innovative solutions", "cutting-edge", "disruptive"</span></li>
+            <li><span class="m">+</span><span>"rethink" or "reimagine" Louisiana</span></li>
+            <li><span class="m">+</span><span>jazz, Mardi Gras, Bourbon Street, crawfish</span></li>
+            <li><span class="m">+</span><span>"it's not X, it's Y" constructions</span></li>
+            <li><span class="m">+</span><span>em dashes, anywhere</span></li>
+          </ul>
+        </div>
+        <div class="col always">
+          <h4>Always do</h4>
+          <ul>
+            <li><span class="m">+</span><span>State the case, then stop</span></li>
+            <li><span class="m">+</span><span>Lead with fact, not persuasion</span></li>
+            <li><span class="m">+</span><span>Use + as the bullet, never a dot or hyphen</span></li>
+            <li><span class="m">+</span><span>One color family per piece</span></li>
+            <li><span class="m">+</span><span>Aktiv Grotesk, Light or Bold for headlines</span></li>
+            <li><span class="m">+</span><span>Angular geometry, generous whitespace</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pillars">
+        <span class="pillar"><span class="m">+</span> Capital</span>
+        <span class="pillar"><span class="m">+</span> Coaching</span>
+        <span class="pillar"><span class="m">+</span> Connections</span>
+      </div>
+    </div>
+  </section>
+'''
+
+ASSETS = f'''
+  <!-- ============ THE ASSETS ============ -->
+  <section class="block" id="assets">
+    <div class="wrap">
+      <span class="mono sec-eyebrow">The assets</span>
+      <h2>Every file, at a permanent URL.</h2>
+      <p class="lead">Every file is public, current, and served with open CORS, so it loads on any domain. Copy a URL into code, a prompt, or a tool's knowledge.</p>
+
+      <div class="agroup">
+        <div class="ahead"><h3 class="mono">Instructions and docs</h3><span class="anote">Markdown, fetchable, always current.</span></div>
+        <div class="urows">
+{docrows}        </div>
+      </div>
+
+      <div class="agroup">
+        <div class="ahead"><h3 class="mono">Type</h3><span class="anote">Embedded CSS for sandboxes, hosted CSS for real sites. JetBrains Mono comes from Google Fonts.</span></div>
+        <div class="urows">
+{fontrows}        </div>
+        <div class="tip"><b>Headlines use Light (300) or Bold (700).</b> Regular (400) for body. Never 500 or 600 as a headline weight. Family name is <code>'Aktiv Grotesk'</code>, never <code>'aktiv-grotesk'</code>. Stack: <code>'Aktiv Grotesk', 'Roboto', system-ui, sans-serif</code>. Roboto only when neither CSS file can load, and say so in the handoff.</div>
+      </div>
+
+      <div class="agroup">
+        <div class="ahead"><h3 class="mono">Color</h3><span class="anote">Five families. One family per project. Do not mix them.</span></div>
+        <div class="urows">
+{datarows}        </div>
+      </div>
+
+      <div class="agroup">
+        <div class="ahead"><h3 class="mono">Logos</h3></div>
+        <div class="acards">
+{logocards}        </div>
+        <div class="tip"><b>Every file ships black (#231F20) on transparent.</b> Recolor with CSS <code>fill</code>, or inline the SVG and set <code>fill: currentColor</code>. Do not edit the artwork.</div>
+      </div>
+
+      <div class="agroup">
+        <div class="ahead"><h3 class="mono">Motifs</h3><span class="anote">Structural graphics. Same black artwork, recolor to the active family.</span></div>
+        <div class="mcards">
+{motifcards}        </div>
+      </div>
+    </div>
+  </section>
+'''
+
+FOOTER = f'''
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="wrap">
+      <div class="row">
+        <div>
+          {MARK}
+          <div class="descriptor">A Division of Louisiana Economic Development</div>
+          <div class="flinks"><a href="/">assets.la.io</a><a href="/llms.txt">llms.txt</a></div>
+        </div>
+        <div class="sign">
+          <div class="made">Maintained by</div>
+          <span class="mp-logo">MONDAY <span class="plus">+</span> PARTNERS</span>
+          <a href="mailto:dylan@mondayandpartners.com">dylan@mondayandpartners.com</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 <script>
-document.addEventListener('click',function(e){{
-  var b=e.target.closest('[data-copy]'); if(!b) return;
-  navigator.clipboard.writeText(b.getAttribute('data-copy'));
-  var t=b.querySelector('.uci'), o;
-  if(t){{o=t.textContent;t.textContent='COPIED';b.classList.add('done');
-    setTimeout(function(){{t.textContent=o;b.classList.remove('done')}},1200);}}
-  else {{o=b.textContent;b.textContent='Copied';
-    setTimeout(function(){{b.textContent=o}},1200);}}
-}});
-</script>
-</body></html>'''
+'''
 
-os.makedirs(os.path.join(REPO, 'ai'), exist_ok=True)
-open(os.path.join(REPO, 'ai', 'index.html'), 'w').write(ai)
+ai_page = (AI_HEAD
+           + _read(PAGE, "page.css") + _read(PAGE, "additions.css")
+           + INTRO + HERO + START + SETUP + SUMMARY + ASSETS + FOOTER
+           + _read(PAGE, "rings.js") + "\n" + _read(PAGE, "ui.js") + _read(PAGE, "inventory.js")
+           + "</script>\n</body>\n</html>\n")
+
+os.makedirs(AI, exist_ok=True)
+open(os.path.join(AI, "index.html"), "w", encoding="utf-8").write(ai_page)
+# AGENTS.md is the same file as CLAUDE.md under the name other agents look for.
+shutil.copyfile(os.path.join(AI, "CLAUDE.md"), os.path.join(AI, "AGENTS.md"))
 
 # ---------- llms.txt ----------
 def _t(path, note):
@@ -808,18 +992,18 @@ llms = "\n".join([
 "> The LA.IO (Louisiana Innovation) brand system, served as public URLs with open CORS.",
 "> Fetch what you need. Every file is current and permanent.",
 "",
-"If you are an AI assistant asked to produce LA.IO work, read CLAUDE.md first. It carries",
+"If you are an AI assistant asked to produce LA.IO work, read ai/CLAUDE.md first. It carries",
 "the voice rules, banned language, color families, type rules, and asset URLs. It is short.",
 "",
 "## Start here",
 "",
-_t("claude/CLAUDE.md", "Drop-in brand instructions. Read this before generating anything."),
+_t("ai/CLAUDE.md", "Brand instructions for any AI. Read this before generating anything."),
+_t("ai/AGENTS.md", "The same file, for tools that look for AGENTS.md."),
 "",
-"## Depth",
-"",
-_t("claude/laio-brand/BRAND.md", "The full brand system."),
-_t("claude/laio-brand/COMPONENTS.md", "Component patterns as code."),
-_t("claude/laio-brand.zip", "The whole kit packaged as a Claude skill."),
+"## Docs",
+""] + [
+_t(p, f"{n}. {d}") for p, n, d in DOCS if p not in ("ai/CLAUDE.md", "ai/AGENTS.md", "llms.txt")
+] + [
 "",
 "## Color",
 "",
@@ -860,8 +1044,7 @@ _t("motifs/" + f, name + " motif.") for f, name in MOTIFS
 "",
 "## Pages",
 "",
-_t("ai", "Human-readable version of this file, with previews and copy buttons."),
-_t("claude", "Setup steps for Claude projects and Claude Code."),
+_t("ai", "Brand Kit for AI. Setup for Claude, Claude Design, Claude Code, Cowork, Lovable, and any other AI, plus every asset with a copy button."),
 _t("labs", "Louisiana Innovation Labs sub-brand identity assets."),
 _t("illustrator", "Generates original illustration in the LA.IO system."),
 "",
@@ -880,4 +1063,4 @@ open(os.path.join(REPO, 'robots.txt'), 'w').write(
     "# Machine-readable index of the LA.IO brand system\n"
     "# https://assets.la.io/llms.txt\n")
 
-print('ai + llms.txt + robots.txt written')
+print('ai/index.html + ai/AGENTS.md + llms.txt + robots.txt written')

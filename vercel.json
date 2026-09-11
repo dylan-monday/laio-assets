@@ -79,7 +79,7 @@
       ]
     },
     {
-      "source": "/claude/(.*)",
+      "source": "/ai/(.*)",
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
@@ -259,25 +259,27 @@
           "value": "public, max-age=0, must-revalidate"
         }
       ]
-    },
-    {
-      "source": "/claude",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        }
-      ]
     }
   ],
   "redirects": [
     {
       "source": "/illustrator",
       "destination": "/illustrator/",
+      "permanent": true
+    },
+    {
+      "source": "/claude",
+      "destination": "/ai",
+      "permanent": true
+    },
+    {
+      "source": "/claude/",
+      "destination": "/ai/",
+      "permanent": true
+    },
+    {
+      "source": "/claude/:path*",
+      "destination": "/ai/:path*",
       "permanent": true
     }
   ],

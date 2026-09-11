@@ -1,0 +1,92 @@
+
+  /* ============ ADDITIONS FOR THE MERGED /ai PAGE ============ */
+  /* Rules the original Claude kit page did not need: the asset inventory, wrapped
+     one-line prompts, inline code outside step lists, and footer links.
+     page.css above is the original page's stylesheet and stays as it was. */
+
+  .for code.inline, .note code.inline, .lead code.inline, .tip code {
+    font-family: var(--mono); font-size: 0.85em; color: var(--easy);
+    background: var(--panel-2); padding: 1px 6px; border-radius: 2px;
+  }
+  /* Keep the Copy button off the text. Wrapped one-liners reserve room on the
+     right; long blocks scroll sideways, so they reserve a band on top instead. */
+  .code.code-wrap pre { white-space: pre-wrap; overflow-wrap: anywhere; padding-right: 84px; }
+  .code:not(.code-wrap) pre { padding-top: 48px; }
+  .block > .wrap > .note { margin-top: 18px; }
+
+  /* ---------- asset groups ---------- */
+  .agroup { margin-top: 56px; }
+  .agroup:first-of-type { margin-top: 40px; }
+  .ahead { display: flex; align-items: baseline; gap: 8px 18px; flex-wrap: wrap; margin-bottom: 18px; }
+  .ahead h3 { font-size: 0.74rem; }
+  .ahead .anote { font-size: 0.9rem; font-weight: 300; color: rgba(255,255,255,0.72); }
+
+  /* ---------- URL rows ---------- */
+  .urow {
+    display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 4px 16px;
+    align-items: center; padding: 16px 0; border-bottom: 1px solid var(--hair-soft);
+  }
+  .urows .urow:first-child { border-top: 1px solid var(--hair-soft); }
+  .uplus { color: var(--easy); font-weight: 700; }
+  .ubody { min-width: 0; }
+  .uname { font-weight: 700; font-size: 1rem; color: var(--white); text-decoration: none; }
+  .uname:hover { color: var(--easy); }
+  .uw { font-family: var(--mono); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em; color: var(--gray); padding-left: 8px; }
+  .udesc { font-weight: 300; font-size: 0.9rem; color: rgba(255,255,255,0.74); margin-top: 2px; }
+
+  .ucopy {
+    display: inline-flex; align-items: center; justify-content: space-between; gap: 14px;
+    max-width: 100%; min-width: 0;
+    font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.02em;
+    color: rgba(255,255,255,0.62); background: transparent;
+    border: 1px solid var(--hair); border-radius: 2px; padding: 9px 12px;
+    cursor: pointer; transition: all 0.15s ease;
+  }
+  .ucopy .upath { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+  .ucopy .uci { flex-shrink: 0; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--easy); }
+  .ucopy:hover { background: var(--easy); border-color: var(--easy); color: var(--bg); }
+  .ucopy:hover .uci { color: var(--bg); }
+  .ucopy.done { border-color: var(--electric); }
+  .ucopy.done .uci { color: var(--electric); }
+  .ucopy:active { transform: translateY(1px); }
+
+  @media (max-width: 760px) {
+    .urow { grid-template-columns: 22px minmax(0, 1fr); grid-template-areas: "p b" ". c"; }
+    .uplus { grid-area: p; }
+    .ubody { grid-area: b; }
+    .urow .ucopy { grid-area: c; width: 100%; margin-top: 8px; }
+  }
+
+  /* ---------- logo and motif cards: white stages so the black artwork reads ---------- */
+  .acards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .mcards { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+  @media (max-width: 980px) { .mcards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 860px) { .acards { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 600px) { .mcards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  .acard, .mcard { display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--hair-soft); background: var(--bg); }
+  .astage, .mstage { background: #fff; display: flex; align-items: center; justify-content: center; }
+  .astage { height: 150px; padding: 26px; }
+  .mstage { height: 96px; padding: 22px; }
+  .astage img, .mstage img { max-width: 100%; max-height: 100%; }
+  .aname { display: block; font-weight: 700; font-size: 1rem; color: var(--white); text-decoration: none; padding: 14px 16px 0; }
+  .aname:hover { color: var(--easy); }
+  .adesc { flex: 1; font-weight: 300; font-size: 0.88rem; color: rgba(255,255,255,0.74); padding: 4px 16px 14px; }
+  .mname { flex: 1; font-size: 0.9rem; padding: 10px 12px; }
+  .acard .ucopy, .mcard .ucopy { width: 100%; border: 0; border-top: 1px solid var(--hair-soft); border-radius: 0; }
+  .mcard .ucopy { font-size: 0.6rem; padding: 8px 10px; gap: 8px; }
+
+  /* ---------- tips under a group ---------- */
+  .tip {
+    margin-top: 20px; background: var(--panel-2); border-left: 3px solid var(--easy);
+    padding: 14px 18px; font-size: 0.9rem; font-weight: 300; color: rgba(255,255,255,0.84);
+  }
+  .tip b { font-weight: 700; color: var(--white); }
+
+  /* ---------- footer links ---------- */
+  footer .flinks { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 14px; }
+  footer .flinks a {
+    font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--easy); text-decoration: none;
+  }
+  footer .flinks a:hover { color: var(--white); }
