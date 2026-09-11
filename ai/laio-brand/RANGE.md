@@ -107,7 +107,7 @@ When a move does fit, pick it from the content:
 | A single statement or title | The Frame, or The Big Mark for a cover or closer |
 | One number with a short support line | The Split, number in the field |
 | Two to four parallel items (pillars, tracks, options) | The Diamond, or a Split with plus points in the field |
-| Two things compared | The Split, one on each side |
+| Two things compared | The Diamond, one per diamond, touching at points |
 | Something that connects to something | The Wire |
 | Four photos or sectors | The Grid |
 
