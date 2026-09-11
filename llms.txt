@@ -17,7 +17,7 @@ the voice rules, banned language, color families, type rules, and asset URLs. It
 - [ai/laio-brand/COMPONENTS.md](https://assets.la.io/ai/laio-brand/COMPONENTS.md): Component code. Buttons, cards, eyebrows, and layout patterns as code.
 - [ai/laio-brand.zip](https://assets.la.io/ai/laio-brand.zip): Packaged skill. The whole kit as a Claude skill. Unzip into ~/.claude/skills/.
 - [ai/claude-ai-project-setup.md](https://assets.la.io/ai/claude-ai-project-setup.md): claude.ai Project setup. Custom instructions and knowledge files for a Claude Project.
-- [ai/claude-design-setup.md](https://assets.la.io/ai/claude-design-setup.md): Claude Design setup. The prompt and references that build the LA.IO Design System.
+- [ai/claude-design-setup.md](https://assets.la.io/ai/claude-design-setup.md): Claude Design setup. The three form fields that set up the LA.IO Design System from this repo.
 - [ai/lovable/LAIO_LOVABLE_GUIDE.md](https://assets.la.io/ai/lovable/LAIO_LOVABLE_GUIDE.md): Lovable guide. How to start an LA.IO project in Lovable.
 - [ai/lovable/LOVABLE_CUSTOM_INSTRUCTIONS.md](https://assets.la.io/ai/lovable/LOVABLE_CUSTOM_INSTRUCTIONS.md): Lovable workspace instructions. Brand rules for every project in a Lovable workspace.
 - [ai/lovable/LOVABLE_STARTER_PROMPT.md](https://assets.la.io/ai/lovable/LOVABLE_STARTER_PROMPT.md): Lovable starter prompt. The first message that builds the LA.IO starter template.

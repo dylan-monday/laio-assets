@@ -543,6 +543,18 @@ def fence(rel):
         raise SystemExit(f"gen_pages: no fenced block in {rel}")
     return m.group(1)
 
+def fields(rel, names):
+    """Every '### Field name' heading directly followed by a fenced block, as
+    (name, block) pairs. The Claude Design setup is a form, so its doc holds
+    one block per field. Exits if the field names drift from the form's."""
+    pairs = re.findall(r"^### ([^\n]+)\n+```[^\n]*\n(.*?)\n```", _read(REPO, rel), re.S | re.M)
+    if [n for n, _ in pairs] != names:
+        raise SystemExit(f"gen_pages: {rel} fields are {[n for n, _ in pairs]}, expected {names}")
+    return pairs
+
+# The three Claude Design form fields the setup fills. The other three stay empty.
+DESIGN_FIELDS = ["Company name and blurb", "Link code from GitHub", "Any other notes"]
+
 PROMPT = ("Fetch https://assets.la.io/ai/CLAUDE.md and follow it as the "
           "brand system for this project.")
 
@@ -636,7 +648,7 @@ DOCS = [
     ("ai/laio-brand/COMPONENTS.md",               "Component code",               "Buttons, cards, eyebrows, and layout patterns as code."),
     ("ai/laio-brand.zip",                         "Packaged skill",               "The whole kit as a Claude skill. Unzip into ~/.claude/skills/."),
     ("ai/claude-ai-project-setup.md",             "claude.ai Project setup",      "Custom instructions and knowledge files for a Claude Project."),
-    ("ai/claude-design-setup.md",                 "Claude Design setup",          "The prompt and references that build the LA.IO Design System."),
+    ("ai/claude-design-setup.md",                 "Claude Design setup",          "The three form fields that set up the LA.IO Design System from this repo."),
     ("ai/lovable/LAIO_LOVABLE_GUIDE.md",          "Lovable guide",                "How to start an LA.IO project in Lovable."),
     ("ai/lovable/LOVABLE_CUSTOM_INSTRUCTIONS.md", "Lovable workspace instructions","Brand rules for every project in a Lovable workspace."),
     ("ai/lovable/LOVABLE_STARTER_PROMPT.md",      "Lovable starter prompt",       "The first message that builds the LA.IO starter template."),
@@ -788,15 +800,16 @@ TAB_CLAUDE = f'''<p class="for">For <b>copy, content, and brand questions</b> on
 </ol>
 <div class="ready"><span class="plus">+</span><p><b>Ready when:</b> a fresh chat in the Project answers "what bullet does LA.IO use?" with a plus sign, and writes copy with no em dashes.</p></div>'''
 
-TAB_DESIGN = f'''<p class="for">For <b>Claude Design</b> (prototypes, slide decks, visuals). Claude Design has its own Design System feature. You build an <b>LA.IO Design System</b> once, then pick it from the <i>Design System</i> dropdown on any new project and everything comes out on brand. Each person makes their own copy; the prompt below makes it identical every time.</p>
+DESIGN_BLOCKS = "\n".join(f'<div class="fieldname">{html_escape(name)}</div>\n{code(block, wrap=True)}'
+                          for name, block in fields("ai/claude-design-setup.md", DESIGN_FIELDS))
+
+TAB_DESIGN = f'''<p class="for">For <b>Claude Design</b> (prototypes, slide decks, visuals). Claude Design has its own Design System feature. You build an <b>LA.IO Design System</b> once, then pick it from the <i>Design System</i> dropdown on any new project and everything comes out on brand. Each person makes their own. Claude Design reads the brand straight from the LA.IO repo on GitHub, so setup is three fields in one form.</p>
 <ol class="steps">
-  <li><div class="st">Get the setup, the logo, and the font</div><div class="sd">Download the setup notes, plus the logo and the embedded font file to attach as references. Save the six reference PNGs as well: {", ".join(f'<a href="/ai/laio-brand/references/{k}.png" download="{k}.png">{name[4:] if name.startswith("The ") else name}</a>' for k, name, _, _ in RANGE)}.</div>
-{dlrow(dl("/ai/claude-design-setup.md", "Design System setup"), dl("/logos/LAIO-COMPLETE.svg", "LA.IO logo (SVG)", True), dl("/fonts/laio-fonts-inline.css", "Download laio-fonts-inline.css", True))}
+  <li><div class="st">Create a new Design System</div><div class="sd">In Claude Design, create a new Design System. The form has six fields. Fill the three below, exactly as written. Leave <i>Link code from your computer</i>, <i>Upload a .fig file</i>, and <i>Add fonts, logos and assets</i> empty.</div></li>
+  <li><div class="st">Fill the three fields</div><div class="sd">Copy each block into the form field with the same name.</div>
+{DESIGN_BLOCKS}
   </li>
-  <li><div class="st">Create a new Design System from this prompt</div><div class="sd">In Claude Design, start a new Design System from a prompt plus references (the same flow as your other systems). Paste the prompt below, and attach the LA.IO logo, <code class="inline">laio-fonts-inline.css</code> (Claude Design uses it for all Aktiv Grotesk rendering), a motif or two from <code class="inline">assets.la.io/motifs/</code>, the six Range PNGs (<code class="inline">01-split.png</code> to <code class="inline">06-big-mark.png</code>), and optionally a screenshot of this page as a "brand in action" reference.</div>
-{code(fence("ai/claude-design-setup.md"))}
-  </li>
-  <li><div class="st">Name it, then select it</div><div class="sd">Name it exactly <code class="inline">LA.IO Design System</code>. On any New Project (Prototype, Slide deck, and so on) choose it from the <i>Design System</i> dropdown.</div></li>
+  <li><div class="st">Create it, then select it</div><div class="sd">Create the system. On any New Project (Prototype, Slide deck, and so on) choose <code class="inline">LA.IO Design System</code> from the <i>Design System</i> dropdown.</div></li>
 </ol>
 <div class="ready"><span class="plus">+</span><p><b>Ready when:</b> a project on the LA.IO Design System produces one-family, angular, Aktiv Grotesk layouts with the real LA.IO logo and plus-sign bullets.</p></div>'''
 

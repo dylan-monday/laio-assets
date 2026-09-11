@@ -23,7 +23,7 @@ ai/
 ├── AGENTS.md                         byte-identical copy of CLAUDE.md (generated, do not edit)
 ├── README.md                         this file
 ├── claude-ai-project-setup.md        claude.ai Project setup; its paste block feeds the Claude tab
-├── claude-design-setup.md            Claude Design prompt; its paste block feeds the Claude Design tab
+├── claude-design-setup.md            Claude Design form fields; each one feeds a copy block in the Claude Design tab
 ├── laio-brand.zip                    the skill, zipped for download
 ├── laio-brand/                       the skill, source of truth
 │   ├── SKILL.md                      entrypoint; auto-triggers in Cowork and Claude Code
@@ -42,7 +42,7 @@ ai/
 ## How each tool uses it
 
 + **Claude (claude.ai):** make a Project, paste the block from `claude-ai-project-setup.md` into custom instructions, and upload `BRAND.md`, `COMPONENTS.md`, `RANGE.md`, and `laio-fonts-inline.css` as knowledge.
-+ **Claude Design:** build an LA.IO Design System from the prompt and references in `claude-design-setup.md`, including the six Range PNGs, then pick it from the Design System dropdown. Account-bound, so each designer makes their own copy.
++ **Claude Design:** create an LA.IO Design System by filling three form fields from `claude-design-setup.md`. One of them links this repo on GitHub, so Claude Design reads the brand from here. Then pick it from the Design System dropdown. Account-bound, so each designer makes their own copy.
 + **Claude Code and Cowork:** put `laio-brand/` in `~/.claude/skills/` (or `.claude/skills/` in one project). For Claude Code, also drop `CLAUDE.md` into the project root.
 + **Lovable:** paste `lovable/LOVABLE_CUSTOM_INSTRUCTIONS.md` into Workspace Knowledge in your Lovable project settings once, build or duplicate the starter template, then follow `lovable/LAIO_LOVABLE_GUIDE.md`.
 + **Any other AI:** tell it to fetch `https://assets.la.io/ai/CLAUDE.md`. If it cannot fetch URLs, attach `CLAUDE.md` and `laio-fonts-inline.css` instead. Tools that read `AGENTS.md` by convention find the same file under that name.

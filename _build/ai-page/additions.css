@@ -13,6 +13,11 @@
   .code.code-wrap pre { white-space: pre-wrap; overflow-wrap: anywhere; padding-right: 84px; }
   .code:not(.code-wrap) pre { padding-top: 48px; }
   .block > .wrap > .note { margin-top: 18px; }
+  /* Claude Design tab: each copy block is labeled with its form field's name. */
+  .fieldname {
+    margin: 22px 0 -4px; font-family: var(--mono); font-size: 0.66rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--easy);
+  }
 
   /* ---------- asset groups ---------- */
   .agroup { margin-top: 56px; }

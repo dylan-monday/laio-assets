@@ -38,6 +38,7 @@ One 45-degree field slices the canvas into two committed areas: dark against whi
 
 + One field per composition.
 + The field carries the accent content: a number, a headline, or the plus points. The other side stays quiet.
++ Type sits entirely inside the field with clear space on every side. Size the field to the copy. Never let a diagonal cut through a word.
 + **Variant, the chevron field.** The field may be a chevron: two 45-degree edges meeting at a point. That is the bracket itself at field scale. It is still one field.
 + **Don't:** a second field, or an edge at any angle other than 45.
 + **Reference:** `references/01-split.html`

@@ -310,6 +310,11 @@
   .code.code-wrap pre { white-space: pre-wrap; overflow-wrap: anywhere; padding-right: 84px; }
   .code:not(.code-wrap) pre { padding-top: 48px; }
   .block > .wrap > .note { margin-top: 18px; }
+  /* Claude Design tab: each copy block is labeled with its form field's name. */
+  .fieldname {
+    margin: 22px 0 -4px; font-family: var(--mono); font-size: 0.66rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--easy);
+  }
 
   /* ---------- asset groups ---------- */
   .agroup { margin-top: 56px; }
@@ -518,52 +523,27 @@ DESIGN: angular (radius 0 to 2px), committed dark or light, spare with generous 
         </div>
         <!-- CLAUDE DESIGN -->
         <div class="panel" data-tab="design" role="tabpanel">
-<p class="for">For <b>Claude Design</b> (prototypes, slide decks, visuals). Claude Design has its own Design System feature. You build an <b>LA.IO Design System</b> once, then pick it from the <i>Design System</i> dropdown on any new project and everything comes out on brand. Each person makes their own copy; the prompt below makes it identical every time.</p>
+<p class="for">For <b>Claude Design</b> (prototypes, slide decks, visuals). Claude Design has its own Design System feature. You build an <b>LA.IO Design System</b> once, then pick it from the <i>Design System</i> dropdown on any new project and everything comes out on brand. Each person makes their own. Claude Design reads the brand straight from the LA.IO repo on GitHub, so setup is three fields in one form.</p>
 <ol class="steps">
-  <li><div class="st">Get the setup, the logo, and the font</div><div class="sd">Download the setup notes, plus the logo and the embedded font file to attach as references. Save the six reference PNGs as well: <a href="/ai/laio-brand/references/01-split.png" download="01-split.png">Split</a>, <a href="/ai/laio-brand/references/02-diamond.png" download="02-diamond.png">Diamond</a>, <a href="/ai/laio-brand/references/03-frame.png" download="03-frame.png">Frame</a>, <a href="/ai/laio-brand/references/04-wire.png" download="04-wire.png">Wire</a>, <a href="/ai/laio-brand/references/05-grid.png" download="05-grid.png">Grid</a>, <a href="/ai/laio-brand/references/06-big-mark.png" download="06-big-mark.png">Big Mark</a>.</div>
-<div class="dl-row">
-<a class="dl" href="/ai/claude-design-setup.md" download="claude-design-setup.md"><span class="ico">&darr;</span> Design System setup</a>
-<a class="dl ghost" href="/logos/LAIO-COMPLETE.svg" download="LAIO-COMPLETE.svg"><span class="ico">&darr;</span> LA.IO logo (SVG)</a>
-<a class="dl ghost" href="/fonts/laio-fonts-inline.css" download="laio-fonts-inline.css"><span class="ico">&darr;</span> Download laio-fonts-inline.css</a>
-</div>
-  </li>
-  <li><div class="st">Create a new Design System from this prompt</div><div class="sd">In Claude Design, start a new Design System from a prompt plus references (the same flow as your other systems). Paste the prompt below, and attach the LA.IO logo, <code class="inline">laio-fonts-inline.css</code> (Claude Design uses it for all Aktiv Grotesk rendering), a motif or two from <code class="inline">assets.la.io/motifs/</code>, the six Range PNGs (<code class="inline">01-split.png</code> to <code class="inline">06-big-mark.png</code>), and optionally a screenshot of this page as a "brand in action" reference.</div>
-<div class="code">
+  <li><div class="st">Create a new Design System</div><div class="sd">In Claude Design, create a new Design System. The form has six fields. Fill the three below, exactly as written. Leave <i>Link code from your computer</i>, <i>Upload a .fig file</i>, and <i>Add fonts, logos and assets</i> empty.</div></li>
+  <li><div class="st">Fill the three fields</div><div class="sd">Copy each block into the form field with the same name.</div>
+<div class="fieldname">Company name and blurb</div>
+<div class="code code-wrap">
 <button class="copy">Copy</button>
-<pre>Create a design system called "LA.IO Design System" for LA.IO (Louisiana Innovation Office), the operating brand for Louisiana's innovation ecosystem. It should feel technical, precise, confident, and aspirational. Use the attached LA.IO logo, laio-fonts-inline.css, and references.
-
-COLOR. Five color families, each with a dark ground, an "easy" accent, and an "electric" accent. Any single artifact uses ONE family: the dark stop as background, easy or electric as accents and structural elements. Never mix families in one piece. Body text is white on dark backgrounds, or the dark brand color on light, never an accent color. Default to the Magenta family for tech, AI, and digital work unless told otherwise.
-  Magenta: #101948 / #E385FE / #F629CB
-  Green:   #172708 / #C8ED5D / #96F90B
-  Blue:    #01233C / #63DCDE / #00B9FE
-  Orange:  #302511 / #F1DC43 / #F5C124
-  Gray:    #231F20 / #E3E6E7 / #929497
-Light neutral background option: #E3E6E7.
-
-TYPOGRAPHY. Two typefaces, strictly separated.
-  Aktiv Grotesk for headlines, body, and UI, family name 'Aktiv Grotesk' (title case, never 'aktiv-grotesk'). Headlines Light 300 or Bold 700, never a middle weight. Body Regular 400.
-  Three ways to load it, in this order of preference:
-  + Embedded: paste the contents of laio-fonts-inline.css into a &lt;style&gt; tag. Zero network requests. Use in claude.ai artifacts, Claude Design, Lovable previews, email, anything sandboxed. This is the default for AI-generated work.
-  + Hosted: &lt;link rel="stylesheet" href="https://assets.la.io/fonts/laio-fonts.css"&gt; for real sites and apps on any domain.
-  + Fallback: Roboto from Google Fonts, only when neither of the above is possible. Say so in the handoff. Roboto is a stand-in, never the goal.
-  font-family stack: 'Aktiv Grotesk', 'Roboto', system-ui, sans-serif
-  In this design system, always use the embedded method: the attached laio-fonts-inline.css renders Aktiv Grotesk in every design. Paste its full contents into a &lt;style&gt; tag. Do not load Aktiv Grotesk from any URL.
-  JetBrains Mono for eyebrows, labels, tags, metadata only. All caps, letter-spacing 0.08 to 0.12em, weights 400/700, always a brand accent color. Google Fonts: https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;display=swap
-
-LOGO AND MOTIFS. Use the real LA.IO assets, never recreate the logo. The logo is a monospace wordmark bracketed by chevrons: &lt; LA.IO &gt;. Files are single-fill near-black (#231F20); recolor by overriding the fill. Logo: https://assets.la.io/logos/LAIO-COMPLETE.svg (also LAIO-BASE, LAIO-HORZ). Motifs (brackets, chevrons, plus, diamond, X): https://assets.la.io/motifs/. Use brackets and chevrons as framing devices and supergraphics: scale freely, crop intentionally, never scatter as decoration. Never frame the logo itself with additional brackets.
-
-LAYOUT MOVES. Beyond a plain page, build with six moves, one attached reference each: the Split (one 45-degree field divides the canvas), the Diamond (45-degree containers that touch at points), the Frame (two corner brackets around a headline), the Wire (1px connectors with open-square terminals), the Grid (four photos with the plus as the gutter), and the Big Mark (the logo at supergraphic scale, cropped past the edges). Every shape comes from the logo's bracket. Angles are 0, 45, and 90 only; nothing else rotates. No curves, no circles. Two shapes per composition, one field, one family.
-
-LAYOUT AND COMPONENTS. Angular and restrained. Border-radius 0 to 2px (small tags up to 3px). No gradients, no drop shadows. Commit to dark or light backgrounds, never mid-range. Generous whitespace; every element has structural purpose. Buttons are flat with a 2px radius. Cards are dark background with an accent border, or light background with an accent border. Use "+" as the list bullet, never a dot, hyphen, or asterisk.
-
-VOICE for any generated copy. Matter-of-fact confidence, short declarative sentences, state the case then stop. Never use "resilience", "Silicon Bayou", "innovative solutions", "cutting-edge", "disruptive", em dashes, "it's not X, it's Y" constructions, or Louisiana cliches (jazz, Mardi Gras, Bourbon Street, crawfish).
-
-The three pillars, when listed, always in this order: + Capital / + Coaching / + Connections.
-
-Name the design system exactly: LA.IO Design System</pre>
+<pre>LA.IO Design System: LA.IO (Louisiana Innovation Office), the operating brand for Louisiana's innovation ecosystem. Slides, one-pagers, web pages, and social graphics.</pre>
+</div>
+<div class="fieldname">Link code from GitHub</div>
+<div class="code code-wrap">
+<button class="copy">Copy</button>
+<pre>https://github.com/dylan-monday/laio-assets</pre>
+</div>
+<div class="fieldname">Any other notes</div>
+<div class="code code-wrap">
+<button class="copy">Copy</button>
+<pre>Read ai/laio-brand/SKILL.md first, then BRAND.md and RANGE.md in the same folder. Fonts are in fonts/laio-fonts-inline.css; use that file for Aktiv Grotesk and never load the typeface from a URL. The six layout moves are in RANGE.md with one worked example each in ai/laio-brand/references/. Logos in logos/, motifs in motifs/, color tokens in colors/. Angles are 0, 45, and 90 only. One color family per piece. Plus as the bullet. No em dashes. Name the system exactly LA.IO Design System.</pre>
 </div>
   </li>
-  <li><div class="st">Name it, then select it</div><div class="sd">Name it exactly <code class="inline">LA.IO Design System</code>. On any New Project (Prototype, Slide deck, and so on) choose it from the <i>Design System</i> dropdown.</div></li>
+  <li><div class="st">Create it, then select it</div><div class="sd">Create the system. On any New Project (Prototype, Slide deck, and so on) choose <code class="inline">LA.IO Design System</code> from the <i>Design System</i> dropdown.</div></li>
 </ol>
 <div class="ready"><span class="plus">+</span><p><b>Ready when:</b> a project on the LA.IO Design System produces one-family, angular, Aktiv Grotesk layouts with the real LA.IO logo and plus-sign bullets.</p></div>
         </div>
@@ -724,7 +704,7 @@ Color family: [pick one: Magenta / Green / Blue / Orange / Gray]
 <div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/laio-brand/COMPONENTS.md">Component code</a><div class="udesc">Buttons, cards, eyebrows, and layout patterns as code.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/laio-brand/COMPONENTS.md"><span class="upath">/ai/laio-brand/COMPONENTS.md</span><span class="uci">Copy</span></button></div>
 <div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/laio-brand.zip">Packaged skill</a><div class="udesc">The whole kit as a Claude skill. Unzip into ~/.claude/skills/.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/laio-brand.zip"><span class="upath">/ai/laio-brand.zip</span><span class="uci">Copy</span></button></div>
 <div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/claude-ai-project-setup.md">claude.ai Project setup</a><div class="udesc">Custom instructions and knowledge files for a Claude Project.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/claude-ai-project-setup.md"><span class="upath">/ai/claude-ai-project-setup.md</span><span class="uci">Copy</span></button></div>
-<div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/claude-design-setup.md">Claude Design setup</a><div class="udesc">The prompt and references that build the LA.IO Design System.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/claude-design-setup.md"><span class="upath">/ai/claude-design-setup.md</span><span class="uci">Copy</span></button></div>
+<div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/claude-design-setup.md">Claude Design setup</a><div class="udesc">The three form fields that set up the LA.IO Design System from this repo.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/claude-design-setup.md"><span class="upath">/ai/claude-design-setup.md</span><span class="uci">Copy</span></button></div>
 <div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/lovable/LAIO_LOVABLE_GUIDE.md">Lovable guide</a><div class="udesc">How to start an LA.IO project in Lovable.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/lovable/LAIO_LOVABLE_GUIDE.md"><span class="upath">/ai/lovable/LAIO_LOVABLE_GUIDE.md</span><span class="uci">Copy</span></button></div>
 <div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/lovable/LOVABLE_CUSTOM_INSTRUCTIONS.md">Lovable workspace instructions</a><div class="udesc">Brand rules for every project in a Lovable workspace.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/lovable/LOVABLE_CUSTOM_INSTRUCTIONS.md"><span class="upath">/ai/lovable/LOVABLE_CUSTOM_INSTRUCTIONS.md</span><span class="uci">Copy</span></button></div>
 <div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/lovable/LOVABLE_STARTER_PROMPT.md">Lovable starter prompt</a><div class="udesc">The first message that builds the LA.IO starter template.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/lovable/LOVABLE_STARTER_PROMPT.md"><span class="upath">/ai/lovable/LOVABLE_STARTER_PROMPT.md</span><span class="uci">Copy</span></button></div>

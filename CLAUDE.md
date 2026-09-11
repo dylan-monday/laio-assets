@@ -170,8 +170,10 @@ The /ai page is built from three kinds of source:
   `additions.css` and `inventory.js` hold what the merged page added. All five
   are inlined into `ai/index.html`.
 + The paste blocks: the first fenced code block in
-  `ai/claude-ai-project-setup.md`, `ai/claude-design-setup.md`, and
-  `ai/lovable/LAIO_LOVABLE_GUIDE.md`. Edit the `.md`, then rebuild.
+  `ai/claude-ai-project-setup.md` and `ai/lovable/LAIO_LOVABLE_GUIDE.md`, and
+  every `### Field name` heading with its fenced block in
+  `ai/claude-design-setup.md`, one copy block per Claude Design form field.
+  The build exits if those field names change. Edit the `.md`, then rebuild.
 + Everything else on the page, in the `/ai` section of `gen_pages.py`.
 
 `ai/AGENTS.md` is a byte-identical copy of `ai/CLAUDE.md`, written by every
