@@ -1,8 +1,8 @@
-# LA.IO Project — Claude Code Instructions
+# LA.IO Brand Instructions for AI
 
 This is an LA.IO (Louisiana Innovation Office) brand project. Everything you build — copy, layout, code, design — must match the LA.IO brand system.
 
-The full system is the **`laio-brand` skill** (in `.claude/skills/laio-brand/`). Read its `SKILL.md` before generating anything; load `BRAND.md` and `COMPONENTS.md` from that folder when you need depth or component code. The hard rules below are always in effect.
+If the laio-brand skill folder is available, read its SKILL.md for depth. If not, this file is sufficient on its own. The hard rules below are always in effect.
 
 ## Voice (every line of copy)
 Matter-of-fact confidence. Short, declarative. State the case, then stop. Lead with fact, not persuasion.

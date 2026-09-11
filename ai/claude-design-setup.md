@@ -12,7 +12,7 @@ Design systems are account-bound, so each person who designs LA.IO work creates 
    + `LAIO-COMPLETE.svg` (the logo) from `https://assets.la.io/logos/`
    + `laio-fonts-inline.css` from `https://assets.la.io/fonts/laio-fonts-inline.css`. This is Aktiv Grotesk embedded in one file. Claude Design uses it for all Aktiv Grotesk rendering, since it cannot load the typeface from any URL.
    + One or two motifs from `https://assets.la.io/motifs/` (e.g. `LAIO-LEFT-BRACKET.svg`, `LAIO-PLUS.svg`)
-   + Optional but recommended: a screenshot of `https://assets.la.io/claude/` as a "brand in action" reference
+   + Optional but recommended: a screenshot of `https://assets.la.io/ai/` as a "brand in action" reference
 4. Name it exactly: **LA.IO Design System**
 5. On any New Project, choose **LA.IO Design System** from the *Design System* dropdown.
 

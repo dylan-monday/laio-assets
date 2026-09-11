@@ -40,9 +40,9 @@ JetBrains Mono (SIL OFL 1.1) is fetched from a pinned google/fonts commit on
 every run, so the script needs network access. It exits if the download does
 not match the pinned SHA-256. The variable font is instanced at 400 and 700
 before subsetting.
-+ `claude/laio-brand/assets/fonts/laio-fonts-inline.css`: the same inline file,
-  shipped inside the Claude skill. AI sandboxes often cannot reach assets.la.io
-  at all, so the kit carries its own copy. Rezip `claude/laio-brand.zip` after a
++ `ai/laio-brand/assets/fonts/laio-fonts-inline.css`: the same inline file,
+  shipped inside the skill. AI sandboxes often cannot reach assets.la.io at
+  all, so the kit carries its own copy. Rezip `ai/laio-brand.zip` after a
   rebuild (command in the repo `CLAUDE.md`).
 
 It also writes the Latin subsets to `fonts/subset/` and a check page to
@@ -60,18 +60,25 @@ passes 200,000 bytes. Safe to rerun.
 python3 _build/gen_pages.py
 ```
 
-Writes `index.html`, `404.html`, and `labs/index.html`.
+Writes `index.html`, `404.html`, `labs/index.html`, `ai/index.html`,
+`ai/AGENTS.md`, `llms.txt`, and `robots.txt`.
 
-**Edit the script, never the HTML.** Hand edits to those three files are
-overwritten the next time this runs.
+**Edit the script and its sources, never the output.** Hand edits to those
+files are overwritten the next time this runs. The /ai page inlines the CSS and
+JS in `ai-page/` and reads its paste blocks from the setup `.md` files in `ai/`.
+Run it twice; the second run must produce no diff.
 
 Reads `logos/labs/manifest.json` for lockup dimensions, so run `build_kit.py`
 first if the master art changed.
 
 Files here:
 
-+ `shared.css` — the base stylesheet inlined into every page
-+ `laio-complete.inline.svg` — the LA.IO lockup with `fill: currentColor`, so it
++ `shared.css`: the Blue base stylesheet inlined into the home, 404, and Labs
+  pages, including the Monday + Partners footer signature
++ `ai-page/`: the Magenta brand page's stylesheet and scripts. `page.css`,
+  `rings.js` and `ui.js` are the original Claude kit page's, extracted as they
+  were; `additions.css` and `inventory.js` hold what the merged page added
++ `laio-complete.inline.svg`: the LA.IO lockup with `fill: currentColor`, so it
   inherits page color. The CDN copy at `/logos/LAIO-COMPLETE.svg` is hardcoded
   `#231f20` and renders near-black on the navy.
 
@@ -80,10 +87,13 @@ Files here:
 ## Rebuilding the Labs logo kit
 
 ```
-python3 _build/build_kit.py "/path/to/Louisiana Innovation Labs Logos"
+python3 _build/build_kit.py ../_source/labs-logos
 ```
 
-Point it at the folder of `LILabs-*.svg` master art. Writes to `logos/labs/`:
+The `LILabs-*.svg` master art lives outside the repo, in `_source/labs-logos/`
+of the LA-IO-Brand workspace. That is `../_source/labs-logos` from the repo
+root, where the command above runs, and `../../_source/labs-logos` from
+`_build/`. Writes to `logos/labs/`:
 `svg/`, `eps/`, `png/`, `manifest.json`, and `LILabs-Logos.zip`.
 
 Then rerun `gen_pages.py` so the page picks up any dimension changes.

@@ -30,8 +30,8 @@ Fill in the three blanks, then describe what you want to build:
 ```
 This is an LA.IO brand project.
 
-Project: [what it is — e.g. "event landing page for Innovation Day 2026"]
-Audience: [who it's for — e.g. "founders, investors, state partners"]
+Project: [what it is, e.g. "event landing page for Innovation Day 2026"]
+Audience: [who it's for, e.g. "founders, investors, state partners"]
 Color family: [pick one: Magenta / Green / Blue / Orange / Gray]
 
 [Describe what you want to build]
