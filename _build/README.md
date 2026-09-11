@@ -2,8 +2,9 @@
 
 Scripts that generate the site pages and the Louisiana Innovation Labs logo kit.
 
-Nothing here is served. Vercel ignores it. These run on your machine, commit
-their output, and the output is what deploys.
+Nothing here is served: `.vercelignore` at the repo root excludes `_build/`
+from deploys. These scripts run on your machine, commit their output, and the
+output is what deploys.
 
 ## Requirements
 

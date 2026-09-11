@@ -266,4 +266,5 @@ The repo is the only source. Nothing is synced in from the outer workspace.
   and swap the fill for `currentColor`. See `_build/laio-complete.inline.svg`.
 + No em dashes.
 + No contact addresses on public pages, and no internal addresses in any file.
-  This repo is served publicly, docs included.
+  This repo is served publicly, docs included. Only `_build/` is excluded, by
+  `.vercelignore`.
