@@ -6,7 +6,7 @@ This is the only document you need. Everything else runs automatically.
 
 ## How your Lovable account is set up
 
-Your account has brand instructions built in at the workspace level. Every project you create automatically knows:
+Your account has brand instructions built in at the workspace level, in Workspace Knowledge. Every project you create automatically knows:
 
 + The LA.IO color system and how to use it
 + Both typefaces and exactly when to use each

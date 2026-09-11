@@ -1,17 +1,17 @@
 # LA.IO Brand Instructions for AI
 
-This is an LA.IO (Louisiana Innovation Office) brand project. Everything you build — copy, layout, code, design — must match the LA.IO brand system.
+This is an LA.IO (Louisiana Innovation Office) brand project. Everything you build (copy, layout, code, design) must match the LA.IO brand system.
 
 If the laio-brand skill folder is available, read its SKILL.md for depth. If not, this file is sufficient on its own. The hard rules below are always in effect.
 
 ## Voice (every line of copy)
 Matter-of-fact confidence. Short, declarative. State the case, then stop. Lead with fact, not persuasion.
-+ Never: "resilience", "Silicon Bayou", "innovative solutions", "cutting-edge", "disruptive", "rethink/reimagine Louisiana", Louisiana clichés (jazz, Mardi Gras, Bourbon St, crawfish), "it's not X, it's Y", em dashes (—), inspirational-poster cadence.
-+ Always use `+` as the list bullet — never `•`, `-`, `*`.
++ Never: "resilience", "Silicon Bayou", "innovative solutions", "cutting-edge", "disruptive", "rethink/reimagine Louisiana", Louisiana clichés (jazz, Mardi Gras, Bourbon St, crawfish), "it's not X, it's Y", em dashes, inspirational-poster cadence.
++ Always use `+` as the list bullet. Never `•`, `-`, or `*`.
 + The three pillars, always in order: `+ Capital  + Coaching  + Connections`.
 
 ## Color (one family per piece)
-Dark = background, Easy/Electric = accents/labels/type-on-dark. Body copy is white on dark or the dark brand color on light — never an accent color. Do not mix families.
+Dark = background, Easy/Electric = accents/labels/type-on-dark. Body copy is white on dark or the dark brand color on light, never an accent color. Do not mix families.
 + Magenta `#101948 / #E385FE / #F629CB` · Green `#172708 / #C8ED5D / #96F90B` · Blue `#01233C / #63DCDE / #00B9FE` · Orange `#302511 / #F1DC43 / #F5C124` · Gray `#231F20 / #E3E6E7 / #929497`
 
 ## Type
@@ -32,6 +32,6 @@ font-family stack: `'Aktiv Grotesk', 'Roboto', system-ui, sans-serif`
 Use hosted SVGs, never recreate. `https://assets.la.io/logos/` and `/motifs/`. Single-fill near-black; override `fill` for color. React: `assets/LaioLogo.jsx`.
 
 ## Design
-Angular (radius 0–2px). Committed dark or light, never mid-range. Spare — generous whitespace. Every element has structural purpose.
+Angular (radius 0–2px). Committed dark or light, never mid-range. Spare, with generous whitespace. Every element has structural purpose.
 
 **The test:** increases clarity, respects the audience, isn't trying too hard, works in a Baton Rouge shipyard and a London transit ad.
