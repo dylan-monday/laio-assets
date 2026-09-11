@@ -93,60 +93,25 @@ export default {
 
 ## globals.css
 
-Two font loading options depending on deployment context. Use Option A for all Lovable projects.
+Family name `'Aktiv Grotesk'` (title case, never `'aktiv-grotesk'`). Headlines Light 300 or Bold 700, never a middle weight. Body Regular 400.
 
-**Option A — Adobe Fonts embed (preferred for Lovable / web projects)**
+Three ways to load it, in this order of preference:
 
-Add to `index.html` `<head>`:
++ **Embedded:** paste the contents of `laio-fonts-inline.css` into a `<style>` tag. Zero network requests. Use in claude.ai artifacts, Claude Design, Lovable previews, email, anything sandboxed. This is the default for AI-generated work.
++ **Hosted:** `<link rel="stylesheet" href="https://assets.la.io/fonts/laio-fonts.css">` for real sites and apps on any domain.
++ **Fallback:** Roboto from Google Fonts, only when neither of the above is possible. Say so in the handoff. Roboto is a stand-in, never the goal.
+
+Do not write `@font-face` rules for Aktiv Grotesk by hand, and do not copy woff2 files into the project. Both CSS files already declare every weight.
+
+**Deployed project.** Add to `index.html` `<head>`:
 ```html
-<link rel="stylesheet" href="https://use.typekit.net/usf5bjl.css">
+<link rel="stylesheet" href="https://assets.la.io/fonts/laio-fonts.css">
 ```
+
+**Preview.** If the Lovable preview cannot reach assets.la.io and shows a fallback font, also paste the full contents of `https://assets.la.io/fonts/laio-fonts-inline.css` into a `<style>` tag in `index.html` `<head>`. It embeds Light, Regular and Bold with zero network requests, and can sit alongside the hosted link.
 
 Then in `globals.css`:
 ```css
-:root {
-  --font-laio: 'aktiv-grotesk', 'Roboto', system-ui, sans-serif;
-  --radius-laio: 2px;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  font-family: var(--font-laio);
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-}
-```
-
-Note: Adobe Fonts serves Aktiv Grotesk as `'aktiv-grotesk'` (lowercase, hyphenated) — not `'Aktiv Grotesk'`. Use that exact string.
-
-**Option B — Self-hosted woff2 (for offline, print-adjacent, or non-Adobe contexts)**
-
-woff2 files live in `fonts/` in this asset directory. Copy the three needed weights to `/public/assets/fonts/` in the Lovable project:
-+ `AktivGrotesk-Light.woff2` (300)
-+ `AktivGrotesk-Regular.woff2` (400)
-+ `AktivGrotesk-Bold.woff2` (700)
-
-```css
-@font-face {
-  font-family: 'Aktiv Grotesk';
-  src: url('/assets/fonts/AktivGrotesk-Light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Aktiv Grotesk';
-  src: url('/assets/fonts/AktivGrotesk-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Aktiv Grotesk';
-  src: url('/assets/fonts/AktivGrotesk-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-}
-
 :root {
   --font-laio: 'Aktiv Grotesk', 'Roboto', system-ui, sans-serif;
   --radius-laio: 2px;

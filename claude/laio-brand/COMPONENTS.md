@@ -8,17 +8,39 @@ Pick one color family per project (see `SKILL.md`). Examples below use the **Mag
 
 ## 1. Setup — fonts, tokens, Tailwind
 
-**`index.html` `<head>`:**
+**Aktiv Grotesk**, family name `'Aktiv Grotesk'` (title case, never `'aktiv-grotesk'`). Headlines Light 300 or Bold 700, never a middle weight. Body Regular 400.
+
+Three ways to load it, in this order of preference:
+
++ **Embedded:** paste the contents of `laio-fonts-inline.css` into a `<style>` tag. Zero network requests. Use in claude.ai artifacts, Claude Design, Lovable previews, email, anything sandboxed. This is the default for AI-generated work.
++ **Hosted:** `<link rel="stylesheet" href="https://assets.la.io/fonts/laio-fonts.css">` for real sites and apps on any domain.
++ **Fallback:** Roboto from Google Fonts, only when neither of the above is possible. Say so in the handoff. Roboto is a stand-in, never the goal.
+
+font-family stack: `'Aktiv Grotesk', 'Roboto', system-ui, sans-serif`
+
+`laio-fonts-inline.css` ships in the `laio-brand` skill at `assets/fonts/laio-fonts-inline.css`, and in a claude.ai Project as uploaded knowledge.
+
+**JetBrains Mono** for eyebrows, labels, tags, metadata only. All caps, letter-spacing 0.08 to 0.12em, weights 400/700, always a brand accent color. Google Fonts: `https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap`
+
+**`index.html` `<head>`, real site or app:**
 ```html
-<link rel="stylesheet" href="https://use.typekit.net/usf5bjl.css">
+<link rel="stylesheet" href="https://assets.la.io/fonts/laio-fonts.css">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://assets.la.io/colors/laio-colors.css">
+```
+
+**`<head>`, artifact or any sandbox (the default for AI-generated work):**
+```html
+<style>
+  /* paste the full contents of laio-fonts-inline.css here */
+</style>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 ```
 
 **Base CSS:**
 ```css
 :root {
-  --font-laio: 'aktiv-grotesk', 'Roboto', system-ui, sans-serif;
+  --font-laio: 'Aktiv Grotesk', 'Roboto', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --radius-laio: 2px;
 }
@@ -48,7 +70,7 @@ export default {
         },
       },
       fontFamily: {
-        laio: ['aktiv-grotesk', 'Roboto', 'system-ui', 'sans-serif'],
+        laio: ['Aktiv Grotesk', 'Roboto', 'system-ui', 'sans-serif'],
         'laio-mono': ['JetBrains Mono', 'monospace'],
       },
       borderRadius: { laio: '2px', 'laio-tag': '3px' },

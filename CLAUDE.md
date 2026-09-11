@@ -23,7 +23,7 @@ This file covers how the repo and the deployment actually work.
 /labs                  labs/           Louisiana Innovation Labs identity kit
 /claude                claude/         brand kit for setting up LA.IO in Claude
 /illustrator           (not in repo)   rewritten to the laio-illustrator project
-/fonts /logos          static          Aktiv Grotesk woff2, brand SVGs
+/fonts /logos          static          Aktiv Grotesk woff2 + CSS, brand SVGs
 /motifs /colors        static          brand motifs, tokens, ASE
 404.html                               custom 404
 _build/                                scripts that generate the pages and kits
@@ -150,7 +150,16 @@ from the same lists, so they cannot drift apart.
 python3 _build/gen_pages.py
 ```
 
-See `_build/README.md` for rebuilding the Labs logo kit from master art.
+See `_build/README.md` for rebuilding the Labs logo kit from master art, and for
+`_build/build_fonts.py`, which writes both font CSS files plus the copy of
+`laio-fonts-inline.css` that ships inside the Claude skill.
+
+`claude/laio-brand.zip` is a plain zip of `claude/laio-brand/`. Nothing builds it.
+Rezip it after any change inside the skill folder, or the download goes stale:
+
+```
+cd claude && rm laio-brand.zip && zip -rX laio-brand.zip laio-brand -x '*.DS_Store'
+```
 
 ---
 
@@ -160,9 +169,15 @@ See `_build/README.md` for rebuilding the Labs logo kit from master art.
 + `+` as the only bullet, in copy and in markdown.
 + One color family per page. The directory, 404, and Labs pages are all Blue:
   `#01233C` dark, `#63DCDE` easy, `#00B9FE` electric.
-+ Aktiv Grotesk from `/fonts/` (self-hosted woff2, not the Typekit URL — this
-  domain serves the files). JetBrains Mono from Google Fonts, all caps, accent
-  color, labels and paths only.
++ Type rules are the block in `claude/CLAUDE.md`, word for word in every doc and
+  page. Change them there and everywhere else in the same commit.
+  `claude/index.html` is hand-built and repeats the paste blocks from
+  `claude/claude-ai-project-setup.md` and `claude/claude-design-setup.md` word
+  for word. Edit all three together. Family name is
+  `'Aktiv Grotesk'`, loaded from `fonts/laio-fonts-inline.css` (embedded, for
+  sandboxes) or `fonts/laio-fonts.css` (hosted, for real sites). Pages in this
+  repo link the woff2s in `/fonts/` directly, since this domain serves them.
+  JetBrains Mono from Google Fonts, all caps, accent color, labels and paths only.
 + Hosted logo SVGs are single-fill `#231f20`. To recolor one in a page, inline it
   and swap the fill for `currentColor`. See `_build/laio-complete.inline.svg`.
 + No em dashes.

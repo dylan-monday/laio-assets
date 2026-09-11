@@ -79,17 +79,21 @@ Accent colors are architectural — borders, bars, dividers, mono labels — not
 
 ## Typography — two typefaces, strictly separated
 
-**Aktiv Grotesk** — headlines, body, UI. Bias to the extremes: Light (300) or Bold (700) for headlines, never a middle weight. Regular (400) for body.
+**Aktiv Grotesk**, family name `'Aktiv Grotesk'` (title case, never `'aktiv-grotesk'`). Headlines Light 300 or Bold 700, never a middle weight. Body Regular 400.
 
-```html
-<link rel="stylesheet" href="https://use.typekit.net/usf5bjl.css">
-```
+Three ways to load it, in this order of preference:
+
++ **Embedded:** paste the contents of `laio-fonts-inline.css` into a `<style>` tag. Zero network requests. Use in claude.ai artifacts, Claude Design, Lovable previews, email, anything sandboxed. This is the default for AI-generated work.
++ **Hosted:** `<link rel="stylesheet" href="https://assets.la.io/fonts/laio-fonts.css">` for real sites and apps on any domain.
++ **Fallback:** Roboto from Google Fonts, only when neither of the above is possible. Say so in the handoff. Roboto is a stand-in, never the goal.
+
 ```css
-font-family: 'aktiv-grotesk', 'Roboto', system-ui, sans-serif; /* Adobe kit serves it lowercase-hyphenated */
+font-family: 'Aktiv Grotesk', 'Roboto', system-ui, sans-serif;
 ```
-Self-hosted fallback (offline/print): woff2 at `https://assets.la.io/fonts/AktivGrotesk_{Lt,Rg,Bd}.woff2`, declared as `'Aktiv Grotesk'` (title case).
 
-**JetBrains Mono** — eyebrows, labels, tags, metadata **only**. All caps, letter-spacing `0.08`–`0.12em`, weights 400/700, always a brand **accent** color (never white/gray as standalone). Never body copy.
+`laio-fonts-inline.css` ships with this skill at `assets/fonts/laio-fonts-inline.css`. Read it from there. Do not fetch it: many sandboxes cannot reach assets.la.io.
+
+**JetBrains Mono** for eyebrows, labels, tags, metadata only. All caps, letter-spacing 0.08 to 0.12em, weights 400/700, always a brand accent color (never white/gray as standalone). Never body copy.
 
 ```html
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -133,4 +137,4 @@ This file is enough for most copy and quick design calls. For deeper work, read 
 
 + **`BRAND.md`** — full brand reference: thesis, audiences, photography direction, the badge system, complete color/voice/design detail.
 + **`COMPONENTS.md`** — copy-paste component code (React + plain HTML/CSS): logo, button, eyebrow, `+`-list, hero, stat card, nav, footer, plus Tailwind config and font setup.
-+ **`assets/`** — local logo/motif SVGs, color CSS + tokens, and `LaioLogo.jsx` for offline or self-hosted contexts.
++ **`assets/`** — local logo/motif SVGs, color CSS + tokens, `fonts/laio-fonts-inline.css` (embedded Aktiv Grotesk), and `LaioLogo.jsx` for offline or self-hosted contexts.

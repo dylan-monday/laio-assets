@@ -10,6 +10,7 @@ Design systems are account-bound, so each person who designs LA.IO work creates 
 2. Paste the **creation prompt** below.
 3. Attach references:
    + `LAIO-COMPLETE.svg` (the logo) from `https://assets.la.io/logos/`
+   + `laio-fonts-inline.css` from `https://assets.la.io/fonts/laio-fonts-inline.css`. This is Aktiv Grotesk embedded in one file. Claude Design uses it for all Aktiv Grotesk rendering, since it cannot load the typeface from any URL.
    + One or two motifs from `https://assets.la.io/motifs/` (e.g. `LAIO-LEFT-BRACKET.svg`, `LAIO-PLUS.svg`)
    + Optional but recommended: a screenshot of `https://assets.la.io/claude/` as a "brand in action" reference
 4. Name it exactly: **LA.IO Design System**
@@ -18,7 +19,7 @@ Design systems are account-bound, so each person who designs LA.IO work creates 
 ## Creation prompt (paste this)
 
 ```
-Create a design system called "LA.IO Design System" for LA.IO (Louisiana Innovation Office), the operating brand for Louisiana's innovation ecosystem. It should feel technical, precise, confident, and aspirational. Use the attached LA.IO logo and references.
+Create a design system called "LA.IO Design System" for LA.IO (Louisiana Innovation Office), the operating brand for Louisiana's innovation ecosystem. It should feel technical, precise, confident, and aspirational. Use the attached LA.IO logo, laio-fonts-inline.css, and references.
 
 COLOR. Five color families, each with a dark ground, an "easy" accent, and an "electric" accent. Any single artifact uses ONE family: the dark stop as background, easy or electric as accents and structural elements. Never mix families in one piece. Body text is white on dark backgrounds, or the dark brand color on light, never an accent color. Default to the Magenta family for tech, AI, and digital work unless told otherwise.
   Magenta: #101948 / #E385FE / #F629CB
@@ -29,8 +30,14 @@ COLOR. Five color families, each with a dark ground, an "easy" accent, and an "e
 Light neutral background option: #E3E6E7.
 
 TYPOGRAPHY. Two typefaces, strictly separated.
-  Aktiv Grotesk for headlines, body, and UI. Headlines use Light (300) or Bold (700) only, never a middle weight. Body is Regular (400). Load via Adobe Fonts ("aktiv-grotesk") or self-hosted woff2 at https://assets.la.io/fonts/.
-  JetBrains Mono for eyebrows, labels, tags, and metadata only. Always all caps, letter-spacing about 0.1em, in a brand accent color. Never for body copy or paragraphs.
+  Aktiv Grotesk for headlines, body, and UI, family name 'Aktiv Grotesk' (title case, never 'aktiv-grotesk'). Headlines Light 300 or Bold 700, never a middle weight. Body Regular 400.
+  Three ways to load it, in this order of preference:
+  + Embedded: paste the contents of laio-fonts-inline.css into a <style> tag. Zero network requests. Use in claude.ai artifacts, Claude Design, Lovable previews, email, anything sandboxed. This is the default for AI-generated work.
+  + Hosted: <link rel="stylesheet" href="https://assets.la.io/fonts/laio-fonts.css"> for real sites and apps on any domain.
+  + Fallback: Roboto from Google Fonts, only when neither of the above is possible. Say so in the handoff. Roboto is a stand-in, never the goal.
+  font-family stack: 'Aktiv Grotesk', 'Roboto', system-ui, sans-serif
+  In this design system, always use the embedded method: the attached laio-fonts-inline.css renders Aktiv Grotesk in every design. Paste its full contents into a <style> tag. Do not load Aktiv Grotesk from any URL.
+  JetBrains Mono for eyebrows, labels, tags, metadata only. All caps, letter-spacing 0.08 to 0.12em, weights 400/700, always a brand accent color. Google Fonts: https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap
 
 LOGO AND MOTIFS. Use the real LA.IO assets, never recreate the logo. The logo is a monospace wordmark bracketed by chevrons: < LA.IO >. Files are single-fill near-black (#231F20); recolor by overriding the fill. Logo: https://assets.la.io/logos/LAIO-COMPLETE.svg (also LAIO-BASE, LAIO-HORZ). Motifs (brackets, chevrons, plus, diamond, X): https://assets.la.io/motifs/. Use brackets and chevrons as framing devices and supergraphics: scale freely, crop intentionally, never scatter as decoration. Never frame the logo itself with additional brackets.
 

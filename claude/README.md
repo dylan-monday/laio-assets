@@ -20,7 +20,7 @@ LAIO-Claude-Kit/
     ├── SKILL.md                 ← entrypoint; auto-triggers in Cowork & Code
     ├── BRAND.md                 ← full brand reference
     ├── COMPONENTS.md            ← copy-paste component code (React + HTML/CSS)
-    └── assets/                  ← logos, motifs, color CSS + tokens, LaioLogo.jsx
+    └── assets/                  ← logos, motifs, color CSS + tokens, embedded font CSS, LaioLogo.jsx
 ```
 
 ## The model — one skill, four front doors
@@ -29,11 +29,13 @@ LAIO-Claude-Kit/
 
 + **Claude Code** — put `laio-brand/` in `~/.claude/skills/` (global) or `.claude/skills/` (one project), and drop `CLAUDE.md` into the project root.
 + **Cowork** — put `laio-brand/` in `~/.claude/skills/` (same folder as Claude Code; no in-app upload). It triggers automatically on LA.IO work.
-+ **Claude (claude.ai)** — make a Project, paste the instructions from `claude-ai-project-setup.md`, upload `BRAND.md` + `COMPONENTS.md` as knowledge.
++ **Claude (claude.ai)** — make a Project, paste the instructions from `claude-ai-project-setup.md`, upload `BRAND.md` + `COMPONENTS.md` + `laio-fonts-inline.css` as knowledge.
 + **Claude Design** — build an **LA.IO Design System** (from the prompt + references in `claude-design-setup.md`), then pick it from the Design System dropdown on any project. Account-bound, so each designer creates their own copy.
 
 ## Hosted assets
 
 Live brand assets are served from `https://assets.la.io` (logos, motifs, colors, fonts). The skill points to these URLs; local copies in `laio-brand/assets/` cover offline and self-hosted contexts.
+
+Aktiv Grotesk loads two ways. Real sites and apps link `https://assets.la.io/fonts/laio-fonts.css`. Sandboxes (claude.ai artifacts, Claude Design, Lovable previews, email) paste `laio-fonts-inline.css` into a `<style>` tag. That file ships inside the skill at `laio-brand/assets/fonts/`, because many AI sandboxes cannot reach assets.la.io at all. Family name is `'Aktiv Grotesk'`. Roboto is a fallback only, and a handoff that uses it says so.
 
 Maintained by Monday + Partners. Questions: dylan@mondayandpartners.com

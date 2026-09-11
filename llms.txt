@@ -23,7 +23,16 @@ the voice rules, banned language, color families, type rules, and asset URLs. It
 
 ## Type
 
-Aktiv Grotesk, self-hosted woff2. Light (300) or Bold (700) for headlines, Regular (400) for body.
+Aktiv Grotesk, family name 'Aktiv Grotesk' (title case, never 'aktiv-grotesk'). Headlines Light 300 or Bold 700, never a middle weight. Body Regular 400.
+Three ways to load it, in this order of preference:
+
+- [fonts/laio-fonts-inline.css](https://assets.la.io/fonts/laio-fonts-inline.css): Embedded. Paste the contents into a <style> tag. Zero network requests. Use in claude.ai artifacts, Claude Design, Lovable previews, email, anything sandboxed. This is the default for AI-generated work.
+- [fonts/laio-fonts.css](https://assets.la.io/fonts/laio-fonts.css): Hosted. <link rel="stylesheet" href="https://assets.la.io/fonts/laio-fonts.css"> for real sites and apps on any domain.
+
+Fallback: Roboto from Google Fonts, only when neither of the above is possible. Say so in the handoff. Roboto is a stand-in, never the goal.
+font-family stack: 'Aktiv Grotesk', 'Roboto', system-ui, sans-serif
+
+The individual woff2 files behind laio-fonts.css:
 
 - [fonts/AktivGrotesk_Th.woff2](https://assets.la.io/fonts/AktivGrotesk_Th.woff2): Aktiv Grotesk Thin, weight 100.
 - [fonts/AktivGrotesk_ThIt.woff2](https://assets.la.io/fonts/AktivGrotesk_ThIt.woff2): Aktiv Grotesk Thin Italic, weight 100.
@@ -35,7 +44,7 @@ Aktiv Grotesk, self-hosted woff2. Light (300) or Bold (700) for headlines, Regul
 - [fonts/AktivGrotesk_Bd.woff2](https://assets.la.io/fonts/AktivGrotesk_Bd.woff2): Aktiv Grotesk Bold, weight 700.
 - [fonts/AktivGrotesk_BdIt.woff2](https://assets.la.io/fonts/AktivGrotesk_BdIt.woff2): Aktiv Grotesk Bold Italic, weight 700.
 
-JetBrains Mono for eyebrows, labels, and metadata only. Always caps. Load from Google Fonts:
+JetBrains Mono for eyebrows, labels, tags, metadata only. All caps, letter-spacing 0.08 to 0.12em, weights 400/700, always a brand accent color. Google Fonts:
 https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap
 
 ## Logos

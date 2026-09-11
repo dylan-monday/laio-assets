@@ -172,27 +172,29 @@ colors: {
 ### Primary: Aktiv Grotesk
 The brand typeface. Monospace DNA, tech-forward, deeply legible. Use across all headings, UI labels, navigation, and display copy.
 
-**Weight philosophy:** Bias toward the extremes — Light (300) and Bold (700). Regular (400) and Medium (500) are acceptable for body copy but weak as headlines. Never use a middle weight for a headline when Light or Bold would serve.
+**Weight philosophy:** Bias toward the extremes. Headlines are Light (300) or Bold (700), never a middle weight. Body copy is Regular (400).
 
-**Web delivery:** Adobe Fonts kit. Add to `<head>`:
-```html
-<link rel="stylesheet" href="https://use.typekit.net/usf5bjl.css">
-```
+Family name `'Aktiv Grotesk'` (title case, never `'aktiv-grotesk'`). Headlines Light 300 or Bold 700, never a middle weight. Body Regular 400.
 
-Adobe Fonts serves the family name as `'aktiv-grotesk'` (lowercase, hyphenated):
+**Web delivery.** Three ways to load it, in this order of preference:
+
++ **Embedded:** paste the contents of `laio-fonts-inline.css` into a `<style>` tag. Zero network requests. Use in claude.ai artifacts, Claude Design, Lovable previews, email, anything sandboxed. This is the default for AI-generated work.
++ **Hosted:** `<link rel="stylesheet" href="https://assets.la.io/fonts/laio-fonts.css">` for real sites and apps on any domain.
++ **Fallback:** Roboto from Google Fonts, only when neither of the above is possible. Say so in the handoff. Roboto is a stand-in, never the goal.
+
 ```css
-font-family: 'aktiv-grotesk', 'Roboto', system-ui, sans-serif;
+font-family: 'Aktiv Grotesk', 'Roboto', system-ui, sans-serif;
 ```
 
-**Self-hosted fallback:** Licensed woff2 files (Light, Regular, Bold) are in the `fonts/` directory of the LA.IO asset folder. Use for offline, print-adjacent, or non-Adobe deployment contexts. Font-face declarations use `'Aktiv Grotesk'` (title case) when self-hosting.
+`laio-fonts-inline.css` ships in the `laio-brand` skill at `assets/fonts/laio-fonts-inline.css`, and in a claude.ai Project as uploaded knowledge. Use that copy rather than fetching it. Public copy: `https://assets.la.io/fonts/laio-fonts-inline.css`.
 
-### Secondary / fallback: Roboto
-Structurally similar. Use when Aktiv Grotesk is unavailable — embedded contexts, emails, third-party tools that don't support the Adobe kit.
+### Secondary: JetBrains Mono
+Eyebrows, labels, tags, metadata only. All caps, letter-spacing 0.08 to 0.12em, weights 400/700, always a brand accent color. Google Fonts: `https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap`
 
 ### Typographic rules
 - Headlines: Aktiv Grotesk Bold or Light — choose one, don't mix within a layout
 - Body: Aktiv Grotesk Regular (400), 16–18px, 1.5–1.7 line height
-- UI labels / caps: Aktiv Grotesk Bold, tracked slightly, all caps acceptable for short label strings only
+- Labels, eyebrows, tags, metadata: JetBrains Mono, all caps, accent color. Aktiv Grotesk Bold is never used for labels
 - No decorative or serif typefaces
 - No system default fonts (Arial, Helvetica) in designed interfaces
 
