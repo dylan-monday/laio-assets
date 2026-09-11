@@ -2,7 +2,7 @@
 
 SKILL.md teaches the rules. Follow only those and every layout lands in the same place: a dark page, a mono eyebrow, a plus list. This file adds range. It names six layout moves LA.IO already uses, with a clean reference file for each and the limits that keep them restrained.
 
-Restraint over interpretation. Nothing here loosens a rule in SKILL.md unless section 5 states the exception.
+Restraint over interpretation. Nothing here loosens a rule in SKILL.md unless section 6 states the exception.
 
 Read SKILL.md first. Read this before any layout beyond a plain page: slides, heroes, social tiles, posters, report covers.
 
@@ -91,7 +91,29 @@ The logo at supergraphic scale, cropped past the edges.
 
 ---
 
-## 3. Type moves
+## 3. When to use a move
+
+The default is a plain page: one family, Aktiv Grotesk, plus bullets, generous space. Most slides, pages, and documents are plain pages. A move is used when the content is short and structural enough to earn one, never because a move is available. The person asking will not name a move and should not have to. Read the content, decide, build. Never ask which move they want and never explain a move by name unless asked.
+
++ In a deck, most slides are plain. A move belongs on the opener, the closer, and a few key slides where one number, one statement, or a short parallel set carries the weight. If every slide has a move, the deck is wrong.
++ Body copy longer than four lines is always a plain page.
++ Anything with a table, a chart, a form, or a list longer than four items is a plain page.
++ One move per canvas. Never the same move twice in a row.
+
+When a move does fit, pick it from the content:
+
+| Content | Move |
+|---|---|
+| A single statement or title | The Frame, or The Big Mark for a cover or closer |
+| One number with a short support line | The Split, number in the field |
+| Two to four parallel items (pillars, tracks, options) | The Diamond, or a Split with plus points in the field |
+| Two things compared | The Diamond, one per diamond, touching at points |
+| Something that connects to something | The Wire |
+| Four photos or sectors | The Grid |
+
+---
+
+## 4. Type moves
 
 + **Accent word.** One per headline, set in the accent color or in Bold. Never both. Never two words.
 + **Big numerals.** Bold, with a Regular caption beneath.
@@ -102,7 +124,7 @@ The logo at supergraphic scale, cropped past the edges.
 
 ---
 
-## 4. Photography
+## 5. Photography
 
 Two treatments only.
 
@@ -113,17 +135,17 @@ Never a soft overlay. Never a gradient. The logo may run over a photo at Big Mar
 
 ---
 
-## 5. Exceptions, stated
+## 6. Exceptions, stated
 
 + **Partner logos.** Recolor into the family by default. Original colors only when the partner requires it. The kit ships no partner logos. Projects add their own.
 + **LED logo.** The one outside logo the kit ships: `LED-WHITE.svg`, `LED-BLACK.svg`, `LED-SMALL-WHITE.svg`, `LED-SMALL-BLACK.svg` in `assets/logos/`. Louisiana Economic Development, the parent agency. White on dark grounds is the default. Black on light grounds, recolored to the family dark. Never the full-color or gold versions. Sits under or beside the LA.IO mark, never above it.
 + **Grain.** Allowed on a flat dark ground. A radial glow or vignette is a gradient and stays banned.
 + **Hex tiles.** Allowed for cartograms only.
-+ **Stat cards.** May invert, as described in section 3.
++ **Stat cards.** May invert, as described in section 4.
 
 ---
 
-## 6. Guardrails
+## 7. Guardrails
 
 + Two shapes per composition, maximum. The logo and the type do not count.
 + Accent color covers under a third of the canvas, except inside a stat card.
