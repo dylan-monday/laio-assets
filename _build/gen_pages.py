@@ -612,7 +612,8 @@ MOTIFS = [
 ]
 
 # The six layout moves in RANGE.md. Each has references/<key>.html and .png,
-# rendered by build_refs.py. Rules are the two from RANGE.md, shortened.
+# rendered by build_refs.py. Listed in llms.txt under Depth. Not shown on /ai:
+# RANGE.md and the references are for AI tools, not the page.
 RANGE = [
     ("01-split",    "The Split",    "One field per composition, edges at 45 degrees.",
                                     "The field carries the accent content. The other side stays quiet."),
@@ -633,7 +634,6 @@ DOCS = [
     ("ai/AGENTS.md",                              "AGENTS.md",                    "The same file, for Cursor and other agents that look for AGENTS.md."),
     ("ai/laio-brand/BRAND.md",                    "Full brand system",            "The long form. Load when the work needs depth."),
     ("ai/laio-brand/COMPONENTS.md",               "Component code",               "Buttons, cards, eyebrows, and layout patterns as code."),
-    ("ai/laio-brand/RANGE.md",                    "Range",                        "Six layout moves and their limits. Read before any layout beyond a plain page."),
     ("ai/laio-brand.zip",                         "Packaged skill",               "The whole kit as a Claude skill. Unzip into ~/.claude/skills/."),
     ("ai/claude-ai-project-setup.md",             "claude.ai Project setup",      "Custom instructions and knowledge files for a Claude Project."),
     ("ai/claude-design-setup.md",                 "Claude Design setup",          "The prompt and references that build the LA.IO Design System."),
@@ -689,14 +689,6 @@ motifcards = "".join(f'''<div class="mcard">
   <button class="ucopy" data-copy="https://assets.la.io/motifs/{f}"><span class="upath">/motifs/{f}</span><span class="uci">Copy</span></button>
 </div>
 ''' for f, name in MOTIFS)
-
-rangecards = "".join(f'''<div class="rcard">
-  <img src="/ai/laio-brand/references/{k}.png" alt="{name} reference" width="1600" height="900" loading="lazy">
-  <div class="rname">{name}</div>
-  <ul class="rrules"><li><span class="m">+</span><span>{r1}</span></li><li><span class="m">+</span><span>{r2}</span></li></ul>
-  <div class="rlinks"><a href="/ai/laio-brand/references/{k}.html">HTML</a><a href="/ai/laio-brand/references/{k}.png">PNG</a></div>
-</div>
-''' for k, name, r1, r2 in RANGE)
 
 # The LA.IO mark as the original page inlined it (hero and footer).
 MARK = '''<svg class="laio-mark" viewBox="0 0 280.17 67.88" role="img" aria-label="LA.IO">
@@ -798,7 +790,7 @@ TAB_CLAUDE = f'''<p class="for">For <b>copy, content, and brand questions</b> on
 
 TAB_DESIGN = f'''<p class="for">For <b>Claude Design</b> (prototypes, slide decks, visuals). Claude Design has its own Design System feature. You build an <b>LA.IO Design System</b> once, then pick it from the <i>Design System</i> dropdown on any new project and everything comes out on brand. Each person makes their own copy; the prompt below makes it identical every time.</p>
 <ol class="steps">
-  <li><div class="st">Get the setup, the logo, and the font</div><div class="sd">Download the setup notes, plus the logo and the embedded font file to attach as references. Save the six reference PNGs from <a href="#range">Range</a> below as well.</div>
+  <li><div class="st">Get the setup, the logo, and the font</div><div class="sd">Download the setup notes, plus the logo and the embedded font file to attach as references. Save the six reference PNGs as well: {", ".join(f'<a href="/ai/laio-brand/references/{k}.png" download="{k}.png">{name[4:] if name.startswith("The ") else name}</a>' for k, name, _, _ in RANGE)}.</div>
 {dlrow(dl("/ai/claude-design-setup.md", "Design System setup"), dl("/logos/LAIO-COMPLETE.svg", "LA.IO logo (SVG)", True), dl("/fonts/laio-fonts-inline.css", "Download laio-fonts-inline.css", True))}
   </li>
   <li><div class="st">Create a new Design System from this prompt</div><div class="sd">In Claude Design, start a new Design System from a prompt plus references (the same flow as your other systems). Paste the prompt below, and attach the LA.IO logo, <code class="inline">laio-fonts-inline.css</code> (Claude Design uses it for all Aktiv Grotesk rendering), a motif or two from <code class="inline">assets.la.io/motifs/</code>, the six Range PNGs (<code class="inline">01-split.png</code> to <code class="inline">06-big-mark.png</code>), and optionally a screenshot of this page as a "brand in action" reference.</div>
@@ -947,21 +939,6 @@ SUMMARY = '''
   </section>
 '''
 
-RANGE_SECTION = f'''
-  <!-- ============ RANGE ============ -->
-  <section class="block" id="range">
-    <div class="wrap">
-      <span class="mono sec-eyebrow">Six moves</span>
-      <h2>Six ways to build with it.</h2>
-      <p class="lead">Six layout moves from shipped LA.IO work, each with a clean reference an AI can read and imitate. RANGE.md names them and sets their limits.</p>
-      {dlrow(dl("/ai/laio-brand/RANGE.md", "Download RANGE.md"))}
-      <div class="rcards">
-{rangecards}      </div>
-      <div class="tip">Angles are 0, 45, and 90. Two shapes per composition. <b>That is the whole discipline.</b></div>
-    </div>
-  </section>
-'''
-
 ASSETS = f'''
   <!-- ============ THE ASSETS ============ -->
   <section class="block" id="assets">
@@ -1030,7 +1007,7 @@ FOOTER = f'''
 
 ai_page = (AI_HEAD
            + _read(PAGE, "page.css") + _read(PAGE, "additions.css")
-           + INTRO + HERO + START + SETUP + SUMMARY + RANGE_SECTION + ASSETS + FOOTER
+           + INTRO + HERO + START + SETUP + SUMMARY + ASSETS + FOOTER
            + _read(PAGE, "rings.js") + "\n" + _read(PAGE, "ui.js") + _read(PAGE, "inventory.js")
            + "</script>\n</body>\n</html>\n")
 
@@ -1059,7 +1036,7 @@ _t("ai/AGENTS.md", "The same file, for tools that look for AGENTS.md."),
 "",
 "## Docs",
 ""] + [
-_t(p, f"{n}. {d}") for p, n, d in DOCS if p not in ("ai/CLAUDE.md", "ai/AGENTS.md", "ai/laio-brand/RANGE.md", "llms.txt")
+_t(p, f"{n}. {d}") for p, n, d in DOCS if p not in ("ai/CLAUDE.md", "ai/AGENTS.md", "llms.txt")
 ] + [
 "",
 "## Depth",
