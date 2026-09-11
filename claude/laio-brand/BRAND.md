@@ -194,7 +194,7 @@ Eyebrows, labels, tags, metadata only. All caps, letter-spacing 0.08 to 0.12em, 
 ### Typographic rules
 - Headlines: Aktiv Grotesk Bold or Light — choose one, don't mix within a layout
 - Body: Aktiv Grotesk Regular (400), 16–18px, 1.5–1.7 line height
-- UI labels / caps: Aktiv Grotesk Bold, tracked slightly, all caps acceptable for short label strings only
+- Labels, eyebrows, tags, metadata: JetBrains Mono, all caps, accent color. Aktiv Grotesk Bold is never used for labels
 - No decorative or serif typefaces
 - No system default fonts (Arial, Helvetica) in designed interfaces
 

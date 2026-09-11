@@ -749,8 +749,8 @@ no attachments, no stale copies.</p>
   <span class="snote">Embedded CSS for sandboxes, hosted CSS for real sites. JetBrains Mono comes from Google Fonts.</span></div>
   {fontrows}
   <div class="tip"><b>Headlines use Light (300) or Bold (700).</b> Regular (400) for body.
-  Never 500 or 600 as a headline weight. Family name is <code>'Aktiv Grotesk'</code>, never
-  <code>'aktiv-grotesk'</code>. Stack: <code>'Aktiv Grotesk', 'Roboto', system-ui, sans-serif</code>.
+  Never 500 or 600 as a headline weight. Family name is <code>'Aktiv Grotesk'</code>,
+  never <code>'aktiv-grotesk'</code>. Stack: <code>'Aktiv Grotesk', 'Roboto', system-ui, sans-serif</code>.
   Roboto only when neither CSS file can load, and say so in the handoff.</div>
 </section>
 

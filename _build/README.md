@@ -29,10 +29,17 @@ This builds two stylesheets from the woff2s in `fonts/`:
 
 + `fonts/laio-fonts.css`: all nine cuts as `@font-face` pointing at
   `https://assets.la.io/fonts/`. One `<link>` on any real site.
-+ `fonts/laio-fonts-inline.css`: Light, Regular and Bold, subset to Latin and
-  embedded as base64. For sandboxes that block every external host (claude.ai
-  artifacts, Claude Design, Lovable previews, email builders). Paste it into a
-  `<style>` tag.
++ `fonts/laio-fonts-inline.css`: Aktiv Grotesk Light, Regular and Bold, plus
+  JetBrains Mono Regular and Bold, subset to Latin and embedded as base64. For
+  sandboxes that block every external host (claude.ai artifacts, Claude Design,
+  Lovable previews, email builders). Paste it into a `<style>` tag. JetBrains
+  Mono still loads from Google Fonts wherever that works; the embedded copy is
+  for hosts that block everything.
+
+JetBrains Mono (SIL OFL 1.1) is fetched from a pinned google/fonts commit on
+every run, so the script needs network access. It exits if the download does
+not match the pinned SHA-256. The variable font is instanced at 400 and 700
+before subsetting.
 + `claude/laio-brand/assets/fonts/laio-fonts-inline.css`: the same inline file,
   shipped inside the Claude skill. AI sandboxes often cannot reach assets.la.io
   at all, so the kit carries its own copy. Rezip `claude/laio-brand.zip` after a
