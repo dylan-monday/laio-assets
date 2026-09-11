@@ -28,7 +28,32 @@ Every file ships single-fill `#231F20` in `assets/motifs/` and at `https://asset
 
 ---
 
-## 2. Six moves
+## 2. Default: the plain page
+
+The default is a plain page: one family, Aktiv Grotesk, plus bullets, generous space. Most slides, pages, and documents are plain pages. A move is used when the content is short and structural enough to earn one, never because a move is available. The person asking will not name a move and should not have to. Read the content, decide, build. Never ask which move they want and never explain a move by name unless asked.
+
++ In any deck, at most one slide in three carries a move. A five-slide deck gets one or two, never more.
++ The opener may carry a move. The closer may carry a move. If both do, no other slide does.
++ Between them, every slide is a plain page unless it is a single number or a single sentence with nothing else on it.
++ When in doubt, plain page.
++ Body copy longer than four lines is always a plain page.
++ Anything with a table, a chart, a form, or a list longer than four items is a plain page.
++ One move per canvas. Never the same move twice in a row.
+
+Use this table only after the limits above allow a move on this slide.
+
+| Content | Move |
+|---|---|
+| A single statement or title | The Frame, or The Big Mark for a cover or closer |
+| One number with a short support line | The Split, number in the field |
+| Two to four parallel items (pillars, tracks, options) | The Diamond, or a Split with plus points in the field |
+| Two things compared | The Diamond, one per diamond, touching at points |
+| Something that connects to something | The Wire |
+| Four photos or sectors | The Grid |
+
+---
+
+## 3. Six moves
 
 Each move has a reference in `references/`: an HTML file to read and a PNG of the result. One family per reference. Read the structure, then build your own.
 
@@ -88,28 +113,6 @@ The logo at supergraphic scale, cropped past the edges.
 + When a lockup is needed, pair it with an L-corner (`LAIO-CORNER-L`) holding the vertical LOUISIANA INNOVATION wordmark.
 + **Don't:** add brackets around it, or scale it up and leave it fully inside the frame.
 + **Reference:** `references/06-big-mark.html`
-
----
-
-## 3. When to use a move
-
-The default is a plain page: one family, Aktiv Grotesk, plus bullets, generous space. Most slides, pages, and documents are plain pages. A move is used when the content is short and structural enough to earn one, never because a move is available. The person asking will not name a move and should not have to. Read the content, decide, build. Never ask which move they want and never explain a move by name unless asked.
-
-+ In a deck, most slides are plain. A move belongs on the opener, the closer, and a few key slides where one number, one statement, or a short parallel set carries the weight. If every slide has a move, the deck is wrong.
-+ Body copy longer than four lines is always a plain page.
-+ Anything with a table, a chart, a form, or a list longer than four items is a plain page.
-+ One move per canvas. Never the same move twice in a row.
-
-When a move does fit, pick it from the content:
-
-| Content | Move |
-|---|---|
-| A single statement or title | The Frame, or The Big Mark for a cover or closer |
-| One number with a short support line | The Split, number in the field |
-| Two to four parallel items (pillars, tracks, options) | The Diamond, or a Split with plus points in the field |
-| Two things compared | The Diamond, one per diamond, touching at points |
-| Something that connects to something | The Wire |
-| Four photos or sectors | The Grid |
 
 ---
 
