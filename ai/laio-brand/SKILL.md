@@ -112,7 +112,7 @@ https://assets.la.io/logos/LAIO-HORZ.svg        ← horizontal
 https://assets.la.io/logos/LOUISIANA-INNOVATION-A.svg
 https://assets.la.io/logos/LOUISIANA-INNOVATION-B.svg
 https://assets.la.io/logos/DIVISION-LINE.svg
-https://assets.la.io/logos/LED-WHITE.svg        ← Louisiana Economic Development, rules in RANGE.md section 5
+https://assets.la.io/logos/LED-WHITE.svg        ← Louisiana Economic Development, rules in RANGE.md section 6
 ```
 
 For React, use `assets/LaioLogo.jsx` (inline SVG, `fill` + `width` props). Logo latitude is wide: large, cropped, bleeding off edges, supergraphic — as long as it stays legible.
@@ -137,6 +137,8 @@ Motifs (brackets, chevrons, diamonds, squares, plus, X, corners, the diagonal fi
 This file is enough for most copy and quick design calls. For deeper work, read the bundled references.
 
 For anything visual beyond a plain page, read RANGE.md first. It names the six layout moves and their limits. The references/ folder has one clean example of each.
+
+The plain page is the default. Use a move only when short content earns it, and pick it from the content. The person will not name it.
 
 + **`BRAND.md`.** Full brand reference: thesis, audiences, photography direction, the badge system, complete color/voice/design detail.
 + **`COMPONENTS.md`.** Copy-paste component code (React + plain HTML/CSS): logo, button, eyebrow, `+`-list, hero, stat card, nav, footer, plus Tailwind config and font setup.
