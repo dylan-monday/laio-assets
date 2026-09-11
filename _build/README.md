@@ -63,8 +63,9 @@ python3 _build/build_refs.py
 
 Renders each `ai/laio-brand/references/NN-name.html` to `NN-name.png` beside
 it, at 1600x900, in headless Chrome. The HTML is what an AI reads. The PNG is
-what Claude Design and people see, and what the Range cards on `/ai` show. Run
-it after editing any reference, then run `gen_pages.py` and rezip the skill.
+what Claude Design sees, attached as a reference. Neither appears on `/ai`;
+the Claude Design tab links the PNGs for download. Run it after editing any
+reference, then run `gen_pages.py` and rezip the skill.
 
 Needs Google Chrome or Chromium. Set `CHROME` to the binary if the script
 cannot find it. On macOS, headless Chrome writes the screenshot and then may
