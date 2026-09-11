@@ -36,8 +36,6 @@ Use hosted SVGs, never recreate. `https://assets.la.io/logos/` and `/motifs/`. S
 ## Range
 Six layout moves: the Split, the Diamond, the Frame, the Wire, the Grid, the Big Mark.
 Shape grammar: every shape comes from the logo's bracket, at 0, 45, or 90 degrees. No curves, no circles, no rounded corners. Two shapes per composition.
-Before any layout beyond a plain page, read `RANGE.md` in the laio-brand skill, also at `https://assets.la.io/ai/laio-brand/RANGE.md`. One reference per move in `references/`.
-
 The plain page is the default: one family, Aktiv Grotesk, plus bullets, generous space. RANGE.md defines six layout moves; at most one slide in three may use one, and the person will never name one. Read RANGE.md before any deck or slide.
 
 ## Design
