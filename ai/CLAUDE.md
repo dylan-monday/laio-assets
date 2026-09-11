@@ -38,7 +38,7 @@ Six layout moves: the Split, the Diamond, the Frame, the Wire, the Grid, the Big
 Shape grammar: every shape comes from the logo's bracket, at 0, 45, or 90 degrees. No curves, no circles, no rounded corners. Two shapes per composition.
 Before any layout beyond a plain page, read `RANGE.md` in the laio-brand skill, also at `https://assets.la.io/ai/laio-brand/RANGE.md`. One reference per move in `references/`.
 
-The plain page is the default: one family, Aktiv Grotesk, plus bullets, generous space. Use a move only when the content is short and structural enough to earn one, and pick it from the content: a statement gets the Frame, or the Big Mark on a cover or closer; one number gets the Split; two things compared, one per diamond and touching at points, or two to four parallel items get the Diamond; connections get the Wire; four photos or sectors get the Grid. In a deck, moves go on the opener, the closer, and a few key slides. Body copy over four lines, tables, charts, forms, and lists over four items are always plain pages. One move per canvas, never the same move twice in a row. The person asking will not name a move. Never ask which one they want, and never explain a move by name unless asked.
+The plain page is the default: one family, Aktiv Grotesk, plus bullets, generous space. RANGE.md defines six layout moves; at most one slide in three may use one, and the person will never name one. Read RANGE.md before any deck or slide.
 
 ## Design
 Angular (radius 0–2px). Committed dark or light, never mid-range. Spare, with generous whitespace. Every element has structural purpose.

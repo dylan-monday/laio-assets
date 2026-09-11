@@ -136,9 +136,7 @@ Motifs (brackets, chevrons, diamonds, squares, plus, X, corners, the diagonal fi
 
 This file is enough for most copy and quick design calls. For deeper work, read the bundled references.
 
-For anything visual beyond a plain page, read RANGE.md first. It names the six layout moves and their limits. The references/ folder has one clean example of each.
-
-The plain page is the default. Use a move only when short content earns it, and pick it from the content. The person will not name it.
+The plain page is the default: one family, Aktiv Grotesk, plus bullets, generous space. RANGE.md defines six layout moves; at most one slide in three may use one, and the person will never name one. Read RANGE.md before any deck or slide.
 
 + **`BRAND.md`.** Full brand reference: thesis, audiences, photography direction, the badge system, complete color/voice/design detail.
 + **`COMPONENTS.md`.** Copy-paste component code (React + plain HTML/CSS): logo, button, eyebrow, `+`-list, hero, stat card, nav, footer, plus Tailwind config and font setup.
