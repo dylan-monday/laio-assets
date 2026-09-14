@@ -106,14 +106,16 @@ font-family: 'Aktiv Grotesk', 'Roboto', system-ui, sans-serif;
 Use the hosted SVGs — never recreate the logo in code. All are single-fill near-black (`#231F20`); apply brand color by overriding `fill`.
 
 ```
-https://assets.la.io/logos/LAIO-COMPLETE.svg   ← full wordmark + LOUISIANA INNOVATION
+https://assets.la.io/logos/LAIO-COMPLETE.svg   ← full wordmark + LOUISIANA INNOVATION (default)
 https://assets.la.io/logos/LAIO-BASE.svg        ← < LA.IO > no subtext
 https://assets.la.io/logos/LAIO-HORZ.svg        ← horizontal
 https://assets.la.io/logos/LOUISIANA-INNOVATION-A.svg
 https://assets.la.io/logos/LOUISIANA-INNOVATION-B.svg
 https://assets.la.io/logos/DIVISION-LINE.svg
-https://assets.la.io/logos/LED-WHITE.svg        ← Louisiana Economic Development, rules in RANGE.md section 6
+https://assets.la.io/logos/LED-WHITE.svg        ← Louisiana Economic Development, rules in BRAND.md, Which logo
 ```
+
+LAIO-COMPLETE.svg is the default. The others have one job each; see BRAND.md, Which logo.
 
 For React, use `assets/LaioLogo.jsx` (inline SVG, `fill` + `width` props). Logo latitude is wide: large, cropped, bleeding off edges, supergraphic — as long as it stays legible.
 
@@ -136,10 +138,6 @@ Motifs (brackets, chevrons, diamonds, squares, plus, X, corners, the diagonal fi
 
 This file is enough for most copy and quick design calls. For deeper work, read the bundled references.
 
-The plain page is the default: one family, Aktiv Grotesk, plus bullets, generous space. RANGE.md defines six layout moves; at most one slide in three may use one, and the person will never name one. Read RANGE.md before any deck or slide.
-
 + **`BRAND.md`.** Full brand reference: thesis, audiences, photography direction, the badge system, complete color/voice/design detail.
 + **`COMPONENTS.md`.** Copy-paste component code (React + plain HTML/CSS): logo, button, eyebrow, `+`-list, hero, stat card, nav, footer, plus Tailwind config and font setup.
-+ **`RANGE.md`.** The shape grammar, six layout moves (Split, Diamond, Frame, Wire, Grid, Big Mark), the stated exceptions, and the guardrails.
-+ **`references/`.** One 1600x900 example per move. Read the `.html` for structure. The `.png` shows the result.
 + **`assets/`.** Local logo/motif SVGs, color CSS + tokens, `fonts/laio-fonts-inline.css` (embedded Aktiv Grotesk), and `LaioLogo.jsx` for offline or self-hosted contexts.

@@ -623,24 +623,6 @@ MOTIFS = [
     ("LAIO-WIRE-NODE.svg",        "Wire node"),
 ]
 
-# The six layout moves in RANGE.md. Each has references/<key>.html and .png,
-# rendered by build_refs.py. Listed in llms.txt under Depth. Not shown on /ai:
-# RANGE.md and the references are for AI tools, not the page.
-RANGE = [
-    ("01-split",    "The Split",    "One field per composition, edges at 45 degrees.",
-                                    "The field carries the accent content. The other side stays quiet."),
-    ("02-diamond",  "The Diamond",  "Diamonds touch at points and never overlap.",
-                                    "Where two meet, a small easy-color diamond may hold the logo."),
-    ("03-frame",    "The Frame",    "Frames hold type only.",
-                                    "Brackets sit outside the type, four strokes clear."),
-    ("04-wire",     "The Wire",     "A 1px rule in the easy color, with open-square terminals.",
-                                    "Lines run at 0 or 90 degrees only."),
-    ("05-grid",     "The Grid",     "The plus sits at the exact center. Its arms are the gutters.",
-                                    "Photos all duotoned in the family, or all untreated."),
-    ("06-big-mark", "The Big Mark", "Legibility is the only limit.",
-                                    "For a lockup, add an L-corner holding the vertical wordmark."),
-]
-
 DOCS = [
     ("ai/CLAUDE.md",                              "Brand instructions",           "Voice, banned language, color, type, and asset URLs. The one file to hand an AI."),
     ("ai/AGENTS.md",                              "AGENTS.md",                    "The same file, for Cursor and other agents that look for AGENTS.md."),
@@ -793,8 +775,8 @@ TAB_CLAUDE = f'''<p class="for">For <b>copy, content, and brand questions</b> on
   <li><div class="st">Paste the custom instructions</div><div class="sd">Open the Project, click <i>Set custom instructions</i>, and paste the block below.</div>
 {code(fence("ai/claude-ai-project-setup.md"))}
   </li>
-  <li><div class="st">Add the brand knowledge</div><div class="sd">Download all four files below. In the Project, click <i>Add content</i> (project knowledge) and upload them. <code class="inline">laio-fonts-inline.css</code> carries the Aktiv Grotesk typeface, so artifacts render in the brand font. <code class="inline">RANGE.md</code> names the six layout moves.</div>
-{dlrow(dl("/ai/laio-brand/BRAND.md", "Download BRAND.md"), dl("/ai/laio-brand/COMPONENTS.md", "Download COMPONENTS.md", True), dl("/ai/laio-brand/RANGE.md", "Download RANGE.md", True), dl("/fonts/laio-fonts-inline.css", "Download laio-fonts-inline.css", True))}
+  <li><div class="st">Add the brand knowledge</div><div class="sd">Download all three files below. In the Project, click <i>Add content</i> (project knowledge) and upload them. <code class="inline">laio-fonts-inline.css</code> carries the Aktiv Grotesk typeface, so artifacts render in the brand font.</div>
+{dlrow(dl("/ai/laio-brand/BRAND.md", "Download BRAND.md"), dl("/ai/laio-brand/COMPONENTS.md", "Download COMPONENTS.md", True), dl("/fonts/laio-fonts-inline.css", "Download laio-fonts-inline.css", True))}
   </li>
   <li><div class="st">Start a chat</div><div class="sd">Every conversation inside the Project is now on brand.</div></li>
 </ol>
@@ -1050,13 +1032,6 @@ _t("ai/AGENTS.md", "The same file, for tools that look for AGENTS.md."),
 "## Docs",
 ""] + [
 _t(p, f"{n}. {d}") for p, n, d in DOCS if p not in ("ai/CLAUDE.md", "ai/AGENTS.md", "llms.txt")
-] + [
-"",
-"## Depth",
-"",
-_t("ai/laio-brand/RANGE.md", "Range. The shape grammar, six layout moves, their exceptions, and the guardrails. Read before any layout beyond a plain page."),
-] + [
-_t(f"ai/laio-brand/references/{k}.html", f"{name} reference, 1600x900. Read the HTML for structure. The rendered PNG is at references/{k}.png.") for k, name, _, _ in RANGE
 ] + [
 "",
 "## Color",

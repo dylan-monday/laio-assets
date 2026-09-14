@@ -30,13 +30,10 @@ font-family stack: `'Aktiv Grotesk', 'Roboto', system-ui, sans-serif`
 
 ## Logo & motifs
 Use hosted SVGs, never recreate. `https://assets.la.io/logos/` and `/motifs/`. Single-fill near-black; override `fill` for color. React: `assets/LaioLogo.jsx`.
+Which logo. LAIO-COMPLETE.svg is the default everywhere: decks, pages, social, print, favicons excepted. LAIO-BASE.svg only when the mark renders under about 120px wide and the LOUISIANA INNOVATION subtext would be illegible. LAIO-HORZ.svg only in a header or nav bar. LOUISIANA-INNOVATION-A.svg, LOUISIANA-INNOVATION-B.svg, and DIVISION-LINE.svg are secondary marks: under or beside the primary mark, never alone, never as the only logo on a page. Never type the logo as text or draw it from brackets and letters; always place the SVG file.
++ LED logo (`LED-WHITE.svg`, `LED-BLACK.svg`, `LED-SMALL-WHITE.svg`, `LED-SMALL-BLACK.svg`): Louisiana Economic Development, the parent agency. White on dark grounds by default. Black on light grounds, recolored to the family dark. Never the full-color or gold versions. Under or beside the LA.IO mark, never above it, never as the only logo on a page.
 + Motifs, all `LAIO-*.svg`: `LEFT-BRACKET`, `RIGHT-BRACKET`, `UP-BRACKET`, `DOWN-BRACKET`, `BRACKET-CORNER-1`, `BRACKET-CORNER-2`, `CORNER-L`, `PLUS`, `X`, `DIAMOND`, `DIAMOND-EMPTY`, `SQUARE`, `SQUARE-EMPTY`, `FIELD-DIAGONAL`, `HATCH`, `WIRE-NODE`.
-+ LED logo (`LED-WHITE.svg`, `LED-BLACK.svg`, `LED-SMALL-WHITE.svg`, `LED-SMALL-BLACK.svg`): Louisiana Economic Development, the parent agency. White on dark grounds by default. Black on light grounds, recolored to the family dark. Never the full-color or gold versions. Under or beside the LA.IO mark, never above it.
-
-## Range
-Six layout moves: the Split, the Diamond, the Frame, the Wire, the Grid, the Big Mark.
 Shape grammar: every shape comes from the logo's bracket, at 0, 45, or 90 degrees. No curves, no circles, no rounded corners. Two shapes per composition.
-The plain page is the default: one family, Aktiv Grotesk, plus bullets, generous space. RANGE.md defines six layout moves; at most one slide in three may use one, and the person will never name one. Read https://assets.la.io/ai/laio-brand/RANGE.md before any deck or slide.
 
 ## Design
 Angular (radius 0–2px). Committed dark or light, never mid-range. Spare, with generous whitespace. Every element has structural purpose.
