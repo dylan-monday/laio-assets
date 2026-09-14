@@ -577,8 +577,8 @@ FONT_CSS = [
      "artifacts, Claude Design, Lovable previews, email, anything sandboxed. This is "
      "the default for AI-generated work."),
     ("laio-fonts.css", "Hosted",
-     '<link rel="stylesheet" href="https://assets.la.io/fonts/laio-fonts.css"> for '
-     "real sites and apps on any domain."),
+     "For real sites and apps on a domain only, never inside an artifact or preview: "
+     '<link rel="stylesheet" href="https://assets.la.io/fonts/laio-fonts.css">.'),
 ]
 
 DATA = [
@@ -1049,7 +1049,7 @@ _t("colors/laio-colors.css", "The same values as CSS custom properties."),
 _t("fonts/" + f, f"{name}. {desc}") for f, name, desc in FONT_CSS
 ] + [
 "",
-"Fallback: Roboto from Google Fonts, only when neither of the above is possible. Say so in the handoff. Roboto is a stand-in, never the goal.",
+"Fallback: Roboto from Google Fonts, only when neither of the above is possible. Say so in the handoff. Roboto is a stand-in, never the goal. Never Roboto inside an artifact; embed instead.",
 "font-family stack: 'Aktiv Grotesk', 'Roboto', system-ui, sans-serif",
 "",
 "The individual woff2 files behind laio-fonts.css:",

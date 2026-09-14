@@ -179,8 +179,8 @@ Family name `'Aktiv Grotesk'` (title case, never `'aktiv-grotesk'`). Headlines L
 **Web delivery.** Inside any sandboxed output (claude.ai artifact, Claude Design, Lovable preview, email) embed the font CSS and inline the logo SVGs; external URLs do not load there, and Roboto is never an acceptable substitute in an artifact. Three ways to load it, in this order of preference:
 
 + **Embedded:** paste the contents of `laio-fonts-inline.css` into a `<style>` tag. Zero network requests. Use in claude.ai artifacts, Claude Design, Lovable previews, email, anything sandboxed. This is the default for AI-generated work.
-+ **Hosted:** `<link rel="stylesheet" href="https://assets.la.io/fonts/laio-fonts.css">` for real sites and apps on any domain.
-+ **Fallback:** Roboto from Google Fonts, only when neither of the above is possible. Say so in the handoff. Roboto is a stand-in, never the goal.
++ **Hosted, for real sites and apps on a domain only, never inside an artifact or preview:** `<link rel="stylesheet" href="https://assets.la.io/fonts/laio-fonts.css">`.
++ **Fallback:** Roboto from Google Fonts, only when neither of the above is possible. Say so in the handoff. Roboto is a stand-in, never the goal. Never Roboto inside an artifact; embed instead.
 
 ```css
 font-family: 'Aktiv Grotesk', 'Roboto', system-ui, sans-serif;
