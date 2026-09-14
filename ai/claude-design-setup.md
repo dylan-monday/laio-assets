@@ -30,7 +30,7 @@ https://github.com/dylan-monday/laio-assets
 ### Any other notes
 
 ```
-Read ai/laio-brand/SKILL.md first, then BRAND.md in the same folder. Fonts are in fonts/laio-fonts-inline.css; use that file for Aktiv Grotesk and never load the typeface from a URL. Logos in logos/, motifs in motifs/, color tokens in colors/. LAIO-COMPLETE.svg is the default. The others have one job each; see BRAND.md, Which logo. Angles are 0, 45, and 90 only. One color family per piece. Plus as the bullet. No em dashes. Name the system exactly LA.IO Design System.
+Read ai/laio-brand/SKILL.md first, then BRAND.md in the same folder. Fonts are in fonts/laio-fonts-inline.css; use that file for Aktiv Grotesk and never load the typeface from a URL. Inline the logo SVG markup from logos/; do not reference the file by URL. Logos in logos/, motifs in motifs/, color tokens in colors/. LAIO-COMPLETE.svg is the default. The others have one job each; see BRAND.md, Which logo. Angles are 0, 45, and 90 only. One color family per piece. Plus as the bullet. No em dashes. Name the system exactly LA.IO Design System.
 ```
 
 ## If something comes out off-brand

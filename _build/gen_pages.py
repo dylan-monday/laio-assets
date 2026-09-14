@@ -577,8 +577,8 @@ FONT_CSS = [
      "artifacts, Claude Design, Lovable previews, email, anything sandboxed. This is "
      "the default for AI-generated work."),
     ("laio-fonts.css", "Hosted",
-     '<link rel="stylesheet" href="https://assets.la.io/fonts/laio-fonts.css"> for '
-     "real sites and apps on any domain."),
+     "For real sites and apps on a domain only, never inside an artifact or preview: "
+     '<link rel="stylesheet" href="https://assets.la.io/fonts/laio-fonts.css">.'),
 ]
 
 DATA = [
@@ -587,12 +587,12 @@ DATA = [
 ]
 
 LOGOS = [
-    ("LAIO-COMPLETE.svg",           "Complete lockup",        "Primary mark. Use this unless there is a reason not to."),
-    ("LAIO-BASE.svg",               "Base mark",              "The LA.IO mark alone."),
-    ("LAIO-HORZ.svg",               "Horizontal lockup",      "For wide spaces and headers."),
-    ("LOUISIANA-INNOVATION-A.svg",  "Louisiana Innovation A", "Full name lockup, stacked."),
-    ("LOUISIANA-INNOVATION-B.svg",  "Louisiana Innovation B", "Full name lockup, condensed."),
-    ("DIVISION-LINE.svg",           "Division line",          "The LED division line. Sits under the mark."),
+    ("LAIO-COMPLETE.svg",           "Complete lockup",        "The default, everywhere. Use this unless a rule below says otherwise."),
+    ("LAIO-BASE.svg",               "Base mark",              "Only when the mark is under about 120px wide and the subtext would be illegible."),
+    ("LAIO-HORZ.svg",               "Horizontal lockup",      "Only in a header or nav bar."),
+    ("LOUISIANA-INNOVATION-A.svg",  "Louisiana Innovation A", "Secondary mark, stacked. Under or beside the primary, never alone."),
+    ("LOUISIANA-INNOVATION-B.svg",  "Louisiana Innovation B", "Secondary mark, condensed. Under or beside the primary, never alone."),
+    ("DIVISION-LINE.svg",           "Division line",          "Secondary mark. Sits under the primary, never alone."),
     ("LED-WHITE.svg",               "LED, white",             "Louisiana Economic Development. The default, on dark grounds."),
     ("LED-BLACK.svg",               "LED, black",             "On light grounds. Recolor to the family dark."),
     ("LED-SMALL-WHITE.svg",         "LED small, white",       "The compact LED lockup, on dark grounds."),
@@ -780,7 +780,8 @@ TAB_CLAUDE = f'''<p class="for">For <b>copy, content, and brand questions</b> on
   </li>
   <li><div class="st">Start a chat</div><div class="sd">Every conversation inside the Project is now on brand.</div></li>
 </ol>
-<div class="ready"><span class="plus">+</span><p><b>Ready when:</b> a fresh chat in the Project answers "what bullet does LA.IO use?" with a plus sign, and writes copy with no em dashes.</p></div>'''
+<p class="note">A Project reads its files once. When the kit changes, we will say so, and you re-paste the custom instructions and replace the three files. Nothing else to do.</p>
+<div class="ready"><span class="plus">+</span><p><b>Ready when:</b> a fresh chat in the Project answers "what bullet does LA.IO use?" with a plus sign, and a one-slide artifact you ask for shows Aktiv Grotesk and the real LA.IO mark, not typed brackets.</p></div>'''
 
 DESIGN_BLOCKS = "\n".join(f'<div class="fieldname">{html_escape(name)}</div>\n{code(block, wrap=True)}'
                           for name, block in fields("ai/claude-design-setup.md", DESIGN_FIELDS))
@@ -793,6 +794,7 @@ TAB_DESIGN = f'''<p class="for">For <b>Claude Design</b> (prototypes, slide deck
   </li>
   <li><div class="st">Create it, then select it</div><div class="sd">Create the system. On any New Project (Prototype, Slide deck, and so on) choose <code class="inline">LA.IO Design System</code> from the <i>Design System</i> dropdown.</div></li>
 </ol>
+<p class="note">A Design System reads the repo once. When the kit changes, we will say so, and you delete the system and recreate it from the three fields. About two minutes.</p>
 <div class="ready"><span class="plus">+</span><p><b>Ready when:</b> a project on the LA.IO Design System produces one-family, angular, Aktiv Grotesk layouts with the real LA.IO logo and plus-sign bullets.</p></div>'''
 
 TAB_CODE = f'''<p class="for">For <b>hands-on work and real builds</b>. Cowork uses the skill for multi-step brand work with no code. Claude Code uses the same skill plus a <code class="inline">CLAUDE.md</code> to build sites and apps. Both read one skills folder, so you set it up once. The steps use Finder, no Terminal required.</p>
@@ -846,7 +848,7 @@ TAB_OTHER = f'''<p class="for">For <b>ChatGPT, Gemini, Cursor, and anything else
 {dlrow(dl("/ai/AGENTS.md", "Download AGENTS.md", True))}
   </li>
 </ol>
-<div class="ready"><span class="plus">+</span><p><b>Ready when:</b> asked "what bullet does LA.IO use, and what are the three pillars?", the tool answers with a plus sign and + Capital, + Coaching, + Connections, in that order.</p></div>'''
+<div class="ready"><span class="plus">+</span><p><b>Ready when:</b> asked "what bullet does LA.IO use, and what are the three pillars?", the tool answers with a plus sign and + Capital, + Coaching, + Connections, in that order. Asked for a one-slide artifact, it embeds the font and inlines the logo rather than linking them.</p></div>'''
 
 TABS = [
     ("claude",  "Claude",               TAB_CLAUDE),
@@ -1047,7 +1049,7 @@ _t("colors/laio-colors.css", "The same values as CSS custom properties."),
 _t("fonts/" + f, f"{name}. {desc}") for f, name, desc in FONT_CSS
 ] + [
 "",
-"Fallback: Roboto from Google Fonts, only when neither of the above is possible. Say so in the handoff. Roboto is a stand-in, never the goal.",
+"Fallback: Roboto from Google Fonts, only when neither of the above is possible. Say so in the handoff. Roboto is a stand-in, never the goal. Never Roboto inside an artifact; embed instead.",
 "font-family stack: 'Aktiv Grotesk', 'Roboto', system-ui, sans-serif",
 "",
 "The individual woff2 files behind laio-fonts.css:",
