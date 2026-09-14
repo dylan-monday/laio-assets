@@ -23,16 +23,6 @@ the voice rules, banned language, color families, type rules, and asset URLs. It
 - [ai/lovable/LOVABLE_STARTER_PROMPT.md](https://assets.la.io/ai/lovable/LOVABLE_STARTER_PROMPT.md): Lovable starter prompt. The first message that builds the LA.IO starter template.
 - [ai/lovable/LOVABLE_STARTER_TEMPLATE_SPEC.md](https://assets.la.io/ai/lovable/LOVABLE_STARTER_TEMPLATE_SPEC.md): Lovable starter template spec. What the starter template contains and how it is wired.
 
-## Depth
-
-- [ai/laio-brand/RANGE.md](https://assets.la.io/ai/laio-brand/RANGE.md): Range. The shape grammar, six layout moves, their exceptions, and the guardrails. Read before any layout beyond a plain page.
-- [ai/laio-brand/references/01-split.html](https://assets.la.io/ai/laio-brand/references/01-split.html): The Split reference, 1600x900. Read the HTML for structure. The rendered PNG is at references/01-split.png.
-- [ai/laio-brand/references/02-diamond.html](https://assets.la.io/ai/laio-brand/references/02-diamond.html): The Diamond reference, 1600x900. Read the HTML for structure. The rendered PNG is at references/02-diamond.png.
-- [ai/laio-brand/references/03-frame.html](https://assets.la.io/ai/laio-brand/references/03-frame.html): The Frame reference, 1600x900. Read the HTML for structure. The rendered PNG is at references/03-frame.png.
-- [ai/laio-brand/references/04-wire.html](https://assets.la.io/ai/laio-brand/references/04-wire.html): The Wire reference, 1600x900. Read the HTML for structure. The rendered PNG is at references/04-wire.png.
-- [ai/laio-brand/references/05-grid.html](https://assets.la.io/ai/laio-brand/references/05-grid.html): The Grid reference, 1600x900. Read the HTML for structure. The rendered PNG is at references/05-grid.png.
-- [ai/laio-brand/references/06-big-mark.html](https://assets.la.io/ai/laio-brand/references/06-big-mark.html): The Big Mark reference, 1600x900. Read the HTML for structure. The rendered PNG is at references/06-big-mark.png.
-
 ## Color
 
 - [colors/laio-tokens.json](https://assets.la.io/colors/laio-tokens.json): All five color families as JSON. Hex, RGB, brand names.

@@ -6,17 +6,16 @@ Set this up once. Every chat inside the Project then knows the LA.IO brand autom
 
 1. Go to **claude.ai → Projects → New Project**. Name it **"LA.IO"**.
 2. Open the Project, click **"Set custom instructions"**, and paste the block below.
-3. Click **"Add content" / project knowledge** and upload these four files:
+3. Click **"Add content" / project knowledge** and upload these three files:
    + `BRAND.md` (from the `laio-brand` folder)
    + `COMPONENTS.md` (from the `laio-brand` folder)
-   + `RANGE.md` (from the `laio-brand` folder). The six layout moves and their limits.
    + `laio-fonts-inline.css` (from `laio-brand/assets/fonts/`, or download it from `https://assets.la.io/fonts/laio-fonts-inline.css`). This is Aktiv Grotesk embedded in one file. claude.ai artifacts block every external font host, so this is the only way artifacts render the brand typeface.
 4. Done. Start any chat inside the Project.
 
 ## Paste this into custom instructions
 
 ```
-You are producing work for LA.IO (Louisiana Innovation Office), the operating brand for Louisiana's innovation ecosystem. Apply the LA.IO brand to everything you write or design. The uploaded BRAND.md is authoritative; COMPONENTS.md has ready-to-use code; RANGE.md names the six layout moves and their limits; laio-fonts-inline.css embeds the Aktiv Grotesk typeface.
+You are producing work for LA.IO (Louisiana Innovation Office), the operating brand for Louisiana's innovation ecosystem. Apply the LA.IO brand to everything you write or design. The uploaded BRAND.md is authoritative; COMPONENTS.md has ready-to-use code; laio-fonts-inline.css embeds the Aktiv Grotesk typeface.
 
 Brand in one sentence: Louisiana doesn't sell itself. It states what's true, and the truth is enough.
 
@@ -35,6 +34,7 @@ JetBrains Mono for eyebrows, labels, tags, metadata only. All caps, letter-spaci
 In every HTML artifact, inline the full contents of laio-fonts-inline.css from project knowledge in a <style> tag. Do not load Aktiv Grotesk from any URL.
 
 LOGO and MOTIFS: use the hosted SVGs at https://assets.la.io/logos/ and https://assets.la.io/motifs/. Never recreate the logo. Single-fill near-black; override fill for color.
+LAIO-COMPLETE.svg is the default. The others have one job each; see BRAND.md, Which logo.
 
-DESIGN: angular (radius 0 to 2px), committed dark or light, spare with generous whitespace, every element structural. For any layout beyond a plain page, follow RANGE.md: angles 0, 45, and 90 only, two shapes per composition. The test: increases clarity, respects the audience, is not trying too hard, works in a Baton Rouge shipyard and a London transit ad.
+DESIGN: angular (radius 0 to 2px), committed dark or light, spare with generous whitespace, every element structural. Angles 0, 45, and 90 only, two shapes per composition. The plain page is the default: one family, Aktiv Grotesk, plus bullets, generous space. The test: increases clarity, respects the audience, is not trying too hard, works in a Baton Rouge shipyard and a London transit ad.
 ```

@@ -205,11 +205,13 @@ Eyebrows, labels, tags, metadata only. All caps, letter-spacing 0.08 to 0.12em, 
 ### The logo
 The LA.IO logotype is monospace font bracketed by angular chevron/bracket marks: `< LA.IO >`. This is intentional — it reads as a URL, as code syntax, and as a technological signal. It deliberately distances the brand from Louisiana cultural/tourism aesthetics.
 
-**Logo variants available:**
-- Full wordmark: `< LA.IO >` with "LOUISIANA INNOVATION" subtext
-- Icon-only: left bracket `<` and right bracket `>` separated
-- Horizontal layout: wordmark + "LOUISIANA / INNOVATION" stacked text beside it
-- With descriptor: "A Division of Louisiana Economic Development" in Aktiv Grotesk below
+**Which logo:**
++ `LAIO-COMPLETE.svg`: the default everywhere. Full wordmark with LOUISIANA INNOVATION subtext.
++ `LAIO-BASE.svg`: only when the mark is under about 120px wide and the subtext would be illegible.
++ `LAIO-HORZ.svg`: only in a header or nav bar.
++ `LOUISIANA-INNOVATION-A.svg`, `LOUISIANA-INNOVATION-B.svg`, `DIVISION-LINE.svg`: secondary marks. Under or beside the primary mark. Never alone.
++ LED files (`LED-WHITE.svg`, `LED-BLACK.svg`, `LED-SMALL-WHITE.svg`, `LED-SMALL-BLACK.svg`): white on dark grounds, black on light grounds recolored to the family dark. Under or beside the LA.IO mark, never above it. Never the full-color or gold versions.
++ Never type or draw the logo. Always the SVG file.
 
 **Logo colorization:**
 All logo SVG files are exported in near-black (`#231F20`). To apply brand color, override the fill:
@@ -233,7 +235,7 @@ The square pixel/dot in the logo is the base measurement unit. Maintain 3x that 
 The brand guidelines explicitly encourage exploration — the logo can be used large, cropped, bleeding off edges, as a supergraphic. The rule is: it must remain legible. Breaking compositional rules is on-brand when it's intentional and legible.
 
 **The LED logo:**
-Louisiana Economic Development, the parent agency. White on dark grounds is the default. Black on light grounds, recolored to the family dark. Never the full-color or gold versions. Sits under or beside the LA.IO mark, never above it. Files: `LED-WHITE.svg`, `LED-BLACK.svg`, `LED-SMALL-WHITE.svg`, `LED-SMALL-BLACK.svg`, in `assets/logos/` and at `https://assets.la.io/logos/`. It is the one outside logo the kit ships. Partner logos are covered in `RANGE.md`.
+Louisiana Economic Development, the parent agency. White on dark grounds is the default. Black on light grounds, recolored to the family dark. Never the full-color or gold versions. Sits under or beside the LA.IO mark, never above it. Files: `LED-WHITE.svg`, `LED-BLACK.svg`, `LED-SMALL-WHITE.svg`, `LED-SMALL-BLACK.svg`, in `assets/logos/` and at `https://assets.la.io/logos/`. It is the one outside logo the kit ships. Partner logos: recolor into the family by default; original colors only when the partner requires it. The kit ships no partner logos.
 
 ### Design elements library
 The bracket shapes from the logo decompose into a full visual vocabulary. Every element sits at 0, 45, or 90 degrees. Files are in `assets/motifs/` and at `https://assets.la.io/motifs/`.
@@ -249,8 +251,6 @@ The bracket shapes from the logo decompose into a full visual vocabulary. Every 
 + Diagonal field: a right triangle with a 45-degree edge, sized for a 16:9 canvas at 100% width (`LAIO-FIELD-DIAGONAL`)
 + 45-degree hatch: one tile that repeats seamlessly (`LAIO-HATCH`)
 + Wire node: the open-square terminal for 1px connectors (`LAIO-WIRE-NODE`)
-
-`RANGE.md` shows how these combine into six layout moves, with a reference for each.
 
 **The `+` as the brand bullet:**
 The `+` is the canonical list marker for LA.IO. In body copy, use a literal `+` character. In designed layouts, the `+` can be constructed from bracket corner elements at any size. It replaces all standard bullets, dashes, and dots across all contexts — UI lists, copy, slide decks, printed materials.
