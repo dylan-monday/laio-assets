@@ -176,7 +176,7 @@ The brand typeface. Monospace DNA, tech-forward, deeply legible. Use across all 
 
 Family name `'Aktiv Grotesk'` (title case, never `'aktiv-grotesk'`). Headlines Light 300 or Bold 700, never a middle weight. Body Regular 400.
 
-**Web delivery.** Three ways to load it, in this order of preference:
+**Web delivery.** Inside any sandboxed output (claude.ai artifact, Claude Design, Lovable preview, email) embed the font CSS and inline the logo SVGs; external URLs do not load there, and Roboto is never an acceptable substitute in an artifact. Three ways to load it, in this order of preference:
 
 + **Embedded:** paste the contents of `laio-fonts-inline.css` into a `<style>` tag. Zero network requests. Use in claude.ai artifacts, Claude Design, Lovable previews, email, anything sandboxed. This is the default for AI-generated work.
 + **Hosted:** `<link rel="stylesheet" href="https://assets.la.io/fonts/laio-fonts.css">` for real sites and apps on any domain.

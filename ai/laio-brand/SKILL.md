@@ -81,6 +81,8 @@ Accent colors are architectural — borders, bars, dividers, mono labels — not
 
 **Aktiv Grotesk**, family name `'Aktiv Grotesk'` (title case, never `'aktiv-grotesk'`). Headlines Light 300 or Bold 700, never a middle weight. Body Regular 400.
 
+Sandboxed output has no network. A claude.ai artifact, a Claude Design canvas, a Lovable preview, an email, or anything else that renders inside a tool cannot reach assets.la.io or Google Fonts. In those contexts: paste the entire contents of assets/fonts/laio-fonts-inline.css into a <style> tag. For the logo (LAIO-COMPLETE.svg, and LED-WHITE.svg or LED-BLACK.svg if used), paste the <svg> markup from assets/logos/ inline. Never <link> a stylesheet, never <img src>, never mask-image or background-image a URL, never load Roboto from Google. Before delivering, check the file: it contains @font-face rules with data: URIs and an inline <svg> for every logo. If it does not, it is not finished. The hosted CSS and hosted logo URLs are for real sites and apps on a domain, nothing else.
+
 Three ways to load it, in this order of preference:
 
 + **Embedded:** paste the contents of `laio-fonts-inline.css` into a `<style>` tag. Zero network requests. Use in claude.ai artifacts, Claude Design, Lovable previews, email, anything sandboxed. This is the default for AI-generated work.

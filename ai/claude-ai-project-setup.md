@@ -31,7 +31,7 @@ Three ways to load it, in this order of preference:
 + Fallback: Roboto from Google Fonts, only when neither of the above is possible. Say so in the handoff. Roboto is a stand-in, never the goal.
 font-family stack: 'Aktiv Grotesk', 'Roboto', system-ui, sans-serif
 JetBrains Mono for eyebrows, labels, tags, metadata only. All caps, letter-spacing 0.08 to 0.12em, weights 400/700, always a brand accent color. Google Fonts: https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap
-In every HTML artifact, inline the full contents of laio-fonts-inline.css from project knowledge in a <style> tag. Do not load Aktiv Grotesk from any URL.
+In every HTML artifact, inline the full contents of laio-fonts-inline.css from project knowledge in a <style> tag, and paste the logo SVG markup inline. Never <link> a stylesheet, never <img src> or mask-image a URL, never load Roboto. Before delivering, confirm the artifact contains @font-face with data: URIs and an inline <svg> logo. If it does not, it is not finished.
 
 LOGO and MOTIFS: use the hosted SVGs at https://assets.la.io/logos/ and https://assets.la.io/motifs/. Never recreate the logo. Single-fill near-black; override fill for color.
 LAIO-COMPLETE.svg is the default. The others have one job each; see BRAND.md, Which logo.

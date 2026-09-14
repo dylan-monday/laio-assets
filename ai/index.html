@@ -502,7 +502,7 @@ Three ways to load it, in this order of preference:
 + Fallback: Roboto from Google Fonts, only when neither of the above is possible. Say so in the handoff. Roboto is a stand-in, never the goal.
 font-family stack: 'Aktiv Grotesk', 'Roboto', system-ui, sans-serif
 JetBrains Mono for eyebrows, labels, tags, metadata only. All caps, letter-spacing 0.08 to 0.12em, weights 400/700, always a brand accent color. Google Fonts: https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;display=swap
-In every HTML artifact, inline the full contents of laio-fonts-inline.css from project knowledge in a &lt;style&gt; tag. Do not load Aktiv Grotesk from any URL.
+In every HTML artifact, inline the full contents of laio-fonts-inline.css from project knowledge in a &lt;style&gt; tag, and paste the logo SVG markup inline. Never &lt;link&gt; a stylesheet, never &lt;img src&gt; or mask-image a URL, never load Roboto. Before delivering, confirm the artifact contains @font-face with data: URIs and an inline &lt;svg&gt; logo. If it does not, it is not finished.
 
 LOGO and MOTIFS: use the hosted SVGs at https://assets.la.io/logos/ and https://assets.la.io/motifs/. Never recreate the logo. Single-fill near-black; override fill for color.
 LAIO-COMPLETE.svg is the default. The others have one job each; see BRAND.md, Which logo.
@@ -519,7 +519,8 @@ DESIGN: angular (radius 0 to 2px), committed dark or light, spare with generous 
   </li>
   <li><div class="st">Start a chat</div><div class="sd">Every conversation inside the Project is now on brand.</div></li>
 </ol>
-<div class="ready"><span class="plus">+</span><p><b>Ready when:</b> a fresh chat in the Project answers "what bullet does LA.IO use?" with a plus sign, and writes copy with no em dashes.</p></div>
+<p class="note">A Project reads its files once. When the kit changes, we will say so, and you re-paste the custom instructions and replace the three files. Nothing else to do.</p>
+<div class="ready"><span class="plus">+</span><p><b>Ready when:</b> a fresh chat in the Project answers "what bullet does LA.IO use?" with a plus sign, and a one-slide artifact you ask for shows Aktiv Grotesk and the real LA.IO mark, not typed brackets.</p></div>
         </div>
         <!-- CLAUDE DESIGN -->
         <div class="panel" data-tab="design" role="tabpanel">
@@ -540,11 +541,12 @@ DESIGN: angular (radius 0 to 2px), committed dark or light, spare with generous 
 <div class="fieldname">Any other notes</div>
 <div class="code code-wrap">
 <button class="copy">Copy</button>
-<pre>Read ai/laio-brand/SKILL.md first, then BRAND.md in the same folder. Fonts are in fonts/laio-fonts-inline.css; use that file for Aktiv Grotesk and never load the typeface from a URL. Logos in logos/, motifs in motifs/, color tokens in colors/. LAIO-COMPLETE.svg is the default. The others have one job each; see BRAND.md, Which logo. Angles are 0, 45, and 90 only. One color family per piece. Plus as the bullet. No em dashes. Name the system exactly LA.IO Design System.</pre>
+<pre>Read ai/laio-brand/SKILL.md first, then BRAND.md in the same folder. Fonts are in fonts/laio-fonts-inline.css; use that file for Aktiv Grotesk and never load the typeface from a URL. Inline the logo SVG markup from logos/; do not reference the file by URL. Logos in logos/, motifs in motifs/, color tokens in colors/. LAIO-COMPLETE.svg is the default. The others have one job each; see BRAND.md, Which logo. Angles are 0, 45, and 90 only. One color family per piece. Plus as the bullet. No em dashes. Name the system exactly LA.IO Design System.</pre>
 </div>
   </li>
   <li><div class="st">Create it, then select it</div><div class="sd">Create the system. On any New Project (Prototype, Slide deck, and so on) choose <code class="inline">LA.IO Design System</code> from the <i>Design System</i> dropdown.</div></li>
 </ol>
+<p class="note">A Design System reads the repo once. When the kit changes, we will say so, and you delete the system and recreate it from the three fields. About two minutes.</p>
 <div class="ready"><span class="plus">+</span><p><b>Ready when:</b> a project on the LA.IO Design System produces one-family, angular, Aktiv Grotesk layouts with the real LA.IO logo and plus-sign bullets.</p></div>
         </div>
         <!-- CLAUDE CODE + COWORK -->
@@ -635,7 +637,7 @@ Color family: [pick one: Magenta / Green / Blue / Orange / Gray]
 </div>
   </li>
 </ol>
-<div class="ready"><span class="plus">+</span><p><b>Ready when:</b> asked "what bullet does LA.IO use, and what are the three pillars?", the tool answers with a plus sign and + Capital, + Coaching, + Connections, in that order.</p></div>
+<div class="ready"><span class="plus">+</span><p><b>Ready when:</b> asked "what bullet does LA.IO use, and what are the three pillars?", the tool answers with a plus sign and + Capital, + Coaching, + Connections, in that order. Asked for a one-slide artifact, it embeds the font and inlines the logo rather than linking them.</p></div>
         </div>
       </div>
     </div>
@@ -745,37 +747,37 @@ Color family: [pick one: Magenta / Green / Blue / Orange / Gray]
 <div class="acard">
   <div class="astage"><img src="/logos/LAIO-COMPLETE.svg" alt="Complete lockup" loading="lazy"></div>
   <a class="aname" href="/logos/LAIO-COMPLETE.svg">Complete lockup</a>
-  <div class="adesc">Primary mark. Use this unless there is a reason not to.</div>
+  <div class="adesc">The default, everywhere. Use this unless a rule below says otherwise.</div>
   <button class="ucopy" data-copy="https://assets.la.io/logos/LAIO-COMPLETE.svg"><span class="upath">/logos/LAIO-COMPLETE.svg</span><span class="uci">Copy</span></button>
 </div>
 <div class="acard">
   <div class="astage"><img src="/logos/LAIO-BASE.svg" alt="Base mark" loading="lazy"></div>
   <a class="aname" href="/logos/LAIO-BASE.svg">Base mark</a>
-  <div class="adesc">The LA.IO mark alone.</div>
+  <div class="adesc">Only when the mark is under about 120px wide and the subtext would be illegible.</div>
   <button class="ucopy" data-copy="https://assets.la.io/logos/LAIO-BASE.svg"><span class="upath">/logos/LAIO-BASE.svg</span><span class="uci">Copy</span></button>
 </div>
 <div class="acard">
   <div class="astage"><img src="/logos/LAIO-HORZ.svg" alt="Horizontal lockup" loading="lazy"></div>
   <a class="aname" href="/logos/LAIO-HORZ.svg">Horizontal lockup</a>
-  <div class="adesc">For wide spaces and headers.</div>
+  <div class="adesc">Only in a header or nav bar.</div>
   <button class="ucopy" data-copy="https://assets.la.io/logos/LAIO-HORZ.svg"><span class="upath">/logos/LAIO-HORZ.svg</span><span class="uci">Copy</span></button>
 </div>
 <div class="acard">
   <div class="astage"><img src="/logos/LOUISIANA-INNOVATION-A.svg" alt="Louisiana Innovation A" loading="lazy"></div>
   <a class="aname" href="/logos/LOUISIANA-INNOVATION-A.svg">Louisiana Innovation A</a>
-  <div class="adesc">Full name lockup, stacked.</div>
+  <div class="adesc">Secondary mark, stacked. Under or beside the primary, never alone.</div>
   <button class="ucopy" data-copy="https://assets.la.io/logos/LOUISIANA-INNOVATION-A.svg"><span class="upath">/logos/LOUISIANA-INNOVATION-A.svg</span><span class="uci">Copy</span></button>
 </div>
 <div class="acard">
   <div class="astage"><img src="/logos/LOUISIANA-INNOVATION-B.svg" alt="Louisiana Innovation B" loading="lazy"></div>
   <a class="aname" href="/logos/LOUISIANA-INNOVATION-B.svg">Louisiana Innovation B</a>
-  <div class="adesc">Full name lockup, condensed.</div>
+  <div class="adesc">Secondary mark, condensed. Under or beside the primary, never alone.</div>
   <button class="ucopy" data-copy="https://assets.la.io/logos/LOUISIANA-INNOVATION-B.svg"><span class="upath">/logos/LOUISIANA-INNOVATION-B.svg</span><span class="uci">Copy</span></button>
 </div>
 <div class="acard">
   <div class="astage"><img src="/logos/DIVISION-LINE.svg" alt="Division line" loading="lazy"></div>
   <a class="aname" href="/logos/DIVISION-LINE.svg">Division line</a>
-  <div class="adesc">The LED division line. Sits under the mark.</div>
+  <div class="adesc">Secondary mark. Sits under the primary, never alone.</div>
   <button class="ucopy" data-copy="https://assets.la.io/logos/DIVISION-LINE.svg"><span class="upath">/logos/DIVISION-LINE.svg</span><span class="uci">Copy</span></button>
 </div>
 <div class="acard">

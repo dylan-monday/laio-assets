@@ -17,10 +17,12 @@ Dark = background, Easy/Electric = accents/labels/type-on-dark. Body copy is whi
 ## Type
 **Aktiv Grotesk**, family name `'Aktiv Grotesk'` (title case, never `'aktiv-grotesk'`). Headlines Light 300 or Bold 700, never a middle weight. Body Regular 400.
 
+Sandboxed output has no network. A claude.ai artifact, a Claude Design canvas, a Lovable preview, an email, or anything else that renders inside a tool cannot reach assets.la.io or Google Fonts. In those contexts: fetch https://assets.la.io/fonts/laio-fonts-inline.css and paste the entire file into a <style> tag. Fetch the logo SVG (https://assets.la.io/logos/LAIO-COMPLETE.svg, and LED-WHITE.svg or LED-BLACK.svg if used) and paste the <svg> markup inline. Never <link> a stylesheet, never <img src>, never mask-image or background-image a URL, never load Roboto from Google. Before delivering, check the file: it contains @font-face rules with data: URIs and an inline <svg> for every logo. If it does not, it is not finished. The hosted CSS and hosted logo URLs are for real sites and apps on a domain, nothing else.
+
 Three ways to load it, in this order of preference:
 + **Embedded:** paste the contents of `laio-fonts-inline.css` into a `<style>` tag. Zero network requests. Use in claude.ai artifacts, Claude Design, Lovable previews, email, anything sandboxed. This is the default for AI-generated work.
-+ **Hosted:** `<link rel="stylesheet" href="https://assets.la.io/fonts/laio-fonts.css">` for real sites and apps on any domain.
-+ **Fallback:** Roboto from Google Fonts, only when neither of the above is possible. Say so in the handoff. Roboto is a stand-in, never the goal.
++ **Hosted, for real sites and apps on a domain only, never inside an artifact or preview:** `<link rel="stylesheet" href="https://assets.la.io/fonts/laio-fonts.css">`.
++ **Fallback:** Roboto from Google Fonts, only when neither of the above is possible. Say so in the handoff. Roboto is a stand-in, never the goal. Never Roboto inside an artifact; embed instead.
 
 font-family stack: `'Aktiv Grotesk', 'Roboto', system-ui, sans-serif`
 
@@ -29,7 +31,7 @@ font-family stack: `'Aktiv Grotesk', 'Roboto', system-ui, sans-serif`
 **JetBrains Mono** for eyebrows, labels, tags, metadata only. All caps, letter-spacing 0.08 to 0.12em, weights 400/700, always a brand accent color. Google Fonts: `https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap`
 
 ## Logo & motifs
-Use hosted SVGs, never recreate. `https://assets.la.io/logos/` and `/motifs/`. Single-fill near-black; override `fill` for color. React: `assets/LaioLogo.jsx`.
+Use hosted SVGs, never recreate. Inside a sandboxed artifact, inline the SVG markup; a URL to the CDN will not load there. `https://assets.la.io/logos/` and `/motifs/`. Single-fill near-black; override `fill` for color. React: `assets/LaioLogo.jsx`.
 Which logo. LAIO-COMPLETE.svg is the default everywhere: decks, pages, social, print, favicons excepted. LAIO-BASE.svg only when the mark renders under about 120px wide and the LOUISIANA INNOVATION subtext would be illegible. LAIO-HORZ.svg only in a header or nav bar. LOUISIANA-INNOVATION-A.svg, LOUISIANA-INNOVATION-B.svg, and DIVISION-LINE.svg are secondary marks: under or beside the primary mark, never alone, never as the only logo on a page. Never type the logo as text or draw it from brackets and letters; always place the SVG file.
 + LED logo (`LED-WHITE.svg`, `LED-BLACK.svg`, `LED-SMALL-WHITE.svg`, `LED-SMALL-BLACK.svg`): Louisiana Economic Development, the parent agency. White on dark grounds by default. Black on light grounds, recolored to the family dark. Never the full-color or gold versions. Under or beside the LA.IO mark, never above it, never as the only logo on a page.
 + Motifs, all `LAIO-*.svg`: `LEFT-BRACKET`, `RIGHT-BRACKET`, `UP-BRACKET`, `DOWN-BRACKET`, `BRACKET-CORNER-1`, `BRACKET-CORNER-2`, `CORNER-L`, `PLUS`, `X`, `DIAMOND`, `DIAMOND-EMPTY`, `SQUARE`, `SQUARE-EMPTY`, `FIELD-DIAGONAL`, `HATCH`, `WIRE-NODE`.

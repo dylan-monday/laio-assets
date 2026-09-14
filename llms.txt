@@ -58,12 +58,12 @@ https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swa
 
 All artwork ships black (#231F20) on transparent. Recolor with CSS. Do not edit the artwork.
 
-- [logos/LAIO-COMPLETE.svg](https://assets.la.io/logos/LAIO-COMPLETE.svg): Primary mark. Use this unless there is a reason not to.
-- [logos/LAIO-BASE.svg](https://assets.la.io/logos/LAIO-BASE.svg): The LA.IO mark alone.
-- [logos/LAIO-HORZ.svg](https://assets.la.io/logos/LAIO-HORZ.svg): For wide spaces and headers.
-- [logos/LOUISIANA-INNOVATION-A.svg](https://assets.la.io/logos/LOUISIANA-INNOVATION-A.svg): Full name lockup, stacked.
-- [logos/LOUISIANA-INNOVATION-B.svg](https://assets.la.io/logos/LOUISIANA-INNOVATION-B.svg): Full name lockup, condensed.
-- [logos/DIVISION-LINE.svg](https://assets.la.io/logos/DIVISION-LINE.svg): The LED division line. Sits under the mark.
+- [logos/LAIO-COMPLETE.svg](https://assets.la.io/logos/LAIO-COMPLETE.svg): The default, everywhere. Use this unless a rule below says otherwise.
+- [logos/LAIO-BASE.svg](https://assets.la.io/logos/LAIO-BASE.svg): Only when the mark is under about 120px wide and the subtext would be illegible.
+- [logos/LAIO-HORZ.svg](https://assets.la.io/logos/LAIO-HORZ.svg): Only in a header or nav bar.
+- [logos/LOUISIANA-INNOVATION-A.svg](https://assets.la.io/logos/LOUISIANA-INNOVATION-A.svg): Secondary mark, stacked. Under or beside the primary, never alone.
+- [logos/LOUISIANA-INNOVATION-B.svg](https://assets.la.io/logos/LOUISIANA-INNOVATION-B.svg): Secondary mark, condensed. Under or beside the primary, never alone.
+- [logos/DIVISION-LINE.svg](https://assets.la.io/logos/DIVISION-LINE.svg): Secondary mark. Sits under the primary, never alone.
 - [logos/LED-WHITE.svg](https://assets.la.io/logos/LED-WHITE.svg): Louisiana Economic Development. The default, on dark grounds.
 - [logos/LED-BLACK.svg](https://assets.la.io/logos/LED-BLACK.svg): On light grounds. Recolor to the family dark.
 - [logos/LED-SMALL-WHITE.svg](https://assets.la.io/logos/LED-SMALL-WHITE.svg): The compact LED lockup, on dark grounds.
