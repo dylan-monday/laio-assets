@@ -762,7 +762,7 @@ START = f'''
       <h2>Paste one line.</h2>
       <p class="lead">Any AI that can read the web fetches the brand instructions from this URL and works to them from there.</p>
       {code(PROMPT, wrap=True)}
-      <p class="note">If your AI cannot fetch URLs, download CLAUDE.md and laio-fonts-inline.css below and attach them instead.</p>
+      <p class="note">Making something visual in a plain chat? Attach CLAUDE.md and laio-fonts-inline.css so the AI has the font in hand. If your AI cannot fetch URLs, attach them too.</p>
       {dlrow(dl("/ai/CLAUDE.md", "Download CLAUDE.md"), dl("/fonts/laio-fonts-inline.css", "Download laio-fonts-inline.css", True))}
     </div>
   </section>
@@ -875,6 +875,7 @@ SETUP = f'''
       <span class="mono sec-eyebrow">Get set up</span>
       <h2>Pick your tool.</h2>
       <p class="lead">Each takes a few minutes. Set up the ones you use. They all draw from the same kit.</p>
+      <p class="lead">For best results, set up your tool below. The one-line paste is fine for copy and quick questions. For anything visual, use a Project, Claude Design, Cowork, or Claude Code. They carry the font with them, so previews come out right.</p>
 
       <div class="tabs">
         <div class="tablist" role="tablist">
