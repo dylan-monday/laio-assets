@@ -112,7 +112,7 @@ https://assets.la.io/logos/LAIO-HORZ.svg        ← horizontal
 https://assets.la.io/logos/LOUISIANA-INNOVATION-A.svg
 https://assets.la.io/logos/LOUISIANA-INNOVATION-B.svg
 https://assets.la.io/logos/DIVISION-LINE.svg
-https://assets.la.io/logos/LED-WHITE.svg        ← Louisiana Economic Development, rules below
+https://assets.la.io/logos/LED-WHITE.svg        ← Louisiana Economic Development, rules in BRAND.md, Which logo
 ```
 
 LAIO-COMPLETE.svg is the default. The others have one job each; see BRAND.md, Which logo.
