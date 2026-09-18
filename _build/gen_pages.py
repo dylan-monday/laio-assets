@@ -925,7 +925,6 @@ SETUP = f'''
   <!-- ============ SETUP TABS ============ -->
   <section class="block">
     <div class="wrap">
-      <span class="mono sec-eyebrow">01 &nbsp;Connect your AI</span>
       <h2>Pick how you work.</h2>
       <p class="lead">Six ways in, one kit behind all of them. Set up the ones you use. On claude.ai the connector is the best of them, so start there.</p>
       <p class="lead">The one-line paste is fine for copy and quick questions. For anything visual, use the connector, a Project, Claude Design, Cowork, or Claude Code. Those carry the font with them, so previews come out right.</p>
@@ -945,7 +944,7 @@ SUMMARY = '''
   <!-- ============ BRAND IN 30 SECONDS ============ -->
   <section class="block">
     <div class="wrap">
-      <span class="mono sec-eyebrow">02 &nbsp;The brand</span>
+      <span class="mono sec-eyebrow">The brand in 30 seconds</span>
       <h2>If you read nothing else.</h2>
 
       <div class="families">
@@ -994,7 +993,6 @@ ASSETS = f'''
   <!-- ============ THE ASSETS ============ -->
   <section class="block" id="assets">
     <div class="wrap">
-      <span class="mono sec-eyebrow">03 &nbsp;The assets</span>
       <h2>Every file, at a permanent URL.</h2>
       <p class="lead">Every file is public, current, and served with open CORS, so it loads on any domain. Copy a URL into code, a prompt, or a tool's knowledge.</p>
 
@@ -1056,9 +1054,37 @@ FOOTER = f'''
 <script>
 '''
 
+
+# ---- the three acts ----
+# One page, three jobs: connect your AI, learn the brand, take the files.
+# Only one is on screen at a time. Hash links land on the right one.
+ACTS_NAV = '''
+  <!-- ============ ACTS ============ -->
+  <section class="block acts-top">
+    <div class="wrap">
+      <nav class="actnav" role="tablist" aria-label="Sections">
+        <button class="act" role="tab" aria-selected="true"  data-act="connect"><span class="n">01</span><span class="al">Connect your AI</span><span class="as">Connect</span></button>
+        <button class="act" role="tab" aria-selected="false" data-act="brand"><span class="n">02</span><span class="al">The brand</span><span class="as">Brand</span></button>
+        <button class="act" role="tab" aria-selected="false" data-act="assets"><span class="n">03</span><span class="al">The assets</span><span class="as">Assets</span></button>
+      </nav>
+    </div>
+  </section>
+'''
+
+def actpanel(key, body, first=False):
+    active = ' data-active="true"' if first else ""
+    return f'''
+  <div class="actpanel" data-act="{key}"{active} role="tabpanel" id="{key}">
+{body}
+  </div>'''
+
 ai_page = (AI_HEAD
            + _read(PAGE, "page.css") + _read(PAGE, "additions.css")
-           + INTRO + HERO + SETUP + SUMMARY + ASSETS + FOOTER
+           + INTRO + HERO + ACTS_NAV
+           + actpanel('connect', SETUP, first=True)
+           + actpanel('brand', SUMMARY)
+           + actpanel('assets', ASSETS)
+           + FOOTER
            + _read(PAGE, "rings.js") + "\n" + _read(PAGE, "ui.js") + _read(PAGE, "inventory.js")
            + "</script>\n</body>\n</html>\n")
 
@@ -1084,7 +1110,7 @@ llms = "\n".join([
 "",
 "The whole kit is also served as an MCP connector at https://assets.la.io/mcp. A Claude",
 "organization adds it once and every chat can pull the logo, colors, fonts and voice rules",
-"as tools. Setup steps are at https://assets.la.io/ai#connector-admin.",
+"as tools. Setup steps are at https://assets.la.io/ai#connect.",
 "",
 _t("ai/CLAUDE.md", "Brand instructions for any AI. Read this before generating anything."),
 _t("ai/AGENTS.md", "The same file, for tools that look for AGENTS.md."),
