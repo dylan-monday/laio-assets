@@ -629,6 +629,7 @@ DOCS = [
     ("ai/AGENTS.md",                              "AGENTS.md",                    "The same file, for Cursor and other agents that look for AGENTS.md."),
     ("ai/laio-brand/BRAND.md",                    "Full brand system",            "The long form. Load when the work needs depth."),
     ("ai/laio-brand/COMPONENTS.md",               "Component code",               "Buttons, cards, eyebrows, and layout patterns as code."),
+    ("ai/laio-brand/VOICE.md",                    "Voice guide",                  "Speaker profiles, the full ban list, and the standing rules for AI work."),
     ("ai/laio-brand.zip",                         "Packaged skill",               "The whole kit as a Claude skill. Unzip into ~/.claude/skills/."),
     ("ai/claude-ai-project-setup.md",             "claude.ai Project setup",      "Custom instructions and knowledge files for a Claude Project."),
     ("ai/claude-design-setup.md",                 "Claude Design setup",          "The three form fields that set up the LA.IO Design System from this repo."),
@@ -769,6 +770,74 @@ START = f'''
   </section>
 '''
 
+# ---- the connector, the first thing on the page ----
+# Copy lives in _build/sources/connector.md so the page can be reworded without
+# touching this script. Parsed by "## Heading", one section each.
+def md_sections(path):
+    raw = _read(path)
+    out, key, buf = {}, None, []
+    for line in raw.split("\n"):
+        m = re.match(r"^## (.+)$", line)
+        if m:
+            if key: out[key] = "\n".join(buf).strip()
+            key, buf = m.group(1).strip(), []
+        elif key is not None:
+            buf.append(line)
+    if key: out[key] = "\n".join(buf).strip()
+    return out
+
+CONN = md_sections(os.path.join(HERE, "sources", "connector.md"))
+
+def _para(text):
+    return "\n".join(f'      <p class="lead">{html_escape(b, quote=False)}</p>'
+                      for b in text.split("\n\n") if b.strip())
+
+_ex_intro, _ex_items = [], []
+for line in CONN["Examples"].split("\n"):
+    if line.startswith("+ "):
+        _ex_items.append(f'        <li><span class="m">+</span><span>{html_escape(line[2:], quote=False)}</span></li>')
+    elif line.strip():
+        _ex_intro.append(line.strip())
+
+_steps = []
+for line in CONN["Admin steps"].split("\n"):
+    m = re.match(r"^\d+\.\s*(.+?)\|(.+)$", line.strip())
+    if not m: continue
+    title, desc = m.group(1), m.group(2)
+    desc = re.sub(r"`([^`]+)`", r'<code class="inline">\1</code>', html_escape(desc, quote=False).replace("&#x27;", "'"))
+    _steps.append(f'        <li><div class="st">{html_escape(title, quote=False)}</div><div class="sd">{desc}</div></li>')
+
+CONNECTOR = f'''
+  <!-- ============ THE CONNECTOR ============ -->
+  <section class="block" id="connector">
+    <div class="wrap">
+      <span class="mono sec-eyebrow">The connector</span>
+      <h2>Ask Claude. Get the brand.</h2>
+{_para(CONN["Lead"])}
+{_para(CONN["Setup"])}
+      <p class="note">{html_escape(" ".join(_ex_intro), quote=False)}</p>
+      <ul class="examples">
+{chr(10).join(_ex_items)}
+      </ul>
+      <div class="ready"><span class="plus">+</span><p>{html_escape(CONN["Aside"], quote=False)}</p></div>
+    </div>
+  </section>
+
+  <!-- ============ FOR YOUR CLAUDE ADMIN ============ -->
+  <section class="block" id="connector-admin">
+    <div class="wrap">
+      <span class="mono sec-eyebrow">For your Claude admin</span>
+      <h2>One connector, once.</h2>
+{_para(CONN["Admin intro"])}
+      <ol class="steps">
+{chr(10).join(_steps)}
+      </ol>
+      <div class="ready"><span class="plus">+</span><p><b>Working when:</b> {html_escape(" ".join(CONN["Test"].split()), quote=False)}</p></div>
+      <p class="note">{html_escape(CONN["Feedback"], quote=False)}</p>
+    </div>
+  </section>
+'''
+
 # ---- the five tabs ----
 TAB_CLAUDE = f'''<p class="for">For <b>copy, content, and brand questions</b> on claude.ai. Best for writers and marketers. Set it up once, then every chat in the Project knows the brand.</p>
 <ol class="steps">
@@ -873,7 +942,7 @@ SETUP = f'''
   <!-- ============ SETUP TABS ============ -->
   <section class="block">
     <div class="wrap">
-      <span class="mono sec-eyebrow">Get set up</span>
+      <span class="mono sec-eyebrow">Not using the connector?</span>
       <h2>Pick your tool.</h2>
       <p class="lead">Each takes a few minutes. Set up the ones you use. They all draw from the same kit.</p>
       <p class="lead">For best results, set up your tool below. The one-line paste is fine for copy and quick questions. For anything visual, use a Project, Claude Design, Cowork, or Claude Code. They carry the font with them, so previews come out right.</p>
@@ -1006,7 +1075,7 @@ FOOTER = f'''
 
 ai_page = (AI_HEAD
            + _read(PAGE, "page.css") + _read(PAGE, "additions.css")
-           + INTRO + HERO + START + SETUP + SUMMARY + ASSETS + FOOTER
+           + INTRO + HERO + CONNECTOR + START + SETUP + SUMMARY + ASSETS + FOOTER
            + _read(PAGE, "rings.js") + "\n" + _read(PAGE, "ui.js") + _read(PAGE, "inventory.js")
            + "</script>\n</body>\n</html>\n")
 
@@ -1030,6 +1099,10 @@ llms = "\n".join([
 "",
 "## Start here",
 "",
+"The whole kit is also served as an MCP connector at https://assets.la.io/mcp. A Claude",
+"organization adds it once and every chat can pull the logo, colors, fonts and voice rules",
+"as tools. Setup steps are at https://assets.la.io/ai#connector-admin.",
+"",
 _t("ai/CLAUDE.md", "Brand instructions for any AI. Read this before generating anything."),
 _t("ai/AGENTS.md", "The same file, for tools that look for AGENTS.md."),
 "",
@@ -1042,6 +1115,8 @@ _t(p, f"{n}. {d}") for p, n, d in DOCS if p not in ("ai/CLAUDE.md", "ai/AGENTS.m
 "",
 _t("colors/laio-tokens.json", "All five color families as JSON. Hex, RGB, brand names."),
 _t("colors/laio-colors.css", "The same values as CSS custom properties."),
+_t("colors/laio-cmyk.json", "CMYK builds for print. GRACoL 2013 coated and SNAP 2007 newsprint, rich blacks, and the out-of-gamut notes."),
+_t("colors/LA_IO_COLORS_RGB.ase", "The RGB swatch master for Adobe apps."),
 "",
 "## Type",
 "",

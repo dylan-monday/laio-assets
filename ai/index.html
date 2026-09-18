@@ -394,6 +394,12 @@
     color: var(--easy); text-decoration: none;
   }
   footer .flinks a:hover { color: var(--white); }
+
+  /* The connector's example requests. Plus-marked, the brand's list. */
+  ul.examples { list-style: none; margin: 22px 0 0; }
+  ul.examples li { display: flex; gap: 12px; padding: 7px 0; font-size: 0.96rem; font-weight: 300; color: rgba(255,255,255,0.88); }
+  ul.examples li .m { color: var(--electric); font-weight: 700; flex-shrink: 0; }
+  #connector .note { margin-top: 20px; }
 </style>
 </head>
 <body>
@@ -444,6 +450,48 @@
     </div>
   </header>
 
+  <!-- ============ THE CONNECTOR ============ -->
+  <section class="block" id="connector">
+    <div class="wrap">
+      <span class="mono sec-eyebrow">The connector</span>
+      <h2>Ask Claude. Get the brand.</h2>
+      <p class="lead">Connect the LA.IO brand to Claude once, and every chat can pull the real logo, the
+right colors, the fonts and the voice rules. Nothing to paste. Nothing to download.</p>
+      <p class="lead">Your Claude admin adds it once for the whole org. After that, each person turns it
+on in their own settings. Steps are below.</p>
+      <p class="note">Ask for what you want in plain language.</p>
+      <ul class="examples">
+        <li><span class="m">+</span><span>Give me a transparent PNG of the LA.IO logo in Easy Blue.</span></li>
+        <li><span class="m">+</span><span>Write a LinkedIn post for Josh about the new cohort.</span></li>
+        <li><span class="m">+</span><span>Check this press release against the brand.</span></li>
+        <li><span class="m">+</span><span>What are the CMYK values for Dark Green for a printed flyer?</span></li>
+        <li><span class="m">+</span><span>I need the logo with alpha for a video end card.</span></li>
+        <li><span class="m">+</span><span>Make a five-slide deck on the maritime work for Susan.</span></li>
+      </ul>
+      <div class="ready"><span class="plus">+</span><p>The connector suggests. You decide. Overrule any of it and you still get the file.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ FOR YOUR CLAUDE ADMIN ============ -->
+  <section class="block" id="connector-admin">
+    <div class="wrap">
+      <span class="mono sec-eyebrow">For your Claude admin</span>
+      <h2>One connector, once.</h2>
+      <p class="lead">Only an Owner can add a connector to a Team or Enterprise organization. This takes
+about a minute.</p>
+      <ol class="steps">
+        <li><div class="st">Open Admin settings</div><div class="sd">Go to Settings, then Administration, then Connectors.</div></li>
+        <li><div class="st">Add a custom connector</div><div class="sd">Click Add custom connector at the bottom of the section.</div></li>
+        <li><div class="st">Paste the URL</div><div class="sd">Use <code class="inline">https://assets.la.io/mcp</code>. Leave the advanced OAuth fields empty, the connector needs no login.</div></li>
+        <li><div class="st">Name it</div><div class="sd">Call it <code class="inline">LA.IO Brand</code> so people recognize it in the list.</div></li>
+        <li><div class="st">Click Add</div><div class="sd">It is now available to everyone in the organization.</div></li>
+        <li><div class="st">Tell the team to connect</div><div class="sd">Each person opens Settings, then Connectors, finds LA.IO Brand marked Custom, and clicks Connect. It does nothing until they do.</div></li>
+      </ol>
+      <div class="ready"><span class="plus">+</span><p><b>Working when:</b> Ask Claude for a transparent PNG of the LA.IO logo. If you get a download link, it is working.</p></div>
+      <p class="note">Anything broken, wrong, or missing goes to Dylan at Monday and Partners.</p>
+    </div>
+  </section>
+
   <!-- ============ START HERE ============ -->
   <section class="block">
     <div class="wrap">
@@ -465,7 +513,7 @@
   <!-- ============ SETUP TABS ============ -->
   <section class="block">
     <div class="wrap">
-      <span class="mono sec-eyebrow">Get set up</span>
+      <span class="mono sec-eyebrow">Not using the connector?</span>
       <h2>Pick your tool.</h2>
       <p class="lead">Each takes a few minutes. Set up the ones you use. They all draw from the same kit.</p>
       <p class="lead">For best results, set up your tool below. The one-line paste is fine for copy and quick questions. For anything visual, use a Project, Claude Design, Cowork, or Claude Code. They carry the font with them, so previews come out right.</p>
@@ -705,6 +753,7 @@ Color family: [pick one: Magenta / Green / Blue / Orange / Gray]
 <div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/AGENTS.md">AGENTS.md</a><div class="udesc">The same file, for Cursor and other agents that look for AGENTS.md.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/AGENTS.md"><span class="upath">/ai/AGENTS.md</span><span class="uci">Copy</span></button></div>
 <div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/laio-brand/BRAND.md">Full brand system</a><div class="udesc">The long form. Load when the work needs depth.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/laio-brand/BRAND.md"><span class="upath">/ai/laio-brand/BRAND.md</span><span class="uci">Copy</span></button></div>
 <div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/laio-brand/COMPONENTS.md">Component code</a><div class="udesc">Buttons, cards, eyebrows, and layout patterns as code.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/laio-brand/COMPONENTS.md"><span class="upath">/ai/laio-brand/COMPONENTS.md</span><span class="uci">Copy</span></button></div>
+<div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/laio-brand/VOICE.md">Voice guide</a><div class="udesc">Speaker profiles, the full ban list, and the standing rules for AI work.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/laio-brand/VOICE.md"><span class="upath">/ai/laio-brand/VOICE.md</span><span class="uci">Copy</span></button></div>
 <div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/laio-brand.zip">Packaged skill</a><div class="udesc">The whole kit as a Claude skill. Unzip into ~/.claude/skills/.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/laio-brand.zip"><span class="upath">/ai/laio-brand.zip</span><span class="uci">Copy</span></button></div>
 <div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/claude-ai-project-setup.md">claude.ai Project setup</a><div class="udesc">Custom instructions and knowledge files for a Claude Project.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/claude-ai-project-setup.md"><span class="upath">/ai/claude-ai-project-setup.md</span><span class="uci">Copy</span></button></div>
 <div class="urow"><span class="uplus">+</span><div class="ubody"><a class="uname" href="/ai/claude-design-setup.md">Claude Design setup</a><div class="udesc">The three form fields that set up the LA.IO Design System from this repo.</div></div><button class="ucopy" data-copy="https://assets.la.io/ai/claude-design-setup.md"><span class="upath">/ai/claude-design-setup.md</span><span class="uci">Copy</span></button></div>
