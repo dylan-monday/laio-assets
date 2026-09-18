@@ -106,3 +106,29 @@
   /* Sub-headings inside a tab panel, for panels that carry more than one move. */
   .panel h3.subhead { font-size: 1.05rem; font-weight: 700; margin: 40px 0 0; padding-top: 28px; border-top: 1px solid var(--hair-soft); }
   .panel h3.subhead + .steps, .panel h3.subhead + p { margin-top: 14px; }
+
+  /* The three acts. Deliberately not styled like the tool tabs inside act one,
+     so two levels of tabs never read as one. */
+  .acts-top { padding-bottom: 0; }
+  .actnav { display: flex; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid var(--hair); }
+  .act { background: none; border: 0; border-bottom: 2px solid transparent; cursor: pointer;
+         display: flex; align-items: baseline; gap: 10px; padding: 14px 18px 16px;
+         font-family: inherit; font-size: 1.12rem; font-weight: 300; color: rgba(255,255,255,0.58);
+         transition: color 0.18s ease, border-color 0.18s ease; }
+  .act .n { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; color: var(--gray); }
+  .act:hover { color: var(--white); }
+  .act[aria-selected="true"] { color: var(--white); font-weight: 700; border-bottom-color: var(--electric); }
+  .act[aria-selected="true"] .n { color: var(--electric); }
+  .actpanel { display: none; }
+  .actpanel[data-active="true"] { display: block; }
+  @media (max-width: 640px) {
+    .act { padding: 12px 12px 14px; font-size: 0.98rem; }
+    .act .n { display: none; }
+  }
+  .act .as { display: none; }
+  @media (max-width: 640px) {
+    .actnav { flex-wrap: nowrap; gap: 2px; }
+    .act { flex: 1 1 auto; justify-content: center; padding: 12px 6px 14px; white-space: nowrap; }
+    .act .al { display: none; }
+    .act .as { display: inline; }
+  }

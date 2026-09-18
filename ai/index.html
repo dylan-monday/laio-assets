@@ -403,6 +403,32 @@
   /* Sub-headings inside a tab panel, for panels that carry more than one move. */
   .panel h3.subhead { font-size: 1.05rem; font-weight: 700; margin: 40px 0 0; padding-top: 28px; border-top: 1px solid var(--hair-soft); }
   .panel h3.subhead + .steps, .panel h3.subhead + p { margin-top: 14px; }
+
+  /* The three acts. Deliberately not styled like the tool tabs inside act one,
+     so two levels of tabs never read as one. */
+  .acts-top { padding-bottom: 0; }
+  .actnav { display: flex; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid var(--hair); }
+  .act { background: none; border: 0; border-bottom: 2px solid transparent; cursor: pointer;
+         display: flex; align-items: baseline; gap: 10px; padding: 14px 18px 16px;
+         font-family: inherit; font-size: 1.12rem; font-weight: 300; color: rgba(255,255,255,0.58);
+         transition: color 0.18s ease, border-color 0.18s ease; }
+  .act .n { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; color: var(--gray); }
+  .act:hover { color: var(--white); }
+  .act[aria-selected="true"] { color: var(--white); font-weight: 700; border-bottom-color: var(--electric); }
+  .act[aria-selected="true"] .n { color: var(--electric); }
+  .actpanel { display: none; }
+  .actpanel[data-active="true"] { display: block; }
+  @media (max-width: 640px) {
+    .act { padding: 12px 12px 14px; font-size: 0.98rem; }
+    .act .n { display: none; }
+  }
+  .act .as { display: none; }
+  @media (max-width: 640px) {
+    .actnav { flex-wrap: nowrap; gap: 2px; }
+    .act { flex: 1 1 auto; justify-content: center; padding: 12px 6px 14px; white-space: nowrap; }
+    .act .al { display: none; }
+    .act .as { display: inline; }
+  }
 </style>
 </head>
 <body>
@@ -453,10 +479,22 @@
     </div>
   </header>
 
+  <!-- ============ ACTS ============ -->
+  <section class="block acts-top">
+    <div class="wrap">
+      <nav class="actnav" role="tablist" aria-label="Sections">
+        <button class="act" role="tab" aria-selected="true"  data-act="connect"><span class="n">01</span><span class="al">Connect your AI</span><span class="as">Connect</span></button>
+        <button class="act" role="tab" aria-selected="false" data-act="brand"><span class="n">02</span><span class="al">The brand</span><span class="as">Brand</span></button>
+        <button class="act" role="tab" aria-selected="false" data-act="assets"><span class="n">03</span><span class="al">The assets</span><span class="as">Assets</span></button>
+      </nav>
+    </div>
+  </section>
+
+  <div class="actpanel" data-act="connect" data-active="true" role="tabpanel" id="connect">
+
   <!-- ============ SETUP TABS ============ -->
   <section class="block">
     <div class="wrap">
-      <span class="mono sec-eyebrow">01 &nbsp;Connect your AI</span>
       <h2>Pick how you work.</h2>
       <p class="lead">Six ways in, one kit behind all of them. Set up the ones you use. On claude.ai the connector is the best of them, so start there.</p>
       <p class="lead">The one-line paste is fine for copy and quick questions. For anything visual, use the connector, a Project, Claude Design, Cowork, or Claude Code. Those carry the font with them, so previews come out right.</p>
@@ -679,10 +717,13 @@ Color family: [pick one: Magenta / Green / Blue / Orange / Gray]
     </div>
   </section>
 
+  </div>
+  <div class="actpanel" data-act="brand" role="tabpanel" id="brand">
+
   <!-- ============ BRAND IN 30 SECONDS ============ -->
   <section class="block">
     <div class="wrap">
-      <span class="mono sec-eyebrow">02 &nbsp;The brand</span>
+      <span class="mono sec-eyebrow">The brand in 30 seconds</span>
       <h2>If you read nothing else.</h2>
 
       <div class="families">
@@ -726,10 +767,12 @@ Color family: [pick one: Magenta / Green / Blue / Orange / Gray]
     </div>
   </section>
 
+  </div>
+  <div class="actpanel" data-act="assets" role="tabpanel" id="assets">
+
   <!-- ============ THE ASSETS ============ -->
   <section class="block" id="assets">
     <div class="wrap">
-      <span class="mono sec-eyebrow">03 &nbsp;The assets</span>
       <h2>Every file, at a permanent URL.</h2>
       <p class="lead">Every file is public, current, and served with open CORS, so it loads on any domain. Copy a URL into code, a prompt, or a tool's knowledge.</p>
 
@@ -934,6 +977,7 @@ Color family: [pick one: Magenta / Green / Blue / Orange / Gray]
     </div>
   </section>
 
+  </div>
   <!-- ============ FOOTER ============ -->
   <footer>
     <div class="wrap">
@@ -1151,6 +1195,34 @@ Color family: [pick one: Magenta / Green / Blue / Orange / Gray]
       }
     });
   });
+
+  // The three acts. One on screen at a time, and the hash points at one.
+  (function () {
+    const acts = document.querySelectorAll('.act');
+    const actpanels = document.querySelectorAll('.actpanel');
+    if (!acts.length) return;
+
+    function show(name, push) {
+      if (![...actpanels].some(p => p.dataset.act === name)) return false;
+      acts.forEach(a => a.setAttribute('aria-selected', a.dataset.act === name ? 'true' : 'false'));
+      actpanels.forEach(p => p.setAttribute('data-active', p.dataset.act === name ? 'true' : 'false'));
+      if (push && history.replaceState) history.replaceState(null, '', '#' + name);
+      return true;
+    }
+
+    acts.forEach(a => a.addEventListener('click', () => show(a.dataset.act, true)));
+
+    // A hash can name an act, or a tool tab inside act one.
+    function fromHash() {
+      const h = (location.hash || '').replace('#', '');
+      if (!h) return;
+      if (show(h, false)) { document.getElementById(h)?.scrollIntoView({ block: 'start' }); return; }
+      const tab = document.querySelector('.tab[data-tab="' + CSS.escape(h) + '"]');
+      if (tab) { show('connect', false); tab.click(); }
+    }
+    fromHash();
+    window.addEventListener('hashchange', fromHash);
+  })();
 
   // Copy buttons on asset rows and cards. The URL lives in data-copy.
   document.addEventListener('click', async (e) => {

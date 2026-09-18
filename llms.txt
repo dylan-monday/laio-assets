@@ -10,7 +10,7 @@ the voice rules, banned language, color families, type rules, and asset URLs. It
 
 The whole kit is also served as an MCP connector at https://assets.la.io/mcp. A Claude
 organization adds it once and every chat can pull the logo, colors, fonts and voice rules
-as tools. Setup steps are at https://assets.la.io/ai#connector-admin.
+as tools. Setup steps are at https://assets.la.io/ai#connect.
 
 - [ai/CLAUDE.md](https://assets.la.io/ai/CLAUDE.md): Brand instructions for any AI. Read this before generating anything.
 - [ai/AGENTS.md](https://assets.la.io/ai/AGENTS.md): The same file, for tools that look for AGENTS.md.
