@@ -7,8 +7,8 @@ If the laio-brand skill folder is available, read its SKILL.md for depth. If not
 ## Voice (every line of copy)
 Matter-of-fact confidence. Short, declarative. State the case, then stop. Lead with fact, not persuasion.
 + Never: "resilience", "Silicon Bayou", "innovative solutions", "cutting-edge", "disruptive", "rethink/reimagine Louisiana", Louisiana clichés (jazz, Mardi Gras, Bourbon St, crawfish), "it's not X, it's Y", em dashes, inspirational-poster cadence.
-+ Always use `+` as the list bullet. Never `•`, `-`, or `*`.
-+ The three pillars, always in order: `+ Capital  + Coaching  + Connections`.
++ Always use `+` as the list bullet. Never `•`, `-`, or `*`. When you are writing in markdown, a line that starts with `+ ` renders as a dot and the plus disappears. Escape it as `\+ ` so the reader sees a literal plus and copies one out.
++ The three pillars are Capital, Coaching, Connections, in that order. Use them when the piece calls for them, not in everything.
 
 ## Color (one family per piece)
 Dark = background, Easy/Electric = accents/labels/type-on-dark. Body copy is white on dark or the dark brand color on light, never an accent color. Do not mix families.
