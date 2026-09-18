@@ -210,7 +210,7 @@ The LA.IO logotype is monospace font bracketed by angular chevron/bracket marks:
 + `LAIO-BASE.svg`: only when the mark is under about 120px wide and the subtext would be illegible.
 + `LAIO-HORZ.svg`: only in a header or nav bar.
 + `LOUISIANA-INNOVATION-A.svg`, `LOUISIANA-INNOVATION-B.svg`, `DIVISION-LINE.svg`: secondary marks. Under or beside the primary mark. Never alone.
-+ LED files (`LED-WHITE.svg`, `LED-BLACK.svg`, `LED-SMALL-WHITE.svg`, `LED-SMALL-BLACK.svg`): white on dark grounds, black on light grounds recolored to the family dark. Under or beside the LA.IO mark, never above it. Never the full-color or gold versions.
++ LED files (`LED-WHITE.svg`, `LED-BLACK.svg`, `LED-SMALL-WHITE.svg`, `LED-SMALL-BLACK.svg`): white on dark grounds, black on light grounds recolored to the family dark. Under or beside the LA.IO mark, never above it. LED's gold and full-color marks belong to LED's own communications; the LA.IO kit carries white and black only.
 + Never type or draw the logo. Always the SVG file.
 
 **Logo colorization:**
@@ -235,7 +235,7 @@ The square pixel/dot in the logo is the base measurement unit. Maintain 3x that 
 The brand guidelines explicitly encourage exploration — the logo can be used large, cropped, bleeding off edges, as a supergraphic. The rule is: it must remain legible. Breaking compositional rules is on-brand when it's intentional and legible.
 
 **The LED logo:**
-Louisiana Economic Development, the parent agency. White on dark grounds is the default. Black on light grounds, recolored to the family dark. Never the full-color or gold versions. Sits under or beside the LA.IO mark, never above it. Files: `LED-WHITE.svg`, `LED-BLACK.svg`, `LED-SMALL-WHITE.svg`, `LED-SMALL-BLACK.svg`, in `assets/logos/` and at `https://assets.la.io/logos/`. It is the one outside logo the kit ships. Partner logos: recolor into the family by default; original colors only when the partner requires it. The kit ships no partner logos.
+Louisiana Economic Development, the parent agency. White on dark grounds is the default. Black on light grounds, recolored to the family dark. LED's gold and full-color marks belong to LED's own communications; the LA.IO kit carries white and black only. Sits under or beside the LA.IO mark, never above it. Files: `LED-WHITE.svg`, `LED-BLACK.svg`, `LED-SMALL-WHITE.svg`, `LED-SMALL-BLACK.svg`, in `assets/logos/` and at `https://assets.la.io/logos/`. It is the one outside logo the kit ships. Partner logos: recolor into the family by default; original colors only when the partner requires it. The kit ships no partner logos.
 
 ### Design elements library
 The bracket shapes from the logo decompose into a full visual vocabulary. Every element sits at 0, 45, or 90 degrees. Files are in `assets/motifs/` and at `https://assets.la.io/motifs/`.

@@ -601,8 +601,9 @@ LOGOS = [
 
 # The one outside logo the kit ships. Shown once under the logo cards, and in llms.txt.
 LED_NOTE = ("Louisiana Economic Development, the parent agency. White on dark grounds is "
-            "the default. Black on light grounds, recolored to the family dark. Never the "
-            "full-color or gold versions. Sits under or beside the LA.IO mark, never above it.")
+            "the default. Black on light grounds, recolored to the family dark. LED's "
+            "gold and full-color marks belong to LED's own communications; the LA.IO kit "
+            "carries white and black only. Sits under or beside the LA.IO mark, never above it.")
 
 MOTIFS = [
     ("LAIO-PLUS.svg",             "Plus"),
