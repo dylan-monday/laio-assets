@@ -132,3 +132,32 @@
     .act .al { display: none; }
     .act .as { display: inline; }
   }
+
+  /* Hierarchy. One family, so the levels come from value, not hue.
+     Ground (bg) < band (panel-2) < raised (panel). Electric marks the one
+     thing that matters most in a view. Easy carries everything secondary. */
+  section.block.acts-top {
+    position: sticky; top: 64px; z-index: 40;
+    background: var(--panel-2);
+    border-bottom: 1px solid var(--hair);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.35), 0 12px 28px rgba(0,0,0,0.28);
+    padding-top: 0; padding-bottom: 0;
+  }
+  .acts-top .wrap { padding-top: 0; padding-bottom: 0; }
+  .actnav { border-bottom: 0; }
+
+  /* The recommended route, called once and quietly. */
+  .tab .rec {
+    font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--bg); background: var(--electric); border-radius: 2px;
+    padding: 2px 5px; margin-left: 8px; vertical-align: 1px;
+  }
+
+  /* The first move in a panel sits on raised ground. Everything after is flat. */
+  .panel .steps-primary {
+    background: var(--panel); border-left: 2px solid var(--electric);
+    padding: 26px 26px 4px; margin-top: 16px;
+  }
+  .panel h3.subhead.lead-step { border-top: 0; padding-top: 0; margin-top: 34px; }
+  .panel h3.subhead { color: var(--easy); }
+  .panel h3.subhead.lead-step { color: var(--white); font-size: 1.18rem; }
