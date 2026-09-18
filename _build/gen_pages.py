@@ -796,14 +796,9 @@ for line in CONN["Admin steps"].split("\n"):
 
 TAB_CONNECTOR = f'''<p class="for">For <b>anyone on claude.ai</b>. The fastest route and the one to use if you can.</p>
 {_para(CONN["Lead"])}
-<p class="note">{html_escape(" ".join(_ex_intro), quote=False)}</p>
-<ul class="examples">
-{chr(10).join(_ex_items)}
-</ul>
-<div class="ready"><span class="plus">+</span><p>{html_escape(CONN["Aside"], quote=False)}</p></div>
 
-<h3 class="subhead">Turn it on</h3>
-<ol class="steps">
+<h3 class="subhead lead-step">Turn it on</h3>
+<ol class="steps steps-primary">
   <li><div class="st">Check it is there</div><div class="sd">Open Settings, then Connectors. Look for <code class="inline">LA.IO Brand</code> marked <i>Custom</i>.</div></li>
   <li><div class="st">Click Connect</div><div class="sd">That is the whole setup. It does nothing until you do this.</div></li>
   <li><div class="st">Ask for something</div><div class="sd">Try <i>give me a transparent PNG of the LA.IO logo in Easy Blue</i>. A download link means it is working.</div></li>
@@ -815,7 +810,14 @@ TAB_CONNECTOR = f'''<p class="for">For <b>anyone on claude.ai</b>. The fastest r
 {chr(10).join(_steps)}
 </ol>
 <div class="ready"><span class="plus">+</span><p><b>Working when:</b> {html_escape(" ".join(CONN["Test"].split()), quote=False)}</p></div>
-<p class="note">{html_escape(CONN["Feedback"], quote=False)}</p>'''
+<p class="note">{html_escape(CONN["Feedback"], quote=False)}</p>
+
+<h3 class="subhead">Then just ask</h3>
+<p class="note">{html_escape(" ".join(_ex_intro), quote=False)}</p>
+<ul class="examples">
+{chr(10).join(_ex_items)}
+</ul>
+<div class="ready"><span class="plus">+</span><p>{html_escape(CONN["Aside"], quote=False)}</p></div>'''
 
 # ---- the tabs ----
 TAB_CLAUDE = f'''<p class="for">For <b>copy, content, and brand questions</b> on claude.ai. Best for writers and marketers. Set it up once, then every chat in the Project knows the brand.</p>
@@ -914,7 +916,8 @@ tabbuttons, panels = [], []
 for i, (key, label, body) in enumerate(TABS):
     sel = "true" if i == 0 else "false"
     active = ' data-active="true"' if i == 0 else ""
-    tabbuttons.append(f'          <button class="tab" role="tab" aria-selected="{sel}" data-tab="{key}">{label}</button>')
+    mark = '<span class="rec">Best</span>' if key == "connector" else ""
+    tabbuttons.append(f'          <button class="tab" role="tab" aria-selected="{sel}" data-tab="{key}">{label}{mark}</button>')
     panels.append(f'''
         <!-- {label.upper()} -->
         <div class="panel" data-tab="{key}"{active} role="tabpanel">

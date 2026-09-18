@@ -49,7 +49,7 @@
     color: var(--white);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   .wrap { max-width: 1120px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px); }
@@ -429,6 +429,35 @@
     .act .al { display: none; }
     .act .as { display: inline; }
   }
+
+  /* Hierarchy. One family, so the levels come from value, not hue.
+     Ground (bg) < band (panel-2) < raised (panel). Electric marks the one
+     thing that matters most in a view. Easy carries everything secondary. */
+  section.block.acts-top {
+    position: sticky; top: 64px; z-index: 40;
+    background: var(--panel-2);
+    border-bottom: 1px solid var(--hair);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.35), 0 12px 28px rgba(0,0,0,0.28);
+    padding-top: 0; padding-bottom: 0;
+  }
+  .acts-top .wrap { padding-top: 0; padding-bottom: 0; }
+  .actnav { border-bottom: 0; }
+
+  /* The recommended route, called once and quietly. */
+  .tab .rec {
+    font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--bg); background: var(--electric); border-radius: 2px;
+    padding: 2px 5px; margin-left: 8px; vertical-align: 1px;
+  }
+
+  /* The first move in a panel sits on raised ground. Everything after is flat. */
+  .panel .steps-primary {
+    background: var(--panel); border-left: 2px solid var(--electric);
+    padding: 26px 26px 4px; margin-top: 16px;
+  }
+  .panel h3.subhead.lead-step { border-top: 0; padding-top: 0; margin-top: 34px; }
+  .panel h3.subhead { color: var(--easy); }
+  .panel h3.subhead.lead-step { color: var(--white); font-size: 1.18rem; }
 </style>
 </head>
 <body>
@@ -501,7 +530,7 @@
 
       <div class="tabs">
         <div class="tablist" role="tablist">
-          <button class="tab" role="tab" aria-selected="true" data-tab="connector">Connector</button>
+          <button class="tab" role="tab" aria-selected="true" data-tab="connector">Connector<span class="rec">Best</span></button>
           <button class="tab" role="tab" aria-selected="false" data-tab="claude">Claude Project</button>
           <button class="tab" role="tab" aria-selected="false" data-tab="design">Claude Design</button>
           <button class="tab" role="tab" aria-selected="false" data-tab="code">Claude Code + Cowork</button>
@@ -514,19 +543,9 @@
 <p class="for">For <b>anyone on claude.ai</b>. The fastest route and the one to use if you can.</p>
       <p class="lead">Connect the LA.IO brand to Claude once, and every chat can pull the real logo, the
 right colors, the fonts and the voice rules. Nothing to paste. Nothing to download.</p>
-<p class="note">Ask for what you want in plain language.</p>
-<ul class="examples">
-        <li><span class="m">+</span><span>Give me a transparent PNG of the LA.IO logo in Easy Blue.</span></li>
-        <li><span class="m">+</span><span>Write a LinkedIn post for Josh about the new cohort.</span></li>
-        <li><span class="m">+</span><span>Check this press release against the brand.</span></li>
-        <li><span class="m">+</span><span>What are the CMYK values for Dark Green for a printed flyer?</span></li>
-        <li><span class="m">+</span><span>I need the logo with alpha for a video end card.</span></li>
-        <li><span class="m">+</span><span>Make a five-slide deck on the maritime work for Susan.</span></li>
-</ul>
-<div class="ready"><span class="plus">+</span><p>The connector suggests. You decide. Overrule any of it and you still get the file.</p></div>
 
-<h3 class="subhead">Turn it on</h3>
-<ol class="steps">
+<h3 class="subhead lead-step">Turn it on</h3>
+<ol class="steps steps-primary">
   <li><div class="st">Check it is there</div><div class="sd">Open Settings, then Connectors. Look for <code class="inline">LA.IO Brand</code> marked <i>Custom</i>.</div></li>
   <li><div class="st">Click Connect</div><div class="sd">That is the whole setup. It does nothing until you do this.</div></li>
   <li><div class="st">Ask for something</div><div class="sd">Try <i>give me a transparent PNG of the LA.IO logo in Easy Blue</i>. A download link means it is working.</div></li>
@@ -545,6 +564,18 @@ about a minute.</p>
 </ol>
 <div class="ready"><span class="plus">+</span><p><b>Working when:</b> Ask Claude for a transparent PNG of the LA.IO logo. If you get a download link, it is working.</p></div>
 <p class="note">Anything broken, wrong, or missing goes to Dylan at Monday and Partners.</p>
+
+<h3 class="subhead">Then just ask</h3>
+<p class="note">Ask for what you want in plain language.</p>
+<ul class="examples">
+        <li><span class="m">+</span><span>Give me a transparent PNG of the LA.IO logo in Easy Blue.</span></li>
+        <li><span class="m">+</span><span>Write a LinkedIn post for Josh about the new cohort.</span></li>
+        <li><span class="m">+</span><span>Check this press release against the brand.</span></li>
+        <li><span class="m">+</span><span>What are the CMYK values for Dark Green for a printed flyer?</span></li>
+        <li><span class="m">+</span><span>I need the logo with alpha for a video end card.</span></li>
+        <li><span class="m">+</span><span>Make a five-slide deck on the maritime work for Susan.</span></li>
+</ul>
+<div class="ready"><span class="plus">+</span><p>The connector suggests. You decide. Overrule any of it and you still get the file.</p></div>
         </div>
         <!-- CLAUDE PROJECT -->
         <div class="panel" data-tab="claude" role="tabpanel">
