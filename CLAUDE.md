@@ -11,6 +11,10 @@ For brand voice, color, and type rules, read `ai/CLAUDE.md`. That file is the
 client-facing brand kit and it governs anything you write or design here.
 This file covers how the repo and the deployment actually work.
 
+`README.md` is the short version for people. `ai/README.md` explains the brand
+kit folder file by file. The **History** section at the end records how the
+repo reached its current shape.
+
 ---
 
 ## What is where
@@ -30,6 +34,7 @@ This file covers how the repo and the deployment actually work.
 /fonts /logos          static          Aktiv Grotesk woff2 + CSS, brand SVGs
 /motifs /colors        static          brand motifs, tokens, ASE
 404.html                               custom 404 (generated)
+.vercelignore                          keeps _build/ out of every deploy
 _build/                                scripts that generate the pages, fonts, and kits
 _build/ai-page/                        the /ai page's CSS and JS, inlined at build time
 ```
@@ -304,3 +309,33 @@ The repo is the only source. Nothing is synced in from the outer workspace.
 + No contact addresses on public pages, and no internal addresses in any file.
   This repo is served publicly, docs included. Only `_build/` is excluded, by
   `.vercelignore`.
+
+---
+
+## History
+
+How the repo reached its current shape, oldest first.
+
++ **2026-09-11, PR #4: font delivery.** Aktiv Grotesk had loaded from an
+  Adobe Fonts kit that only works on la.io, so AI tools failed and swapped in
+  another font. `_build/build_fonts.py` now writes `fonts/laio-fonts.css`
+  (hosted, all nine cuts) and `fonts/laio-fonts-inline.css` (base64, no
+  network requests).
++ **PR #5: one set of type rules.** Every doc and page carries the same type
+  block: embedded first, hosted on real sites, Roboto only as a stated
+  fallback. The skill ships its own copy of the inline file, because cloud AI
+  sessions often cannot reach assets.la.io. The inline file also embeds
+  JetBrains Mono 400 and 700 for hosts that block Google Fonts.
++ **PR #6: one brand page.** The hand-built `/claude` setup page and the
+  generated `/ai` inventory merged into one generated page at `/ai`, with tabs
+  for Claude, Claude Design, Claude Code + Cowork, Lovable, and other AI.
+  `claude/` became `ai/`, the Lovable docs moved into `ai/lovable/`, `_docs/`
+  was retired, and `/claude` redirects to `/ai`. Paste blocks are read from
+  the setup `.md` files, so the page cannot drift from them again.
++ **PR #7: cleanup.** Em dashes came out of `ai/CLAUDE.md`, the Lovable step
+  names Workspace Knowledge, internal names came out of this public file, and
+  `.vercelignore` keeps `_build/` off the site.
++ **Outside the repo.** The working copies that used to sit around it (the old
+  Claude kit folder, `_docs/`, loose asset folders) were archived, and the Labs
+  master art moved to `_source/labs-logos/` next to the repo. This repo is the
+  only source.
