@@ -98,7 +98,7 @@ LED logo: Louisiana Economic Development, the parent agency. White on dark groun
 
 ## Rules that apply to all LA.IO work
 
-- Bullets are always `+`. Never a bullet character, hyphen, or asterisk.
+- Bullets are always `+`. Never a bullet character, hyphen, or asterisk. In markdown, escape it as `\+ ` so it renders as a plus instead of becoming a list bullet.
 - Never use em dashes.
 - Never write "resilient", "Silicon Bayou", or "it's not X, it's Y".
 - One color family per project. Do not mix families.

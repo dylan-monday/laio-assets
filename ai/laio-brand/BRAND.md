@@ -19,13 +19,13 @@ Louisiana plays an elemental role in the future. Louisiana has world-class, huma
 This is not a perception problem being corrected. This is a signal being amplified. There is no "rethink Louisiana." Louisiana has always been an innovation leader.
 
 ### The three pillars
-LA.IO's work organizes into three areas, always in this order:
+LA.IO's work organizes into three areas. When they appear, they appear in this order:
 
-- **+ Capital** — connecting founders and projects to investment
-- **+ Coaching** — expertise, mentorship, and operational support
-- **+ Connections** — relationships, partnerships, ecosystem access
++ **Capital.** Connecting founders and projects to investment.
++ **Coaching.** Expertise, mentorship, and operational support.
++ **Connections.** Relationships, partnerships, ecosystem access.
 
-These appear together in this sequence. The `+` prefix is structural — it is the brand's bullet marker, not decoration. In designed layouts the `+` can be assembled from bracket elements at any scale. In copy, it appears as a literal `+` character before each term.
+They are a description of the work, not a tagline. Use them where a piece needs them and leave them out where it does not. The `+` prefix is structural — it is the brand's bullet marker, not decoration. In designed layouts the `+` can be assembled from bracket elements at any scale. In copy, it appears as a literal `+` character before each term.
 
 ---
 
@@ -253,7 +253,9 @@ The bracket shapes from the logo decompose into a full visual vocabulary. Every 
 + Wire node: the open-square terminal for 1px connectors (`LAIO-WIRE-NODE`)
 
 **The `+` as the brand bullet:**
-The `+` is the canonical list marker for LA.IO. In body copy, use a literal `+` character. In designed layouts, the `+` can be constructed from bracket corner elements at any size. It replaces all standard bullets, dashes, and dots across all contexts — UI lists, copy, slide decks, printed materials.
+The `+` is the canonical list marker for LA.IO. In body copy, use a literal `+` character. In designed layouts, the `+` can be constructed from bracket corner elements at any size. It replaces all standard bullets, dashes, and dots everywhere: UI lists, copy, slide decks, printed materials.
+
+One trap. In markdown, `+ ` at the start of a line is itself a list marker, so it renders as a dot and the plus is gone by the time anyone copies the text into a layout. Escape it as `\+ ` when you are writing markdown, or set the list as plain text. The reader should see a plus, not a bullet.
 
 Example:
 ```
