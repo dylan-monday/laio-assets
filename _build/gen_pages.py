@@ -751,24 +751,11 @@ HERO = f'''
       {MARK}
       <span class="mono eyebrow">One kit. Every tool.</span>
       <h1>The LA.IO brand, ready for <span class="accent">any AI.</span></h1>
-      <p class="sub">Voice, color, type, logos, and component code in one kit. Set it up once in whichever tool you use, and every project starts on brand.</p>
+      <p class="sub">Connect your AI, learn the brand in thirty seconds, take the files. Voice, color, type, logos, and component code, all from one kit.</p>
     </div>
   </header>
 '''
 
-START = f'''
-  <!-- ============ START HERE ============ -->
-  <section class="block">
-    <div class="wrap">
-      <span class="mono sec-eyebrow">Start here</span>
-      <h2>Paste one line.</h2>
-      <p class="lead">Any AI that can read the web fetches the brand instructions from this URL and works to them from there.</p>
-      {code(PROMPT, wrap=True)}
-      <p class="note">Making something visual in a plain chat? Attach CLAUDE.md and laio-fonts-inline.css so the AI has the font in hand. If your AI cannot fetch URLs, attach them too.</p>
-      {dlrow(dl("/ai/CLAUDE.md", "Download CLAUDE.md"), dl("/fonts/laio-fonts-inline.css", "Download laio-fonts-inline.css", True))}
-    </div>
-  </section>
-'''
 
 # ---- the connector, the first thing on the page ----
 # Copy lives in _build/sources/connector.md so the page can be reworded without
@@ -807,38 +794,30 @@ for line in CONN["Admin steps"].split("\n"):
     desc = re.sub(r"`([^`]+)`", r'<code class="inline">\1</code>', html_escape(desc, quote=False).replace("&#x27;", "'"))
     _steps.append(f'        <li><div class="st">{html_escape(title, quote=False)}</div><div class="sd">{desc}</div></li>')
 
-CONNECTOR = f'''
-  <!-- ============ THE CONNECTOR ============ -->
-  <section class="block" id="connector">
-    <div class="wrap">
-      <span class="mono sec-eyebrow">The connector</span>
-      <h2>Ask Claude. Get the brand.</h2>
+TAB_CONNECTOR = f'''<p class="for">For <b>anyone on claude.ai</b>. The fastest route and the one to use if you can.</p>
 {_para(CONN["Lead"])}
-{_para(CONN["Setup"])}
-      <p class="note">{html_escape(" ".join(_ex_intro), quote=False)}</p>
-      <ul class="examples">
+<p class="note">{html_escape(" ".join(_ex_intro), quote=False)}</p>
+<ul class="examples">
 {chr(10).join(_ex_items)}
-      </ul>
-      <div class="ready"><span class="plus">+</span><p>{html_escape(CONN["Aside"], quote=False)}</p></div>
-    </div>
-  </section>
+</ul>
+<div class="ready"><span class="plus">+</span><p>{html_escape(CONN["Aside"], quote=False)}</p></div>
 
-  <!-- ============ FOR YOUR CLAUDE ADMIN ============ -->
-  <section class="block" id="connector-admin">
-    <div class="wrap">
-      <span class="mono sec-eyebrow">For your Claude admin</span>
-      <h2>One connector, once.</h2>
+<h3 class="subhead">Turn it on</h3>
+<ol class="steps">
+  <li><div class="st">Check it is there</div><div class="sd">Open Settings, then Connectors. Look for <code class="inline">LA.IO Brand</code> marked <i>Custom</i>.</div></li>
+  <li><div class="st">Click Connect</div><div class="sd">That is the whole setup. It does nothing until you do this.</div></li>
+  <li><div class="st">Ask for something</div><div class="sd">Try <i>give me a transparent PNG of the LA.IO logo in Easy Blue</i>. A download link means it is working.</div></li>
+</ol>
+
+<h3 class="subhead">Not in your list? Send this to your Claude admin</h3>
 {_para(CONN["Admin intro"])}
-      <ol class="steps">
+<ol class="steps">
 {chr(10).join(_steps)}
-      </ol>
-      <div class="ready"><span class="plus">+</span><p><b>Working when:</b> {html_escape(" ".join(CONN["Test"].split()), quote=False)}</p></div>
-      <p class="note">{html_escape(CONN["Feedback"], quote=False)}</p>
-    </div>
-  </section>
-'''
+</ol>
+<div class="ready"><span class="plus">+</span><p><b>Working when:</b> {html_escape(" ".join(CONN["Test"].split()), quote=False)}</p></div>
+<p class="note">{html_escape(CONN["Feedback"], quote=False)}</p>'''
 
-# ---- the five tabs ----
+# ---- the tabs ----
 TAB_CLAUDE = f'''<p class="for">For <b>copy, content, and brand questions</b> on claude.ai. Best for writers and marketers. Set it up once, then every chat in the Project knows the brand.</p>
 <ol class="steps">
   <li><div class="st">Create a Project</div><div class="sd">claude.ai &rarr; Projects &rarr; New Project. Name it <code class="inline">LA.IO</code>.</div></li>
@@ -906,7 +885,10 @@ TAB_LOVABLE = f'''<p class="for">For <b>sites and apps built in Lovable</b>. The
 </ol>
 <div class="ready"><span class="plus">+</span><p><b>Ready when:</b> a project duplicated from the template shows Aktiv Grotesk headlines, JetBrains Mono eyebrows in the accent color, one color family, square corners, and the real LA.IO logo.</p></div>'''
 
-TAB_OTHER = f'''<p class="for">For <b>ChatGPT, Gemini, Cursor, and anything else</b>. If the tool can fetch a URL, one line sets it up. If it cannot, attach two files.</p>
+TAB_OTHER = f'''<p class="for">For <b>ChatGPT, Gemini, Cursor, and anything else</b>, and for any one-off chat. If the tool can fetch a URL, one line sets it up. If it cannot, attach two files.</p>
+<h3 class="subhead">Paste one line</h3>
+{code(PROMPT, wrap=True)}
+<p class="note">Making something visual in a plain chat? Attach CLAUDE.md and laio-fonts-inline.css so the AI has the font in hand.</p>
 <ol class="steps">
   <li><div class="st">Paste the brand instruction</div><div class="sd">Paste this at the start of a chat, or into the tool's custom instructions, project instructions, or rules so it applies every time.</div>
 {code(PROMPT, wrap=True)}
@@ -921,7 +903,8 @@ TAB_OTHER = f'''<p class="for">For <b>ChatGPT, Gemini, Cursor, and anything else
 <div class="ready"><span class="plus">+</span><p><b>Ready when:</b> asked "what bullet does LA.IO use, and what are the three pillars?", the tool answers with a plus sign and + Capital, + Coaching, + Connections, in that order. Asked for a one-slide artifact, it embeds the font and inlines the logo rather than linking them.</p></div>'''
 
 TABS = [
-    ("claude",  "Claude",               TAB_CLAUDE),
+    ("connector", "Connector",          TAB_CONNECTOR),
+    ("claude",  "Claude Project",       TAB_CLAUDE),
     ("design",  "Claude Design",        TAB_DESIGN),
     ("code",    "Claude Code + Cowork", TAB_CODE),
     ("lovable", "Lovable",              TAB_LOVABLE),
@@ -942,10 +925,10 @@ SETUP = f'''
   <!-- ============ SETUP TABS ============ -->
   <section class="block">
     <div class="wrap">
-      <span class="mono sec-eyebrow">Not using the connector?</span>
-      <h2>Pick your tool.</h2>
-      <p class="lead">Each takes a few minutes. Set up the ones you use. They all draw from the same kit.</p>
-      <p class="lead">For best results, set up your tool below. The one-line paste is fine for copy and quick questions. For anything visual, use a Project, Claude Design, Cowork, or Claude Code. They carry the font with them, so previews come out right.</p>
+      <span class="mono sec-eyebrow">01 &nbsp;Connect your AI</span>
+      <h2>Pick how you work.</h2>
+      <p class="lead">Six ways in, one kit behind all of them. Set up the ones you use. On claude.ai the connector is the best of them, so start there.</p>
+      <p class="lead">The one-line paste is fine for copy and quick questions. For anything visual, use the connector, a Project, Claude Design, Cowork, or Claude Code. Those carry the font with them, so previews come out right.</p>
 
       <div class="tabs">
         <div class="tablist" role="tablist">
@@ -962,7 +945,7 @@ SUMMARY = '''
   <!-- ============ BRAND IN 30 SECONDS ============ -->
   <section class="block">
     <div class="wrap">
-      <span class="mono sec-eyebrow">The brand in 30 seconds</span>
+      <span class="mono sec-eyebrow">02 &nbsp;The brand</span>
       <h2>If you read nothing else.</h2>
 
       <div class="families">
@@ -1011,7 +994,7 @@ ASSETS = f'''
   <!-- ============ THE ASSETS ============ -->
   <section class="block" id="assets">
     <div class="wrap">
-      <span class="mono sec-eyebrow">The assets</span>
+      <span class="mono sec-eyebrow">03 &nbsp;The assets</span>
       <h2>Every file, at a permanent URL.</h2>
       <p class="lead">Every file is public, current, and served with open CORS, so it loads on any domain. Copy a URL into code, a prompt, or a tool's knowledge.</p>
 
@@ -1075,7 +1058,7 @@ FOOTER = f'''
 
 ai_page = (AI_HEAD
            + _read(PAGE, "page.css") + _read(PAGE, "additions.css")
-           + INTRO + HERO + CONNECTOR + START + SETUP + SUMMARY + ASSETS + FOOTER
+           + INTRO + HERO + SETUP + SUMMARY + ASSETS + FOOTER
            + _read(PAGE, "rings.js") + "\n" + _read(PAGE, "ui.js") + _read(PAGE, "inventory.js")
            + "</script>\n</body>\n</html>\n")
 

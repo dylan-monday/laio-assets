@@ -8,11 +8,6 @@ and builds the page from them. Edit here, never in the HTML and never in the scr
 Connect the LA.IO brand to Claude once, and every chat can pull the real logo, the
 right colors, the fonts and the voice rules. Nothing to paste. Nothing to download.
 
-## Setup
-
-Your Claude admin adds it once for the whole org. After that, each person turns it
-on in their own settings. Steps are below.
-
 ## Examples
 
 Ask for what you want in plain language.
