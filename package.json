@@ -1,0 +1,15 @@
+{
+  "name": "laio-assets",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Static asset host for the LA.IO brand system, plus the brand MCP connector at /mcp and the render endpoint at /render.",
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.0.0",
+    "@resvg/resvg-js": "^2.6.2",
+    "mcp-handler": "^2.1.1",
+    "pdf-lib": "^1.17.1",
+    "zod": "^4.2.0"
+  }
+}

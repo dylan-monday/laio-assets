@@ -1,0 +1,58 @@
+{
+  "_comment": "Canonical CMYK builds for LA.IO. Built from LA_IO_COLORS_RGB.ase (the RGB master) by ICC conversion, Relative Colorimetric with black point compensation. The five Dark backgrounds are hand-built so the hue survives; a straight ICC conversion lands above 80 percent K and prints near-black. Rebuild from the RGB master if it changes. This file is the one source the MCP connector reads for print values.",
+  "built": "2026-09-10",
+  "profiles": {
+    "coated": {
+      "id": "coated",
+      "label": "Coated sheetfed and digital",
+      "icc": "GRACoL2013_CRPC6",
+      "use": "Program books, brochures, posters, digital print. The default for any print job.",
+      "richBlack": [60, 40, 40, 100],
+      "export": "PDF/X-1a:2003. Output: Convert to Destination (Preserve Numbers), GRACoL2013_CRPC6. 0.25 in bleed. Set the document CMYK working space to the same profile so swatches preview correctly. Soft proof with Simulate Paper Color before sending."
+    },
+    "newsprint": {
+      "id": "newsprint",
+      "label": "Newsprint",
+      "icc": "SNAP 2007",
+      "use": "The Advocate and other newspapers. Only when the user says newspaper or names the Advocate.",
+      "richBlack": [40, 30, 30, 100],
+      "export": "PDF/X-1a:2003, SNAP 2007, total area coverage held under 240 percent."
+    }
+  },
+  "values": {
+    "magenta": {
+      "dark":     { "coated": [100, 90, 20, 40], "newsprint": [90, 80, 20, 40] },
+      "easy":     { "coated": [24, 55, 0, 0], "coatedVivid": [54, 76, 1, 3], "newsprint": [34, 51, 0, 0] },
+      "electric": { "coated": [16, 83, 0, 0], "newsprint": [18, 87, 0, 0], "outOfGamut": true, "pantone": "806 C" }
+    },
+    "green": {
+      "dark":     { "coated": [80, 45, 100, 60], "newsprint": [70, 35, 90, 40] },
+      "easy":     { "coated": [26, 0, 78, 0], "coatedVivid": [38, 0, 87, 1], "newsprint": [19, 0, 80, 0] },
+      "electric": { "coated": [42, 0, 94, 0], "newsprint": [35, 3, 88, 0], "outOfGamut": true, "pantone": "802 C" }
+    },
+    "blue": {
+      "dark":     { "coated": [100, 70, 30, 50], "newsprint": [90, 60, 25, 45] },
+      "easy":     { "coated": [52, 0, 18, 0], "coatedVivid": [65, 0, 26, 0], "newsprint": [46, 1, 16, 0] },
+      "electric": { "coated": [70, 5, 0, 0], "coatedVivid": [92, 29, 0, 2], "newsprint": [63, 16, 0, 0], "outOfGamut": true }
+    },
+    "orange": {
+      "dark":     { "coated": [50, 60, 90, 60], "newsprint": [45, 55, 80, 50] },
+      "easy":     { "coated": [7, 7, 80, 1], "newsprint": [6, 7, 87, 0] },
+      "electric": { "coated": [2, 22, 88, 3], "newsprint": [5, 18, 94, 1] }
+    },
+    "gray": {
+      "dark":  { "coated": [65, 60, 55, 65], "newsprint": [55, 50, 45, 60] },
+      "mid":   { "coated": [43, 33, 30, 9] },
+      "light": { "coated": [11, 7, 6, 0] }
+    }
+  },
+  "notes": [
+    "Electric Magenta, Electric Green and Electric Blue sit outside every CMYK gamut. Four-color prints a good lime and a warm pink, not neon. Spot color is the only true match.",
+    "VIVID is a more saturated alternative for large accent fields. The plain build is the closest colorimetric match; use it next to photography.",
+    "Dark backgrounds print a touch lighter than they look on screen. That is the press, not the build.",
+    "Never set a black field as 100K alone. Use the rich black for the profile.",
+    "Uncoated sheetfed (CGATS21 CRPC3) and web offset coated (SWOP 2006 Coated3) swatch files were delivered to Dylan but their builds are not recorded here. Ask before quoting values for those stocks. On uncoated the Electrics go flat; consider Pantone.",
+    "The old LA.IO.COLORS.CMYK.ase was a straight SWOP conversion with 275 to 300 percent backgrounds. Superseded, do not use.",
+    "The RGB master carries Easy Green at #C9ED5E and the brand doc carries #C8ED5D. The brand doc governs until Dylan syncs them."
+  ]
+}

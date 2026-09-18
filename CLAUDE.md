@@ -34,6 +34,40 @@ _build/                                scripts that generate the pages, fonts, a
 _build/ai-page/                        the /ai page's CSS and JS, inlined at build time
 ```
 
+## The brand connector
+
+`/mcp` is the LA.IO brand MCP connector. The LA.IO team adds it once through their
+Claude org and any chat can then pull the real logo, colors, fonts and voice rules.
+
+```
+/mcp                   api/mcp.js      MCP server, Streamable HTTP, no auth
+/render/*              api/render.js   SVG recolor to PNG, PDF and .ase, deterministic URLs
+lib/                                   shared code: kit reader, color resolver, SVG, ASE
+colors/laio-cmyk.json                  CMYK builds, the one source for print values
+ai/laio-brand/VOICE.md                 speaker profiles, full ban list, standing rules
+fonts/desktop/                         licensed desktop TTFs as a zip
+```
+
+**Every rule the connector serves is read from the kit at request time.** `lib/kit.js`
+reads `ai/CLAUDE.md`, `ai/laio-brand/VOICE.md`, `colors/laio-tokens.json` and
+`colors/laio-cmyk.json` off disk. Nothing is hand-copied into server code. Change a
+kit file and the connector changes with it. Keep it that way.
+
+`vercel.json` carries the `/mcp` and `/render` rewrites, the header rules for both
+(appended last, because later rules win), and `functions.includeFiles`, which is what
+puts the kit files inside the serverless bundle. Removing `includeFiles` breaks the
+connector with a "kit not found" error.
+
+Render URLs are deterministic and cached for a year. Same URL, same bytes, forever.
+
+To run both locally: `node _build/devserver.mjs`, then hit
+`http://localhost:5199/render/logo/complete.png?color=easy%20green` or POST JSON-RPC
+to `http://localhost:5199/mcp`.
+
+The page at `/ai` is unchanged. The connector is an addition to it, not a replacement.
+
+---
+
 `/illustrator` is **not a folder**. It is a rewrite in `vercel.json` pointing at
 `laio-illustrator.vercel.app`, a separate Vercel project and separate repo.
 Never add an `illustrator/` directory here.
