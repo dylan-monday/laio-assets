@@ -69,7 +69,7 @@ All artwork ships black (#231F20) on transparent. Recolor with CSS. Do not edit 
 - [logos/LED-SMALL-WHITE.svg](https://assets.la.io/logos/LED-SMALL-WHITE.svg): The compact LED lockup, on dark grounds.
 - [logos/LED-SMALL-BLACK.svg](https://assets.la.io/logos/LED-SMALL-BLACK.svg): The compact LED lockup, on light grounds.
 
-LED logo: Louisiana Economic Development, the parent agency. White on dark grounds is the default. Black on light grounds, recolored to the family dark. Never the full-color or gold versions. Sits under or beside the LA.IO mark, never above it.
+LED logo: Louisiana Economic Development, the parent agency. White on dark grounds is the default. Black on light grounds, recolored to the family dark. LED's gold and full-color marks belong to LED's own communications; the LA.IO kit carries white and black only. Sits under or beside the LA.IO mark, never above it.
 
 ## Motifs
 
