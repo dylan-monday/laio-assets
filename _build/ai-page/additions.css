@@ -97,3 +97,9 @@
     color: var(--easy); text-decoration: none;
   }
   footer .flinks a:hover { color: var(--white); }
+
+  /* The connector's example requests. Plus-marked, the brand's list. */
+  ul.examples { list-style: none; margin: 22px 0 0; }
+  ul.examples li { display: flex; gap: 12px; padding: 7px 0; font-size: 0.96rem; font-weight: 300; color: rgba(255,255,255,0.88); }
+  ul.examples li .m { color: var(--electric); font-weight: 700; flex-shrink: 0; }
+  #connector .note { margin-top: 20px; }

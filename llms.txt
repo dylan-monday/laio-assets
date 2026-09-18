@@ -8,6 +8,10 @@ the voice rules, banned language, color families, type rules, and asset URLs. It
 
 ## Start here
 
+The whole kit is also served as an MCP connector at https://assets.la.io/mcp. A Claude
+organization adds it once and every chat can pull the logo, colors, fonts and voice rules
+as tools. Setup steps are at https://assets.la.io/ai#connector-admin.
+
 - [ai/CLAUDE.md](https://assets.la.io/ai/CLAUDE.md): Brand instructions for any AI. Read this before generating anything.
 - [ai/AGENTS.md](https://assets.la.io/ai/AGENTS.md): The same file, for tools that look for AGENTS.md.
 
@@ -15,6 +19,7 @@ the voice rules, banned language, color families, type rules, and asset URLs. It
 
 - [ai/laio-brand/BRAND.md](https://assets.la.io/ai/laio-brand/BRAND.md): Full brand system. The long form. Load when the work needs depth.
 - [ai/laio-brand/COMPONENTS.md](https://assets.la.io/ai/laio-brand/COMPONENTS.md): Component code. Buttons, cards, eyebrows, and layout patterns as code.
+- [ai/laio-brand/VOICE.md](https://assets.la.io/ai/laio-brand/VOICE.md): Voice guide. Speaker profiles, the full ban list, and the standing rules for AI work.
 - [ai/laio-brand.zip](https://assets.la.io/ai/laio-brand.zip): Packaged skill. The whole kit as a Claude skill. Unzip into ~/.claude/skills/.
 - [ai/claude-ai-project-setup.md](https://assets.la.io/ai/claude-ai-project-setup.md): claude.ai Project setup. Custom instructions and knowledge files for a Claude Project.
 - [ai/claude-design-setup.md](https://assets.la.io/ai/claude-design-setup.md): Claude Design setup. The three form fields that set up the LA.IO Design System from this repo.
@@ -27,6 +32,8 @@ the voice rules, banned language, color families, type rules, and asset URLs. It
 
 - [colors/laio-tokens.json](https://assets.la.io/colors/laio-tokens.json): All five color families as JSON. Hex, RGB, brand names.
 - [colors/laio-colors.css](https://assets.la.io/colors/laio-colors.css): The same values as CSS custom properties.
+- [colors/laio-cmyk.json](https://assets.la.io/colors/laio-cmyk.json): CMYK builds for print. GRACoL 2013 coated and SNAP 2007 newsprint, rich blacks, and the out-of-gamut notes.
+- [colors/LA_IO_COLORS_RGB.ase](https://assets.la.io/colors/LA_IO_COLORS_RGB.ase): The RGB swatch master for Adobe apps.
 
 ## Type
 
