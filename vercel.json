@@ -259,6 +259,58 @@
           "value": "public, max-age=0, must-revalidate"
         }
       ]
+    },
+    {
+      "source": "/fonts/desktop/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/render/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/mcp",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    },
+    {
+      "source": "/mcp/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
     }
   ],
   "redirects": [
@@ -291,6 +343,28 @@
     {
       "source": "/illustrator/:path*",
       "destination": "https://laio-illustrator.vercel.app/:path*"
+    },
+    {
+      "source": "/mcp",
+      "destination": "/api/mcp"
+    },
+    {
+      "source": "/mcp/",
+      "destination": "/api/mcp"
+    },
+    {
+      "source": "/render/(.*)",
+      "destination": "/api/render?path=$1"
     }
-  ]
+  ],
+  "functions": {
+    "api/mcp.js": {
+      "includeFiles": "{ai,colors,logos,motifs}/**",
+      "maxDuration": 30
+    },
+    "api/render.js": {
+      "includeFiles": "{ai,colors,logos,motifs}/**",
+      "maxDuration": 30
+    }
+  }
 }
