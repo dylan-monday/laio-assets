@@ -400,6 +400,9 @@
   ul.examples li { display: flex; gap: 12px; padding: 7px 0; font-size: 0.96rem; font-weight: 300; color: rgba(255,255,255,0.88); }
   ul.examples li .m { color: var(--electric); font-weight: 700; flex-shrink: 0; }
   #connector .note { margin-top: 20px; }
+  /* Sub-headings inside a tab panel, for panels that carry more than one move. */
+  .panel h3.subhead { font-size: 1.05rem; font-weight: 700; margin: 40px 0 0; padding-top: 28px; border-top: 1px solid var(--hair-soft); }
+  .panel h3.subhead + .steps, .panel h3.subhead + p { margin-top: 14px; }
 </style>
 </head>
 <body>
@@ -446,89 +449,67 @@
       </svg>
       <span class="mono eyebrow">One kit. Every tool.</span>
       <h1>The LA.IO brand, ready for <span class="accent">any AI.</span></h1>
-      <p class="sub">Voice, color, type, logos, and component code in one kit. Set it up once in whichever tool you use, and every project starts on brand.</p>
+      <p class="sub">Connect your AI, learn the brand in thirty seconds, take the files. Voice, color, type, logos, and component code, all from one kit.</p>
     </div>
   </header>
-
-  <!-- ============ THE CONNECTOR ============ -->
-  <section class="block" id="connector">
-    <div class="wrap">
-      <span class="mono sec-eyebrow">The connector</span>
-      <h2>Ask Claude. Get the brand.</h2>
-      <p class="lead">Connect the LA.IO brand to Claude once, and every chat can pull the real logo, the
-right colors, the fonts and the voice rules. Nothing to paste. Nothing to download.</p>
-      <p class="lead">Your Claude admin adds it once for the whole org. After that, each person turns it
-on in their own settings. Steps are below.</p>
-      <p class="note">Ask for what you want in plain language.</p>
-      <ul class="examples">
-        <li><span class="m">+</span><span>Give me a transparent PNG of the LA.IO logo in Easy Blue.</span></li>
-        <li><span class="m">+</span><span>Write a LinkedIn post for Josh about the new cohort.</span></li>
-        <li><span class="m">+</span><span>Check this press release against the brand.</span></li>
-        <li><span class="m">+</span><span>What are the CMYK values for Dark Green for a printed flyer?</span></li>
-        <li><span class="m">+</span><span>I need the logo with alpha for a video end card.</span></li>
-        <li><span class="m">+</span><span>Make a five-slide deck on the maritime work for Susan.</span></li>
-      </ul>
-      <div class="ready"><span class="plus">+</span><p>The connector suggests. You decide. Overrule any of it and you still get the file.</p></div>
-    </div>
-  </section>
-
-  <!-- ============ FOR YOUR CLAUDE ADMIN ============ -->
-  <section class="block" id="connector-admin">
-    <div class="wrap">
-      <span class="mono sec-eyebrow">For your Claude admin</span>
-      <h2>One connector, once.</h2>
-      <p class="lead">Only an Owner can add a connector to a Team or Enterprise organization. This takes
-about a minute.</p>
-      <ol class="steps">
-        <li><div class="st">Open Admin settings</div><div class="sd">Go to Settings, then Administration, then Connectors.</div></li>
-        <li><div class="st">Add a custom connector</div><div class="sd">Click Add custom connector at the bottom of the section.</div></li>
-        <li><div class="st">Paste the URL</div><div class="sd">Use <code class="inline">https://assets.la.io/mcp</code>. Leave the advanced OAuth fields empty, the connector needs no login.</div></li>
-        <li><div class="st">Name it</div><div class="sd">Call it <code class="inline">LA.IO Brand</code> so people recognize it in the list.</div></li>
-        <li><div class="st">Click Add</div><div class="sd">It is now available to everyone in the organization.</div></li>
-        <li><div class="st">Tell the team to connect</div><div class="sd">Each person opens Settings, then Connectors, finds LA.IO Brand marked Custom, and clicks Connect. It does nothing until they do.</div></li>
-      </ol>
-      <div class="ready"><span class="plus">+</span><p><b>Working when:</b> Ask Claude for a transparent PNG of the LA.IO logo. If you get a download link, it is working.</p></div>
-      <p class="note">Anything broken, wrong, or missing goes to Dylan at Monday and Partners.</p>
-    </div>
-  </section>
-
-  <!-- ============ START HERE ============ -->
-  <section class="block">
-    <div class="wrap">
-      <span class="mono sec-eyebrow">Start here</span>
-      <h2>Paste one line.</h2>
-      <p class="lead">Any AI that can read the web fetches the brand instructions from this URL and works to them from there.</p>
-      <div class="code code-wrap">
-<button class="copy">Copy</button>
-<pre>Fetch https://assets.la.io/ai/CLAUDE.md and follow it as the brand system for this project.</pre>
-</div>
-      <p class="note">Making something visual in a plain chat? Attach CLAUDE.md and laio-fonts-inline.css so the AI has the font in hand. If your AI cannot fetch URLs, attach them too.</p>
-      <div class="dl-row">
-<a class="dl" href="/ai/CLAUDE.md" download="CLAUDE.md"><span class="ico">&darr;</span> Download CLAUDE.md</a>
-<a class="dl ghost" href="/fonts/laio-fonts-inline.css" download="laio-fonts-inline.css"><span class="ico">&darr;</span> Download laio-fonts-inline.css</a>
-</div>
-    </div>
-  </section>
 
   <!-- ============ SETUP TABS ============ -->
   <section class="block">
     <div class="wrap">
-      <span class="mono sec-eyebrow">Not using the connector?</span>
-      <h2>Pick your tool.</h2>
-      <p class="lead">Each takes a few minutes. Set up the ones you use. They all draw from the same kit.</p>
-      <p class="lead">For best results, set up your tool below. The one-line paste is fine for copy and quick questions. For anything visual, use a Project, Claude Design, Cowork, or Claude Code. They carry the font with them, so previews come out right.</p>
+      <span class="mono sec-eyebrow">01 &nbsp;Connect your AI</span>
+      <h2>Pick how you work.</h2>
+      <p class="lead">Six ways in, one kit behind all of them. Set up the ones you use. On claude.ai the connector is the best of them, so start there.</p>
+      <p class="lead">The one-line paste is fine for copy and quick questions. For anything visual, use the connector, a Project, Claude Design, Cowork, or Claude Code. Those carry the font with them, so previews come out right.</p>
 
       <div class="tabs">
         <div class="tablist" role="tablist">
-          <button class="tab" role="tab" aria-selected="true" data-tab="claude">Claude</button>
+          <button class="tab" role="tab" aria-selected="true" data-tab="connector">Connector</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="claude">Claude Project</button>
           <button class="tab" role="tab" aria-selected="false" data-tab="design">Claude Design</button>
           <button class="tab" role="tab" aria-selected="false" data-tab="code">Claude Code + Cowork</button>
           <button class="tab" role="tab" aria-selected="false" data-tab="lovable">Lovable</button>
           <button class="tab" role="tab" aria-selected="false" data-tab="other">Other AI</button>
         </div>
 
-        <!-- CLAUDE -->
-        <div class="panel" data-tab="claude" data-active="true" role="tabpanel">
+        <!-- CONNECTOR -->
+        <div class="panel" data-tab="connector" data-active="true" role="tabpanel">
+<p class="for">For <b>anyone on claude.ai</b>. The fastest route and the one to use if you can.</p>
+      <p class="lead">Connect the LA.IO brand to Claude once, and every chat can pull the real logo, the
+right colors, the fonts and the voice rules. Nothing to paste. Nothing to download.</p>
+<p class="note">Ask for what you want in plain language.</p>
+<ul class="examples">
+        <li><span class="m">+</span><span>Give me a transparent PNG of the LA.IO logo in Easy Blue.</span></li>
+        <li><span class="m">+</span><span>Write a LinkedIn post for Josh about the new cohort.</span></li>
+        <li><span class="m">+</span><span>Check this press release against the brand.</span></li>
+        <li><span class="m">+</span><span>What are the CMYK values for Dark Green for a printed flyer?</span></li>
+        <li><span class="m">+</span><span>I need the logo with alpha for a video end card.</span></li>
+        <li><span class="m">+</span><span>Make a five-slide deck on the maritime work for Susan.</span></li>
+</ul>
+<div class="ready"><span class="plus">+</span><p>The connector suggests. You decide. Overrule any of it and you still get the file.</p></div>
+
+<h3 class="subhead">Turn it on</h3>
+<ol class="steps">
+  <li><div class="st">Check it is there</div><div class="sd">Open Settings, then Connectors. Look for <code class="inline">LA.IO Brand</code> marked <i>Custom</i>.</div></li>
+  <li><div class="st">Click Connect</div><div class="sd">That is the whole setup. It does nothing until you do this.</div></li>
+  <li><div class="st">Ask for something</div><div class="sd">Try <i>give me a transparent PNG of the LA.IO logo in Easy Blue</i>. A download link means it is working.</div></li>
+</ol>
+
+<h3 class="subhead">Not in your list? Send this to your Claude admin</h3>
+      <p class="lead">Only an Owner can add a connector to a Team or Enterprise organization. This takes
+about a minute.</p>
+<ol class="steps">
+        <li><div class="st">Open Admin settings</div><div class="sd">Go to Settings, then Administration, then Connectors.</div></li>
+        <li><div class="st">Add a custom connector</div><div class="sd">Click Add custom connector at the bottom of the section.</div></li>
+        <li><div class="st">Paste the URL</div><div class="sd">Use <code class="inline">https://assets.la.io/mcp</code>. Leave the advanced OAuth fields empty, the connector needs no login.</div></li>
+        <li><div class="st">Name it</div><div class="sd">Call it <code class="inline">LA.IO Brand</code> so people recognize it in the list.</div></li>
+        <li><div class="st">Click Add</div><div class="sd">It is now available to everyone in the organization.</div></li>
+        <li><div class="st">Tell the team to connect</div><div class="sd">Each person opens Settings, then Connectors, finds LA.IO Brand marked Custom, and clicks Connect. It does nothing until they do.</div></li>
+</ol>
+<div class="ready"><span class="plus">+</span><p><b>Working when:</b> Ask Claude for a transparent PNG of the LA.IO logo. If you get a download link, it is working.</p></div>
+<p class="note">Anything broken, wrong, or missing goes to Dylan at Monday and Partners.</p>
+        </div>
+        <!-- CLAUDE PROJECT -->
+        <div class="panel" data-tab="claude" role="tabpanel">
 <p class="for">For <b>copy, content, and brand questions</b> on claude.ai. Best for writers and marketers. Set it up once, then every chat in the Project knows the brand.</p>
 <ol class="steps">
   <li><div class="st">Create a Project</div><div class="sd">claude.ai &rarr; Projects &rarr; New Project. Name it <code class="inline">LA.IO</code>.</div></li>
@@ -666,7 +647,13 @@ Color family: [pick one: Magenta / Green / Blue / Orange / Gray]
         </div>
         <!-- OTHER AI -->
         <div class="panel" data-tab="other" role="tabpanel">
-<p class="for">For <b>ChatGPT, Gemini, Cursor, and anything else</b>. If the tool can fetch a URL, one line sets it up. If it cannot, attach two files.</p>
+<p class="for">For <b>ChatGPT, Gemini, Cursor, and anything else</b>, and for any one-off chat. If the tool can fetch a URL, one line sets it up. If it cannot, attach two files.</p>
+<h3 class="subhead">Paste one line</h3>
+<div class="code code-wrap">
+<button class="copy">Copy</button>
+<pre>Fetch https://assets.la.io/ai/CLAUDE.md and follow it as the brand system for this project.</pre>
+</div>
+<p class="note">Making something visual in a plain chat? Attach CLAUDE.md and laio-fonts-inline.css so the AI has the font in hand.</p>
 <ol class="steps">
   <li><div class="st">Paste the brand instruction</div><div class="sd">Paste this at the start of a chat, or into the tool's custom instructions, project instructions, or rules so it applies every time.</div>
 <div class="code code-wrap">
@@ -695,7 +682,7 @@ Color family: [pick one: Magenta / Green / Blue / Orange / Gray]
   <!-- ============ BRAND IN 30 SECONDS ============ -->
   <section class="block">
     <div class="wrap">
-      <span class="mono sec-eyebrow">The brand in 30 seconds</span>
+      <span class="mono sec-eyebrow">02 &nbsp;The brand</span>
       <h2>If you read nothing else.</h2>
 
       <div class="families">
@@ -742,7 +729,7 @@ Color family: [pick one: Magenta / Green / Blue / Orange / Gray]
   <!-- ============ THE ASSETS ============ -->
   <section class="block" id="assets">
     <div class="wrap">
-      <span class="mono sec-eyebrow">The assets</span>
+      <span class="mono sec-eyebrow">03 &nbsp;The assets</span>
       <h2>Every file, at a permanent URL.</h2>
       <p class="lead">Every file is public, current, and served with open CORS, so it loads on any domain. Copy a URL into code, a prompt, or a tool's knowledge.</p>
 
